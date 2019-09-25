@@ -12,30 +12,21 @@
     
     
     <item>
-      <title>Links</title>
-      <link>https://blog.fcteam.net/links/</link>
-      <pubDate>Wed, 25 Sep 2019 20:55:01 +0800</pubDate>
-      
-      <guid>https://blog.fcteam.net/links/</guid>
-      <description>超能小紫 当风过时 KAAAsS 果果喵 冯小贤</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://blog.fcteam.net/about/</link>
-      <pubDate>Tue, 24 Sep 2019 22:25:17 +0800</pubDate>
-      
-      <guid>https://blog.fcteam.net/about/</guid>
-      <description>老Blog已被手动释放&amp;hellip; 本Blog由Hugo生成，部署于Coding&amp;hellip;</description>
-    </item>
-    
-    <item>
       <title>理解 JavaScript 的 Proto 和 Prototype</title>
       <link>https://blog.fcteam.net/post/js-proto-and-prototype/</link>
       <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
       
       <guid>https://blog.fcteam.net/post/js-proto-and-prototype/</guid>
       <description>__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一</description>
+    </item>
+    
+    <item>
+      <title>Links</title>
+      <link>https://blog.fcteam.net/links/</link>
+      <pubDate>Wed, 25 Sep 2019 20:55:01 +0800</pubDate>
+      
+      <guid>https://blog.fcteam.net/links/</guid>
+      <description>超能小紫 当风过时 KAAAsS 果果喵 冯小贤</description>
     </item>
     
     <item>
@@ -54,6 +45,15 @@
       
       <guid>https://blog.fcteam.net/post/chinese-encoding-in-c/</guid>
       <description>前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&amp;hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://blog.fcteam.net/about/</link>
+      <pubDate>Tue, 24 Sep 2019 22:25:17 +0800</pubDate>
+      
+      <guid>https://blog.fcteam.net/about/</guid>
+      <description>老Blog已被手动释放&amp;hellip; 本Blog由Hugo生成，部署于Coding&amp;hellip;</description>
     </item>
     
   </channel>
