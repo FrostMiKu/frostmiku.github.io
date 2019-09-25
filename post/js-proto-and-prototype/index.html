@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>你好！HUGO - StarWishper</title>
+  <title>理解 JavaScript 的 Proto 和 Prototype - StarWishper</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="FrostMiKu" /><meta name="description" content="前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
+<meta name="author" content="FrostMiKu" /><meta name="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.58.3 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/post/hello-hugo/" />
+<link rel="canonical" href="http://localhost:1313/post/js-proto-and-prototype/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="你好！HUGO" />
-<meta property="og:description" content="前不久把自己的VPS释放掉了，换回静态Blog了&hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任" />
+<meta property="og:title" content="理解 JavaScript 的 Proto 和 Prototype" />
+<meta property="og:description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/hello-hugo/" />
-<meta property="article:published_time" content="2019-09-25T20:27:18+08:00" />
-<meta property="article:modified_time" content="2019-09-25T20:27:18+08:00" />
-<meta itemprop="name" content="你好！HUGO">
-<meta itemprop="description" content="前不久把自己的VPS释放掉了，换回静态Blog了&hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任">
+<meta property="og:url" content="http://localhost:1313/post/js-proto-and-prototype/" />
+<meta property="article:published_time" content="2019-09-25T22:24:08+08:00" />
+<meta property="article:modified_time" content="2019-09-25T22:24:08+08:00" />
+<meta itemprop="name" content="理解 JavaScript 的 Proto 和 Prototype">
+<meta itemprop="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一">
 
 
-<meta itemprop="datePublished" content="2019-09-25T20:27:18&#43;08:00" />
-<meta itemprop="dateModified" content="2019-09-25T20:27:18&#43;08:00" />
-<meta itemprop="wordCount" content="89">
+<meta itemprop="datePublished" content="2019-09-25T22:24:08&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-25T22:24:08&#43;08:00" />
+<meta itemprop="wordCount" content="238">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="你好！HUGO"/>
-<meta name="twitter:description" content="前不久把自己的VPS释放掉了，换回静态Blog了&hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任"/>
+<meta name="twitter:title" content="理解 JavaScript 的 Proto 和 Prototype"/>
+<meta name="twitter:description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,12 +132,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">你好！HUGO</h1>
+      <h1 class="post-title">理解 JavaScript 的 Proto 和 Prototype</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-09-25 </span>
         
-          <span class="more-meta"> 89 words </span>
+          <span class="more-meta"> 238 words </span>
           <span class="more-meta"> 1 min read </span>
         
       </div>
@@ -146,20 +146,39 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#原型链">原型链</a></li>
+<li><a href="#实例化对象过程">实例化对象过程</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <p>前不久把自己的VPS释放掉了，换回静态Blog了&hellip;</p>
+      
 
-<p>Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。</p>
+<p>__proto__ 是object的一个属性，prototype是function的一个属性。</p>
 
-<p>无需安装任何环境，开袋即食。</p>
+<p>__proto__ 指向它的构造函数的prototype, prototype指向一个constructor为该function的object.</p>
 
-<p>数学符号测试：
-$$
-\frac{\theta}{\lambda}
-$$</p>
+<p>所以 __proto__ 也有自己的 __proto__ ，也就是原型链。</p>
+
+<h2 id="原型链">原型链</h2>
+
+<p>当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。</p>
+
+<h2 id="实例化对象过程">实例化对象过程</h2>
+
+<p>进行new Foo()操作会进行以下过程：</p>
+
+<ol>
+<li>首先会初始化一个空 {}</li>
+<li>然后将 {} 的 __proto__ 指向 Foo 的 prototype</li>
+<li>接着执行 Base.call({}) 将 this 作用域交予 {}</li>
+</ol>
 
     </div>
 
@@ -179,15 +198,13 @@ $$</p>
   
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/javascript/">JavaScript</a>
+          </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/js-proto-and-prototype/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">理解 JavaScript 的 Proto 和 Prototype</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/chinese-encoding-in-c/">
-            <span class="next-text nav-default">浅谈C/C&#43;&#43;语言中char与中文编码字符存储</span>
+        
+        <a class="next" href="/post/hello-hugo/">
+            <span class="next-text nav-default">你好！HUGO</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

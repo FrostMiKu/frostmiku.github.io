@@ -2,30 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on StarWishper</title>
-    <link>http://blog.fcteam.net/post/</link>
+    <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Sep 2019 20:27:18 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 22:24:08 +0800</lastBuildDate>
     
-	<atom:link href="http://blog.fcteam.net/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>理解 JavaScript 的 Proto 和 Prototype</title>
+      <link>http://localhost:1313/post/js-proto-and-prototype/</link>
+      <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/js-proto-and-prototype/</guid>
+      <description>__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一</description>
+    </item>
+    
+    <item>
       <title>你好！HUGO</title>
-      <link>http://blog.fcteam.net/post/hello-hugo/</link>
+      <link>http://localhost:1313/post/hello-hugo/</link>
       <pubDate>Wed, 25 Sep 2019 20:27:18 +0800</pubDate>
       
-      <guid>http://blog.fcteam.net/post/hello-hugo/</guid>
+      <guid>http://localhost:1313/post/hello-hugo/</guid>
       <description>前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任</description>
     </item>
     
     <item>
       <title>浅谈C/C&#43;&#43;语言中char与中文编码字符存储</title>
-      <link>http://blog.fcteam.net/post/chinese-encoding-in-c/</link>
+      <link>http://localhost:1313/post/chinese-encoding-in-c/</link>
       <pubDate>Wed, 25 Sep 2019 20:27:18 +0800</pubDate>
       
-      <guid>http://blog.fcteam.net/post/chinese-encoding-in-c/</guid>
+      <guid>http://localhost:1313/post/chinese-encoding-in-c/</guid>
       <description>前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&amp;hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文</description>
     </item>
     
