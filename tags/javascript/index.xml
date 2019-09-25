@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on StarWishper</title>
-    <link>http://localhost:1313/tags/javascript/</link>
+    <link>https://blog.fcteam.net/tags/javascript/</link>
     <description>Recent content in JavaScript on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 25 Sep 2019 22:24:08 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.fcteam.net/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>理解 JavaScript 的 Proto 和 Prototype</title>
-      <link>http://localhost:1313/post/js-proto-and-prototype/</link>
+      <link>https://blog.fcteam.net/post/js-proto-and-prototype/</link>
       <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/js-proto-and-prototype/</guid>
+      <guid>https://blog.fcteam.net/post/js-proto-and-prototype/</guid>
       <description>__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一</description>
     </item>
     
