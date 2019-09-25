@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>浅谈C/C&#43;&#43;语言中char与中文编码字符存储 - StarWishper</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="FrostMiKu" /><meta name="description" content="前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&amp;hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.58.3 with theme even" />
+
+
+<link rel="canonical" href="http://blog.fcteam.net/post/chinese-encoding-in-c/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="浅谈C/C&#43;&#43;语言中char与中文编码字符存储" />
+<meta property="og:description" content="前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.fcteam.net/post/chinese-encoding-in-c/" />
+<meta property="article:published_time" content="2019-09-25T20:27:18+08:00" />
+<meta property="article:modified_time" content="2019-09-25T20:27:18+08:00" />
+<meta itemprop="name" content="浅谈C/C&#43;&#43;语言中char与中文编码字符存储">
+<meta itemprop="description" content="前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文">
+
+
+<meta itemprop="datePublished" content="2019-09-25T20:27:18&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-25T20:27:18&#43;08:00" />
+<meta itemprop="wordCount" content="640">
+
+
+
+<meta itemprop="keywords" content="中文编码," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅谈C/C&#43;&#43;语言中char与中文编码字符存储"/>
+<meta name="twitter:description" content="前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">StarWishper</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/links">
+        <li class="mobile-menu-item">Links</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">StarWishper</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/links">Links</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">浅谈C/C&#43;&#43;语言中char与中文编码字符存储</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-25 </span>
+        
+          <span class="more-meta"> 640 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#编码">编码</a></li>
+<li><a href="#字节">字节</a></li>
+<li><a href="#输出">输出</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&hellip;
+因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。
+这就涉及到中文字符存储的问题。</p>
+
+<h2 id="编码">编码</h2>
+
+<p>首先我们要知道， ASCII 表中 0-127 用来显示现代英语，而 C/C++(clang) 中的 char 是 signed char，正数部分只有 0-127，所以中文想要存储，就只能用负数部分了。</p>
+
+<p>在 UTF-8 中一个汉字占3字节，而在 GBK 中一个字符占2个字节。方便起见本文主要讨论 GBK 编码下的中文，UTF-8同理。</p>
+
+<h2 id="字节">字节</h2>
+
+<p>既然中文占两个字节，显然只有8位{{typecho:一个字节}}的char是装不下了，必须另寻它处。这里我们可以选择两个字节的 short 来存储。</p>
+
+<p>默认情况下，一个汉字是通过两个值为负数的 char 来进行存储的。所以我们可以通过位运算来将这两个 char 拼接到一起装在 short 中来进行存储。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+<span class="kt">short</span> <span class="n">c</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">&lt;&lt;=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">|=</span> <span class="n">b</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>因为左移操作会在移动后补0，所以我们可以通过左移后按位或来实现拼接。但这里存在一个问题，char 的值是负的，其存在内存中的编码为补码，此时当只有8位的 char 和16位的 short 进行操作时，计算机会将 char 补上8个1，来将 char 转换为16位。显然按位或操作后 short 的高位将永远是 0xFF 即-1。</p>
+
+<p>解决的方法有很多，只要保证类型转换后高位补0即可。比如按位取反，因为字符不做运算，所以我们可以不考虑这么操作后数值上的意义，我们需要的仅仅只是骗过计算机让它认为这是个正数，进而在类型转换时补0来实现存储罢了。输出时再次取反即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+<span class="kt">short</span> <span class="n">c</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">&lt;&lt;=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">|=</span> <span class="o">~</span><span class="n">b</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="输出">输出</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">&gt;&gt;</span><span class="mi">8</span><span class="p">;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="o">~</span><span class="n">c</span><span class="p">;</span>    <span class="c1">//类型转换时会自动截断，丢弃高8位
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%c%c&#34;</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">FrostMiKu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-09-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/">中文编码</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/hello-hugo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">你好！HUGO</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:frostmiku@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/FrostMiKu" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/frostmiku" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/938237" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://blog.fcteam.net/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">FrostMiKu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

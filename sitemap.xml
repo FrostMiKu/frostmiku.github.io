@@ -1,0 +1,66 @@
+<?xml-stylesheet type="text/xsl" href="http://blog.fcteam.net/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://blog.fcteam.net/links/</loc>
+    <lastmod>2019-09-25T20:55:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/</loc>
+    <lastmod>2019-09-25T20:55:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/post/</loc>
+    <lastmod>2019-09-25T20:27:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/tags/</loc>
+    <lastmod>2019-09-25T20:27:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/</loc>
+    <lastmod>2019-09-25T20:27:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/post/hello-hugo/</loc>
+    <lastmod>2019-09-25T20:27:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/post/chinese-encoding-in-c/</loc>
+    <lastmod>2019-09-25T20:27:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/about/</loc>
+    <lastmod>2019-09-24T22:25:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fcteam.net/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
