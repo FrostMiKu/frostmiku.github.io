@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>理解 JavaScript 的 Proto 和 Prototype - StarWishper</title>
+  <title>安装 Manjaro 的三两件事 - StarWishper</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="FrostMiKu" /><meta name="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
+<meta name="author" content="FrostMiKu" /><meta name="description" content="对计算机科学幻灭之后，我去学习信息安全。 于是虚拟机里安装一个Linux就成了常规操作&amp;hellip; 在此记录一下我初次的环境建立过程，方便未" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.58.3 with theme even" />
 
 
-<link rel="canonical" href="https://blog.fcteam.net/post/js-proto-and-prototype/" />
+<link rel="canonical" href="https://blog.fcteam.net/post/install-manjaro/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="理解 JavaScript 的 Proto 和 Prototype" />
-<meta property="og:description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" />
+<meta property="og:title" content="安装 Manjaro 的三两件事" />
+<meta property="og:description" content="对计算机科学幻灭之后，我去学习信息安全。 于是虚拟机里安装一个Linux就成了常规操作&hellip; 在此记录一下我初次的环境建立过程，方便未" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fcteam.net/post/js-proto-and-prototype/" />
-<meta property="article:published_time" content="2019-09-25T22:24:08+08:00" />
-<meta property="article:modified_time" content="2019-09-25T22:24:08+08:00" />
-<meta itemprop="name" content="理解 JavaScript 的 Proto 和 Prototype">
-<meta itemprop="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一">
+<meta property="og:url" content="https://blog.fcteam.net/post/install-manjaro/" />
+<meta property="article:published_time" content="2019-09-27T17:30:56+08:00" />
+<meta property="article:modified_time" content="2019-09-27T17:30:56+08:00" />
+<meta itemprop="name" content="安装 Manjaro 的三两件事">
+<meta itemprop="description" content="对计算机科学幻灭之后，我去学习信息安全。 于是虚拟机里安装一个Linux就成了常规操作&hellip; 在此记录一下我初次的环境建立过程，方便未">
 
 
-<meta itemprop="datePublished" content="2019-09-25T22:24:08&#43;08:00" />
-<meta itemprop="dateModified" content="2019-09-25T22:24:08&#43;08:00" />
-<meta itemprop="wordCount" content="238">
+<meta itemprop="datePublished" content="2019-09-27T17:30:56&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-27T17:30:56&#43;08:00" />
+<meta itemprop="wordCount" content="463">
 
 
 
-<meta itemprop="keywords" content="JavaScript," />
+<meta itemprop="keywords" content="Linux," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="理解 JavaScript 的 Proto 和 Prototype"/>
-<meta name="twitter:description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一"/>
+<meta name="twitter:title" content="安装 Manjaro 的三两件事"/>
+<meta name="twitter:description" content="对计算机科学幻灭之后，我去学习信息安全。 于是虚拟机里安装一个Linux就成了常规操作&hellip; 在此记录一下我初次的环境建立过程，方便未"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -124,12 +124,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">理解 JavaScript 的 Proto 和 Prototype</h1>
+      <h1 class="post-title">安装 Manjaro 的三两件事</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-09-25 </span>
+        <span class="post-time"> 2019-09-27 </span>
         
-          <span class="more-meta"> 238 words </span>
+          <span class="more-meta"> 463 words </span>
           <span class="more-meta"> 1 min read </span>
         
       </div>
@@ -142,8 +142,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#原型链">原型链</a></li>
-<li><a href="#实例化对象过程">实例化对象过程</a></li>
+<li><a href="#发行版选择">发行版选择</a>
+<ul>
+<li><a href="#首先-为什么是manjaro">首先，为什么是Manjaro？</a></li>
+<li><a href="#其次-为什么是-xfce">其次，为什么是 Xfce？</a></li>
+</ul></li>
+<li><a href="#安装后要敲的指令">安装后要敲的指令</a></li>
+<li><a href="#环境搭建">环境搭建</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -152,25 +157,82 @@
     <div class="post-content">
       
 
-<p>__proto__ 是object的一个属性，prototype是function的一个属性。</p>
+<p>对计算机科学幻灭之后，我去学习信息安全。</p>
 
-<p>__proto__ 指向它的构造函数的prototype, prototype指向一个constructor为该function的object.</p>
+<p>于是虚拟机里安装一个Linux就成了常规操作&hellip;</p>
 
-<p>所以 __proto__ 也有自己的 __proto__ ，也就是原型链。</p>
+<p>在此记录一下我初次的环境建立过程，方便未来可能需要的环境重建（倒不如直接写成脚本..</p>
 
-<h2 id="原型链">原型链</h2>
+<h2 id="发行版选择">发行版选择</h2>
 
-<p>当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。</p>
+<p>Linux 发行版选择的是 Manjaro Xfce，为什么选择这个发行版呢？</p>
 
-<h2 id="实例化对象过程">实例化对象过程</h2>
+<p>（VMware Workstation Player 个人使用免费</p>
 
-<p>进行new Foo()操作会进行以下过程：</p>
+<h3 id="首先-为什么是manjaro">首先，为什么是Manjaro？</h3>
 
-<ol>
-<li>首先会初始化一个空 {}</li>
-<li>然后将 {} 的 __proto__ 指向 Foo 的 prototype</li>
-<li>接着执行 Base.call({}) 将 this 作用域交予 {}</li>
-</ol>
+<p>因为，大名鼎鼎的 Kali Linux 不提供 iso 下载了，官网只有一个种子文件，而且 tuna ustc 的镜像里也没有┑(￣Д ￣)┍</p>
+
+<p>（再说，里面那么多的工具，都有啥？干啥用？怎么用？我都不清楚啊 TAT</p>
+
+<p>Arch Linux 软件源我吹爆，为了能够快速建立就选 Manjaro 喽~</p>
+
+<p>Ubuntu 也不是不能选&hellip;就是感觉有点&hellip;丑&hellip;</p>
+
+<h3 id="其次-为什么是-xfce">其次，为什么是 Xfce？</h3>
+
+<p>毕竟是装在虚拟机里嘛~</p>
+
+<p>既然有宿主了，界面也就不那么重要了。</p>
+
+<p>Xfce 内存占用小，跑得快，默认配置美观&hellip;</p>
+
+<h2 id="安装后要敲的指令">安装后要敲的指令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换中国源</span>
+sudo pacman-mirrors -c China
+<span class="c1">#安装 VMware Tools</span>
+sudo pacman -R open-vm-tools
+git clone https://github.com/rasa/vmware-tools-patches.git
+<span class="nb">cd</span> vmware-tools-patches
+sudo ./patched-open-vm-tools.sh
+<span class="c1">#安装 Vim</span>
+sudo pacman -S vim
+<span class="c1">#添加 [archlinuxcn]</span>
+sudo vim /etc/pacman.conf
+
+<span class="o">[</span>archlinuxcn<span class="o">]</span>
+<span class="nv">SigLevel</span> <span class="o">=</span> Optional TrustedOnly
+<span class="nv">Server</span> <span class="o">=</span> https://mirrors.ustc.edu.cn/archlinuxcn/<span class="nv">$arch</span>
+
+<span class="c1">#更新软件源</span>
+sudo pacman -Syy <span class="o">&amp;&amp;</span> sudo pacman -S archlinuxcn-keyring</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="环境搭建">环境搭建</h2>
+
+<p>未完待续&hellip;</p>
 
     </div>
 
@@ -182,7 +244,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2019-09-25
+        2019-09-27
         
     </span>
   </p>
@@ -191,16 +253,12 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/javascript/">JavaScript</a>
+          <a href="/tags/linux/">Linux</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/install-manjaro/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">安装 Manjaro 的三两件事</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/hello-hugo/">
-            <span class="next-text nav-default">你好！HUGO</span>
+        
+        <a class="next" href="/post/js-proto-and-prototype/">
+            <span class="next-text nav-default">理解 JavaScript 的 Proto 和 Prototype</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
