@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-27T17:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-28T18:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="511">
+<meta itemprop="wordCount" content="554">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-27 </span>
         
-          <span class="more-meta"> 511 words </span>
+          <span class="more-meta"> 554 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -221,6 +221,16 @@ sudo pacman -R open-vm-tools</code></pre></td></tr></table>
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换中国源</span>
@@ -238,7 +248,17 @@ vim /etc/pacman.conf
 pacman -Syy <span class="o">&amp;&amp;</span> sudo pacman -S archlinuxcn-keyring
 <span class="c1">#安装 oh my zsh</span>
 sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
-<span class="c1">#然后注销一下</span></code></pre></td></tr></table>
+
+<span class="c1">#开机自动登录到 root</span>
+vim /etc/lightdm/lightdm.conf
+<span class="c1">#修改下面这一行</span>
+autologin-user<span class="o">=</span>root
+<span class="c1">#把 root 添加到 autologin 组中</span>
+<span class="c1"># groupadd autologin</span>
+gpasswd -a root autologin
+
+<span class="c1">#重启</span>
+reboot</code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="环境搭建">环境搭建</h2>
