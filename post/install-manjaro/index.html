@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-27T17:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-27T17:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="484">
+<meta itemprop="wordCount" content="510">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-27 </span>
         
-          <span class="more-meta"> 484 words </span>
-          <span class="more-meta"> 1 min read </span>
+          <span class="more-meta"> 510 words </span>
+          <span class="more-meta"> 2 mins read </span>
         
       </div>
     </header>
@@ -190,6 +190,19 @@
 <h2 id="安装后要敲的指令">安装后要敲的指令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#卸载 Open VMware Tools</span>
+sudo pacman -R open-vm-tools</code></pre></td></tr></table>
+</div>
+</div>
+<p>然后注销，登陆到 root 用户。
+因为要用的工具大多数都需要 root，Kali Linux也是这么搞得。
+安装  VMware Tools</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
@@ -206,31 +219,21 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换中国源</span>
-sudo pacman-mirrors -c China
-<span class="c1">#安装 VMware Tools</span>
-sudo pacman -R open-vm-tools
-git clone https://github.com/rasa/vmware-tools-patches.git
-<span class="nb">cd</span> vmware-tools-patches
-sudo ./patched-open-vm-tools.sh
+pacman-mirrors -c China
 <span class="c1">#安装 Vim</span>
-sudo pacman -S vim
+pacman -S vim
 <span class="c1">#添加 [archlinuxcn]</span>
-sudo vim /etc/pacman.conf
+vim /etc/pacman.conf
 
 <span class="o">[</span>archlinuxcn<span class="o">]</span>
 <span class="nv">SigLevel</span> <span class="o">=</span> Optional TrustedOnly
 <span class="nv">Server</span> <span class="o">=</span> https://mirrors.ustc.edu.cn/archlinuxcn/<span class="nv">$arch</span>
 
 <span class="c1">#更新软件源</span>
-sudo pacman -Syy <span class="o">&amp;&amp;</span> sudo pacman -S archlinuxcn-keyring
+pacman -Syy <span class="o">&amp;&amp;</span> sudo pacman -S archlinuxcn-keyring
 <span class="c1">#安装 oh my zsh</span>
 sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
 <span class="c1">#然后注销一下</span></code></pre></td></tr></table>
@@ -238,7 +241,9 @@ sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://r
 </div>
 <h2 id="环境搭建">环境搭建</h2>
 
-<p>未完待续&hellip;</p>
+<ul>
+<li>docker</li>
+</ul>
 
     </div>
 
