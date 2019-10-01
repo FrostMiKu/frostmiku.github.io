@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on StarWishper</title>
-    <link>https://blog.fcteam.net/tags/linux/</link>
+    <link>https://blog.frostmiku.com/tags/linux/</link>
     <description>Recent content in Linux on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 27 Sep 2019 17:30:56 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.fcteam.net/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.frostmiku.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>安装用于 CTF 的 Manjaro</title>
-      <link>https://blog.fcteam.net/post/install-manjaro-for-ctf/</link>
+      <link>https://blog.frostmiku.com/post/install-manjaro-for-ctf/</link>
       <pubDate>Fri, 27 Sep 2019 17:30:56 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/install-manjaro-for-ctf/</guid>
+      <guid>https://blog.frostmiku.com/post/install-manjaro-for-ctf/</guid>
       <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。 于是有了在虚拟机里安装一个Linux的需求&amp;hellip; 在此记</description>
     </item>
     

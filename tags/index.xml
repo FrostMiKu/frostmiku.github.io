@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on StarWishper</title>
-    <link>https://blog.fcteam.net/tags/</link>
+    <link>https://blog.frostmiku.com/tags/</link>
     <description>Recent content in Tags on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Oct 2019 21:59:53 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.fcteam.net/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.frostmiku.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IoT</title>
-      <link>https://blog.fcteam.net/tags/iot/</link>
+      <link>https://blog.frostmiku.com/tags/iot/</link>
       <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/tags/iot/</guid>
+      <guid>https://blog.frostmiku.com/tags/iot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JavaScript</title>
-      <link>https://blog.fcteam.net/tags/javascript/</link>
+      <link>https://blog.frostmiku.com/tags/javascript/</link>
       <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/tags/javascript/</guid>
+      <guid>https://blog.frostmiku.com/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://blog.fcteam.net/tags/linux/</link>
+      <link>https://blog.frostmiku.com/tags/linux/</link>
       <pubDate>Fri, 27 Sep 2019 17:30:56 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/tags/linux/</guid>
+      <guid>https://blog.frostmiku.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>中文编码</title>
-      <link>https://blog.fcteam.net/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/</link>
+      <link>https://blog.frostmiku.com/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/</link>
       <pubDate>Wed, 25 Sep 2019 20:27:18 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/</guid>
+      <guid>https://blog.frostmiku.com/tags/%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81/</guid>
       <description></description>
     </item>
     

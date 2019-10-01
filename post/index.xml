@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on StarWishper</title>
-    <link>https://blog.fcteam.net/post/</link>
+    <link>https://blog.frostmiku.com/post/</link>
     <description>Recent content in Posts on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Oct 2019 21:59:53 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.fcteam.net/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.frostmiku.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Quickmcu</title>
-      <link>https://blog.fcteam.net/post/quickmcu/</link>
+      <title>QuickMCU 帮助文档</title>
+      <link>https://blog.frostmiku.com/post/quickmcu/</link>
       <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/quickmcu/</guid>
-      <description>QuickMCU 帮助文档 这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数</description>
+      <guid>https://blog.frostmiku.com/post/quickmcu/</guid>
+      <description>这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以</description>
     </item>
     
     <item>
       <title>安装用于 CTF 的 Manjaro</title>
-      <link>https://blog.fcteam.net/post/install-manjaro-for-ctf/</link>
+      <link>https://blog.frostmiku.com/post/install-manjaro-for-ctf/</link>
       <pubDate>Fri, 27 Sep 2019 17:30:56 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/install-manjaro-for-ctf/</guid>
+      <guid>https://blog.frostmiku.com/post/install-manjaro-for-ctf/</guid>
       <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。 于是有了在虚拟机里安装一个Linux的需求&amp;hellip; 在此记</description>
     </item>
     
     <item>
       <title>理解 JavaScript 的 Proto 和 Prototype</title>
-      <link>https://blog.fcteam.net/post/js-proto-and-prototype/</link>
+      <link>https://blog.frostmiku.com/post/js-proto-and-prototype/</link>
       <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/js-proto-and-prototype/</guid>
+      <guid>https://blog.frostmiku.com/post/js-proto-and-prototype/</guid>
       <description>__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一</description>
     </item>
     
     <item>
       <title>你好！HUGO</title>
-      <link>https://blog.fcteam.net/post/hello-hugo/</link>
+      <link>https://blog.frostmiku.com/post/hello-hugo/</link>
       <pubDate>Wed, 25 Sep 2019 20:27:18 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/hello-hugo/</guid>
+      <guid>https://blog.frostmiku.com/post/hello-hugo/</guid>
       <description>前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip; Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。 无需安装任</description>
     </item>
     
     <item>
       <title>浅谈C/C&#43;&#43;语言中char与中文编码字符存储</title>
-      <link>https://blog.fcteam.net/post/chinese-encoding-in-c/</link>
+      <link>https://blog.frostmiku.com/post/chinese-encoding-in-c/</link>
       <pubDate>Wed, 25 Sep 2019 20:27:18 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/chinese-encoding-in-c/</guid>
+      <guid>https://blog.frostmiku.com/post/chinese-encoding-in-c/</guid>
       <description>前几天数据结构课，老师作业让实现支持中文的 Huffman Coding&amp;hellip; 因为，中文字符常用的少说也有几千个，所以权值表肯定是要只索引文本中出现的字符了。 这就涉及到中文</description>
     </item>
     

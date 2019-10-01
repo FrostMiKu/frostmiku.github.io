@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on StarWishper</title>
-    <link>https://blog.fcteam.net/tags/javascript/</link>
+    <link>https://blog.frostmiku.com/tags/javascript/</link>
     <description>Recent content in JavaScript on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Oct 2019 21:59:53 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.fcteam.net/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.frostmiku.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Quickmcu</title>
-      <link>https://blog.fcteam.net/post/quickmcu/</link>
+      <title>QuickMCU 帮助文档</title>
+      <link>https://blog.frostmiku.com/post/quickmcu/</link>
       <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/quickmcu/</guid>
-      <description>QuickMCU 帮助文档 这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数</description>
+      <guid>https://blog.frostmiku.com/post/quickmcu/</guid>
+      <description>这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以</description>
     </item>
     
     <item>
       <title>理解 JavaScript 的 Proto 和 Prototype</title>
-      <link>https://blog.fcteam.net/post/js-proto-and-prototype/</link>
+      <link>https://blog.frostmiku.com/post/js-proto-and-prototype/</link>
       <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/js-proto-and-prototype/</guid>
+      <guid>https://blog.frostmiku.com/post/js-proto-and-prototype/</guid>
       <description>__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一</description>
     </item>
     
