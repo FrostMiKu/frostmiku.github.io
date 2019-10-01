@@ -6,10 +6,28 @@
     <description>Recent content in Tags on StarWishper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Sep 2019 17:30:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 Oct 2019 21:59:53 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.fcteam.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IoT</title>
+      <link>https://blog.fcteam.net/tags/iot/</link>
+      <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
+      
+      <guid>https://blog.fcteam.net/tags/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://blog.fcteam.net/tags/javascript/</link>
+      <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
+      
+      <guid>https://blog.fcteam.net/tags/javascript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Linux</title>
@@ -17,15 +35,6 @@
       <pubDate>Fri, 27 Sep 2019 17:30:56 +0800</pubDate>
       
       <guid>https://blog.fcteam.net/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://blog.fcteam.net/tags/javascript/</link>
-      <pubDate>Wed, 25 Sep 2019 22:24:08 +0800</pubDate>
-      
-      <guid>https://blog.fcteam.net/tags/javascript/</guid>
       <description></description>
     </item>
     

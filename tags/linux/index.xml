@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>安装 Manjaro 的三两件事</title>
-      <link>https://blog.fcteam.net/post/install-manjaro/</link>
+      <title>安装用于 CTF 的 Manjaro</title>
+      <link>https://blog.fcteam.net/post/install-manjaro-for-ctf/</link>
       <pubDate>Fri, 27 Sep 2019 17:30:56 +0800</pubDate>
       
-      <guid>https://blog.fcteam.net/post/install-manjaro/</guid>
-      <description>对计算机科学幻灭之后，我决定去学信息安全。 于是有了在虚拟机里安装一个Linux的需求&amp;hellip; 在此记录一下我初次的环境建立过程，方便未</description>
+      <guid>https://blog.fcteam.net/post/install-manjaro-for-ctf/</guid>
+      <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。 于是有了在虚拟机里安装一个Linux的需求&amp;hellip; 在此记</description>
     </item>
     
   </channel>
