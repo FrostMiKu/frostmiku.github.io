@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>StarWishper</title>
+    <title>StarWhisper</title>
     <link>https://blog.frostmiku.com/</link>
-    <description>Recent content on StarWishper</description>
+    <description>Recent content on StarWhisper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Oct 2019 21:59:53 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 01 Oct 2019 21:59:53 +0800</pubDate>
       
       <guid>https://blog.frostmiku.com/post/quickmcu/</guid>
-      <description>这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以</description>
+      <description>这里是 QuickMCU 的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。 对</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Wed, 25 Sep 2019 20:55:01 +0800</pubDate>
       
       <guid>https://blog.frostmiku.com/links/</guid>
-      <description>超能小紫 当风过时 KAAAsS 果果喵 冯小贤</description>
+      <description>超能小紫 当风过时 KAAAsS 果果喵 冯小贤 HanJK</description>
     </item>
     
     <item>

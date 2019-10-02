@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>理解 JavaScript 的 Proto 和 Prototype - StarWishper</title>
+  <title>理解 JavaScript 的 Proto 和 Prototype - StarWhisper</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="FrostMiKu" /><meta name="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
+<meta name="author" content="FrostMiKu" /><meta name="description" content="__proto__ 是object的一个属性，prototype是function的一个属性。 __proto__ 指向它的构造函数的prototype, prototype指向一" /><meta name="keywords" content="繁星啊, starwhisper, frostmiku" />
 
 
 
@@ -72,7 +72,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">StarWishper</a>
+    <a href="/" class="logo">StarWhisper</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -98,7 +98,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">StarWishper</a>
+  <a href="/" class="logo">StarWhisper</a>
 </div>
 
 <nav class="site-navbar">
@@ -208,7 +208,23 @@
     </footer>
   </article>
         </div>
-        
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-25 22:24:08 \x2b0800 CST',
+        title: '理解 JavaScript 的 Proto 和 Prototype',
+        clientID: 'afdf5f7743d5ac9757d1',
+        clientSecret: 'ae50496f31951ec51cc33a81ef033c866cc6550c',
+        repo: 'frostmiku.github.io',
+        owner: 'FrostMiKu',
+        admin: ['FrostMiKu'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
   
 
@@ -258,6 +274,13 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
 <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
   <script type="text/javascript">
     window.MathJax = {

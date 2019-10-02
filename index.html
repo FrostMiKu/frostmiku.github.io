@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>StarWishper</title>
+  <title>StarWhisper</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="FrostMiKu" /><meta name="keywords" content="繁星啊, starwishper, frostmiku" />
+<meta name="author" content="FrostMiKu" /><meta name="keywords" content="繁星啊, starwhisper, frostmiku" />
 
 
 
@@ -27,8 +27,8 @@
 
 
 <link rel="canonical" href="https://blog.frostmiku.com/" />
-  <link href="https://blog.frostmiku.com/index.xml" rel="alternate" type="application/rss+xml" title="StarWishper" />
-  <link href="https://blog.frostmiku.com/index.xml" rel="feed" type="application/rss+xml" title="StarWishper" />
+  <link href="https://blog.frostmiku.com/index.xml" rel="alternate" type="application/rss+xml" title="StarWhisper" />
+  <link href="https://blog.frostmiku.com/index.xml" rel="feed" type="application/rss+xml" title="StarWhisper" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,17 +40,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="StarWishper" />
+<meta property="og:title" content="StarWhisper" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.frostmiku.com/" />
 
 <meta property="og:updated_time" content="2019-10-01T21:59:53+08:00" />
-<meta itemprop="name" content="StarWishper">
+<meta itemprop="name" content="StarWhisper">
 <meta itemprop="description" content="">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="StarWishper"/>
+<meta name="twitter:title" content="StarWhisper"/>
 <meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
@@ -66,7 +66,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">StarWishper</a>
+    <a href="/" class="logo">StarWhisper</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -92,7 +92,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">StarWishper</a>
+  <a href="/" class="logo">StarWhisper</a>
 </div>
 
 <nav class="site-navbar">
@@ -122,14 +122,14 @@
     <div class="post-meta">
       <span class="post-time"> 2019-10-01 </span>
       
-        <span class="more-meta"> 894 words </span>
+        <span class="more-meta"> 887 words </span>
         <span class="more-meta"> 2 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      这里是QuickMCU的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以
+      这里是 QuickMCU 的非正式文档。 波特率 115200。 内部 repl shell VT100（使用 PuTTY 连接就行。 函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。 对
     </div>
     <div class="read-more">
       <a href="/post/quickmcu/" class="read-more-link">Read more...</a>
@@ -274,6 +274,13 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
 <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
   <script type="text/javascript">
     window.MathJax = {
