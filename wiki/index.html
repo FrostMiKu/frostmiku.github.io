@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>计算机</li>
 
+<li>简单的事件系统</li>
+
 <li>渐变色</li>
 
 <li>目录</li>
@@ -13652,7 +13654,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200416065932728" list="告示板 目录 编程语言 文法与语言 语言 文法" modified="20200416070001415" title="$:/StoryList" revision="10" bag="default">
+<div created="20200416065932728" list="简单的事件系统 告示板 目录 编程语言 文法与语言 语言 文法" modified="20200416070001415" title="$:/StoryList" revision="12" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13899,6 +13901,85 @@ C/C++
 [[计算机硬件系统设计|https://www.icourse163.org/course/HUST-1205809816]]
 
 [[CSAPP|https://www.bilibili.com/video/BV1iW411d7hd?p=1]]</pre>
+</div>
+<div created="20200416070124422" modified="20200416070220429" tags="JavaScript" title="简单的事件系统" type="application/javascript" revision="1" bag="default">
+<pre>var events = {};
+ (function () {
+     // event meta
+     function Event (eventName) {
+         this.eventName = eventName;
+         this.listenerList = [];
+     }
+
+     events.Emitter = function () {
+         this.eventsMap = {};
+         this.on = on;
+         this.once = once;
+         this.remove = remove;
+         this.emit = emit;
+     }
+
+
+     function on (eventName, func) {
+         func._once = false;
+         addEventListener(this.eventsMap, eventName, func);
+     }
+
+     function once (eventName, func) {
+         func._once = true;
+         addEventListener(this.eventsMap, eventName, func);
+     }
+
+     // remove the listener of the event.
+     // if func is undefined, all listeners will be removed.
+     function remove (eventName, func) {
+         if (this.eventsMap[eventName] === undefined) {
+             print(&quot;The event dose not exist!&quot;);
+             return;
+         }
+         if (func === undefined) {
+             delete this.eventsMap[eventName];
+             return;
+         }
+
+         var index = this.eventsMap[eventName].listenerList.indexOf(func);
+         if (index === -1) {
+             print(&quot;The listener is not bound to this event!&quot;);
+             return;
+         } else {
+             this.eventsMap[eventName].listenerList.splice(index,1);
+         }
+     }
+
+     function emit (eventName) {
+         const event = this.eventsMap[eventName];
+         if (event === undefined) {
+             print(&quot;The event dose not exist!&quot;);
+             return;
+         }
+         for (var i=0; i &lt; event.listenerList.length; i++) {
+             event.listenerList[i](eventName);
+             // handleOnce
+             if (event.listenerList[i]._once) {
+                 event.listenerList.splice(i,1);
+                 i -= 1;
+             }
+         }
+     }
+
+     function addEventListener (map, eventName, func) {
+         // event is not in eventsMap
+         if (map[eventName] === undefined) {
+             map[eventName] = new Event(eventName);
+         }
+
+         if (map[eventName].listenerList.indexOf(func) !== -1) return; // listener already exists
+
+         map[eventName].listenerList.push(func);
+     }
+
+
+ })();</pre>
 </div>
 <div _canonical_uri="http://color.oulu.me/index.html" created="20200414153519115" modified="20200415070642795" tags="前端" title="渐变色" type="text/html" revision="0" bag="default">
 <pre></pre>
