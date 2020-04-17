@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>Monaco Editor</li>
 
+<li>TODO</li>
+
 <li>TypeScript 声明文件</li>
 
 <li>Visual Studio Code</li>
@@ -13674,7 +13676,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200417055024479" list="标签样式修改 实用工具" modified="20200417055634322" title="$:/StoryList" revision="12" bag="default">
+<div created="20200417063747542" list="告示板 TODO" modified="20200417063747542" title="$:/StoryList" revision="44" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13872,7 +13874,7 @@ MATLAB
 
 &lt;&lt;list-links &quot;[tag[编译]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200417052038583" modified="20200417055822465" tags="$:/tags/Stylesheet" title="标签样式修改" type="text/css" revision="3" bag="default">
+<div created="20200417052038583" modified="20200417062432673" tags="$:/tags/Stylesheet" title="标签样式修改" type="text/css" revision="5" bag="default">
 <pre>a.tc-tiddlylink-external {
     text-decoration: none;
     color: #262626;
@@ -13884,12 +13886,19 @@ MATLAB
 }
 a.tc-tiddlylink-external:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.tc-quote a.tc-tiddlylink-external{
+    text-decoration: none;
+    background-image: none;
+    box-shadow: none;
+    padding: 0;
 }</pre>
 </div>
 <div _canonical_uri="http://press.ustc.edu.cn/sites/default/files/fujian/field_tushuyangzhang/20111222/%E6%A0%B7%E7%AB%A0%20%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.%E4%B8%8A%E5%86%8C.pdf" created="20200414161315257" modified="20200414162309725" tags="数学" title="高等数学" type="application/pdf" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200414135531739" modified="20200415071041075" tags="" title="告示板" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200414135531739" modified="20200417063745789" tags="" title="告示板" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>本 WiKi 是''私人''知识库
 
 全部内容仅供 FrostMiKu 个人学习使用
@@ -13929,7 +13938,7 @@ a.tc-tiddlylink-external:hover {
 
 ---
 
-点击取得 [[目录]]</pre>
+点击取得 [[目录]] 查看 [[TODO]]</pre>
 </div>
 <div created="20200414131550171" modified="20200417035116511" tags="目录" title="计算机" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -14029,8 +14038,10 @@ a.tc-tiddlylink-external:hover {
 <div created="20200414153410259" modified="20200415072119763" tags="计算机" title="前端" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[前端]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200415094854352" modified="20200415103008448" tags="手稿" title="任务列表" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200415094854352" modified="20200417063642124" tags="手稿" title="任务列表" type="text/vnd.tiddlywiki" revision="9" bag="default">
 <pre>! 工作
+[ ] autoSave
+[ ] shell history
 [ ] WiFi 模块
 [ ] File 模块
 [x] mcu.js 代码自动完成
@@ -14038,6 +14049,7 @@ a.tc-tiddlylink-external:hover {
 ---
 
 ! 一轮复习
+[ ] 从句
 [ ] 线性代数
 [x] 简单句
 [x] 并列句
@@ -14045,8 +14057,12 @@ a.tc-tiddlylink-external:hover {
 ---
 
 ! 学习
+[ ] 编译原理
+[ ] ucore OS
 [ ] 自制CPU
-[ ] CSAPP</pre>
+[ ] CSAPP
+[x] 离散数学
+[x] 组成原理</pre>
 </div>
 <div created="20200415101250532" modified="20200417053647991" tags="手稿" title="实用工具" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! 手写公式、笔记、流程图
@@ -14070,7 +14086,7 @@ a.tc-tiddlylink-external:hover {
 <div created="20200415094624805" modified="20200415094842168" tags="目录" title="手稿" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[手稿]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200415103324322" modified="20200415103801003" tags="手稿" title="书单" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200415103324322" modified="20200417063417876" tags="手稿" title="书单" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>!专业书
 [ ] 算法
 [ ] 龙书
@@ -14774,6 +14790,14 @@ monaco.languages.typescript.javascriptDefaults.addExtraLib(lib, filename)
 其中 `lib` 为 [[TypeScript 声明文件]]
 
 [[react中Monaco Editor编辑器的自定义提示|https://www.jianshu.com/p/28a603861ab5]]</pre>
+</div>
+<div created="20200417062837326" modified="20200417063557466" tags="" title="TODO" revision="5" bag="default">
+<pre>{{任务列表}}
+---
+{{书单}}
+---
+! Knowledge
+{{知识体系}}</pre>
 </div>
 <div created="20200415072530485" modified="20200415073514694" tags="JavaScript" title="TypeScript 声明文件" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>即 xxx.d.ts 文件，又叫 tsd 文件
