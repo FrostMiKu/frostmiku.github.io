@@ -193,9 +193,7 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/tab-1749438307</li>
-
-<li>$:/state/tab-2065006209</li>
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -248,6 +246,8 @@ Error message and password prompt
 <li>书单</li>
 
 <li>数学</li>
+
+<li>搜索引擎的使用原则及技巧</li>
 
 <li>文法</li>
 
@@ -13660,11 +13660,8 @@ Error message and password prompt
 <div created="20200414111753424" modified="20200414111805066" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>FrostMiKu·WiKi</pre>
 </div>
-<div created="20200417150407347" modified="20200417150407997" title="$:/state/tab-1749438307" revision="2" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
-</div>
-<div created="20200417150409651" modified="20200417150409651" title="$:/state/tab-2065006209" revision="1" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+<div created="20200418040332944" modified="20200418040332944" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -13678,7 +13675,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200417150405829" list="告示板" modified="20200417150624888" title="$:/StoryList" revision="5" bag="default">
+<div created="20200418040334032" list="标签样式修改 告示板" modified="20200418040334032" title="$:/StoryList" revision="4" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13876,8 +13873,8 @@ MATLAB
 
 &lt;&lt;list-links &quot;[tag[编译]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200417052038583" modified="20200417062433817" tags="$:/tags/Stylesheet" title="标签样式修改" type="text/css" revision="0" bag="default">
-<pre>a.tc-tiddlylink-external {
+<div created="20200417052038583" modified="20200418040339127" tags="$:/tags/Stylesheet" title="标签样式修改" type="text/css" revision="1" bag="default">
+<pre>p a.tc-tiddlylink-external {
     text-decoration: none;
     color: #262626;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
@@ -13886,15 +13883,17 @@ MATLAB
     margin: 5px;
     background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
 }
-a.tc-tiddlylink-external:hover {
+p a.tc-tiddlylink-external:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }
-
-.tc-quote a.tc-tiddlylink-external{
+.tc-quote a.tc-tiddlylink-external {
     text-decoration: none;
     background-image: none;
     box-shadow: none;
     padding: 0;
+}
+.tc-quote a.tc-tiddlylink-external:hover {
+    box-shadow: none;
 }</pre>
 </div>
 <div _canonical_uri="http://press.ustc.edu.cn/sites/default/files/fujian/field_tushuyangzhang/20111222/%E6%A0%B7%E7%AB%A0%20%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.%E4%B8%8A%E5%86%8C.pdf" created="20200414161315257" modified="20200414162309725" tags="数学" title="高等数学" type="application/pdf" revision="0" bag="default">
@@ -14115,6 +14114,88 @@ a.tc-tiddlylink-external:hover {
 <pre>&lt;&lt;list-links &quot;[tag[数学]]&quot;&gt;&gt;
 
 [[微积分的本质|https://www.bilibili.com/video/BV1ob411y7L9?p=12]]</pre>
+</div>
+<div created="20200418035925606" modified="20200418040017271" tags="手稿" title="搜索引擎的使用原则及技巧" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! 摘要
+
+搜索引擎作为数字时代的信息入口，给我们提供了方便的获取信息的可能性。但是，许多人对于搜索引擎的理解仅仅局限于“关键词-&gt;浏览结果”。信息的冗余或者损减导致信息质量不佳。本文依据《信息分析课二期》的课程内容，总结了几个搜索引擎必要的关键点。
+
+!! 1. 关键词搜索善用逻辑词
+
+熟悉编程的人都知道，编程中有三种逻辑判断：逻辑与（AND），逻辑或（OR）和逻辑非（NOT），在Google搜索引擎中，三个关键词依然适用：
+
+
+* 加AND逻辑与：搜索N个关键词的子集
+* 加OR逻辑或：搜索N个关键词的并集
+* 加-逻辑非：从大范围减去特定关键词&lt;br /&gt;例如，搜索（科学发展 -科学发展观）则结果为含有（科学发展）但不含（科学发展观）的结果
+
+
+!! 2. 给关键词加上更多的限制条件
+
+
+* 替换模糊匹配：（第界大学生运动会）
+
+* 加“”精确搜索：（“教育技术学”）
+
+* intitle: keywords: 只在标题里搜索
+
+* inurl: keywords: 只在url里搜索
+
+* intext: keywords: 只在文章内容里搜索
+
+* keywords site: xxx.com: 在特定网站里搜索
+
+* keywords filetype: ppt: 搜索所有PPT类型结果
+
+* 混合使用： a AND b AND (c OR d)&lt;br /&gt;a site:xxx.com AND filetype:ppt
+
+
+!! 3. 关键词的获取
+
+* 上位词、同义词（相关词）、下位词：即外延更广（上位词）或内涵更窄（下位词）的词语，如：花是鲜花的上位词，花是植物的下位词
+
+* 在学术上，上位词和下位词是帮助你延展和收缩概念的绝好工具。在探索一个新的学术领域的时候，关键词（或者叫做术语）是特别重要的一个突破口。每个学科对解释现象都有自己的一套语言；现象的边界就是词语的边界，真正弄明白一个词语，或许可为你打开获取新经验的通道。
+
+[[万方数据库 - 智能拓展|http://www.wanfangdata.com.cn/index.html]]
+
+* 寻找上位术语、下位术语、同义词、相关概念、学科范畴
+
+* 搜索一个议题时要丰富词性：动词+名词 &gt; 名词+名词
+
+!! 4. 面对问题：信息检索的小技巧
+
+* 问题分解：碎片化任务，可以利用零碎时间解决问题
+* 找上位词：题干1-AB，题干2-BC，题干3-BDEF，则关键求解上位词B
+* 中英文交叉验证：打开一门语言就等于打开一个世界
+* &quot;&quot;&quot;
+meta search engine(元搜索引擎)：
+
+[[All the Internet Search Engine|https://www.alltheinternet.com/]]
+
+[[All search engines in one, the new tab|https://all-io.net/]]
+
+[[Internet Archive|https://archive.org/]]
+&quot;&quot;&quot;
+
+!! 5. 训练方法：不断记录和反思搜索过程
+
+* Tabs Outliner插件：[[复盘搜索深度Chrome Web Store - Extensions|https://chrome.google.com/webstore/detail/tabs-outliner/eggkanocgddhmamlbiijnphhppkpkmkl?hl=en]]
+
+* Sidewise插件：[[Sidewise Tree Style Tabs - Chrome Web Store|https://chrome.google.com/webstore/detail/sidewise-tree-style-tabs/biiammgklaefagjclmnlialkmaemifgo?hl=en]]
+
+
+!! 讨论：
+
+以图搜图：比如，你想搜一幅画叫什么名字，你既不知道作者，也不知道如何用合适的语言去描述这幅画，你可以利用搜索引擎直接搜索图片。现在大多数搜索引擎都支持直接做图片的搜索。
+
+互联网上的信息及时、方便，但是也经常有信息缺失的问题。比如，网页的更新可能会导致原来的信息找不到，那么能回看一个网页的历史页面就很重要。互联网时光机 [[Internet Archive|https://archive.org/]] 帮助你存档任何一个网站从开始建立时的历史页面。
+
+---
+
+&lt;&lt;&lt;
+本文转自 [[搜索引擎的使用原则及技巧|https://www.jianshu.com/p/925b04c0e674]]
+&lt;&lt;&lt;
+</pre>
 </div>
 <div created="20200415085530927" modified="20200416065959554" title="文法" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! 文法的形式定义
