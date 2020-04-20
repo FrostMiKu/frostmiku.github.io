@@ -193,7 +193,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/toc/目录-计算机--599274119</li>
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-2065006209</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -264,6 +268,8 @@ Error message and password prompt
 <li>应用开发</li>
 
 <li>语言</li>
+
+<li>栈与堆</li>
 
 <li>知识体系</li>
 
@@ -13662,8 +13668,14 @@ Error message and password prompt
 <div created="20200414111753424" modified="20200414111805066" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>FrostMiKu·WiKi</pre>
 </div>
-<div created="20200420020735824" modified="20200420020735824" title="$:/state/toc/目录-计算机--599274119" revision="1" bag="default">
-<pre>open</pre>
+<div created="20200420105527125" modified="20200420105527125" title="$:/state/tab-1749438307" revision="1" bag="default">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
+</div>
+<div created="20200420105528550" modified="20200420105528550" title="$:/state/tab-2065006209" revision="1" bag="default">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+</div>
+<div created="20200420105536439" modified="20200420105536439" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -13677,7 +13689,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200420020734379" list="告示板 目录 编程语言" modified="20200420020736551" title="$:/StoryList" revision="5" bag="default">
+<div created="20200420105525560" list="任务列表 栈与堆 告示板" modified="20200420105538252" title="$:/StoryList" revision="8" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13733,7 +13745,7 @@ Error message and password prompt
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
-            &quot;text&quot;: &quot;zh-cn&quot;
+            &quot;text&quot;: &quot;zh-CN&quot;
         }
     }
 }</pre>
@@ -13853,7 +13865,7 @@ Error message and password prompt
 <div created="20200414130216660" modified="20200414130217721" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20200414142416100" modified="20200420021009902" tags="计算机" title="编程语言" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200414142416100" modified="20200420021010948" tags="计算机" title="编程语言" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>{{编译}}
 
 JavaScript
@@ -14110,12 +14122,12 @@ impl Solution {
 <div created="20200414153410259" modified="20200415072119763" tags="计算机" title="前端" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[前端]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200415094854352" modified="20200418090609502" tags="手稿" title="任务列表" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200415094854352" modified="20200420024818017" tags="手稿" title="任务列表" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 当前工作
-[ ] autoSave
 [ ] shell history
 [ ] WiFi 模块
 [ ] File 模块
+[x] autoSave
 [x] http 协议头 parser
 [x] glue CodeGen
 [x] mcu.js 代码自动完成
@@ -14476,6 +14488,26 @@ $$
 $$
 L(G[S])=\{x|S\stackrel{+}{\Rightarrow}x,x∈V_T^*\}
 $$</pre>
+</div>
+<div created="20200420105256224" modified="20200420105519837" tags="计算机" title="栈与堆" revision="2" bag="default">
+<pre>!栈（Stack）与堆（Heap）
+
+
+&lt;&lt;&lt;
+https://kaisery.gitbooks.io/trpl-zh-cn/content/ch04-01-what-is-ownership.html
+&lt;&lt;&lt;
+
+
+栈和堆都是代码在运行时可供使用的内存，但是它们的结构不同。栈以放入值的顺序存储值并以相反顺序取出值。这也被称作 后进先出（last in, first out）。想象一下一叠盘子：当增加更多盘子时，把它们放在盘子堆的顶部，当需要盘子时，也从顶部拿走。不能从中间也不能从底部增加或拿走盘子！增加数据叫做 进栈（pushing onto the stack），而移出数据叫做 出栈（popping off the stack）。
+
+栈中的所有数据都必须占用已知且固定的大小。在编译时大小未知或大小可能变化的数据，要改为存储在堆上。堆是缺乏组织的：当向堆放入数据时，你要请求一定大小的空间。操作系统在堆的某处找到一块足够大的空位，把它标记为已使用，并返回一个表示该位置地址的 指针（pointer）。这个过程称作 在堆上分配内存（allocating on the heap），有时简称为 “分配”（allocating）。将数据推入栈中并不被认为是分配。因为指针的大小是已知并且固定的，你可以将指针存储在栈上，不过当需要实际数据时，必须访问指针。
+
+想象一下去餐馆就座吃饭。当进入时，你说明有几个人，餐馆员工会找到一个够大的空桌子并领你们过去。如果有人来迟了，他们也可以通过询问来找到你们坐在哪。
+
+入栈比在堆上分配内存要快，因为（入栈时）操作系统无需为存储新数据去搜索内存空间；其位置总是在栈顶。相比之下，在堆上分配内存则需要更多的工作，这是因为操作系统必须首先找到一块足够存放数据的内存空间，并接着做一些记录为下一次分配做准备。
+访问堆上的数据比访问栈上的数据慢，因为必须通过指针来访问。现代处理器在内存中跳转越少就越快（缓存）。继续类比，假设有一个服务员在餐厅里处理多个桌子的点菜。在一个桌子报完所有菜后再移动到下一个桌子是最有效率的。从桌子 A 听一个菜，接着桌子 B 听一个菜，然后再桌子 A，然后再桌子 B 这样的流程会更加缓慢。出于同样原因，处理器在处理的数据彼此较近的时候（比如在栈上）比较远的时候（比如可能在堆上）能更好的工作。在堆上分配大量的空间也可能消耗时间。
+
+当你的代码调用一个函数时，传递给函数的值（包括可能指向堆上数据的指针）和函数的局部变量被压入栈中。当函数结束时，这些值被移出栈。</pre>
 </div>
 <div created="20200415102322305" modified="20200417065449509" tags="手稿" title="知识体系" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[ ] 程序语言理论
