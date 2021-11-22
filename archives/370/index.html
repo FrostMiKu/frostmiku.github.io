@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C&#43;&#43; ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;'><title>LibVLC研究笔记</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/370/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='LibVLC研究笔记'>
+<meta property='og:description' content='什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C&#43;&#43; ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/370/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VLC' /><meta property='article:tag' content='播放器' /><meta property='article:published_time' content='2016-05-04T23:00:34&#43;08:00'/><meta property='article:modified_time' content='2016-05-04T23:00:34&#43;08:00'/>
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="LibVLC研究笔记">
+<meta name="twitter:description" content="什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C&#43;&#43; ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;">
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://blog.frostmiku.com" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/370/">LibVLC研究笔记</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 04, 2016</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="什么是vlc">什么是VLC</h2>
+<p>VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。</p>
+<h2 id="什么是libvlc">什么是LibVLC</h2>
+<p><span id="result_box" class="short_text" lang="zh-CN"><span class="">LibVLC</span><span class="">是</span><span class="">VLC媒体播放器</span>的外部<span class="">编程接口。</span></span></p>
+<p><a class="link" href="http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png"  target="_blank" rel="noopener"
+    ><img src="http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png" alt="libvlc"  /></a></p>
+<h2 id="如何获取vlc的sdk">如何获取VLC的SDK</h2>
+<p>VLC开发所需的库文件可以有3种获取方法：</p>
+<blockquote>
+<p>1. 自行编译</p>
+<p>2. 直接从安装目录里面拷贝出来</p>
+<p>3.从官方FTP服务器上下载（见相关链接5）</p>
+</blockquote>
+<h2 id="开发vlc所需的文件的位置"> 开发VLC所需的文件的位置</h2>
+<blockquote>
+<p>1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。</p>
+<p>2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）</p>
+<p>3. 头文件：安装目录/sdk/include
+[v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]</p>
+</blockquote>
+<h2 id="配置">配置</h2>
+<p>1.自行在vs中设置include和lib的路径（如上）
+2.复制libvlc.dll, <wbr />libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录
+3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT</p>
+<h2 id="demo">Demo</h2>
+<p>基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的</p>
+<p>官方WIKI：</p>
+<pre class="prettyprint linenums">
+#include 
+ #include 
+ #include &lt;vlc/vlc.h&gt;
+
+ int main(int argc, char* argv[])
+ {
+     libvlc_instance_t * inst;
+     libvlc_media_player_t *mp;
+     libvlc_media_t *m;
+
+     /* Load the VLC engine */
+     inst = libvlc_new (0, NULL);
+
+     /* Create a new item */
+     m = libvlc_media_new_location (inst, "http://mycool.movie.com/test.mov");
+     //m = libvlc_media_new_path (inst, "/path/to/test.mov");
+
+     /* Create a media player playing environement */
+     mp = libvlc_media_player_new_from_media (m);
+
+     /* No need to keep the media now */
+     libvlc_media_release (m);
+
+ #if 0
+     /* This is a non working code that show how to hooks into a window,
+      * if we have a window around */
+      libvlc_media_player_set_xwindow (mp, xid);
+     /* or on windows */
+      libvlc_media_player_set_hwnd (mp, hwnd);
+     /* or on mac os */
+      libvlc_media_player_set_nsobject (mp, view);
+  #endif
+
+     /* play the media_player */
+     libvlc_media_player_play (mp);
+
+     sleep (10); /* Let it play a bit */
+
+     /* Stop playing */
+     libvlc_media_player_stop (mp);
+
+     /* Free the media_player */
+     libvlc_media_player_release (mp);
+
+     libvlc_release (inst);
+
+     return 0;
+ }
+</pre>
+<p>来自百度的精简版，只留下了主要代码（出处不详，望告知）</p>
+<pre class="prettyprint linenums">#include 
+#include 
+
+#include "vlc/vlc.h"
+#pragma comment(lib, "libvlc.lib")
+#pragma comment(lib, "libvlccore.lib")
+
+int main(int argc, char* argv[])
+{
+    libvlc_instance_t * inst;
+    libvlc_media_player_t *mp;
+    libvlc_media_t *m;
+
+    inst = libvlc_new (0, NULL);        /* Load the VLC engine */   
+    m = libvlc_media_new_path (inst, "D:\\music\\amani.wma");  // 必须为英文路径  
+    mp = libvlc_media_player_new_from_media (m);    /* Create a media player playing environement */    
+    libvlc_media_release (m);           /* No need to keep the media now */
+
+    // 播放文件
+    libvlc_media_player_play (mp);      /* play the media_player */   
+    Sleep (100 * 1000);                 /* Let it play a bit */
+
+    libvlc_media_player_stop (mp);      /* Stop playing */   
+    libvlc_media_player_release (mp);   /* Free the media_player */
+    libvlc_release (inst);
+    return 0;
+}
+</pre>
+<h2 id="libvlc_media_new_path和libvlc_media_new_location的区别">libvlc_media_new_path()和libvlc_media_new_location()的区别</h2>
+<p>libvlc_media_new_path()用于打开文件，而libvlc_media_new_location()用于打开协议</p>
+<p>传递给libvlc_media_new_path()的参数就是文件路径（相对路径或绝对路径）</p>
+<p>传递给libvlc_media_new_location()的参数就是协议地址（如“udp://”“http://”）</p>
+<p>需要注意的是libvlc_media_new_location()也可以打开文件，但是必须在文件路径前面加上“file:///”，举个栗子</p>
+<pre class="prettyprint linenums">libvlc_media_new_location (inst, "file:///E:\\test.avi");  
+</pre>
+<p>VLC还支持很多特有的协议，比如“screen://”协议可以进行屏幕录制，具体可参考官方WIKI</p>
+<h2 id="疑难杂症">疑难杂症</h2>
+<h3 id="中文乱码">中文乱码</h3>
+<p>VLC使用的是UTF-8，因此将unicode转码为UTF-8即可解决</p>
+<h3 id="在release下抛错">在Release下抛错</h3>
+<p>请勿使用官方的lib，自己手动生成lib（相关链接2）</p>
+<p> </p>
+<p>相关链接：</p>
+<ul>
+<li><a class="link" href="http://www.videolan.org"  target="_blank" rel="noopener"
+    >http://www.videolan.org</a></li>
+<li><a class="link" href="http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html"  target="_blank" rel="noopener"
+    >http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html</a></li>
+<li><a class="link" href="https://wiki.videolan.org/GenerateLibFromDll/"  target="_blank" rel="noopener"
+    >https://wiki.videolan.org/GenerateLibFromDll/</a></li>
+<li><a class="link" href="http://download.videolan.org/pub/videolan/vlc/"  target="_blank" rel="noopener"
+    >http://download.videolan.org/pub/videolan/vlc/</a></li>
+<li><a class="link" href="ftp://ftp.videolan.org/pub/videolan/" >ftp://ftp.videolan.org/pub/videolan/</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/vlc/">VLC</a>
+        
+            <a href="/tags/%E6%92%AD%E6%94%BE%E5%99%A8/">播放器</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/archives/42/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/42/title.bc790643d2285de04d505b9396c1bcb9_hu8b78c802ef23d72a1f175f8afba741c2_9707_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="42" 
+                        data-hash="md5-vHkGQ9IoXeBNUFuTlsG8uQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使 macOS 的光标像 windows 一样移动</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/38/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">玄学BUG（一）</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/32/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/32/1.c437ebda5a99dd77e9d235f02e4ccf8e_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="32" 
+                        data-hash="md5-xDfr2lqZ3Xfp0jXwLkzPjg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">给Linux的根目录扩容</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/29/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/28/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="28" 
+                        data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenCore打造一个完美的 Hackintosh 遇到的问题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是vlc">什么是VLC</a></li>
+    <li><a href="#什么是libvlc">什么是LibVLC</a></li>
+    <li><a href="#如何获取vlc的sdk">如何获取VLC的SDK</a></li>
+    <li><a href="#开发vlc所需的文件的位置"> 开发VLC所需的文件的位置</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#libvlc_media_new_path和libvlc_media_new_location的区别">libvlc_media_new_path()和libvlc_media_new_location()的区别</a></li>
+    <li><a href="#疑难杂症">疑难杂症</a>
+      <ol>
+        <li><a href="#中文乱码">中文乱码</a></li>
+        <li><a href="#在release下抛错">在Release下抛错</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编译原理 on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 编译原理 on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 21 Feb 2020 23:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译原理学习笔记：文法与语言</title>
+      <link>https://blog.frostmiku.com/archives/20/</link>
+      <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/20/</guid>
+      <description>前言 本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;
+基本概念  字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$ 符号： $∑$中的元素称为符号。 符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。 长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$ 连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。 对于任意字符串$β$，有$βε＝εβ＝β$ 乘积：设A和B是符号串集，则用AB表示它们的乘积：  $$ AB＝{xy|x∈A,y∈B } $$
+显然${ε}A=A{ε}=A$
+ 空集：不含任何元素的集合φ，对任何字符串集A有：  $$ φA＝Aφ＝A $$
+ 方幂：设A是字符串集，则A的方幂定义为：  $$ A^0 ={ε}; A^1 ＝A; A^n ＝A^{n-1} A $$
+特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$
+ 闭包/正闭包/星闭包：设A是符号集， 用$A^+$表示A的正闭包:  $$ A^+=A^1∪A^2∪\dots∪A^n∪\dots $$
+用$A^*$表示A的星闭包:
+$$ A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+ $$
+两者统称为A的闭包。
+举个例子1： 设$A = {a,b}$ 则：
+$$ \begin{aligned} &amp;amp;A^0 ＝ {ε}\cr &amp;amp;A^1 = {a,b}\cr &amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr &amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr &amp;amp;\dots\cr \end{aligned} $$</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebSocket on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/websocket/</link>
+    <description>Recent content in WebSocket on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jul 2020 20:52:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WebSocket协议为什么要求掩码处理</title>
+      <link>https://blog.frostmiku.com/archives/27/</link>
+      <pubDate>Wed, 01 Jul 2020 20:52:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/27/</guid>
+      <description>今天实现 WebSocket Client 的时候发现协议要求 Client mask payload
+出于偷懒的目的，我打算把 Masking-key 直接写死，但仔细一想既然 Masking-key 需要放进 Frame 里，说明它应该是动态的，但为什么要这样设计呢？
+RFC 6455 5.3 节有这么一句话：
+ The unpredictability of the masking key is essential to prevent authors of malicious applications from selecting the bytes that appear on the wire.
+ 果然是为了安全
+RFC 6455 还好心的在 10.3. Attacks On Infrastructure (Masking) 详细解释了攻击的实现 : )</description>
+    </item>
+    
+  </channel>
+</rss>

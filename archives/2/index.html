@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='这篇文章由 north 所写，恢复自我的 blog 备份中'><title>Minecraft的地形生成算法相关</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Minecraft的地形生成算法相关'>
+<meta property='og:description' content='这篇文章由 north 所写，恢复自我的 blog 备份中'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/2/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='MineCraft' /><meta property='article:published_time' content='2015-12-25T09:12:09&#43;08:00'/><meta property='article:modified_time' content='2021-07-12T15:50:00&#43;08:00'/>
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="Minecraft的地形生成算法相关">
+<meta name="twitter:description" content="这篇文章由 north 所写，恢复自我的 blog 备份中">
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://blog.frostmiku.com">StarWhisper</a></h1>
+        <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/2/">Minecraft的地形生成算法相关</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        这篇文章由 north 所写，恢复自我的 blog 备份中
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Dec 25, 2015</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p><span style="text-decoration: underline;"><span style="color: #ff0000; text-decoration: underline;">Terrain generation, Part 1</span></span></p>
+<p>I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!</p>
+<p>One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.</p>
+<p><span style="color: #ff6600;">1) How infinite is it?</span></p>
+<p>First of all, let me clarify some things about the “infinite” maps: They’re not infinite, but there’s no hard limit either. It’ll just get buggier and buggier the further out you are. Terrain is generated, saved and loaded, and (kind of) rendered in chunks of 16<em>16</em>128 blocks. These chunks have an offset value that is a 32 bit integer roughly in the range negative two billion to positive two billion. If you go outside that range (about 25% of the distance from where you are now to the sun), loading and saving chunks will start overwriting old chunks. At a 16/th of that distance, things that use integers for block positions, such as using items and pathfinding, will start overflowing and acting weird.</p>
+<p>Those are the two “hard” limits.</p>
+<p>Most other things, like the terrain generation seeds and entity locations use 64 bit doubles for locations, and they do much subtler things. For example, at extreme distances, the player may move slower than near the center of the world, due to rounding errors (the position has a huge mantissa, the movement delta has a tiny, so it gets cut off faster). The terrain generator can also start generating weird structures, such as huge blocks of solid material, but I haven’t seen this lately nor examined exactly what behavior causes it to happen. One major problem at long distances is that the physics starts bugging out, so the player can randomly fall into ground blocks or get stuck while walking along a wall.</p>
+<p>Many of these problems can be solved by changing the math into a local model centered around the player so the numbers all have vaguely the same magnitude. For rendering, Minecraft already uses local coordinates within the block and offset the block position relative to the player to give the impression of the player moving. This is mostly due to OpengGL using 32 bit floats for positions, but also because the rounding errors are extremely visible when displayed on a screen.
+We’re probably not going to fix these bugs until it becomes common for players to experience them while playing legitimately. My gut feeling is that nobody ever has so far, and nobody will. Walking that far will take a very long time. Besides, the bugs add mystery and charisma to the Far Lands.</p>
+<p><span style="color: #ff6600;">2) Isn’t that terrain shape pretty awesome?</span></p>
+<p>In the very earliest version of Minecraft, I used a 2D Perlin noise heightmap to set the shape of the world. Or, rather, I used quite a few of them. One for overall elevation, one for terrain roughness, and one for local detail. For each column of blocks, the height was (elevation + (roughness<em>detail))<em>64+64. Both elevation and roughness were smooth, large scale noises, and detail was a more intricate one. This method had the great advantage of being very fast as there’s just 16</em>16</em>(noiseNum) samples per chunk to generate, but the disadvantage of being rather dull. Specifically, there’s no way for this method to generate any overhangs.</p>
+<p>So I switched the system over into a similar system based off 3D Perlin noise. Instead of sampling the “ground height”, I treated the noise value as the “density”, where anything lower than 0 would be air, and anything higher than or equal to 0 would be ground. To make sure the bottom layer is solid and the top isn’t, I just add the height (offset by the water level) to the sampled result.
+Unfortunately, I immediately ran into both performance issues and playability issues. Performance issues because of the huge amount of sampling needed to be done, and playability issues because there were no flat areas or smooth hills. The solution to both problems turned out to be just sampling at a lower resolution (scaled 8x along the horizontals, 4x along the vertical) and doing a linear interpolation. Suddenly, the game had flat areas, smooth hills, and also most single floating blocks were gone.</p>
+<p>The exact formula I use is a bit involved (and secret!), but it evolved slowly over time as I worked on the game. It still uses the 2D elevation and noisyness maps, though.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/minecraft/">MineCraft</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span class="article-time--modified">
+            最后更新于 Jul 12, 2021 15:50 CST
+        </span>
+    </section></footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/archives/42/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/42/title.bc790643d2285de04d505b9396c1bcb9_hu8b78c802ef23d72a1f175f8afba741c2_9707_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="42" 
+                        data-hash="md5-vHkGQ9IoXeBNUFuTlsG8uQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使 macOS 的光标像 windows 一样移动</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/38/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">玄学BUG（一）</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/32/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/32/1.c437ebda5a99dd77e9d235f02e4ccf8e_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="32" 
+                        data-hash="md5-xDfr2lqZ3Xfp0jXwLkzPjg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">给Linux的根目录扩容</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/29/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/28/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="28" 
+                        data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenCore打造一个完美的 Hackintosh 遇到的问题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

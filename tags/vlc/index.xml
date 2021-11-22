@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VLC on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/vlc/</link>
+    <description>Recent content in VLC on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 04 May 2016 23:00:34 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/vlc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LibVLC研究笔记</title>
+      <link>https://blog.frostmiku.com/archives/370/</link>
+      <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/370/</guid>
+      <description>什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;</description>
+    </item>
+    
+  </channel>
+</rss>

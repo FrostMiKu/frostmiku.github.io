@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='小时候写的垃圾，长大后又生产了一篇高级垃圾😅'><title>一个简单的密码生成算法</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/39/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='一个简单的密码生成算法'>
+<meta property='og:description' content='小时候写的垃圾，长大后又生产了一篇高级垃圾😅'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/39/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='密码学' /><meta property='article:published_time' content='2015-06-08T14:00:00&#43;08:00'/><meta property='article:modified_time' content='2015-06-08T14:00:00&#43;08:00'/>
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="一个简单的密码生成算法">
+<meta name="twitter:description" content="小时候写的垃圾，长大后又生产了一篇高级垃圾😅">
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://blog.frostmiku.com" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%95%B4%E6%B4%BB/" style="background-color: #ff945f; color: #fff;">
+                整活
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/39/">一个简单的密码生成算法</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        小时候写的垃圾，长大后又生产了一篇高级垃圾😅
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jun 08, 2015</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="这是个啥">这是个啥？</h2>
+<blockquote>
+<p>答： 是小时候写的垃圾，现已被<a class="link" href="https://blog.frostmiku.com/archives/33/"  target="_blank" rel="noopener"
+    >这篇文章</a>取代 2021.9.22</p>
+</blockquote>
+<p>现如今，每个人都有不少网站的帐号，为每一个帐号设置不同的密码会增加大脑的记忆负担，而使用相同的密码则会引发安全问题。</p>
+<p>Simple password generator，是一个简单的密码生成器，但这绝不表示生成的密码是简单密码（弱口令）。通过本生成器可使用户仅需记住一个密码（即所有密码的公匙），来通过算法动态生成实际密码，每次密码皆为动态生成，由公匙确保生成密码的一致性，密码数据不做任何保持，具有较高的安全性。</p>
+<!-- more -->
+<h2 id="如何使用">如何使用</h2>
+<p>直接上图：</p>
+<p><img src="http://o7kncnou7.bkt.clouddn.com/2017-12-28%2017-24-17%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""  /></p>
+<p>启动后输入储存在<strong>大脑</strong> 中的密码，然后根据不同网站输入不同的key，生成器会实时计算出唯一的值来作为实际密码，密码不做任何保存处理。</p>
+<p>输入 exit 退出程序。</p>
+<h2 id="原理">原理</h2>
+<p>其实就是随机数种子的应用= =|||</p>
+<p>还有个缺点，前三（四）位固定是大小写字母、数字（符号）搭配&hellip;</p>
+<h2 id="源码">源码</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">lower</span><span class="o">=</span><span class="s2">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
+<span class="n">upper</span><span class="o">=</span><span class="s2">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
+<span class="n">symbols</span><span class="o">=</span><span class="s2">&#34;!%@#^,./?*;:_&#34;</span>
+<span class="n">number</span><span class="o">=</span><span class="s2">&#34;0123456789&#34;</span>
+
+<span class="k">def</span> <span class="nf">getstr</span><span class="p">(</span><span class="n">legth</span><span class="p">,</span><span class="n">str1</span><span class="p">):</span>            
+    <span class="n">tmp</span><span class="o">=</span><span class="s2">&#34;&#34;</span>    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">legth</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tmp</span>
+
+<span class="k">def</span> <span class="nf">getpwd</span><span class="p">(</span><span class="n">pwd</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">legth</span><span class="p">,</span><span class="n">havesymbol</span><span class="p">):</span>
+    <span class="n">passworld</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">pwd</span><span class="o">+</span><span class="n">key</span><span class="p">)</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">havesymbol</span><span class="p">):</span>
+        <span class="n">passworld</span> <span class="o">=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">upper</span><span class="p">)</span><span class="o">+</span><span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lower</span><span class="p">)</span><span class="o">+</span><span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">number</span><span class="p">)</span><span class="o">+</span><span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">symbols</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">legth</span><span class="o">-</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">switch</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">switch</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">upper</span><span class="p">)</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">switch</span><span class="o">==</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lower</span><span class="p">)</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">switch</span><span class="o">==</span><span class="mi">2</span><span class="p">):</span>
+            	<span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">number</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">symbols</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">passworld</span> <span class="o">=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">upper</span><span class="p">)</span><span class="o">+</span><span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lower</span><span class="p">)</span><span class="o">+</span><span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">legth</span><span class="o">-</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">switch</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">switch</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">upper</span><span class="p">)</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">switch</span><span class="o">==</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lower</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+            	<span class="n">passworld</span> <span class="o">+=</span> <span class="n">getstr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">passworld</span>
+
+
+<span class="n">pwd</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入公匙：&#34;</span><span class="p">)</span>
+<span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">key</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入关键字（或输入 exit 退出）：&#34;</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">key</span><span class="o">!=</span><span class="s2">&#34;exit&#34;</span><span class="p">):</span>
+    	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;密码为： &#34;</span><span class="o">+</span> <span class="n">getpwd</span><span class="p">(</span><span class="n">pwd</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+    	<span class="k">break</span>
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/archives/35/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="35" 
+                        data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">仿手写文本生成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/33/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="33" 
+                        data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">浅谈邀请码的生成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/36/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="36" 
+                        data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于肢体运动的睡眠状态检测原理</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/34/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="34" 
+                        data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大革命，一种扑克卡牌游戏</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/28/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="28" 
+                        data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenCore打造一个完美的 Hackintosh 遇到的问题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#这是个啥">这是个啥？</a></li>
+    <li><a href="#如何使用">如何使用</a></li>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#源码">源码</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

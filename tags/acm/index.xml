@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ACM on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/acm/</link>
+    <description>Recent content in ACM on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 08 Oct 2017 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/acm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个ACM蒟蒻的掉坑手册</title>
+      <link>https://blog.frostmiku.com/archives/40/</link>
+      <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/40/</guid>
+      <description>如何控制每两个数之间有空格，而最后一个数之后没有空格？解决方法之一是：第一个数之前不加空格，而其后每个数之前加空格。而通过一个标识变量可以判断出是否是第一个数。 初做多实例测试，要注意变量赋初值的位置。 流可以加速，方法是关闭和stdio的同步，即调用  ios::sync_with_stdio(false);  未指定输入量的输入框架  while(scanf(&amp;#34;%d&amp;#34;,&amp;amp;a)!=EOF){} //或 while(cin&amp;gt;&amp;gt;a){}  能写成函数尽量写成函数，解耦、复用、易于定位错误，不要把 main() 写的又臭又长，出错了改都不好改。 memset函数可以初始化数组。这条命令这在你已经修改了数组之后又想将它重置为全0特别有用（然鹅它是操作字节，也就初始为0/-1比较有用）。  #include &amp;lt;cstring&amp;gt;int arr[100]={0}; memset(arr,0, sizeof(arr));  CPP int&amp;amp;string互相转换  #include &amp;lt;iostream&amp;gt;#include &amp;lt;sstream&amp;gt; using namespace std; int main(){ int x=10000,y; stringstream ss; string s; ss&amp;lt;&amp;lt;x; s=ss.str(); cout&amp;lt;&amp;lt;s.length()&amp;lt;&amp;lt;endl; ss&amp;gt;&amp;gt;y; cout&amp;lt;&amp;lt;y/2&amp;lt;&amp;lt;endl; }  使用C语言sscanf()函数将string/char转换成int（或其他类型）  #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main() { string a=&amp;#34;123456789&amp;#34;; int x; sscanf(a.c_str(),&amp;#34;%d&amp;#34;,&amp;amp;x); cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl; return 0; }  重定向：  freopen(&amp;#34;test.in&amp;#34;, &amp;#34;r&amp;#34;, stdin); freopen(&amp;#34;test.</description>
+    </item>
+    
+  </channel>
+</rss>

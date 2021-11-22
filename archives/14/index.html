@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='美化一时爽，一直美化一直爽'><title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/14/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Arch Linux (Manjaro) 配置、美化与常用软件安装指南（'>
+<meta property='og:description' content='美化一时爽，一直美化一直爽'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/14/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2019-11-30T19:06:00&#43;08:00'/><meta property='article:modified_time' content='2019-11-30T19:06:00&#43;08:00'/><meta property='og:image' content='https://blog.frostmiku.com/archives/14/gnome.jpg' />
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="Arch Linux (Manjaro) 配置、美化与常用软件安装指南（">
+<meta name="twitter:description" content="美化一时爽，一直美化一直爽"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.frostmiku.com/archives/14/gnome.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://blog.frostmiku.com" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/archives/14/">
+                <img src="/archives/14/gnome_huce6f1b19f1f85c94c5ae8445011a0e98_656733_800x0_resize_q75_box.jpg"
+                        srcset="/archives/14/gnome_huce6f1b19f1f85c94c5ae8445011a0e98_656733_800x0_resize_q75_box.jpg 800w, /archives/14/gnome_huce6f1b19f1f85c94c5ae8445011a0e98_656733_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%95%B4%E6%B4%BB/" style="background-color: #ff945f; color: #fff;">
+                整活
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/14/">Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        美化一时爽，一直美化一直爽
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Nov 30, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="前言">前言</h2>
+<p>之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 <a class="link" href="https://blog.kaaass.net/archives/1205"  target="_blank" rel="noopener"
+    >@KAAAsS</a>写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（</p>
+<p>所以我就跑过来写一篇Gnome的同名文章，嘿嘿。</p>
+<p>欢迎邮件联系 <a class="link" href="mailto:i@frostmiku.com" >i@frostmiku.com</a></p>
+<h6 id="注意">注意</h6>
+<p>本文作如下约定：</p>
+<blockquote>
+<p>如无特别说明，本文的**&ldquo;安装&rdquo;**是指使用pacman包管理器命令或其图形化前端在**已添加archlinuxcn源**情况下进行的软件包安装**或**AUR构建。</p>
+<p>如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。</p>
+</blockquote>
+<h2 id="配置">配置</h2>
+<h3 id="软件源与镜像">软件源与镜像</h3>
+<p>减少重复造轮子，请移步这里：</p>
+<blockquote>
+<p><a class="link" href="https://blog.kaaass.net/archives/1205#toc-4"  target="_blank" rel="noopener"
+    >https://blog.kaaass.net/archives/1205#toc-4</a></p>
+</blockquote>
+<p>或者，你只是想快速完成这些步骤而不想详细了解的话：</p>
+<pre tabindex="0"><code>#切换中国源
+sudo pacman-mirrors -c China
+#添加 [archlinuxcn]
+sudo gedit /etc/pacman.conf
+# 然后在弹出来的 gedit 最下方追加如下内容
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+
+#更新软件源
+pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
+#安装 oh my zsh
+sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+# 重启
+reboot
+</code></pre><h3 id="没有权限访问串口">没有权限访问串口</h3>
+<p>不同于Debian系的dialout，arch系的串口属于用户组uucp
+所以只需要将自己添加到uucp组即可。</p>
+<pre tabindex="0"><code>sudo usermod -a -G uucp username
+</code></pre><h3 id="开启-gsconnect">开启 GSConnect</h3>
+<p>gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽</p>
+<p>在 优化》插件 里手动启动即可。</p>
+<h2 id="软件">软件</h2>
+<h3 id="python2">Python2</h3>
+<p>Manjaro自带了Python 2.7但并没有附带pip，需要我们手动安装</p>
+<p>安装python2-pip</p>
+<pre tabindex="0"><code>sudo pacman -S python2-pip 
+</code></pre><p>安装后在终端输入pip2即可使用</p>
+<h3 id="字体">字体</h3>
+<p>字体比较推荐等宽的 <a class="link" href="https://github.com/be5invis/Sarasa-Gothic"  target="_blank" rel="noopener"
+    >更纱黑体</a> ，安装 Sarasa Gothic 然后在优化里设置即可。</p>
+<h3 id="terminal">Terminal</h3>
+<h4 id="背景透明">背景透明</h4>
+<p>gnome默认的Terminal并不支持背景透明</p>
+<p>AUR中构建 <code>gnome-terminal-transparency</code></p>
+<p>然后在 设置》颜色 中将会出现透明度设置项</p>
+<h4 id="oh-my-zsh">oh-my-zsh</h4>
+<p>把oh-my-zsh归类到这里似乎有点奇怪&hellip;</p>
+<p>这是我的<a class="link" href="https://github.com/FrostMiKu/MyLinuxRC/blob/master/.zshrc"  target="_blank" rel="noopener"
+    >zshrc</a>仅供参考。</p>
+<p>ps：如果你要使用的话，需要另外安装ranger</p>
+<h3 id="nautilus-文件管理器">Nautilus 文件管理器</h3>
+<h4 id="显示地址栏">显示地址栏</h4>
+<p>可以使用快捷键 <code>ctrl + L</code>也可以直接输入以**/**或 **~** 开头的地址。</p>
+<p>如果希望文件管理器默认显示地址栏，则打开dconf编辑器（可以直接在软件中心安装）
+定位到<code>org-&gt;gnome-&gt;nautilus-&gt;preferences</code>然后选择<code>always-use-location-entry</code>这一项即可。</p>
+<h3 id="某知名electron科学软件">某知名Electron科学软件</h3>
+<h4 id="托盘不显示图标">托盘不显示图标</h4>
+<p>这是electron的锅。</p>
+<p>安装 libappindicator-gtk3 解决</p>
+<h4 id="切换代理设置不生效">切换代理设置不生效</h4>
+<p>这个问题很少发生在gnome下，该软件使用gsettings进行设置，请检查gsettings是否存在问题。</p>
+<h3 id="搜狗拼音">搜狗拼音</h3>
+<p>不要安装fcitx，会报错的。<br>
+安装fcitx-lilydjwg-git<br>
+然后搜索sogou进行安装即可。</p>
+<h3 id="qq">QQ</h3>
+<p>最近腾讯更新了QQ for Linux，虽然用起来有种自己穿越回2009年的感觉。但基本功能倒是够用了。</p>
+<p>安装 qq-Linux 即可，它应该是在archlinuxcn仓库里。</p>
+<h2 id="美化">美化</h2>
+<p><figure style="flex-grow: 147; flex-basis: 354px">
+		<a href="/archives/14/settings.png" data-size="1035x700"><img src="/archives/14/settings.png"
+				srcset="/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, /archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w"
+				width="1035"
+				height="700"
+				loading="lazy"
+				alt="setting">
+		</a>
+		
+		<figcaption>setting</figcaption>
+		
+	</figure></p>
+<h3 id="主题图标与字体">主题、图标与字体</h3>
+<p>本文最上面的图片里以包括这些信息，防止看不清楚再列出：</p>
+<blockquote>
+<p>WM Theme: Mojave-light-alt<br>
+GTK Theme: Mojave-light-alt [GTK2/3]<br>
+Icon Theme: McMojave-circle<br>
+Font: Sarasa Gothic K 11</p>
+</blockquote>
+<h3 id="动态壁纸">动态壁纸</h3>
+<p>安装 dynamic-wallpaper-catalina-gnome-timed-git</p>
+<p>然后在桌面右键，选择更换壁纸。</p>
+<h3 id="dash-to-dock">Dash to dock</h3>
+<blockquote>
+<p>-Dock Settings-</p>
+<p>-Run as, in terminal! one by one&hellip;</p>
+<hr>
+<p><em>Show Apps Button at Left</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true</p>
+<hr>
+<p><em>Use Custom Dock Indicator</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DEFAULT
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-customize-running-dots false</p>
+<hr>
+<p><em>Disable Custom Dock Shrink Mode</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false</p>
+<hr>
+<p><em>Change Dock Transparency mode</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode DEFAULT</p>
+<hr>
+<p><em>Disable Extend height!</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false</p>
+<hr>
+<p><em>Change Dock Pozition</em></p>
+<p>Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
+<p>-OK!-</p>
+<hr>
+<p>-NOTE-: 
+<em>if you have problem use this Restore to Default all settings.</em></p>
+<p>dconf reset -f /org/gnome/shell/extensions/dash-to-dock/</p>
+<hr>
+</blockquote>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a class="link" href="https://blog.kaaass.net/archives/1205"  target="_blank" rel="noopener"
+    >https://blog.kaaass.net/archives/1205</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/archives/4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">安装用于 CTF 的 Manjaro</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/36/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="36" 
+                        data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于肢体运动的睡眠状态检测原理</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/35/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="35" 
+                        data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">仿手写文本生成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/34/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="34" 
+                        data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大革命，一种扑克卡牌游戏</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/33/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="33" 
+                        data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">浅谈邀请码的生成</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a>
+      <ol>
+        <li>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#配置">配置</a>
+      <ol>
+        <li><a href="#软件源与镜像">软件源与镜像</a></li>
+        <li><a href="#没有权限访问串口">没有权限访问串口</a></li>
+        <li><a href="#开启-gsconnect">开启 GSConnect</a></li>
+      </ol>
+    </li>
+    <li><a href="#软件">软件</a>
+      <ol>
+        <li><a href="#python2">Python2</a></li>
+        <li><a href="#字体">字体</a></li>
+        <li><a href="#terminal">Terminal</a>
+          <ol>
+            <li><a href="#背景透明">背景透明</a></li>
+            <li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+          </ol>
+        </li>
+        <li><a href="#nautilus-文件管理器">Nautilus 文件管理器</a>
+          <ol>
+            <li><a href="#显示地址栏">显示地址栏</a></li>
+          </ol>
+        </li>
+        <li><a href="#某知名electron科学软件">某知名Electron科学软件</a>
+          <ol>
+            <li><a href="#托盘不显示图标">托盘不显示图标</a></li>
+            <li><a href="#切换代理设置不生效">切换代理设置不生效</a></li>
+          </ol>
+        </li>
+        <li><a href="#搜狗拼音">搜狗拼音</a></li>
+        <li><a href="#qq">QQ</a></li>
+      </ol>
+    </li>
+    <li><a href="#美化">美化</a>
+      <ol>
+        <li><a href="#主题图标与字体">主题、图标与字体</a></li>
+        <li><a href="#动态壁纸">动态壁纸</a></li>
+        <li><a href="#dash-to-dock">Dash to dock</a></li>
+      </ol>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

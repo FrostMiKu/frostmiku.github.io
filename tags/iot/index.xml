@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IoT on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/iot/</link>
+    <description>Recent content in IoT on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 06 Nov 2019 15:38:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QuickMCU 帮助文档</title>
+      <link>https://blog.frostmiku.com/archives/6/</link>
+      <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/6/</guid>
+      <description>本文已严重过时！！！
+这里是 QuickMCU 的非正式文档。
+波特率 115200。
+内部 repl shell VT100（使用 PuTTY 连接就行。
+函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
+对应缺失的参数默认会使用 0 或 undefined 代替。
+启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
+setInterval(func,timeout,arg) 和写web时的用法一样。
+print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
+ 无返回值
+  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
+ OS 提供系统接口
+Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
+ ms: 整数，sleep的时间，毫秒单位
+无返回值
+ getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
+ 返回整数</description>
+    </item>
+    
+  </channel>
+</rss>

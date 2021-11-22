@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MineCraft on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/minecraft/</link>
+    <description>Recent content in MineCraft on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 Jan 2021 21:37:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/minecraft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FrostCraft 游玩指南</title>
+      <link>https://blog.frostmiku.com/archives/30/</link>
+      <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/30/</guid>
+      <description>Q&amp;amp;A Q：游戏启动崩溃 A：看下是不是用的32位Java，给的内存太大了
+Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip; A：那你调大啊 囧rz&amp;hellip; 推荐Java 8 x64 给 2048MB
+Q：服务器进不去，提示无效会话让我重启游戏或启动器&amp;hellip; A：看最上面，使用启动器外置登录刚注册的账号
+Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&amp;hellip; A：Java版本太老了，更新一下吧！（推荐下载OpenJ9
+ 常用指令 /spawn ----回到空境/sethome ----设置家/home ----回家/back ----返回上次传送的地点/recharge ----获取飞行能量/near ----搜索附近玩家/res ----设置领地/res set ----站在领地里输入，设置权限/suicide ----自杀/pay &amp;lt;钱&amp;gt; &amp;lt;玩家&amp;gt; ----转账/ping ----获取延迟/prewards ----领取奖励/time ----查看当前世界时间/stats ----查看自己的统计数据/art ----画画功能/shop find &amp;lt;物品名称&amp;gt; - 寻找附近有没有交易该物品的商店/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员/shop staff clear - 清空此商店的所有商店助手/shop staff list - 查看此商店的商店助手成员列表 设定 离线90天自动清除数据！ 请不要在除了主世界以外的地方建家（服务器不保证其数据安全） 服务器为开放世界，但这并不意味着你可以去骚扰别人 注意财产安全，有钱买地，没钱上牌子锁 服务器死亡掉落</description>
+    </item>
+    
+    <item>
+      <title>Minecraft的地形生成算法相关</title>
+      <link>https://blog.frostmiku.com/archives/2/</link>
+      <pubDate>Fri, 25 Dec 2015 09:12:09 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/2/</guid>
+      <description>Terrain generation, Part 1
+I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!
+One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.</description>
+    </item>
+    
+  </channel>
+</rss>

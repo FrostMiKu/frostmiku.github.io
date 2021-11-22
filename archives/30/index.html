@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='时代的眼泪，我枯了...'><title>FrostCraft 游玩指南</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/30/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='FrostCraft 游玩指南'>
+<meta property='og:description' content='时代的眼泪，我枯了...'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/30/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Minecraft' /><meta property='article:tag' content='wiki' /><meta property='article:published_time' content='2021-01-03T21:37:00&#43;08:00'/><meta property='article:modified_time' content='2021-01-03T21:37:00&#43;08:00'/><meta property='og:image' content='https://blog.frostmiku.com/archives/30/minecraft.jpg' />
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="FrostCraft 游玩指南">
+<meta name="twitter:description" content="时代的眼泪，我枯了..."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.frostmiku.com/archives/30/minecraft.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://blog.frostmiku.com" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/archives/30/">
+                <img src="/archives/30/minecraft_huc0718e92e9b1e7c684e73eb0c0151260_221430_800x0_resize_q75_box.jpg"
+                        srcset="/archives/30/minecraft_huc0718e92e9b1e7c684e73eb0c0151260_221430_800x0_resize_q75_box.jpg 800w, /archives/30/minecraft_huc0718e92e9b1e7c684e73eb0c0151260_221430_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="513" 
+                        loading="lazy"
+                        alt="Featured image of post FrostCraft 游玩指南" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%97%A5%E5%B8%B8/" style="background-color: #ffb900; color: #fff;">
+                日常
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/30/">FrostCraft 游玩指南</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        时代的眼泪，我枯了...
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jan 03, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="qa">Q&amp;A</h2>
+<p>Q：游戏启动崩溃
+A：看下是不是用的32位Java，给的内存太大了</p>
+<p>Q：换了64位Java/调小内存后进入服务器显示内存太小&hellip;
+A：那你调大啊 囧rz&hellip; 推荐Java 8 x64 给 2048MB</p>
+<p>Q：服务器进不去，提示无效会话让我重启游戏或启动器&hellip;
+A：看最上面，使用启动器外置登录刚注册的账号</p>
+<p>Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&hellip;
+A：Java版本太老了，更新一下吧！（推荐下载OpenJ9</p>
+<hr>
+<h2 id="常用指令">常用指令</h2>
+<pre tabindex="0"><code>/spawn          ----回到空境
+/sethome        ----设置家
+/home           ----回家
+/back           ----返回上次传送的地点
+/recharge       ----获取飞行能量
+/near           ----搜索附近玩家
+/res            ----设置领地
+/res set        ----站在领地里输入，设置权限
+/suicide        ----自杀
+/pay &lt;钱&gt; &lt;玩家&gt;           ----转账
+/ping           ----获取延迟
+/prewards       ----领取奖励
+/time           ----查看当前世界时间
+/stats          ----查看自己的统计数据
+/art            ----画画功能
+/shop find &lt;物品名称&gt;  - 寻找附近有没有交易该物品的商店
+/shop staff add &lt;玩家&gt; - 添加指定玩家为此商店的商店助手成员
+/shop staff del &lt;玩家&gt; - 移除指定玩家为此商店的商店助手成员
+/shop staff clear      - 清空此商店的所有商店助手
+/shop staff list       - 查看此商店的商店助手成员列表
+</code></pre><hr>
+<h2 id="设定">设定</h2>
+<p><strong>离线90天自动清除数据！</strong>
+<strong>请不要在除了主世界以外的地方建家（服务器不保证其数据安全）</strong>
+<strong>服务器为开放世界，但这并不意味着你可以去骚扰别人</strong>
+<strong>注意财产安全，有钱买地，没钱上牌子锁</strong>
+<strong>服务器死亡掉落</strong></p>
+<p>不死图腾放在背包里必要时会自动使用，它甚至可以避免掉入虚空</p>
+<p>冰块是游戏代币，注意，它和游戏内的 Ice 不是同一种东西！</p>
+<p><del>游戏世界内无法进行传送（但可以home和back，back仅可用在主世界）</del>
+所以我们修改了载具特性
+矿车在轨道上跑不会减速，这意味着你可以兴建轨道交通
+右键点击轨道将会自动生成一辆矿车，自动生成的矿车将在下车时移除
+船，只能在水上跑
+以上载具在撞击实体时会对实体产生巨大伤害，所以卧轨成为可能
+离开载具时会自动讲载具放入背包
+鞘翅可以弹射起步！
+可以消耗飞行能量起飞！</p>
+<p>1经验换1飞行能量
+每飞一格消耗1飞行能量
+飞在天上不动每秒消耗0.5飞行能量
+玩家从高处摔下来时扣除飞行能量抵消伤害
+只在玩家从3格以上高度摔下时会触发抵消
+例如，玩家从 10 格高的地方摔下, 那么 (10-3) * 2 = 14 飞行能量将被扣除</p>
+<p>游戏世界时间为原版的10倍，即200分钟一天
+在线玩家超过50%睡觉时可加速夜晚进度
+进入睡眠的玩家越多，夜晚加速越快</p>
+<p>刷怪笼不可获得，精准采集也不行</p>
+<p>每日可领100冰块
+在线1小时获得20冰块，系统自动发放，AFK不算入时长
+300秒不动，自动进入挂机状态
+挂机免疫伤害</p>
+<p>战斗模式持续15秒 ，击杀其他玩家1%几率掉落他的头
+可被抢夺附魔加成</p>
+<pre tabindex="0"><code>Lv1: 5.0
+Lv2: 15.0
+​Lv3: 30.0
+</code></pre><p>例如玩家原本掉头几率为 1% ，若被附魔了抢夺3的武器（增幅 30%）杀死，则掉头几率变为1.3%</p>
+<p>潜行右击牌子可以编辑</p>
+<p>木棍保护区，线查看保护区，有粒子特效可视化区域大小
+土地最大64x64 最多3个 每个最多2子领地
+领地不可传送，不可阻止别人移动（但你可以修建围墙）
+领地按面积计算，你只要买了，不管是地上的，地下的，还是天上的，都是你的
+地价 1方块3冰块，删除自己的领地时，1方块返还2冰块</p>
+<h2 id="更新日志">更新日志</h2>
+<h3 id="2021114">2021.1.14</h3>
+<p>现在你可以使用箱子开商店了，在地上放置一个箱子然后拿着你想出售的物品左键点击箱子就能出售了
+输入/shop 获取更多信息
+开设每个店铺需要10冰块的开设费，并且在每次修改商店价格时收取1冰块
+每人最多开设10个店铺
+交易将产生0.05的交易税
+当然，你也可以给你的商店添加多位店员来辅助管理商店</p>
+<pre tabindex="0"><code>/shop find &lt;物品名称&gt;  - 寻找附近有没有交易该物品的商店
+/shop staff add &lt;玩家&gt; - 添加指定玩家为此商店的商店助手成员
+/shop staff del &lt;玩家&gt; - 移除指定玩家为此商店的商店助手成员
+/shop staff clear      - 清空此商店的所有商店助手
+/shop staff list       - 查看此商店的商店助手成员列表
+</code></pre><h3 id="2021113">2021.1.13</h3>
+<p>现在可以在MC里画画并向别人展示你的画作了，当然，是像素风的。
+成为画家的第一步，输入/art</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/minecraft/">MineCraft</a>
+        
+            <a href="/tags/wiki/">wiki</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/archives/25/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">搭建了一个个人知识库！</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/26/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">买了些代工厂零食</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/22/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/22/_huf941de4769045cdfa8c9ee7036519a2a_35369_36687b530fa140121781e790cfd060e7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="22" 
+                        data-hash="md5-YBFrHM/IYy6aZffVHfPvwg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于一次对于微波炉蒸米饭的尝试</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/archives/1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">更早之前的文章</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#qa">Q&amp;A</a></li>
+    <li><a href="#常用指令">常用指令</a></li>
+    <li><a href="#设定">设定</a></li>
+    <li><a href="#更新日志">更新日志</a>
+      <ol>
+        <li><a href="#2021114">2021.1.14</a></li>
+        <li><a href="#2021113">2021.1.13</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

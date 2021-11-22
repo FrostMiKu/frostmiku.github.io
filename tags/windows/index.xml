@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/windows/</link>
+    <description>Recent content in Windows on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 Nov 2019 16:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows 蓝屏分析简明教程</title>
+      <link>https://blog.frostmiku.com/archives/12/</link>
+      <pubDate>Sun, 17 Nov 2019 16:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/12/</guid>
+      <description>前言 &amp;amp; 工具准备 今天室友的电脑蓝屏了&amp;hellip; 虽然以前就经常发生 所以我们来康康是怎么回事！
+工欲善其事，必先利其器 在 Microsoft Store 上获取 windbg
+简明操作流程  在 WinDbg 界面上的 文件 菜单中选择 Settings 在 Debugging settings 选项卡的 Symbol path 栏中输入SRV*c:\temp*http://msdl.microsoft.com/download/symbols 接着 文件 菜单中选择 open dump file 然后浏览并选择打开 minidump 目录下的文件，一般路径为：C:\Windows\Minidump\XXXXXX-XXXX-XX.dmp 等待系统下载 Symbol 并分析完毕 当出现 Use !analyze -v to get detailed debugging information 时,在下面输入框：!analyze –v 或直接点击 !analyze –v  此时会出现类似如下的信息：
+******************************************************************************** ** Bugcheck Analysis ** ********************************************************************************PAGE_FAULT_IN_NONPAGED_AREA (50)Invalid system memory was referenced.</description>
+    </item>
+    
+    <item>
+      <title>Windows 10 1903 and Later 搜索中心居中脚本</title>
+      <link>https://blog.frostmiku.com/archives/11/</link>
+      <pubDate>Mon, 11 Nov 2019 23:15:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/11/</guid>
+      <description>网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
+首先更改策略允许执行powershell脚本
+set-ExecutionPolicy RemoteSigned然后执行如下脚本：
+$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on StarWhisper</title>
+    <link>https://blog.frostmiku.com/categories/</link>
+    <description>Recent content in Categories on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>笔记</title>
+      <link>https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>整活</title>
+      <link>https://blog.frostmiku.com/categories/%E6%95%B4%E6%B4%BB/</link>
+      <pubDate>Wed, 30 Jun 2021 15:22:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/categories/%E6%95%B4%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日常</title>
+      <link>https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/</link>
+      <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

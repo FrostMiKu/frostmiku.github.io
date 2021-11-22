@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macOS on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/macos/</link>
+    <description>Recent content in macOS on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使 macOS 的光标像 windows 一样移动</title>
+      <link>https://blog.frostmiku.com/archives/42/</link>
+      <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/42/</guid>
+      <description>如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。
+这是因为 mac OS 上的光标加速特性导致的，简单来说就是：
+如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。 如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。
+这个设计的初衷是为了让人们更容易地实现对光标的精密操作，使鼠标更易于上手。
+但非定长移动的光标，在降低了上手难度的同时，也降低了鼠标操作的上限，由于光标移动距离存在不确定性，难以完成一些专业操作，特别是在游戏领域（例如 FPS 中的甩狙操作）中鼠标的手感稀烂。
+如果你有 串流、游戏 需求或是 Windows 老用户，可以考虑关闭光标加速功能，来解决这个问题。
+不过 mac OS 没有为这项设置提供 UI 界面，需要使用命令行进行设定。
+defaults write .GlobalPreferences com.apple.mouse.scaling -1 上面这条指令可以完全关闭光标加速功能，你也可以将 -1 修改为其他值来自行调节光标加速效果。
+需要注意的是当你通过第三方驱动更改了鼠标的 DPI 数值以后，加速度的数值会自动重置。需要再次使用指令进行设置。</description>
+    </item>
+    
+    <item>
+      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+      <link>https://blog.frostmiku.com/archives/28/</link>
+      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/28/</guid>
+      <description>主板是 msi z370 a pro，草草记录，待日后完善
+ 开机崩溃重启 启动参数加 -v 看看情况。
+如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
+开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
+睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
+但睡眠还是必要的。
+睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
+PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
+有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
+博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
+    </item>
+    
+  </channel>
+</rss>

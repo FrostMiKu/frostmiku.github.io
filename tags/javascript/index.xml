@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/javascript/</link>
+    <description>Recent content in JavaScript on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Feb 2020 16:20:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser</title>
+      <link>https://blog.frostmiku.com/archives/17/</link>
+      <pubDate>Mon, 17 Feb 2020 16:20:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/17/</guid>
+      <description>目标 HTTP/1.1 200 OKServer: nginxDate: Sun, 05 Jan 2020 17:39:08 GMTContent-Type: text/html; charset=UTF-8Connection: closeVary: Accept-EncodingX-Powered-By: PHP/5.6.10Content-Length: 6123Abc&amp;ndash;&amp;gt; parse &amp;ndash;&amp;gt;
+{ &amp;#34;reqline&amp;#34;: &amp;#34;HTTP/1.1 200 OK&amp;#34;, &amp;#34;headers&amp;#34;: { &amp;#34;server&amp;#34;: &amp;#34;nginx&amp;#34;, &amp;#34;date&amp;#34;: &amp;#34;Sun, 05 Jan 2020 17:39:08 GMT&amp;#34;, &amp;#34;content-type&amp;#34;: &amp;#34;text/html; charset=UTF-8&amp;#34;, &amp;#34;connection&amp;#34;: &amp;#34;close&amp;#34;, &amp;#34;vary&amp;#34;: &amp;#34;Accept-Encoding&amp;#34;, &amp;#34;x-powered-by&amp;#34;: &amp;#34;PHP/5.6.10&amp;#34;, &amp;#34;content-length&amp;#34;: &amp;#34;6&amp;#34;, } &amp;#34;body&amp;#34;: &amp;#34;123Abc&amp;#34; } 状态机  http parser fsm 
+代码实现 var httpParser = {}; (function () { function Stream (str) { this.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 极速入门</title>
+      <link>https://blog.frostmiku.com/archives/13/</link>
+      <pubDate>Fri, 22 Nov 2019 21:55:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/13/</guid>
+      <description>欢迎来到 JavaScrip 极速入坟 门 首先，先把廖雪峰前四章看完 （就是到 面向对象编程 那一章
+ JavaScript教程
+ 接着去看一下这个：
+ 理解 JavaScript 的 Proto 和 Prototype
+ 然后就可以开始整活了：
+this
+var obj = { foo: function () { console.log(this.bar) }, bar: 1 }; var foo = obj.foo; var bar = 2; obj.foo() // 输出啥？ foo() // 输出啥？ array
+var bar = [1,2,3] function foo (list) { list.push(4); } foo(bar); // 现在 bar 里面是啥？ obj
+function foo(buf){ this.buf = buf; } var bar = new Uint8Array([1,2,3]); var f = new foo(bar); bar[0] = 9; // 现在 f.</description>
+    </item>
+    
+    <item>
+      <title>理解 JavaScript 的 Proto 和 Prototype</title>
+      <link>https://blog.frostmiku.com/archives/5/</link>
+      <pubDate>Wed, 06 Nov 2019 15:36:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/5/</guid>
+      <description>__proto__ 是 object 的一个属性，prototype 是 function 的一个属性。
+__proto__ 指向它的构造函数的 prototype, prototype指向一个constructor为该 function 的 object.
+所以 __proto__ 也有自己的 __proto__ ，也就是原型链。
+原型链 当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。
+实例化对象过程 进行 new Foo() 操作会进行以下过程：
+ 首先会初始化一个空 {} 然后将 {} 的 __proto__ 指向 Foo 的 prototype 接着执行 Base.call({}) 将 this 作用域交予 {}  </description>
+    </item>
+    
+  </channel>
+</rss>

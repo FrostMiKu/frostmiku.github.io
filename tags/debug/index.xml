@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debug on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/debug/</link>
+    <description>Recent content in Debug on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 07 Jul 2021 20:57:44 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/debug/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>玄学BUG（一）</title>
+      <link>https://blog.frostmiku.com/archives/38/</link>
+      <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/38/</guid>
+      <description>前言 计划开一个不定期更新的栏目来分享一下我一段时间内遇到的玄学 BUG
+在本栏目里我会写明导致 BUG 的原因与解决办法，或是提出猜想。如果你在哪条连猜想都没看到，那说明我直接放弃了（
+先开一期试试水&amp;hellip;
+中文域名重定向过多 前不久朋友找我做个官网，用的 wordpress
+域名是中文域名，网址大概长这个样子： www.中文域名.com
+用这么怪的域名是因为他的拼音域名被抢注了
+wordpress 后台绑定域名后一切正常（坑就坑在这里，导致我一开始完全没去想是域名的问题），然而当我把任意page设置为首页后，网站进不去，报重定向过多。
+猜测是因为中文域名本质上是被 Punycode 编码的 www.xn-xxxxxxxxxx(一堆乱码).com
+wordpress 魔幻的将其与后台绑定的未经转码的 www.中文域名.com 进行了 == 运算，发现不一致，就重定向，然后&amp;hellip;就循环了,囧rz&amp;hellip;
+我最后给中文域名301到英文域名上凑合着用了（
+主题在 Chrome 和 Safari 上表现不一致 前几天换上的 HUGO stack 主题，结果在 Safari 上显示有 BUG
+如果你现在使用的是低于 14.1 版本的 Safari 浏览本 Blog 应该明白我指是的什么
+这是因为 Safari 在 14.1 之后的版本上才支持CSS属性 column-gap 在 flex 布局中使用
+详细讨论见 此 Issue
+HUGO 不显示刚写好的文章 这是因为 HUGO 使用的是 UTC 时间，以本地时间写好的文章对于 HUGO 来说是来自未来的 （
+解决办法两个：
+1.在 config 里加上</description>
+    </item>
+    
+    <item>
+      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+      <link>https://blog.frostmiku.com/archives/28/</link>
+      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/28/</guid>
+      <description>主板是 msi z370 a pro，草草记录，待日后完善
+ 开机崩溃重启 启动参数加 -v 看看情况。
+如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
+开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
+睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
+但睡眠还是必要的。
+睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
+PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
+有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
+博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
+    </item>
+    
+    <item>
+      <title>Windows 蓝屏分析简明教程</title>
+      <link>https://blog.frostmiku.com/archives/12/</link>
+      <pubDate>Sun, 17 Nov 2019 16:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/12/</guid>
+      <description>前言 &amp;amp; 工具准备 今天室友的电脑蓝屏了&amp;hellip; 虽然以前就经常发生 所以我们来康康是怎么回事！
+工欲善其事，必先利其器 在 Microsoft Store 上获取 windbg
+简明操作流程  在 WinDbg 界面上的 文件 菜单中选择 Settings 在 Debugging settings 选项卡的 Symbol path 栏中输入SRV*c:\temp*http://msdl.microsoft.com/download/symbols 接着 文件 菜单中选择 open dump file 然后浏览并选择打开 minidump 目录下的文件，一般路径为：C:\Windows\Minidump\XXXXXX-XXXX-XX.dmp 等待系统下载 Symbol 并分析完毕 当出现 Use !analyze -v to get detailed debugging information 时,在下面输入框：!analyze –v 或直接点击 !analyze –v  此时会出现类似如下的信息：
+******************************************************************************** ** Bugcheck Analysis ** ********************************************************************************PAGE_FAULT_IN_NONPAGED_AREA (50)Invalid system memory was referenced.</description>
+    </item>
+    
+  </channel>
+</rss>

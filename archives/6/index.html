@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文已严重过时！！！
+这里是 QuickMCU 的非正式文档。
+波特率 115200。
+内部 repl shell VT100（使用 PuTTY 连接就行。
+函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
+对应缺失的参数默认会使用 0 或 undefined 代替。
+启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
+setInterval(func,timeout,arg) 和写web时的用法一样。
+print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
+ 无返回值
+  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
+ OS 提供系统接口
+Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
+ ms: 整数，sleep的时间，毫秒单位
+无返回值
+ getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
+ 返回整数'><title>QuickMCU 帮助文档</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/6/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='QuickMCU 帮助文档'>
+<meta property='og:description' content='本文已严重过时！！！
+这里是 QuickMCU 的非正式文档。
+波特率 115200。
+内部 repl shell VT100（使用 PuTTY 连接就行。
+函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
+对应缺失的参数默认会使用 0 或 undefined 代替。
+启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
+setInterval(func,timeout,arg) 和写web时的用法一样。
+print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
+ 无返回值
+  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
+ OS 提供系统接口
+Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
+ ms: 整数，sleep的时间，毫秒单位
+无返回值
+ getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
+ 返回整数'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/6/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='IoT' /><meta property='article:published_time' content='2019-11-06T15:38:00&#43;08:00'/><meta property='article:modified_time' content='2021-06-29T20:47:14&#43;08:00'/>
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="QuickMCU 帮助文档">
+<meta name="twitter:description" content="本文已严重过时！！！
+这里是 QuickMCU 的非正式文档。
+波特率 115200。
+内部 repl shell VT100（使用 PuTTY 连接就行。
+函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
+对应缺失的参数默认会使用 0 或 undefined 代替。
+启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
+setInterval(func,timeout,arg) 和写web时的用法一样。
+print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
+ 无返回值
+  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
+ OS 提供系统接口
+Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
+ ms: 整数，sleep的时间，毫秒单位
+无返回值
+ getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
+ 返回整数">
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://blog.frostmiku.com" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%95%B4%E6%B4%BB/" style="background-color: #ff945f; color: #fff;">
+                整活
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/archives/6/">QuickMCU 帮助文档</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Nov 06, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p><strong>本文已严重过时！！！</strong></p>
+<p>这里是 QuickMCU 的非正式文档。</p>
+<p>波特率 115200。</p>
+<p>内部 repl shell VT100（使用 PuTTY 连接就行。</p>
+<p><strong>函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。</strong></p>
+<p><strong>对应缺失的参数默认会使用 0 或 undefined 代替。</strong></p>
+<h2 id="启动流程">启动流程</h2>
+<ol>
+<li>自检</li>
+<li>打印板子基本信息</li>
+<li>执行内部 JavaScript 代码</li>
+<li>挂载 spiffs 文件系统并打印用量信息</li>
+<li>执行 <code>/c/boot.js</code> 文件中的 JavaScript 代码（如果存在</li>
+<li>启动 repl （read-eval-print loop）</li>
+</ol>
+<h2 id="global">Global</h2>
+<h3 id="settimeoutfunctimeoutarg">setTimeout(func,timeout,arg)</h3>
+<p>和写web时的用法一样。</p>
+<h3 id="setintervalfunctimeoutarg">setInterval(func,timeout,arg)</h3>
+<p>和写web时的用法一样。</p>
+<h3 id="printstr">print(str)</h3>
+<p>打印输出str，参数可以为任何类型（会被自动转换为字符串）</p>
+<blockquote>
+<p>无返回值</p>
+</blockquote>
+<hr>
+<p><em>所有module都是全局中的一个object。</em>
+<em>如无特殊说明，module 在全局中的名称皆为：</em>
+<em>下文中<strong>二级标题</strong>的全小写字母。</em></p>
+<hr>
+<h2 id="os">OS</h2>
+<p>提供系统接口</p>
+<h3 id="function">Function</h3>
+<h4 id="sleepmsms">sleepMs(ms)</h4>
+<p>使 JavaScript runtime 暂停指定时间，如无必要不建议使用。</p>
+<blockquote>
+<p>ms: 整数，sleep的时间，毫秒单位</p>
+<p>无返回值</p>
+</blockquote>
+<h4 id="gettickcountms">getTickCountMs()</h4>
+<p>返回开机到现在所经历的时间，毫秒单位。</p>
+<blockquote>
+<p>返回整数</p>
+</blockquote>
+<h4 id="getfreemem">getFreeMem()</h4>
+<p>返回剩余内存。</p>
+<blockquote>
+<p>返回整数</p>
+</blockquote>
+<h2 id="file">File</h2>
+<p>提供对文件系统的访问。</p>
+<p>QuickMCU 使用 spiffs 作为文件系统。</p>
+<p>文件前缀为 <code>/c/</code></p>
+<p>板子在启动时会自动执行 <code>/c/boot.js</code> 文件内的 JavaScript 代码。</p>
+<h3 id="function-1">Function</h3>
+<h4 id="openfilenamemode">open(filename,mode)</h4>
+<p>打开一个文件，用于对文件进行操作。</p>
+<p>当文件对象失去所有引用后会自动调用 close 方法关闭文件。</p>
+<blockquote>
+<p>filename: 字符串，文件完整路径名。</p>
+<p>mode: 字符串，POSIX标准的文件操作模式 e.g. w r w+ a&hellip;</p>
+<p>返回 File Object</p>
+</blockquote>
+<h4 id="removefilename">remove(filename)</h4>
+<p>删除指定文件。</p>
+<blockquote>
+<p>filename: 字符串，文件完整路径名</p>
+<p>返回错误码，0 为删除成功</p>
+</blockquote>
+<h4 id="existsfilename">exists(filename)</h4>
+<p>检测指定文件是否存在。</p>
+<blockquote>
+<p>filename: 字符串，文件完整路径名</p>
+<p>返回布尔值</p>
+</blockquote>
+<h3 id="const">CONST</h3>
+<table>
+<thead>
+<tr>
+<th>EOF</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EOF</td>
+<td>文件结尾标识符</td>
+</tr>
+<tr>
+<td>SEEK_SET</td>
+<td>文件开头位置</td>
+</tr>
+<tr>
+<td>SEEK_CUR</td>
+<td>文件当前位置</td>
+</tr>
+<tr>
+<td>SEEK_END</td>
+<td>文件结尾位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="file-object">File Object</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">fp:pointer,</span> <span class="err">filename:&#39;str&#39;,</span> <span class="err">mode:&#39;str&#39;</span><span class="p">}</span>
+</code></pre></div><h4 id="close">close()</h4>
+<p>关闭文件对象。</p>
+<blockquote>
+<p>返回错误码</p>
+</blockquote>
+<h4 id="readsize">read(size)</h4>
+<p>从文件读取，size参数可选，不填默认读取整个文件。</p>
+<blockquote>
+<p>size: 整数，从当前位置向后读取 size 个字符</p>
+<p>返回字符串</p>
+</blockquote>
+<h4 id="readline">readLine()</h4>
+<p>从文件当前位置读取一整行，超过1024个字符将会截断。</p>
+<blockquote>
+<p>返回字符串</p>
+</blockquote>
+<h4 id="readlines">readLines()</h4>
+<p>像 readLine() 但会读取整个文件，以字符串数组形式返回，每个元素都是一行文本。</p>
+<blockquote>
+<p>返回数组</p>
+</blockquote>
+<h4 id="writestr">write(str)</h4>
+<p>将 str 写入文件中，object必须为可写的模式打开。</p>
+<p><strong>被写入的文本会优先存入内部 buf ，只有在调用 close 或 flush 时才会写入文件</strong></p>
+<blockquote>
+<p>str: 字符串，待写入文本</p>
+<p>返回错误码</p>
+</blockquote>
+<h4 id="seekoffsetbase">seek(offset,base)</h4>
+<p>设置当前文件位置为 base+offset, 省略所有参数<code>seek()</code>可以快速的将当前文件位置设置为文件头部。</p>
+<blockquote>
+<p>offset: 整数，相对位置</p>
+<p>base: 常数，文件位置，参看 CONST</p>
+<p>返回错误码</p>
+</blockquote>
+<h4 id="tell">tell()</h4>
+<p>返回当前文件位置。</p>
+<blockquote>
+<p>返回整数</p>
+</blockquote>
+<h4 id="flush">flush()</h4>
+<p>强制立刻将缓冲区的内容写入文件。</p>
+<blockquote>
+<p>返回错误码</p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/iot/">IoT</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span class="article-time--modified">
+            最后更新于 Jun 29, 2021 20:47 CST
+        </span>
+    </section></footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/archives/36/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="36" 
+                        data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于肢体运动的睡眠状态检测原理</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/35/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="35" 
+                        data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">仿手写文本生成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/34/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="34" 
+                        data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大革命，一种扑克卡牌游戏</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/33/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="33" 
+                        data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">浅谈邀请码的生成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/archives/28/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="28" 
+                        data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenCore打造一个完美的 Hackintosh 遇到的问题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2021 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#启动流程">启动流程</a></li>
+    <li><a href="#global">Global</a>
+      <ol>
+        <li><a href="#settimeoutfunctimeoutarg">setTimeout(func,timeout,arg)</a></li>
+        <li><a href="#setintervalfunctimeoutarg">setInterval(func,timeout,arg)</a></li>
+        <li><a href="#printstr">print(str)</a></li>
+      </ol>
+    </li>
+    <li><a href="#os">OS</a>
+      <ol>
+        <li><a href="#function">Function</a>
+          <ol>
+            <li><a href="#sleepmsms">sleepMs(ms)</a></li>
+            <li><a href="#gettickcountms">getTickCountMs()</a></li>
+            <li><a href="#getfreemem">getFreeMem()</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#file">File</a>
+      <ol>
+        <li><a href="#function-1">Function</a>
+          <ol>
+            <li><a href="#openfilenamemode">open(filename,mode)</a></li>
+            <li><a href="#removefilename">remove(filename)</a></li>
+            <li><a href="#existsfilename">exists(filename)</a></li>
+          </ol>
+        </li>
+        <li><a href="#const">CONST</a></li>
+        <li><a href="#file-object">File Object</a>
+          <ol>
+            <li><a href="#close">close()</a></li>
+            <li><a href="#readsize">read(size)</a></li>
+            <li><a href="#readline">readLine()</a></li>
+            <li><a href="#readlines">readLines()</a></li>
+            <li><a href="#writestr">write(str)</a></li>
+            <li><a href="#seekoffsetbase">seek(offset,base)</a></li>
+            <li><a href="#tell">tell()</a></li>
+            <li><a href="#flush">flush()</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

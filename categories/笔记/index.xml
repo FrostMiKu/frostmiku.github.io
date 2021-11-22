@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>笔记 on StarWhisper</title>
+    <link>https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 笔记 on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使 macOS 的光标像 windows 一样移动</title>
+      <link>https://blog.frostmiku.com/archives/42/</link>
+      <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/42/</guid>
+      <description>如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。
+这是因为 mac OS 上的光标加速特性导致的，简单来说就是：
+如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。 如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。
+这个设计的初衷是为了让人们更容易地实现对光标的精密操作，使鼠标更易于上手。
+但非定长移动的光标，在降低了上手难度的同时，也降低了鼠标操作的上限，由于光标移动距离存在不确定性，难以完成一些专业操作，特别是在游戏领域（例如 FPS 中的甩狙操作）中鼠标的手感稀烂。
+如果你有 串流、游戏 需求或是 Windows 老用户，可以考虑关闭光标加速功能，来解决这个问题。
+不过 mac OS 没有为这项设置提供 UI 界面，需要使用命令行进行设定。
+defaults write .GlobalPreferences com.apple.mouse.scaling -1 上面这条指令可以完全关闭光标加速功能，你也可以将 -1 修改为其他值来自行调节光标加速效果。
+需要注意的是当你通过第三方驱动更改了鼠标的 DPI 数值以后，加速度的数值会自动重置。需要再次使用指令进行设置。</description>
+    </item>
+    
+    <item>
+      <title>玄学BUG（一）</title>
+      <link>https://blog.frostmiku.com/archives/38/</link>
+      <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/38/</guid>
+      <description>前言 计划开一个不定期更新的栏目来分享一下我一段时间内遇到的玄学 BUG
+在本栏目里我会写明导致 BUG 的原因与解决办法，或是提出猜想。如果你在哪条连猜想都没看到，那说明我直接放弃了（
+先开一期试试水&amp;hellip;
+中文域名重定向过多 前不久朋友找我做个官网，用的 wordpress
+域名是中文域名，网址大概长这个样子： www.中文域名.com
+用这么怪的域名是因为他的拼音域名被抢注了
+wordpress 后台绑定域名后一切正常（坑就坑在这里，导致我一开始完全没去想是域名的问题），然而当我把任意page设置为首页后，网站进不去，报重定向过多。
+猜测是因为中文域名本质上是被 Punycode 编码的 www.xn-xxxxxxxxxx(一堆乱码).com
+wordpress 魔幻的将其与后台绑定的未经转码的 www.中文域名.com 进行了 == 运算，发现不一致，就重定向，然后&amp;hellip;就循环了,囧rz&amp;hellip;
+我最后给中文域名301到英文域名上凑合着用了（
+主题在 Chrome 和 Safari 上表现不一致 前几天换上的 HUGO stack 主题，结果在 Safari 上显示有 BUG
+如果你现在使用的是低于 14.1 版本的 Safari 浏览本 Blog 应该明白我指是的什么
+这是因为 Safari 在 14.1 之后的版本上才支持CSS属性 column-gap 在 flex 布局中使用
+详细讨论见 此 Issue
+HUGO 不显示刚写好的文章 这是因为 HUGO 使用的是 UTC 时间，以本地时间写好的文章对于 HUGO 来说是来自未来的 （
+解决办法两个：
+1.在 config 里加上</description>
+    </item>
+    
+    <item>
+      <title>给Linux的根目录扩容</title>
+      <link>https://blog.frostmiku.com/archives/32/</link>
+      <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/32/</guid>
+      <description>今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; 于是有了如下对话
+ 对话 
+于是开始扩容&amp;hellip;
+这篇文章写的很详细了：传送门
+不过俺是ext4所以最后一步要改一下
+把 xfs_growfs /dev/sda3 改成 resize2fs /dev/sda3 就行了
+虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Docker 笔记</title>
+      <link>https://blog.frostmiku.com/archives/29/</link>
+      <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/29/</guid>
+      <description>仅记录，待日后完善
+ Docker内部没法解析域名 启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了
+开机自启 启动参数加上 &amp;ndash;restart=always
+进入容器内部 docker exec -it name /bin/bash</description>
+    </item>
+    
+    <item>
+      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+      <link>https://blog.frostmiku.com/archives/28/</link>
+      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/28/</guid>
+      <description>主板是 msi z370 a pro，草草记录，待日后完善
+ 开机崩溃重启 启动参数加 -v 看看情况。
+如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
+开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
+睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
+但睡眠还是必要的。
+睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
+PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
+有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
+博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
+    </item>
+    
+    <item>
+      <title>WebSocket协议为什么要求掩码处理</title>
+      <link>https://blog.frostmiku.com/archives/27/</link>
+      <pubDate>Wed, 01 Jul 2020 20:52:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/27/</guid>
+      <description>今天实现 WebSocket Client 的时候发现协议要求 Client mask payload
+出于偷懒的目的，我打算把 Masking-key 直接写死，但仔细一想既然 Masking-key 需要放进 Frame 里，说明它应该是动态的，但为什么要这样设计呢？
+RFC 6455 5.3 节有这么一句话：
+ The unpredictability of the masking key is essential to prevent authors of malicious applications from selecting the bytes that appear on the wire.
+ 果然是为了安全
+RFC 6455 还好心的在 10.3. Attacks On Infrastructure (Masking) 详细解释了攻击的实现 : )</description>
+    </item>
+    
+    <item>
+      <title>编译原理学习笔记：文法与语言</title>
+      <link>https://blog.frostmiku.com/archives/20/</link>
+      <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/20/</guid>
+      <description>前言 本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;
+基本概念  字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$ 符号： $∑$中的元素称为符号。 符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。 长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$ 连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。 对于任意字符串$β$，有$βε＝εβ＝β$ 乘积：设A和B是符号串集，则用AB表示它们的乘积：  $$ AB＝{xy|x∈A,y∈B } $$
+显然${ε}A=A{ε}=A$
+ 空集：不含任何元素的集合φ，对任何字符串集A有：  $$ φA＝Aφ＝A $$
+ 方幂：设A是字符串集，则A的方幂定义为：  $$ A^0 ={ε}; A^1 ＝A; A^n ＝A^{n-1} A $$
+特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$
+ 闭包/正闭包/星闭包：设A是符号集， 用$A^+$表示A的正闭包:  $$ A^+=A^1∪A^2∪\dots∪A^n∪\dots $$
+用$A^*$表示A的星闭包:
+$$ A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+ $$
+两者统称为A的闭包。
+举个例子1： 设$A = {a,b}$ 则：
+$$ \begin{aligned} &amp;amp;A^0 ＝ {ε}\cr &amp;amp;A^1 = {a,b}\cr &amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr &amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr &amp;amp;\dots\cr \end{aligned} $$</description>
+    </item>
+    
+    <item>
+      <title>Windows 10 1903 and Later 搜索中心居中脚本</title>
+      <link>https://blog.frostmiku.com/archives/11/</link>
+      <pubDate>Mon, 11 Nov 2019 23:15:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/11/</guid>
+      <description>网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
+首先更改策略允许执行powershell脚本
+set-ExecutionPolicy RemoteSigned然后执行如下脚本：
+$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.</description>
+    </item>
+    
+    <item>
+      <title>理解 JavaScript 的 Proto 和 Prototype</title>
+      <link>https://blog.frostmiku.com/archives/5/</link>
+      <pubDate>Wed, 06 Nov 2019 15:36:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/5/</guid>
+      <description>__proto__ 是 object 的一个属性，prototype 是 function 的一个属性。
+__proto__ 指向它的构造函数的 prototype, prototype指向一个constructor为该 function 的 object.
+所以 __proto__ 也有自己的 __proto__ ，也就是原型链。
+原型链 当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。
+实例化对象过程 进行 new Foo() 操作会进行以下过程：
+ 首先会初始化一个空 {} 然后将 {} 的 __proto__ 指向 Foo 的 prototype 接着执行 Base.call({}) 将 this 作用域交予 {}  </description>
+    </item>
+    
+    <item>
+      <title>你好！HUGO</title>
+      <link>https://blog.frostmiku.com/archives/3/</link>
+      <pubDate>Tue, 05 Nov 2019 18:39:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/3/</guid>
+      <description>前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip;
+Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。
+无需安装任何环境，开袋即食。
+附上一个发布脚本：
+hugo cd ./public git add . git commit -m &amp;#34;updated&amp;#34; git push pause 数学符号测试： $$ \frac{\theta}{\lambda} $$
+插入一个不明觉厉的实时气象地球：</description>
+    </item>
+    
+    <item>
+      <title>COSPLAY 与 文本分类</title>
+      <link>https://blog.frostmiku.com/archives/41/</link>
+      <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/41/</guid>
+      <description>“幸福的家庭都是相似的，不幸的家庭各有各的不幸” &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》
+ 一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。
+一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。
+而如果经常出现 “李白、杜甫、王维、江泽林则徐” 那它应该是一篇诗歌方面的文章。
+所以，我们可以使用一个 数组 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。
+那么，怎么计算呢.jpg
+看我cosplay
+首先，我们知道：
+$$ \cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| } $$
+我们将这个储存词频的 数组 看成一个 n 维向量 ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。
+当两向量垂直时
+$$ \cos A=0 $$
+两文本毫不相干。
+当两向量重合时
+$$ \cos A=1 $$
+两文本完全相同。
+基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;coser！ 余弦相似性分类器。</description>
+    </item>
+    
+    <item>
+      <title>一个ACM蒟蒻的掉坑手册</title>
+      <link>https://blog.frostmiku.com/archives/40/</link>
+      <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/40/</guid>
+      <description>如何控制每两个数之间有空格，而最后一个数之后没有空格？解决方法之一是：第一个数之前不加空格，而其后每个数之前加空格。而通过一个标识变量可以判断出是否是第一个数。 初做多实例测试，要注意变量赋初值的位置。 流可以加速，方法是关闭和stdio的同步，即调用  ios::sync_with_stdio(false);  未指定输入量的输入框架  while(scanf(&amp;#34;%d&amp;#34;,&amp;amp;a)!=EOF){} //或 while(cin&amp;gt;&amp;gt;a){}  能写成函数尽量写成函数，解耦、复用、易于定位错误，不要把 main() 写的又臭又长，出错了改都不好改。 memset函数可以初始化数组。这条命令这在你已经修改了数组之后又想将它重置为全0特别有用（然鹅它是操作字节，也就初始为0/-1比较有用）。  #include &amp;lt;cstring&amp;gt;int arr[100]={0}; memset(arr,0, sizeof(arr));  CPP int&amp;amp;string互相转换  #include &amp;lt;iostream&amp;gt;#include &amp;lt;sstream&amp;gt; using namespace std; int main(){ int x=10000,y; stringstream ss; string s; ss&amp;lt;&amp;lt;x; s=ss.str(); cout&amp;lt;&amp;lt;s.length()&amp;lt;&amp;lt;endl; ss&amp;gt;&amp;gt;y; cout&amp;lt;&amp;lt;y/2&amp;lt;&amp;lt;endl; }  使用C语言sscanf()函数将string/char转换成int（或其他类型）  #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main() { string a=&amp;#34;123456789&amp;#34;; int x; sscanf(a.c_str(),&amp;#34;%d&amp;#34;,&amp;amp;x); cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl; return 0; }  重定向：  freopen(&amp;#34;test.in&amp;#34;, &amp;#34;r&amp;#34;, stdin); freopen(&amp;#34;test.</description>
+    </item>
+    
+    <item>
+      <title>LibVLC研究笔记</title>
+      <link>https://blog.frostmiku.com/archives/370/</link>
+      <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/370/</guid>
+      <description>什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;</description>
+    </item>
+    
+    <item>
+      <title>Minecraft的地形生成算法相关</title>
+      <link>https://blog.frostmiku.com/archives/2/</link>
+      <pubDate>Fri, 25 Dec 2015 09:12:09 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/2/</guid>
+      <description>Terrain generation, Part 1
+I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!
+One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.</description>
+    </item>
+    
+  </channel>
+</rss>

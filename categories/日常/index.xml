@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日常 on StarWhisper</title>
+    <link>https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/</link>
+    <description>Recent content in 日常 on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 Jan 2021 21:37:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FrostCraft 游玩指南</title>
+      <link>https://blog.frostmiku.com/archives/30/</link>
+      <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/30/</guid>
+      <description>Q&amp;amp;A Q：游戏启动崩溃 A：看下是不是用的32位Java，给的内存太大了
+Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip; A：那你调大啊 囧rz&amp;hellip; 推荐Java 8 x64 给 2048MB
+Q：服务器进不去，提示无效会话让我重启游戏或启动器&amp;hellip; A：看最上面，使用启动器外置登录刚注册的账号
+Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&amp;hellip; A：Java版本太老了，更新一下吧！（推荐下载OpenJ9
+ 常用指令 /spawn ----回到空境/sethome ----设置家/home ----回家/back ----返回上次传送的地点/recharge ----获取飞行能量/near ----搜索附近玩家/res ----设置领地/res set ----站在领地里输入，设置权限/suicide ----自杀/pay &amp;lt;钱&amp;gt; &amp;lt;玩家&amp;gt; ----转账/ping ----获取延迟/prewards ----领取奖励/time ----查看当前世界时间/stats ----查看自己的统计数据/art ----画画功能/shop find &amp;lt;物品名称&amp;gt; - 寻找附近有没有交易该物品的商店/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员/shop staff clear - 清空此商店的所有商店助手/shop staff list - 查看此商店的商店助手成员列表 设定 离线90天自动清除数据！ 请不要在除了主世界以外的地方建家（服务器不保证其数据安全） 服务器为开放世界，但这并不意味着你可以去骚扰别人 注意财产安全，有钱买地，没钱上牌子锁 服务器死亡掉落</description>
+    </item>
+    
+    <item>
+      <title>买了些代工厂零食</title>
+      <link>https://blog.frostmiku.com/archives/26/</link>
+      <pubDate>Tue, 16 Jun 2020 11:25:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/26/</guid>
+      <description>趁着618屯一波零食吃，众所周知松鼠/铺子/草家的零食基本都是代工厂贴牌生产的，品牌溢价高，直接去工厂自营店买能省不少钱。
+我觉得三家零食没啥区别，甚至代工厂还有相同的，就不做区分直接放链接了
+以下零食还在骑马来的路上，我还没吃过，到了以后再做测评！
+猪肉脯
+就是很普通的猪肉脯&amp;hellip;
+牛板筋
+我爸觉得味道不错，可我觉得不怎么好吃
+蔓越莓曲奇
+梅干多少有点硬！
+麻薯
+好吃，买少了 :(
+肉松饼/手撕面包
+肉松饼不行，手撕面包好吃
+麻辣牛肉
+好吃！有点贵啊&amp;hellip;
+鱼豆腐
+口感不错，最先吃完的就是这个！
+酸辣粉
+经典酸辣粉吃起来不错，普通的那个酸辣粉料有点少&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>搭建了一个个人知识库！</title>
+      <link>https://blog.frostmiku.com/archives/25/</link>
+      <pubDate>Fri, 17 Apr 2020 18:13:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/25/</guid>
+      <description>好久不见，最近发现了一个叫做 tiddly wiki 的项目。
+用了一下太香了！以后笔记主要就更新在自己知识库了，blog就随便写点别的。
+言语难以形容，欢迎大家前往体验：传送门
+ 你可以在页面上体验到包括编辑在内的全部功能，并可通过保存操作来得到修改后的副本
+ </description>
+    </item>
+    
+    <item>
+      <title>关于一次对于微波炉蒸米饭的尝试</title>
+      <link>https://blog.frostmiku.com/archives/22/</link>
+      <pubDate>Tue, 03 Mar 2020 14:20:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/22/</guid>
+      <description>今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;
+由于窝过于清贫（指买不起电饭锅）遂尝试使用微波炉蒸大米。网上简单搜索后没有得到理想的结果，便决定将过程记载于此。
+ 根据以往经验，微波炉加热食物会导致食物水分流失变干，所以尝试在碗上扣个盘子来保持水分。
+按照蒸米饭的经验加水。微波高火8分钟后闻到米香，拿出来吃了一口发现是生的&amp;hellip;
+发现是没水了，于是补水后调中高火4分钟。发现水还是少了，但最上面一层熟了，证明微波炉蒸饭可行。
+补水后中火3分钟，米饭熟了但很硬，水也没用完，猜想是因为加热速度过快导致大米无法及时吸水，应尝试减小火力增大时长。
+略微补水后，调中小火5分钟。然后米饭就&amp;hellip;熟了！
+ 总结以上过程，设计实验 大米与水 1:3 中低火30分钟 或 中火20分钟，有待后续验证
+ps:炒蛋忘放盐了 QAQ</description>
+    </item>
+    
+    <item>
+      <title>更早之前的文章</title>
+      <link>https://blog.frostmiku.com/archives/1/</link>
+      <pubDate>Sat, 08 Mar 2014 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/1/</guid>
+      <description>404 Page Not Found 这里什么都没有。 旧时代的文章随着一次次的事故烟消云散了&amp;hellip;
+虽然我有备份
+备份中最早的文章为
+【Minecraft】MOD开发教程 1.配置工作环境！
+不，比这个更早，但是一篇灌水的东西（
+2014.03.08 CST</description>
+    </item>
+    
+  </channel>
+</rss>

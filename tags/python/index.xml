@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/python/</link>
+    <description>Recent content in Python on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 29 Jun 2021 21:52:28 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>仿手写文本生成</title>
+      <link>https://blog.frostmiku.com/archives/35/</link>
+      <pubDate>Tue, 29 Jun 2021 21:52:28 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/35/</guid>
+      <description>事情的起因是这样的&amp;hellip;
+当年正是疫情最为严峻的时候，学校决定网上开学（云上课）
+那么开学了，就得写作业 淦
+其中有一门毛中特，老师比较有想法，作业不收电子版，要求手写拍照提交
+那我作为一个键盘侠，面对这么抗拒时代洪流的做法当然是不同意的呀！
+于是我上网搜索了一番，搜出来了这么个玩意
+淦，今天写文章时才发现他也是为了对付毛概
+有一说一，如果不用交给老师的话效果还真不错
+但拿来交作业的话，老师找两个一样的字一对比，直接喜提零分回家了（
+于是我在想，能不能给每个字加入随机扰动
+结果还真让我找到了一个叫 handright 的 Python 包
+接下来就是无聊的调参过程了，最终效果如下：
+ 效果 
+因为生成的是位图，所以一放大就会发现锯齿
+按理说应该搞个抗锯齿的，然而马上就要收作业了
+我选择用 HiDPI 的方法应付一下得了（
+ Before   After 
+先生成一张高分辨率的图，然后再手动缩小
+然后使用 QQ 截图！如果效果还不好的话，就压缩一下，把图片弄糊
+或者换个不会放大图片的老师
+也不知道这玩意拿来打印效果怎么样（
+项目已在 GitHub 上开源：传送门
+ps: 这项目收到18元赞助，拿去 CSGO 开了个箱子，变成了破铜烂铁（</description>
+    </item>
+    
+    <item>
+      <title>一个简单的密码生成算法</title>
+      <link>https://blog.frostmiku.com/archives/39/</link>
+      <pubDate>Mon, 08 Jun 2015 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/39/</guid>
+      <description>这是个啥？  答： 是小时候写的垃圾，现已被这篇文章取代 2021.9.22
+ 现如今，每个人都有不少网站的帐号，为每一个帐号设置不同的密码会增加大脑的记忆负担，而使用相同的密码则会引发安全问题。
+Simple password generator，是一个简单的密码生成器，但这绝不表示生成的密码是简单密码（弱口令）。通过本生成器可使用户仅需记住一个密码（即所有密码的公匙），来通过算法动态生成实际密码，每次密码皆为动态生成，由公匙确保生成密码的一致性，密码数据不做任何保持，具有较高的安全性。
+如何使用 直接上图：
+启动后输入储存在大脑 中的密码，然后根据不同网站输入不同的key，生成器会实时计算出唯一的值来作为实际密码，密码不做任何保存处理。
+输入 exit 退出程序。
+原理 其实就是随机数种子的应用= =|||
+还有个缺点，前三（四）位固定是大小写字母、数字（符号）搭配&amp;hellip;
+源码 import random lower=&amp;#34;abcdefghijklmnopqrstuvwxyz&amp;#34; upper=&amp;#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#34; symbols=&amp;#34;!%@#^,./?*;:_&amp;#34; number=&amp;#34;0123456789&amp;#34; def getstr(legth,str1): tmp=&amp;#34;&amp;#34; for i in range(legth): tmp = tmp + random.choice(str1) return tmp def getpwd(pwd,key,legth,havesymbol): passworld=&amp;#34;&amp;#34; random.seed(pwd+key) if(havesymbol): passworld = getstr(1,upper)+getstr(1,lower)+getstr(1,number)+getstr(1,symbols) for i in range(legth-4): switch=random.randint(0,3) if(switch==0): passworld += getstr(1,upper) elif(switch==1): passworld += getstr(1,lower) elif(switch==2): passworld += getstr(1,number) else: passworld += getstr(1,symbols) else: passworld = getstr(1,upper)+getstr(1,lower)+getstr(1,number) for i in range(legth-3): switch=random.</description>
+    </item>
+    
+  </channel>
+</rss>

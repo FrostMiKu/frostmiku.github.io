@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on StarWhisper</title>
+    <link>https://blog.frostmiku.com/post/</link>
+    <description>Recent content in Posts on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使 macOS 的光标像 windows 一样移动</title>
+      <link>https://blog.frostmiku.com/archives/42/</link>
+      <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/42/</guid>
+      <description>如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。
+这是因为 mac OS 上的光标加速特性导致的，简单来说就是：
+如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。 如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。
+这个设计的初衷是为了让人们更容易地实现对光标的精密操作，使鼠标更易于上手。
+但非定长移动的光标，在降低了上手难度的同时，也降低了鼠标操作的上限，由于光标移动距离存在不确定性，难以完成一些专业操作，特别是在游戏领域（例如 FPS 中的甩狙操作）中鼠标的手感稀烂。
+如果你有 串流、游戏 需求或是 Windows 老用户，可以考虑关闭光标加速功能，来解决这个问题。
+不过 mac OS 没有为这项设置提供 UI 界面，需要使用命令行进行设定。
+defaults write .GlobalPreferences com.apple.mouse.scaling -1 上面这条指令可以完全关闭光标加速功能，你也可以将 -1 修改为其他值来自行调节光标加速效果。
+需要注意的是当你通过第三方驱动更改了鼠标的 DPI 数值以后，加速度的数值会自动重置。需要再次使用指令进行设置。</description>
+    </item>
+    
+    <item>
+      <title>玄学BUG（一）</title>
+      <link>https://blog.frostmiku.com/archives/38/</link>
+      <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/38/</guid>
+      <description>前言 计划开一个不定期更新的栏目来分享一下我一段时间内遇到的玄学 BUG
+在本栏目里我会写明导致 BUG 的原因与解决办法，或是提出猜想。如果你在哪条连猜想都没看到，那说明我直接放弃了（
+先开一期试试水&amp;hellip;
+中文域名重定向过多 前不久朋友找我做个官网，用的 wordpress
+域名是中文域名，网址大概长这个样子： www.中文域名.com
+用这么怪的域名是因为他的拼音域名被抢注了
+wordpress 后台绑定域名后一切正常（坑就坑在这里，导致我一开始完全没去想是域名的问题），然而当我把任意page设置为首页后，网站进不去，报重定向过多。
+猜测是因为中文域名本质上是被 Punycode 编码的 www.xn-xxxxxxxxxx(一堆乱码).com
+wordpress 魔幻的将其与后台绑定的未经转码的 www.中文域名.com 进行了 == 运算，发现不一致，就重定向，然后&amp;hellip;就循环了,囧rz&amp;hellip;
+我最后给中文域名301到英文域名上凑合着用了（
+主题在 Chrome 和 Safari 上表现不一致 前几天换上的 HUGO stack 主题，结果在 Safari 上显示有 BUG
+如果你现在使用的是低于 14.1 版本的 Safari 浏览本 Blog 应该明白我指是的什么
+这是因为 Safari 在 14.1 之后的版本上才支持CSS属性 column-gap 在 flex 布局中使用
+详细讨论见 此 Issue
+HUGO 不显示刚写好的文章 这是因为 HUGO 使用的是 UTC 时间，以本地时间写好的文章对于 HUGO 来说是来自未来的 （
+解决办法两个：
+1.在 config 里加上</description>
+    </item>
+    
+    <item>
+      <title>基于肢体运动的睡眠状态检测原理</title>
+      <link>https://blog.frostmiku.com/archives/36/</link>
+      <pubDate>Wed, 30 Jun 2021 15:22:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/36/</guid>
+      <description>背景  睡眠，作为人类每天都要进行的一项活动，它占据了人类整个生命周期的三分之一左右，其质量的高低对人类身心健康有着巨大的影响。
+ 良好的睡眠质量有助于身体成长、提高大脑记忆能力、增强自身免疫力，同时有利于集中注意力，保证各方面均衡发展，是健康的基本保证。然而，现如今的年轻人或是因为繁重的学习生活压力，或是因为精彩缤纷的互联网世界，熬夜成瘾，久久无法入眠。
+ 来自洛阳市精神卫生中心的调查显示大部分学生能够认识到睡眠质量与学习、工作的直接关联，也非常重视自身的睡眠质量，但是却没有为改善自己的睡眠质量做出过努力1。
+ 据报告，在美国，有15%至60%的严重交通事故是由睡眠问题所造成的2，因睡眠问题导致的各类财务损失超过几百亿美金3。
+ 睡眠质量的高低与人类健康息息相关，较差的睡眠质量会导致情绪低落、注意力涣散、反应迟钝、免疫力下降等症状，严重情况下，熬夜者很可能会有猝死的风险。
+ 近年来，随着物质生活水平的不断提高，人们的健康意识逐渐增强，对人生三分之一都在进行的大事——“睡眠”自然也是十分关注。
+ 随着对睡眠的医学研究全面深入，和传感器技术的飞速发展，为人们优化自己的睡眠质量提供了新的可能。
+ 睡眠质量的高低与人类健康息息相关，较差的睡眠质量通常会导致许多疾病的发病率升高，严重情况下，熬夜者很可能会有猝死的风险。通常我们可以依据睡眠者起床时的精神面貌来评判睡眠质量的高低，而睡眠者被唤醒的时机是影响起床时精神面貌的关键因素之一。
+ 图 1 睡眠样本 
+ 如图1所示，医学界通常认为睡眠过程是一个由快速动眼期(REM)和非快速动眼期(NREM)两大时序状态组成的循环过程，其中，非快速动眼期阶段又可以细化为以下四个睡眠子阶段：第一、二阶段统称为浅睡眠过程(Light Sleep)，第三、四阶段统称为深睡眠过程(Deep Sleep)4。当睡眠者在深睡眠过程中被外界因素唤醒时，将会产生梦中惊醒的效果，睡眠者的精神面貌也必不会有多好。然而，当睡眠者在浅度睡眠时受外界因素被唤醒时，则会表现出自然睡醒一样的效果5。
+睡眠周期及睡眠状态检测原理 睡眠周期  人类的睡眠存在一个生物节律，即大约在90到100分钟的时间内，经历五个不同阶段的周期，国际睡眠医学将睡眠阶段分为五期：入睡期、浅睡期、熟睡期、深睡期和快速动眼期。
+ 入睡期是睡眠的开始，昏昏欲睡的感觉就属于这一阶段。浅睡期开始正式睡眠。熟睡期和沉睡期是沉睡阶段，在该阶段人不容易被叫醒。当睡眠者由浅睡期或快速动眼期逐步进入沉睡期时，睡眠者的呼吸频率和心跳速度均会减慢且变得有节奏，其血压也会降低。与此同时，脑电波开始变慢并且会呈现出大量高幅值的波段6。
+ 以上四个阶段睡眠共要经过约60到90分钟。而且均不会出现眼球快速跳动现象，故统称为非快速动眼睡眠。
+ 最后一个时期被称为快速动眼期。顾名思义，此时的睡眠者会出现动眼现象，此时的睡眠者通常会有翻身的动作，并且容易惊醒。科学研究表明，快速动眼期是大脑内部对记忆的学习和技巧的快速整合阶段。这一阶段的睡眠质量直接决定了睡眠者的记忆和理解效率，是非常重要的睡眠阶段7。所以保证足够的睡眠时间是非常重要的。
+ 图 2 睡眠过程状态迁移图 
+ 睡眠周期是由睡眠刚启动的昏昏欲睡逐渐变沉，经由非快速动眼期（慢波睡眠期）和快速动眼期（异相睡眠期），这几个睡眠阶段之间的往复循环。又称为短昼夜睡眠周期，睡梦周期或快速动眼—非快速动眼(REM-NREM)周期，以示区别于睡眠和清醒间的昼夜交替。如图1所示人类的睡眠周期约70至110分钟（90±20分钟）8。医学上又可以将睡眠细粒度地分为如图2所示的五个阶段：
+ 第一阶段(S1)也是非快速动眼期第一阶段，是睡眠的最初状态，也是睡眠者由清醒逐渐进入到浅睡眠状态的过程。睡眠者在该阶段通常会出现突然地肌肉颤动，容易受到外部环境的干扰。 第二阶段(S2)是相较于第一阶段(S1)更深程度的睡眠阶段。但其仍然属于浅睡眠阶段。在该阶段中，睡眠者身体温度开始下降，并且心率开始减慢。这个阶段通常持续约20分钟左右，是睡眠者从浅睡眠进入深睡眠的过程。 第三阶段(S3)是睡眠者进入深睡眠阶段中的第一阶段。睡眠者的血压开始降低，呼吸频率进一步减慢，与此同时，身体体温再次下降，变得更低。睡眠者在该阶段很少出现身体运动。如果此时将睡眠者唤醒，那么他/她的精神面貌将会很差，并且容易导致注意力不集中等症状。 第四阶段(S4)是深睡眠过程中的第二个阶段，也是整个过程中睡眠程度最深的阶段。是深睡眠过程中的第二个阶段，也是整个过程中睡眠程度最深的阶段。该阶段持续大约30分钟。 第五阶段(S5)是快速动眼期(REM), 也是整个睡眠过程中睡眠者脑部活动最为活跃的阶段。在此阶段中，睡眠者的脑电波通常很快且变化迅速，形状与清醒状态下相类似9。  通过肢体运动检测睡眠状态  在不同的睡眠阶段，睡眠者通常会表现出不同的肢体运动行为。从医学角度看, 在浅睡眠阶段，睡眠者的心跳频率通常较快，从而容易导致较大的身体动作，比如翻身等现象。相反，一些微小的身体动作经常会发生在深睡眠阶段。此外，在快速动眼期，睡眠者脑电波处于较为活跃的状态，在该阶段睡眠者多梦，由此会引发一些无意识的身体动作，手臂拉伸、腿部伸展等肢体活动经常发生于该阶段。因此给通过肢体运动行为进行睡眠者睡眠状态推测提供了依据。
+ 在图2中的S1阶段中睡眠者的眼部运动和身体肌肉运动开始减少，逐步进入休息状态。睡眠者在该阶段通常会出现突然地肌肉颤动，容易受到外部环境的干扰，之后的几个阶段中肢体动作依次递减。直至S5阶段睡眠者的呼吸速度开始加快，变得不规律。与此同时，睡眠者在此阶段通常多梦，其眼部运动开始加剧，嘴部及肌肉活动变得频繁起来。
+ 在一次正常的睡眠过程中，睡眠者通常会由浅睡眠阶段变换至深睡眠阶段，接着并不直接进入快速动眼期，而是从深度睡眠逆向回到浅度睡眠，之后才进入快速动眼期。快速动眼期结束后，接着再进入S1阶段，如此周而复始。睡眠过程中的状态变换在时间上呈现出周期性规律，不同睡眠状态之间的切换也具有一定的依赖性与时序性。一次完整的睡眠状态周期大约会持续90分钟，并且一晚上大约循环4到6次。
+实现  这部分我就不放出来了，基本就是拿到加速度传感器三轴的值然后归一化，然后进行识别，马尔科夫链或是条件随机场都是很好的方法，当然我更推荐后者，因为前者认为所有显式状态是彼此独立的，在建模中并不考虑他们之间的依赖关系。考虑到睡眠过程中各个睡眠相关事件的相互依赖性，相比于隐式马尔科夫链，条件随机场能够描述更多特征，从而达到更好地预测效果。
+ 数据处理 
+而我为了混个毕业就直接有限状态机解决问题了。差不多得了
+ 总体架构 
+Reference   郑伟,赵静霞.</description>
+    </item>
+    
+    <item>
+      <title>仿手写文本生成</title>
+      <link>https://blog.frostmiku.com/archives/35/</link>
+      <pubDate>Tue, 29 Jun 2021 21:52:28 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/35/</guid>
+      <description>事情的起因是这样的&amp;hellip;
+当年正是疫情最为严峻的时候，学校决定网上开学（云上课）
+那么开学了，就得写作业 淦
+其中有一门毛中特，老师比较有想法，作业不收电子版，要求手写拍照提交
+那我作为一个键盘侠，面对这么抗拒时代洪流的做法当然是不同意的呀！
+于是我上网搜索了一番，搜出来了这么个玩意
+淦，今天写文章时才发现他也是为了对付毛概
+有一说一，如果不用交给老师的话效果还真不错
+但拿来交作业的话，老师找两个一样的字一对比，直接喜提零分回家了（
+于是我在想，能不能给每个字加入随机扰动
+结果还真让我找到了一个叫 handright 的 Python 包
+接下来就是无聊的调参过程了，最终效果如下：
+ 效果 
+因为生成的是位图，所以一放大就会发现锯齿
+按理说应该搞个抗锯齿的，然而马上就要收作业了
+我选择用 HiDPI 的方法应付一下得了（
+ Before   After 
+先生成一张高分辨率的图，然后再手动缩小
+然后使用 QQ 截图！如果效果还不好的话，就压缩一下，把图片弄糊
+或者换个不会放大图片的老师
+也不知道这玩意拿来打印效果怎么样（
+项目已在 GitHub 上开源：传送门
+ps: 这项目收到18元赞助，拿去 CSGO 开了个箱子，变成了破铜烂铁（</description>
+    </item>
+    
+    <item>
+      <title>大革命，一种扑克卡牌游戏</title>
+      <link>https://blog.frostmiku.com/archives/34/</link>
+      <pubDate>Fri, 09 Apr 2021 17:55:35 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/34/</guid>
+      <description>前言 最近接触了一种名叫“大富豪”(译名之一)的传统日式扑克牌游戏，国内好像知者甚少，故在此分享。
+简介 “大富豪”是一种类似我国斗地主规则的扑克游戏，游戏擅长以大逆转来炒热氛围。
+由于“大富豪”的名称、玩法规则各个地区都有差异（类似我国麻将）
+这里我主要介绍一种由我进行本地化改造的版本“大革命”。
+其实规则大体上和斗地主相似，如果会玩斗地主只需要看下相异之处即可。
+哦对了，游戏需要四个人来进行（当然你也可以自己修改
+基础规则 场次 一局游戏由多场组成，并由最后一场排名决定游戏最终排名，所以在最后一场之前即使是倒数第一也没关系！
+推荐一局游戏场数：五场 或 十场
+单场胜利：第一个出完手牌的人为第一名，其他人依次决出第二第三和第四名。
+在每场开局时，随机抽出一张卡牌从游戏中除外，用来平衡卡牌数量并防止算牌。再下一场开始时，将上一场除外的这张牌加回牌堆并重新抽出一张牌除外。
+上下家 上家：在你之前出牌的那个人
+下家：你出牌后出牌的那个人
+卡牌强度 由弱到强依次为 3&amp;hellip;K&amp;hellip;2
+即3最小，2最大，鬼牌稍后再说。
+出牌 一场游戏由多轮出牌阶段构成。每轮的首位出牌者称为该轮的主导者
+主导者可以打出如下所示的任意一种类型的任意牌，其他三家继续依照你的出牌类型接牌。
+第一场开始时由参赛玩家自行决定由谁当主导者，即由谁开始出牌。
+之后几场开始时由第四名率先出牌。
+可选出牌类型 单牌：一张牌
+对子：两张一样的牌
+顺子：三张一样的牌
+链子：连续三张（或以上）同样花色的牌（例：红桃A 红桃2 红桃3 红桃4）
+大革命：四张相同的牌
+接牌 你必须打出比你上家更大的同类型牌，即，你的上家出链子 3 4 5 时，你必须也出链子，且强度至少为 4 5 6，当然你也可以选择不出，来跳过你的回合，由下家出牌。
+当你打出牌后，其他三家都选择不出时，本轮接牌结束。你成为新一轮的主导者。
+大革命 当你打出大革命（即四张相同牌）时，如果没有人接上，将会进入革命阶段，此时卡牌强队将会发生反转！
+即由原来的 3最小2最大，变为2最小，3最大。
+如果有人接上，卡牌强度将不会发生变化，视为革命发动失败，当然下家仍然可以继续接牌来发动大革命。（下下家还能接牌反制
+8切 当你打出的牌型（单牌/对子/顺子/链子/大革命）中含有8时，其他三家不能接牌，必须选择不出。你成为主导者。
+鬼牌 在本游戏中，鬼牌只有一张，所以游戏开始前请先将一张鬼牌除外。一副扑克牌54张，除外一张鬼牌 并且 每场开始前除外一张牌，正好剩下52张，每人13张牌，合理！
+鬼牌，视为最大的牌，并不受大革命影响，即它在平时比 2 大，在革命时比 3 大。
+鬼牌可以冒充任意一张牌使用，即它可以配牌，你可以通过配牌发动大革命，但当鬼牌冒充8的时候，没有8切效果。
+鬼牌不能最后打出，否则视为犯规，直接变成第四名！如果犯规者不是本场游戏的第一名，则此时不会触发一落千丈。
+黑桃3 黑桃3可以反制鬼牌，当鬼牌单张打出时，可以打出黑桃3进行反制，此时打出黑桃三者成为主导者。
+一落千丈 上一场的第一如果本场没能成为第一，则当新的第一产生时他被迫成为第四名，手中的牌直接放入弃牌堆（扣着，不能公示给其他三家看）。剩下两人决出第二第三名。
+收税 第四向第一交出最大的两张牌，第三向第二交出最大的一张牌。</description>
+    </item>
+    
+    <item>
+      <title>浅谈邀请码的生成</title>
+      <link>https://blog.frostmiku.com/archives/33/</link>
+      <pubDate>Tue, 09 Feb 2021 01:53:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/33/</guid>
+      <description>今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单
+需求分析 首先是硬性需求：
+ 不可重复 单射  看到这两点需求，我第一反应就是 Hash，但是Hash需要处理冲突，并不是一个很好的解决方案。另外出于美学之类的考虑，我们还有一些别的需求，毕竟谁也不想面对面分享邀请码的时候拿出来一串 18ce3ca04a725cc6b57d5ec0ae0ccd66 这样的乱码吧
+非硬性需求：
+ 定长 不易被推测出规律 效率高 支持并发 可溯源  仔细思考了一下 Hash 的可行性后我决定放弃这种方案&amp;hellip;
+方案分析 群里的菊苣给出了洗牌算法的方案，这是一个预生成的方案 这里就预生成方案统一分析
+预生成 讲真，不考虑别的因素，预生成方案确实不错，洗牌算法也非常的棒
+这种方案的思想是根据随机生成算法，预先生成一批邀请码，然后将这些邀请码缓存，当用户请求时将其分配给用户，当邀请码分配完时，再生成一批，如此循环。
+弊端  每次重新生成时都要检查是否重复 而且多数情况下都为否 邀请码本身需要持久化存储 用户和邀请码的关系需要记录  对于唯一性我啪的一下就想到了 UUID 和 MD5，很快啊 MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 UUID
+UUID 引用一下Wikipedia的说法
+ 通用唯一识别码（英语：Universally Unique Identifier，缩写：UUID）是用于计算机体系中以识别信息数目的一个128位标识符，根据标准方法生成，不依赖中央机构的注册和分配，UUID具有唯一性，这与其他大多数编号方案不同。重复UUID码概率接近零，可以忽略不计。
+ 这下唯一性是真的强，但是分享一串128位标识符的画面确实也很美&amp;hellip;
+没啥好想法的我上网搜了一下，又得到了两种方案，一种类似于Base64，这种没啥好说的，接下来主要说一下另一种方案
+密码学方案 这种方案本质上是一个实现了由 用户ID空间 到 邀请码空间 的双射，通过用户ID确定了邀请码的唯一性，同时又可通过反函数来对邀请码溯源，既不需要保存邀请码，又不需要保存关系，针不戳
+我们先来写个简单函数实现双射
+func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const CodeLength = 6 const Base = 16 const Salt = 233 pid := id + Salt // 为了避免用户 ID的直接泄漏，我们可以先加点盐 	var b [CodeLength] uint b[0] = pid for i := 0; i &amp;lt; CodeLength-1; i++ { b[i + 1] = b[i] / Base b[i] = b[i]% Base } fmt.</description>
+    </item>
+    
+    <item>
+      <title>给Linux的根目录扩容</title>
+      <link>https://blog.frostmiku.com/archives/32/</link>
+      <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/32/</guid>
+      <description>今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; 于是有了如下对话
+ 对话 
+于是开始扩容&amp;hellip;
+这篇文章写的很详细了：传送门
+不过俺是ext4所以最后一步要改一下
+把 xfs_growfs /dev/sda3 改成 resize2fs /dev/sda3 就行了
+虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>FrostCraft 游玩指南</title>
+      <link>https://blog.frostmiku.com/archives/30/</link>
+      <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/30/</guid>
+      <description>Q&amp;amp;A Q：游戏启动崩溃 A：看下是不是用的32位Java，给的内存太大了
+Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip; A：那你调大啊 囧rz&amp;hellip; 推荐Java 8 x64 给 2048MB
+Q：服务器进不去，提示无效会话让我重启游戏或启动器&amp;hellip; A：看最上面，使用启动器外置登录刚注册的账号
+Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&amp;hellip; A：Java版本太老了，更新一下吧！（推荐下载OpenJ9
+ 常用指令 /spawn ----回到空境/sethome ----设置家/home ----回家/back ----返回上次传送的地点/recharge ----获取飞行能量/near ----搜索附近玩家/res ----设置领地/res set ----站在领地里输入，设置权限/suicide ----自杀/pay &amp;lt;钱&amp;gt; &amp;lt;玩家&amp;gt; ----转账/ping ----获取延迟/prewards ----领取奖励/time ----查看当前世界时间/stats ----查看自己的统计数据/art ----画画功能/shop find &amp;lt;物品名称&amp;gt; - 寻找附近有没有交易该物品的商店/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员/shop staff clear - 清空此商店的所有商店助手/shop staff list - 查看此商店的商店助手成员列表 设定 离线90天自动清除数据！ 请不要在除了主世界以外的地方建家（服务器不保证其数据安全） 服务器为开放世界，但这并不意味着你可以去骚扰别人 注意财产安全，有钱买地，没钱上牌子锁 服务器死亡掉落</description>
+    </item>
+    
+    <item>
+      <title>Docker 笔记</title>
+      <link>https://blog.frostmiku.com/archives/29/</link>
+      <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/29/</guid>
+      <description>仅记录，待日后完善
+ Docker内部没法解析域名 启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了
+开机自启 启动参数加上 &amp;ndash;restart=always
+进入容器内部 docker exec -it name /bin/bash</description>
+    </item>
+    
+    <item>
+      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+      <link>https://blog.frostmiku.com/archives/28/</link>
+      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/28/</guid>
+      <description>主板是 msi z370 a pro，草草记录，待日后完善
+ 开机崩溃重启 启动参数加 -v 看看情况。
+如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
+开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
+睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
+但睡眠还是必要的。
+睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
+PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
+有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
+博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
+    </item>
+    
+    <item>
+      <title>WebSocket协议为什么要求掩码处理</title>
+      <link>https://blog.frostmiku.com/archives/27/</link>
+      <pubDate>Wed, 01 Jul 2020 20:52:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/27/</guid>
+      <description>今天实现 WebSocket Client 的时候发现协议要求 Client mask payload
+出于偷懒的目的，我打算把 Masking-key 直接写死，但仔细一想既然 Masking-key 需要放进 Frame 里，说明它应该是动态的，但为什么要这样设计呢？
+RFC 6455 5.3 节有这么一句话：
+ The unpredictability of the masking key is essential to prevent authors of malicious applications from selecting the bytes that appear on the wire.
+ 果然是为了安全
+RFC 6455 还好心的在 10.3. Attacks On Infrastructure (Masking) 详细解释了攻击的实现 : )</description>
+    </item>
+    
+    <item>
+      <title>买了些代工厂零食</title>
+      <link>https://blog.frostmiku.com/archives/26/</link>
+      <pubDate>Tue, 16 Jun 2020 11:25:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/26/</guid>
+      <description>趁着618屯一波零食吃，众所周知松鼠/铺子/草家的零食基本都是代工厂贴牌生产的，品牌溢价高，直接去工厂自营店买能省不少钱。
+我觉得三家零食没啥区别，甚至代工厂还有相同的，就不做区分直接放链接了
+以下零食还在骑马来的路上，我还没吃过，到了以后再做测评！
+猪肉脯
+就是很普通的猪肉脯&amp;hellip;
+牛板筋
+我爸觉得味道不错，可我觉得不怎么好吃
+蔓越莓曲奇
+梅干多少有点硬！
+麻薯
+好吃，买少了 :(
+肉松饼/手撕面包
+肉松饼不行，手撕面包好吃
+麻辣牛肉
+好吃！有点贵啊&amp;hellip;
+鱼豆腐
+口感不错，最先吃完的就是这个！
+酸辣粉
+经典酸辣粉吃起来不错，普通的那个酸辣粉料有点少&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>搭建了一个个人知识库！</title>
+      <link>https://blog.frostmiku.com/archives/25/</link>
+      <pubDate>Fri, 17 Apr 2020 18:13:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/25/</guid>
+      <description>好久不见，最近发现了一个叫做 tiddly wiki 的项目。
+用了一下太香了！以后笔记主要就更新在自己知识库了，blog就随便写点别的。
+言语难以形容，欢迎大家前往体验：传送门
+ 你可以在页面上体验到包括编辑在内的全部功能，并可通过保存操作来得到修改后的副本
+ </description>
+    </item>
+    
+    <item>
+      <title>关于一次对于微波炉蒸米饭的尝试</title>
+      <link>https://blog.frostmiku.com/archives/22/</link>
+      <pubDate>Tue, 03 Mar 2020 14:20:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/22/</guid>
+      <description>今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;
+由于窝过于清贫（指买不起电饭锅）遂尝试使用微波炉蒸大米。网上简单搜索后没有得到理想的结果，便决定将过程记载于此。
+ 根据以往经验，微波炉加热食物会导致食物水分流失变干，所以尝试在碗上扣个盘子来保持水分。
+按照蒸米饭的经验加水。微波高火8分钟后闻到米香，拿出来吃了一口发现是生的&amp;hellip;
+发现是没水了，于是补水后调中高火4分钟。发现水还是少了，但最上面一层熟了，证明微波炉蒸饭可行。
+补水后中火3分钟，米饭熟了但很硬，水也没用完，猜想是因为加热速度过快导致大米无法及时吸水，应尝试减小火力增大时长。
+略微补水后，调中小火5分钟。然后米饭就&amp;hellip;熟了！
+ 总结以上过程，设计实验 大米与水 1:3 中低火30分钟 或 中火20分钟，有待后续验证
+ps:炒蛋忘放盐了 QAQ</description>
+    </item>
+    
+    <item>
+      <title>编译原理学习笔记：文法与语言</title>
+      <link>https://blog.frostmiku.com/archives/20/</link>
+      <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/20/</guid>
+      <description>前言 本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;
+基本概念  字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$ 符号： $∑$中的元素称为符号。 符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。 长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$ 连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。 对于任意字符串$β$，有$βε＝εβ＝β$ 乘积：设A和B是符号串集，则用AB表示它们的乘积：  $$ AB＝{xy|x∈A,y∈B } $$
+显然${ε}A=A{ε}=A$
+ 空集：不含任何元素的集合φ，对任何字符串集A有：  $$ φA＝Aφ＝A $$
+ 方幂：设A是字符串集，则A的方幂定义为：  $$ A^0 ={ε}; A^1 ＝A; A^n ＝A^{n-1} A $$
+特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$
+ 闭包/正闭包/星闭包：设A是符号集， 用$A^+$表示A的正闭包:  $$ A^+=A^1∪A^2∪\dots∪A^n∪\dots $$
+用$A^*$表示A的星闭包:
+$$ A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+ $$
+两者统称为A的闭包。
+举个例子1： 设$A = {a,b}$ 则：
+$$ \begin{aligned} &amp;amp;A^0 ＝ {ε}\cr &amp;amp;A^1 = {a,b}\cr &amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr &amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr &amp;amp;\dots\cr \end{aligned} $$</description>
+    </item>
+    
+    <item>
+      <title>使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser</title>
+      <link>https://blog.frostmiku.com/archives/17/</link>
+      <pubDate>Mon, 17 Feb 2020 16:20:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/17/</guid>
+      <description>目标 HTTP/1.1 200 OKServer: nginxDate: Sun, 05 Jan 2020 17:39:08 GMTContent-Type: text/html; charset=UTF-8Connection: closeVary: Accept-EncodingX-Powered-By: PHP/5.6.10Content-Length: 6123Abc&amp;ndash;&amp;gt; parse &amp;ndash;&amp;gt;
+{ &amp;#34;reqline&amp;#34;: &amp;#34;HTTP/1.1 200 OK&amp;#34;, &amp;#34;headers&amp;#34;: { &amp;#34;server&amp;#34;: &amp;#34;nginx&amp;#34;, &amp;#34;date&amp;#34;: &amp;#34;Sun, 05 Jan 2020 17:39:08 GMT&amp;#34;, &amp;#34;content-type&amp;#34;: &amp;#34;text/html; charset=UTF-8&amp;#34;, &amp;#34;connection&amp;#34;: &amp;#34;close&amp;#34;, &amp;#34;vary&amp;#34;: &amp;#34;Accept-Encoding&amp;#34;, &amp;#34;x-powered-by&amp;#34;: &amp;#34;PHP/5.6.10&amp;#34;, &amp;#34;content-length&amp;#34;: &amp;#34;6&amp;#34;, } &amp;#34;body&amp;#34;: &amp;#34;123Abc&amp;#34; } 状态机  http parser fsm 
+代码实现 var httpParser = {}; (function () { function Stream (str) { this.</description>
+    </item>
+    
+    <item>
+      <title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
+      <link>https://blog.frostmiku.com/archives/14/</link>
+      <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/14/</guid>
+      <description>前言 之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 @KAAAsS写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（
+所以我就跑过来写一篇Gnome的同名文章，嘿嘿。
+欢迎邮件联系 i@frostmiku.com
+注意 本文作如下约定：
+ 如无特别说明，本文的**&amp;ldquo;安装&amp;rdquo;**是指使用pacman包管理器命令或其图形化前端在**已添加archlinuxcn源**情况下进行的软件包安装**或**AUR构建。
+如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。
+ 配置 软件源与镜像 减少重复造轮子，请移步这里：
+ https://blog.kaaass.net/archives/1205#toc-4
+ 或者，你只是想快速完成这些步骤而不想详细了解的话：
+#切换中国源sudo pacman-mirrors -c China#添加 [archlinuxcn]sudo gedit /etc/pacman.conf# 然后在弹出来的 gedit 最下方追加如下内容[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.ustc.edu.cn/archlinuxcn/$arch#更新软件源pacman -Syy &amp;amp;&amp;amp; sudo pacman -S archlinuxcn-keyring#安装 oh my zshsh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;# 重启reboot没有权限访问串口 不同于Debian系的dialout，arch系的串口属于用户组uucp 所以只需要将自己添加到uucp组即可。
+sudo usermod -a -G uucp username开启 GSConnect gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 极速入门</title>
+      <link>https://blog.frostmiku.com/archives/13/</link>
+      <pubDate>Fri, 22 Nov 2019 21:55:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/13/</guid>
+      <description>欢迎来到 JavaScrip 极速入坟 门 首先，先把廖雪峰前四章看完 （就是到 面向对象编程 那一章
+ JavaScript教程
+ 接着去看一下这个：
+ 理解 JavaScript 的 Proto 和 Prototype
+ 然后就可以开始整活了：
+this
+var obj = { foo: function () { console.log(this.bar) }, bar: 1 }; var foo = obj.foo; var bar = 2; obj.foo() // 输出啥？ foo() // 输出啥？ array
+var bar = [1,2,3] function foo (list) { list.push(4); } foo(bar); // 现在 bar 里面是啥？ obj
+function foo(buf){ this.buf = buf; } var bar = new Uint8Array([1,2,3]); var f = new foo(bar); bar[0] = 9; // 现在 f.</description>
+    </item>
+    
+    <item>
+      <title>Windows 蓝屏分析简明教程</title>
+      <link>https://blog.frostmiku.com/archives/12/</link>
+      <pubDate>Sun, 17 Nov 2019 16:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/12/</guid>
+      <description>前言 &amp;amp; 工具准备 今天室友的电脑蓝屏了&amp;hellip; 虽然以前就经常发生 所以我们来康康是怎么回事！
+工欲善其事，必先利其器 在 Microsoft Store 上获取 windbg
+简明操作流程  在 WinDbg 界面上的 文件 菜单中选择 Settings 在 Debugging settings 选项卡的 Symbol path 栏中输入SRV*c:\temp*http://msdl.microsoft.com/download/symbols 接着 文件 菜单中选择 open dump file 然后浏览并选择打开 minidump 目录下的文件，一般路径为：C:\Windows\Minidump\XXXXXX-XXXX-XX.dmp 等待系统下载 Symbol 并分析完毕 当出现 Use !analyze -v to get detailed debugging information 时,在下面输入框：!analyze –v 或直接点击 !analyze –v  此时会出现类似如下的信息：
+******************************************************************************** ** Bugcheck Analysis ** ********************************************************************************PAGE_FAULT_IN_NONPAGED_AREA (50)Invalid system memory was referenced.</description>
+    </item>
+    
+    <item>
+      <title>Windows 10 1903 and Later 搜索中心居中脚本</title>
+      <link>https://blog.frostmiku.com/archives/11/</link>
+      <pubDate>Mon, 11 Nov 2019 23:15:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/11/</guid>
+      <description>网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
+首先更改策略允许执行powershell脚本
+set-ExecutionPolicy RemoteSigned然后执行如下脚本：
+$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.</description>
+    </item>
+    
+    <item>
+      <title>Whisper 样式一览</title>
+      <link>https://blog.frostmiku.com/archives/10/</link>
+      <pubDate>Thu, 07 Nov 2019 23:13:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/10/</guid>
+      <description>一级标题 你不应当考虑在文本中使用一级标题，这是一种错误的做法。 另外，这段话是普通文本。
+二级标题 三级标题 四级标题 五级标题 六级标题 虽然目录对于标题的索引只支持到五级。 但你依然可以在文章中使用六级标题。 这在创建希望引起注意的长文本时会很好用。1 请注意！该标题不宜过长。
+ 引言块
+ /* 代码块 */ #include &amp;lt;stdio.h&amp;gt;int main(void) { printf(&amp;#34;Hello, world!&amp;#34;); return 0; } $$ \lim_{x \to \infty} \exp(-x) = 0 $$
+这是一条行内公式$AB＝{xy|x∈A,y∈B }$
+   商品 价格     猪肉 ∞   节操 0     Photo by Florian Klauer on Unsplash   Photo by Luca Bravo on Unsplash</description>
+    </item>
+    
+    <item>
+      <title>QuickMCU 帮助文档</title>
+      <link>https://blog.frostmiku.com/archives/6/</link>
+      <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/6/</guid>
+      <description>本文已严重过时！！！
+这里是 QuickMCU 的非正式文档。
+波特率 115200。
+内部 repl shell VT100（使用 PuTTY 连接就行。
+函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
+对应缺失的参数默认会使用 0 或 undefined 代替。
+启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
+setInterval(func,timeout,arg) 和写web时的用法一样。
+print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
+ 无返回值
+  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
+ OS 提供系统接口
+Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
+ ms: 整数，sleep的时间，毫秒单位
+无返回值
+ getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
+ 返回整数</description>
+    </item>
+    
+    <item>
+      <title>理解 JavaScript 的 Proto 和 Prototype</title>
+      <link>https://blog.frostmiku.com/archives/5/</link>
+      <pubDate>Wed, 06 Nov 2019 15:36:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/5/</guid>
+      <description>__proto__ 是 object 的一个属性，prototype 是 function 的一个属性。
+__proto__ 指向它的构造函数的 prototype, prototype指向一个constructor为该 function 的 object.
+所以 __proto__ 也有自己的 __proto__ ，也就是原型链。
+原型链 当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。
+实例化对象过程 进行 new Foo() 操作会进行以下过程：
+ 首先会初始化一个空 {} 然后将 {} 的 __proto__ 指向 Foo 的 prototype 接着执行 Base.call({}) 将 this 作用域交予 {}  </description>
+    </item>
+    
+    <item>
+      <title>安装用于 CTF 的 Manjaro</title>
+      <link>https://blog.frostmiku.com/archives/4/</link>
+      <pubDate>Wed, 06 Nov 2019 15:30:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/4/</guid>
+      <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。
+于是有了在虚拟机里安装一个Linux的需求&amp;hellip;
+在此记录一下我初次的环境建立过程，方便未来可能需要的环境重建（倒不如直接写成脚本..
+发行版选择 Linux 发行版选择的是 Manjaro Xfce，为什么选择这个发行版呢？
+（VMware Workstation Player 个人使用免费
+首先，为什么是Manjaro？ 因为，大名鼎鼎的 Kali Linux 不提供 iso 下载了，官网只有一个种子文件，而且 tuna ustc 的镜像里也没有┑(￣Д ￣)┍
+（再说，里面那么多的工具，都有啥？干啥用？怎么用？我都不清楚啊 TAT
+Arch Linux 软件源我吹爆，为了能够快速建立就选 Manjaro 喽~
+Ubuntu 也不是不能选&amp;hellip;就是感觉有点&amp;hellip;丑&amp;hellip;
+其次，为什么是 Xfce？ 毕竟是装在虚拟机里嘛~
+既然有宿主了，界面也就不那么重要了。
+Xfce 内存占用小，跑得快，默认配置美观&amp;hellip;
+安装后要敲的指令 #卸载 Open VMware Toolssudo pacman -R open-vm-tools然后注销，登陆到 root 用户。
+因为要用的工具大多数都需要 root，Kali Linux也是这么搞得。
+安装 VMware Tools
+#切换中国源pacman-mirrors -c China#安装 Vimpacman -S vim#添加 [archlinuxcn]vim /etc/pacman.conf[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>你好！HUGO</title>
+      <link>https://blog.frostmiku.com/archives/3/</link>
+      <pubDate>Tue, 05 Nov 2019 18:39:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/3/</guid>
+      <description>前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip;
+Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。
+无需安装任何环境，开袋即食。
+附上一个发布脚本：
+hugo cd ./public git add . git commit -m &amp;#34;updated&amp;#34; git push pause 数学符号测试： $$ \frac{\theta}{\lambda} $$
+插入一个不明觉厉的实时气象地球：</description>
+    </item>
+    
+    <item>
+      <title>COSPLAY 与 文本分类</title>
+      <link>https://blog.frostmiku.com/archives/41/</link>
+      <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/41/</guid>
+      <description>“幸福的家庭都是相似的，不幸的家庭各有各的不幸” &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》
+ 一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。
+一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。
+而如果经常出现 “李白、杜甫、王维、江泽林则徐” 那它应该是一篇诗歌方面的文章。
+所以，我们可以使用一个 数组 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。
+那么，怎么计算呢.jpg
+看我cosplay
+首先，我们知道：
+$$ \cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| } $$
+我们将这个储存词频的 数组 看成一个 n 维向量 ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。
+当两向量垂直时
+$$ \cos A=0 $$
+两文本毫不相干。
+当两向量重合时
+$$ \cos A=1 $$
+两文本完全相同。
+基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;coser！ 余弦相似性分类器。</description>
+    </item>
+    
+    <item>
+      <title>一个ACM蒟蒻的掉坑手册</title>
+      <link>https://blog.frostmiku.com/archives/40/</link>
+      <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/40/</guid>
+      <description>如何控制每两个数之间有空格，而最后一个数之后没有空格？解决方法之一是：第一个数之前不加空格，而其后每个数之前加空格。而通过一个标识变量可以判断出是否是第一个数。 初做多实例测试，要注意变量赋初值的位置。 流可以加速，方法是关闭和stdio的同步，即调用  ios::sync_with_stdio(false);  未指定输入量的输入框架  while(scanf(&amp;#34;%d&amp;#34;,&amp;amp;a)!=EOF){} //或 while(cin&amp;gt;&amp;gt;a){}  能写成函数尽量写成函数，解耦、复用、易于定位错误，不要把 main() 写的又臭又长，出错了改都不好改。 memset函数可以初始化数组。这条命令这在你已经修改了数组之后又想将它重置为全0特别有用（然鹅它是操作字节，也就初始为0/-1比较有用）。  #include &amp;lt;cstring&amp;gt;int arr[100]={0}; memset(arr,0, sizeof(arr));  CPP int&amp;amp;string互相转换  #include &amp;lt;iostream&amp;gt;#include &amp;lt;sstream&amp;gt; using namespace std; int main(){ int x=10000,y; stringstream ss; string s; ss&amp;lt;&amp;lt;x; s=ss.str(); cout&amp;lt;&amp;lt;s.length()&amp;lt;&amp;lt;endl; ss&amp;gt;&amp;gt;y; cout&amp;lt;&amp;lt;y/2&amp;lt;&amp;lt;endl; }  使用C语言sscanf()函数将string/char转换成int（或其他类型）  #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main() { string a=&amp;#34;123456789&amp;#34;; int x; sscanf(a.c_str(),&amp;#34;%d&amp;#34;,&amp;amp;x); cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl; return 0; }  重定向：  freopen(&amp;#34;test.in&amp;#34;, &amp;#34;r&amp;#34;, stdin); freopen(&amp;#34;test.</description>
+    </item>
+    
+    <item>
+      <title>LibVLC研究笔记</title>
+      <link>https://blog.frostmiku.com/archives/370/</link>
+      <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/370/</guid>
+      <description>什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
+什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+
+如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
+ 1. 自行编译
+2. 直接从安装目录里面拷贝出来
+3.从官方FTP服务器上下载（见相关链接5）
+ 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
+2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
+3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
+ 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT
+Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
+官方WIKI：
+#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;</description>
+    </item>
+    
+    <item>
+      <title>Minecraft的地形生成算法相关</title>
+      <link>https://blog.frostmiku.com/archives/2/</link>
+      <pubDate>Fri, 25 Dec 2015 09:12:09 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/2/</guid>
+      <description>Terrain generation, Part 1
+I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!
+One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.</description>
+    </item>
+    
+    <item>
+      <title>一个简单的密码生成算法</title>
+      <link>https://blog.frostmiku.com/archives/39/</link>
+      <pubDate>Mon, 08 Jun 2015 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/39/</guid>
+      <description>这是个啥？  答： 是小时候写的垃圾，现已被这篇文章取代 2021.9.22
+ 现如今，每个人都有不少网站的帐号，为每一个帐号设置不同的密码会增加大脑的记忆负担，而使用相同的密码则会引发安全问题。
+Simple password generator，是一个简单的密码生成器，但这绝不表示生成的密码是简单密码（弱口令）。通过本生成器可使用户仅需记住一个密码（即所有密码的公匙），来通过算法动态生成实际密码，每次密码皆为动态生成，由公匙确保生成密码的一致性，密码数据不做任何保持，具有较高的安全性。
+如何使用 直接上图：
+启动后输入储存在大脑 中的密码，然后根据不同网站输入不同的key，生成器会实时计算出唯一的值来作为实际密码，密码不做任何保存处理。
+输入 exit 退出程序。
+原理 其实就是随机数种子的应用= =|||
+还有个缺点，前三（四）位固定是大小写字母、数字（符号）搭配&amp;hellip;
+源码 import random lower=&amp;#34;abcdefghijklmnopqrstuvwxyz&amp;#34; upper=&amp;#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#34; symbols=&amp;#34;!%@#^,./?*;:_&amp;#34; number=&amp;#34;0123456789&amp;#34; def getstr(legth,str1): tmp=&amp;#34;&amp;#34; for i in range(legth): tmp = tmp + random.choice(str1) return tmp def getpwd(pwd,key,legth,havesymbol): passworld=&amp;#34;&amp;#34; random.seed(pwd+key) if(havesymbol): passworld = getstr(1,upper)+getstr(1,lower)+getstr(1,number)+getstr(1,symbols) for i in range(legth-4): switch=random.randint(0,3) if(switch==0): passworld += getstr(1,upper) elif(switch==1): passworld += getstr(1,lower) elif(switch==2): passworld += getstr(1,number) else: passworld += getstr(1,symbols) else: passworld = getstr(1,upper)+getstr(1,lower)+getstr(1,number) for i in range(legth-3): switch=random.</description>
+    </item>
+    
+    <item>
+      <title>更早之前的文章</title>
+      <link>https://blog.frostmiku.com/archives/1/</link>
+      <pubDate>Sat, 08 Mar 2014 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/1/</guid>
+      <description>404 Page Not Found 这里什么都没有。 旧时代的文章随着一次次的事故烟消云散了&amp;hellip;
+虽然我有备份
+备份中最早的文章为
+【Minecraft】MOD开发教程 1.配置工作环境！
+不，比这个更早，但是一篇灌水的东西（
+2014.03.08 CST</description>
+    </item>
+    
+  </channel>
+</rss>

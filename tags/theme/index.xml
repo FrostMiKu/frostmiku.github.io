@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theme on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/theme/</link>
+    <description>Recent content in Theme on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Nov 2019 23:13:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/theme/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Whisper 样式一览</title>
+      <link>https://blog.frostmiku.com/archives/10/</link>
+      <pubDate>Thu, 07 Nov 2019 23:13:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/10/</guid>
+      <description>一级标题 你不应当考虑在文本中使用一级标题，这是一种错误的做法。 另外，这段话是普通文本。
+二级标题 三级标题 四级标题 五级标题 六级标题 虽然目录对于标题的索引只支持到五级。 但你依然可以在文章中使用六级标题。 这在创建希望引起注意的长文本时会很好用。1 请注意！该标题不宜过长。
+ 引言块
+ /* 代码块 */ #include &amp;lt;stdio.h&amp;gt;int main(void) { printf(&amp;#34;Hello, world!&amp;#34;); return 0; } $$ \lim_{x \to \infty} \exp(-x) = 0 $$
+这是一条行内公式$AB＝{xy|x∈A,y∈B }$
+   商品 价格     猪肉 ∞   节操 0     Photo by Florian Klauer on Unsplash   Photo by Luca Bravo on Unsplash</description>
+    </item>
+    
+  </channel>
+</rss>

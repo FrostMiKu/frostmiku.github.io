@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on StarWhisper</title>
+    <link>https://blog.frostmiku.com/tags/linux/</link>
+    <description>Recent content in Linux on StarWhisper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Feb 2021 18:10:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>给Linux的根目录扩容</title>
+      <link>https://blog.frostmiku.com/archives/32/</link>
+      <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/32/</guid>
+      <description>今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; 于是有了如下对话
+ 对话 
+于是开始扩容&amp;hellip;
+这篇文章写的很详细了：传送门
+不过俺是ext4所以最后一步要改一下
+把 xfs_growfs /dev/sda3 改成 resize2fs /dev/sda3 就行了
+虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
+      <link>https://blog.frostmiku.com/archives/14/</link>
+      <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/14/</guid>
+      <description>前言 之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 @KAAAsS写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（
+所以我就跑过来写一篇Gnome的同名文章，嘿嘿。
+欢迎邮件联系 i@frostmiku.com
+注意 本文作如下约定：
+ 如无特别说明，本文的**&amp;ldquo;安装&amp;rdquo;**是指使用pacman包管理器命令或其图形化前端在**已添加archlinuxcn源**情况下进行的软件包安装**或**AUR构建。
+如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。
+ 配置 软件源与镜像 减少重复造轮子，请移步这里：
+ https://blog.kaaass.net/archives/1205#toc-4
+ 或者，你只是想快速完成这些步骤而不想详细了解的话：
+#切换中国源sudo pacman-mirrors -c China#添加 [archlinuxcn]sudo gedit /etc/pacman.conf# 然后在弹出来的 gedit 最下方追加如下内容[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.ustc.edu.cn/archlinuxcn/$arch#更新软件源pacman -Syy &amp;amp;&amp;amp; sudo pacman -S archlinuxcn-keyring#安装 oh my zshsh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;# 重启reboot没有权限访问串口 不同于Debian系的dialout，arch系的串口属于用户组uucp 所以只需要将自己添加到uucp组即可。
+sudo usermod -a -G uucp username开启 GSConnect gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽</description>
+    </item>
+    
+    <item>
+      <title>安装用于 CTF 的 Manjaro</title>
+      <link>https://blog.frostmiku.com/archives/4/</link>
+      <pubDate>Wed, 06 Nov 2019 15:30:00 +0800</pubDate>
+      
+      <guid>https://blog.frostmiku.com/archives/4/</guid>
+      <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。
+于是有了在虚拟机里安装一个Linux的需求&amp;hellip;
+在此记录一下我初次的环境建立过程，方便未来可能需要的环境重建（倒不如直接写成脚本..
+发行版选择 Linux 发行版选择的是 Manjaro Xfce，为什么选择这个发行版呢？
+（VMware Workstation Player 个人使用免费
+首先，为什么是Manjaro？ 因为，大名鼎鼎的 Kali Linux 不提供 iso 下载了，官网只有一个种子文件，而且 tuna ustc 的镜像里也没有┑(￣Д ￣)┍
+（再说，里面那么多的工具，都有啥？干啥用？怎么用？我都不清楚啊 TAT
+Arch Linux 软件源我吹爆，为了能够快速建立就选 Manjaro 喽~
+Ubuntu 也不是不能选&amp;hellip;就是感觉有点&amp;hellip;丑&amp;hellip;
+其次，为什么是 Xfce？ 毕竟是装在虚拟机里嘛~
+既然有宿主了，界面也就不那么重要了。
+Xfce 内存占用小，跑得快，默认配置美观&amp;hellip;
+安装后要敲的指令 #卸载 Open VMware Toolssudo pacman -R open-vm-tools然后注销，登陆到 root 用户。
+因为要用的工具大多数都需要 root，Kali Linux也是这么搞得。
+安装 VMware Tools
+#切换中国源pacman-mirrors -c China#安装 Vimpacman -S vim#添加 [archlinuxcn]vim /etc/pacman.conf[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.</description>
+    </item>
+    
+  </channel>
+</rss>
