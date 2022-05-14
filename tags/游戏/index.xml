@@ -1,55 +1,91 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>游戏 on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/%E6%B8%B8%E6%88%8F/</link>
-    <description>Recent content in 游戏 on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 09 Apr 2021 17:55:35 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E6%B8%B8%E6%88%8F/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>大革命，一种扑克卡牌游戏</title>
-      <link>https://blog.frostmiku.com/archives/34/</link>
-      <pubDate>Fri, 09 Apr 2021 17:55:35 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/34/</guid>
-      <description>前言 最近接触了一种名叫“大富豪”(译名之一)的传统日式扑克牌游戏，国内好像知者甚少，故在此分享。
-简介 “大富豪”是一种类似我国斗地主规则的扑克游戏，游戏擅长以大逆转来炒热氛围。
-由于“大富豪”的名称、玩法规则各个地区都有差异（类似我国麻将）
-这里我主要介绍一种由我进行本地化改造的版本“大革命”。
-其实规则大体上和斗地主相似，如果会玩斗地主只需要看下相异之处即可。
-哦对了，游戏需要四个人来进行（当然你也可以自己修改
-基础规则 场次 一局游戏由多场组成，并由最后一场排名决定游戏最终排名，所以在最后一场之前即使是倒数第一也没关系！
-推荐一局游戏场数：五场 或 十场
-单场胜利：第一个出完手牌的人为第一名，其他人依次决出第二第三和第四名。
-在每场开局时，随机抽出一张卡牌从游戏中除外，用来平衡卡牌数量并防止算牌。再下一场开始时，将上一场除外的这张牌加回牌堆并重新抽出一张牌除外。
-上下家 上家：在你之前出牌的那个人
-下家：你出牌后出牌的那个人
-卡牌强度 由弱到强依次为 3&amp;hellip;K&amp;hellip;2
-即3最小，2最大，鬼牌稍后再说。
-出牌 一场游戏由多轮出牌阶段构成。每轮的首位出牌者称为该轮的主导者
-主导者可以打出如下所示的任意一种类型的任意牌，其他三家继续依照你的出牌类型接牌。
-第一场开始时由参赛玩家自行决定由谁当主导者，即由谁开始出牌。
-之后几场开始时由第四名率先出牌。
-可选出牌类型 单牌：一张牌
-对子：两张一样的牌
-顺子：三张一样的牌
-链子：连续三张（或以上）同样花色的牌（例：红桃A 红桃2 红桃3 红桃4）
-大革命：四张相同的牌
-接牌 你必须打出比你上家更大的同类型牌，即，你的上家出链子 3 4 5 时，你必须也出链子，且强度至少为 4 5 6，当然你也可以选择不出，来跳过你的回合，由下家出牌。
-当你打出牌后，其他三家都选择不出时，本轮接牌结束。你成为新一轮的主导者。
-大革命 当你打出大革命（即四张相同牌）时，如果没有人接上，将会进入革命阶段，此时卡牌强队将会发生反转！
-即由原来的 3最小2最大，变为2最小，3最大。
-如果有人接上，卡牌强度将不会发生变化，视为革命发动失败，当然下家仍然可以继续接牌来发动大革命。（下下家还能接牌反制
-8切 当你打出的牌型（单牌/对子/顺子/链子/大革命）中含有8时，其他三家不能接牌，必须选择不出。你成为主导者。
-鬼牌 在本游戏中，鬼牌只有一张，所以游戏开始前请先将一张鬼牌除外。一副扑克牌54张，除外一张鬼牌 并且 每场开始前除外一张牌，正好剩下52张，每人13张牌，合理！
-鬼牌，视为最大的牌，并不受大革命影响，即它在平时比 2 大，在革命时比 3 大。
-鬼牌可以冒充任意一张牌使用，即它可以配牌，你可以通过配牌发动大革命，但当鬼牌冒充8的时候，没有8切效果。
-鬼牌不能最后打出，否则视为犯规，直接变成第四名！如果犯规者不是本场游戏的第一名，则此时不会触发一落千丈。
-黑桃3 黑桃3可以反制鬼牌，当鬼牌单张打出时，可以打出黑桃3进行反制，此时打出黑桃三者成为主导者。
-一落千丈 上一场的第一如果本场没能成为第一，则当新的第一产生时他被迫成为第四名，手中的牌直接放入弃牌堆（扣着，不能公示给其他三家看）。剩下两人决出第二第三名。
-收税 第四向第一交出最大的两张牌，第三向第二交出最大的一张牌。</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>游戏 on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/%E6%B8%B8%E6%88%8F/</link>
+        <description>Recent content in 游戏 on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 09 Apr 2021 17:55:35 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E6%B8%B8%E6%88%8F/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>大革命，一种扑克卡牌游戏</title>
+        <link>https://blog.frostmiku.com/archives/34/</link>
+        <pubDate>Fri, 09 Apr 2021 17:55:35 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/34/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/34/Game51.jpg" alt="Featured image of post 大革命，一种扑克卡牌游戏" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近接触了一种名叫“大富豪”(译名之一)的传统日式扑克牌游戏，国内好像知者甚少，故在此分享。&lt;/p&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;“大富豪”是一种类似我国斗地主规则的扑克游戏，游戏擅长以大逆转来炒热氛围。&lt;/p&gt;
+&lt;p&gt;由于“大富豪”的名称、玩法规则各个地区都有差异（类似我国麻将）&lt;br&gt;
+这里我主要介绍一种由我进行本地化改造的版本“大革命”。&lt;/p&gt;
+&lt;p&gt;其实规则大体上和斗地主相似，如果会玩斗地主只需要看下相异之处即可。&lt;/p&gt;
+&lt;p&gt;哦对了，游戏需要四个人来进行（当然你也可以自己修改&lt;/p&gt;
+&lt;h2 id=&#34;基础规则&#34;&gt;基础规则&lt;/h2&gt;
+&lt;h3 id=&#34;场次&#34;&gt;场次&lt;/h3&gt;
+&lt;p&gt;一局游戏由多场组成，并由最后一场排名决定游戏最终排名，所以在最后一场之前即使是倒数第一也没关系！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推荐一局游戏场数&lt;/strong&gt;：五场 或 十场&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单场胜利&lt;/strong&gt;：第一个出完手牌的人为第一名，其他人依次决出第二第三和第四名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在每场开局时&lt;/strong&gt;，随机抽出一张卡牌从游戏中除外，用来平衡卡牌数量并防止算牌。再下一场开始时，将上一场除外的这张牌加回牌堆并重新抽出一张牌除外。&lt;/p&gt;
+&lt;h3 id=&#34;上下家&#34;&gt;上下家&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;上家&lt;/strong&gt;：在你之前出牌的那个人&lt;br&gt;
+&lt;strong&gt;下家&lt;/strong&gt;：你出牌后出牌的那个人&lt;/p&gt;
+&lt;h3 id=&#34;卡牌强度&#34;&gt;卡牌强度&lt;/h3&gt;
+&lt;p&gt;由弱到强依次为 3&amp;hellip;K&amp;hellip;2&lt;br&gt;
+即3最小，2最大，鬼牌稍后再说。&lt;/p&gt;
+&lt;h3 id=&#34;出牌&#34;&gt;出牌&lt;/h3&gt;
+&lt;p&gt;一场游戏由多轮出牌阶段构成。每轮的首位出牌者称为该轮的&lt;strong&gt;主导者&lt;/strong&gt;&lt;br&gt;
+主导者可以打出如下所示的任意一种类型的任意牌，其他三家继续依照你的出牌类型接牌。&lt;/p&gt;
+&lt;p&gt;第一场开始时由参赛玩家自行决定由谁当主导者，即由谁开始出牌。&lt;br&gt;
+之后几场开始时由第四名率先出牌。&lt;/p&gt;
+&lt;h4 id=&#34;可选出牌类型&#34;&gt;可选出牌类型&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;单牌&lt;/strong&gt;：一张牌&lt;br&gt;
+&lt;strong&gt;对子&lt;/strong&gt;：两张一样的牌&lt;br&gt;
+&lt;strong&gt;顺子&lt;/strong&gt;：三张一样的牌&lt;br&gt;
+&lt;strong&gt;链子&lt;/strong&gt;：连续三张（或以上）&lt;strong&gt;同样花色&lt;/strong&gt;的牌（例：红桃A 红桃2 红桃3 红桃4）&lt;br&gt;
+&lt;strong&gt;大革命&lt;/strong&gt;：四张相同的牌&lt;/p&gt;
+&lt;h3 id=&#34;接牌&#34;&gt;接牌&lt;/h3&gt;
+&lt;p&gt;你必须打出比你上家更大的同类型牌，即，你的上家出链子 3 4 5 时，你必须也出链子，且强度至少为 4 5 6，当然你也可以选择不出，来跳过你的回合，由下家出牌。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当你打出牌后，其他三家都选择不出时，本轮接牌结束&lt;/strong&gt;。你成为新一轮的主导者。&lt;/p&gt;
+&lt;h3 id=&#34;大革命&#34;&gt;大革命&lt;/h3&gt;
+&lt;p&gt;当你打出大革命（即四张相同牌）时，&lt;strong&gt;如果没有人接上&lt;/strong&gt;，将会进入革命阶段，此时卡牌强队将会发生反转！&lt;br&gt;
+&lt;strong&gt;即由原来的 3最小2最大，变为2最小，3最大&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果有人接上，卡牌强度将不会发生变化，视为革命发动失败，当然下家仍然可以继续接牌来发动大革命。（下下家还能接牌反制&lt;/p&gt;
+&lt;h3 id=&#34;8切&#34;&gt;8切&lt;/h3&gt;
+&lt;p&gt;当你打出的牌型（单牌/对子/顺子/链子/大革命）中含有8时，其他三家不能接牌，必须选择不出。你成为主导者。&lt;/p&gt;
+&lt;h3 id=&#34;鬼牌&#34;&gt;鬼牌&lt;/h3&gt;
+&lt;p&gt;在本游戏中，鬼牌只有一张，所以游戏开始前请先将一张鬼牌除外。一副扑克牌54张，除外一张鬼牌 &lt;strong&gt;并且&lt;/strong&gt; 每场开始前除外一张牌，正好剩下52张，每人13张牌，合理！&lt;/p&gt;
+&lt;p&gt;鬼牌，视为最大的牌，并不受大革命影响，即它在平时比 2 大，在革命时比 3 大。&lt;/p&gt;
+&lt;p&gt;鬼牌可以冒充任意一张牌使用，即它可以配牌，你可以&lt;strong&gt;通过配牌发动大革命&lt;/strong&gt;，但当鬼牌冒充8的时候，&lt;strong&gt;没有8切效果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;鬼牌不能最后打出，否则视为犯规，直接变成第四名！如果犯规者不是本场游戏的第一名，则此时不会触发一落千丈。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;黑桃3&#34;&gt;黑桃3&lt;/h3&gt;
+&lt;p&gt;黑桃3可以反制鬼牌，当鬼牌单张打出时，可以打出黑桃3进行反制，此时打出黑桃三者成为主导者。&lt;/p&gt;
+&lt;h3 id=&#34;一落千丈&#34;&gt;一落千丈&lt;/h3&gt;
+&lt;p&gt;上一场的第一如果本场没能成为第一，则当新的第一产生时他被迫成为第四名，手中的牌直接放入弃牌堆（扣着，不能公示给其他三家看）。剩下两人决出第二第三名。&lt;/p&gt;
+&lt;h3 id=&#34;收税&#34;&gt;收税&lt;/h3&gt;
+&lt;p&gt;第四向第一交出最大的两张牌，第三向第二交出最大的一张牌。&lt;br&gt;
+第一向第四交出任意的两张牌，第二向第三交出任意的一张牌。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所有要交换的牌应在交换前选好，扣在桌子上，双方同时推给对方。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;可选规则&#34;&gt;可选规则&lt;/h2&gt;
+&lt;h3 id=&#34;抗税&#34;&gt;抗税&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;建议开启&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;应用本项规则将提高大革命发动的频率&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;即当缴税者手里存在三张相同的牌和鬼牌时，可以选择不交出鬼牌，由第二大的牌代替。&lt;br&gt;
+但缴税者&lt;strong&gt;仅可&lt;/strong&gt;将鬼牌用于配给其他三张牌来发动大革命。&lt;/p&gt;
+&lt;h3 id=&#34;逃税&#34;&gt;逃税&lt;/h3&gt;
+&lt;p&gt;即交出其他牌代替而不是最大的牌，当逃税者在游戏中使用逃掉的那张牌被应收税者发现时，将直接变成第四名。&lt;/p&gt;
+&lt;h3 id=&#34;花色连锁&#34;&gt;花色连锁&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;建议专业人士开启&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;应用本项规则将提高提高游戏难度，并对第一名产生一定程度的限制&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当你打出单张时，如果下家跟牌的花色与你打出的牌的花色相同则触发花色连锁，&lt;br&gt;
+此时所有人只能出此花色的牌，当其他三家都不出时，你成为主导者。&lt;/p&gt;
+&lt;p&gt;以上是基本连锁，又称两张触发连锁，同理还有三张触发连锁，可自行尝试。&lt;/p&gt;
+&lt;h3 id=&#34;斗地主强度规则&#34;&gt;斗地主强度规则&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;对于没玩过斗地主的玩家，可能更习惯于卡牌强度由1到13依次递增&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;即强度由 3-2 变为由 A-K
+此时 8切 变为 6切
+黑桃3反击变为黑桃A反击&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

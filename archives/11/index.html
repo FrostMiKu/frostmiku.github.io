@@ -1,49 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
-首先更改策略允许执行powershell脚本
-set-ExecutionPolicy RemoteSigned然后执行如下脚本：
-$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.'><title>Windows 10 1903 and Later 搜索中心居中脚本</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下 首先更改策略允许执行powershell脚本 1 set-ExecutionPolicy RemoteSigned 然后执行如下脚本： 1 2 3 4 5 6 7 8 9 10 11'><title>Windows 10 1903 and Later 搜索中心居中脚本</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/11/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Windows 10 1903 and Later 搜索中心居中脚本'>
-<meta property='og:description' content='网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
-首先更改策略允许执行powershell脚本
-set-ExecutionPolicy RemoteSigned然后执行如下脚本：
-$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='Windows 10 1903 and Later 搜索中心居中脚本'>
+<meta property='og:description' content='网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下 首先更改策略允许执行powershell脚本 1 set-ExecutionPolicy RemoteSigned 然后执行如下脚本： 1 2 3 4 5 6 7 8 9 10 11'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/11/'>
 <meta property='og:site_name' content='StarWhisper'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:published_time' content='2019-11-11T23:15:00&#43;08:00'/><meta property='article:modified_time' content='2019-11-11T23:15:00&#43;08:00'/>
 <meta name="twitter:site" content="@iceMiKu">
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="Windows 10 1903 and Later 搜索中心居中脚本">
-<meta name="twitter:description" content="网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
-首先更改策略允许执行powershell脚本
-set-ExecutionPolicy RemoteSigned然后执行如下脚本：
-$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.">
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+<meta name="twitter:description" content="网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下 首先更改策略允许执行powershell脚本 1 set-ExecutionPolicy RemoteSigned 然后执行如下脚本： 1 2 3 4 5 6 7 8 9 10 11">
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page 
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -66,22 +41,18 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        on-phone--column extended
-    
-">
-    
-        <aside class="sidebar left-sidebar sticky">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
     </button>
 
-    <header class="site-info">
+    <header>
         
+            
             <figure class="site-avatar">
+                <a href="/">
                 
                     
                     
@@ -91,23 +62,67 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
                             height="254" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
-
+                </a>
                 
                     <span class="emoji">🤡</span>
                 
             </figure>
+            
         
-        <h1 class="site-name"><a href="https://blog.frostmiku.com">StarWhisper</a></h1>
-        <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
-    </header>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-    <ol class="menu" id="main-menu">
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
         
         
         
 
         <li >
-            <a href='/'>
+            <a href='/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -126,7 +141,9 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
 
         <li >
-            <a href='/about/'>
+            <a href='/about/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -144,7 +161,9 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
 
         <li >
-            <a href='/archives/'>
+            <a href='/archives/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -163,7 +182,9 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
 
         <li >
-            <a href='/friends/'>
+            <a href='/friends/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -181,7 +202,9 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
 
         <li >
-            <a href='/index.xml'>
+            <a href='/index.xml' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -200,7 +223,9 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
 
         <li >
-            <a href='/search/'>
+            <a href='/search/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -216,9 +241,11 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </li>
         
 
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -226,7 +253,7 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
 
 
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -234,13 +261,12 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
 
 
 
-                <span>暗色模式</span>
-            </li>
-        
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
     </ol>
 </aside>
-
-    
 <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
@@ -256,12 +282,34 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/11/">Windows 10 1903 and Later 搜索中心居中脚本</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/11/">Windows 10 1903 and Later 搜索中心居中脚本</a>
+        </h2>
+    
+        
+    </div>
 
+    
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 11, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -269,78 +317,162 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
 
 
 
-        <time class="article-time--published">Nov 11, 2019</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <p><del>网上冲浪时</del>看到的一个有意思的 powershell 脚本。
 在这里记录一下</p>
 <p>首先更改策略允许执行powershell脚本</p>
-<pre tabindex="0"><code>set-ExecutionPolicy RemoteSigned
-</code></pre><p>然后执行如下脚本：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$BASE_PATH</span> <span class="p">=</span> <span class="s1">&#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&#39;</span>
-<span class="nv">$RADIUS_PATH</span> <span class="p">=</span> <span class="s2">&#34;$BASE_PATH\Flighting\Override&#34;</span>
-
-<span class="k">function</span> <span class="n">CustimizedNewItemProperty</span><span class="p">(</span><span class="nv">$Path</span><span class="p">,</span> <span class="nv">$Name</span><span class="p">,</span> <span class="nv">$Value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$null</span> <span class="p">=</span> <span class="nb">New-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$Path</span> <span class="n">-Name</span> <span class="nv">$Name</span> <span class="n">-PropertyType</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="nv">$Value</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="n">ToCenter</span><span class="p">(</span><span class="nv">$Radius</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$null</span> <span class="p">=</span> <span class="n">ToDefault</span>
-    <span class="nv">$null</span> <span class="p">=</span> <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">String</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span>
-    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$BASE_PATH</span> <span class="n">ImmersiveSearch</span> <span class="n">1</span>
-    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$RADIUS_PATH</span> <span class="n">ImmersiveSearchFull</span> <span class="n">1</span>
-    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$RADIUS_PATH</span> <span class="n">CenterScreenRoundedCornerRadius</span> <span class="nv">$Radius</span>
-    <span class="s1">&#39;设置成功&#39;</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="n">ToDefault</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$null</span> <span class="p">=</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span> <span class="n">-Recurse</span> <span class="n">-Force</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-ne</span> <span class="p">(</span><span class="nb">Get-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$BASE_PATH</span> <span class="p">|</span> <span class="nb">Select-String</span> <span class="n">-Pattern</span> <span class="s2">&#34;ImmersiveSearch&#34;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nv">$null</span> <span class="p">=</span> <span class="nb">Remove-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$BASE_PATH</span> <span class="n">-Name</span> <span class="n">ImmersiveSearch</span> <span class="n">-Force</span>
-    <span class="p">}</span>
-    <span class="s1">&#39;恢复完成&#39;</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="n">Menu</span> <span class="p">{</span>
-    <span class="nb">Clear-Host</span>
-    <span class="sh">@&#34;
-</span><span class="sh">----------------------------
-</span><span class="sh">  Windows 10 1903 and Later
-</span><span class="sh">       Search 居中脚本
-</span><span class="sh">            V0.01 2019.10.02
-</span><span class="sh">                @AUTHOR LOGI
-</span><span class="sh">----------------------------
-</span><span class="sh">0. 退出
-</span><span class="sh">1. 居中
-</span><span class="sh">2. 恢复
-</span><span class="sh">----------------------------
-</span><span class="sh">&#34;@</span>
-    <span class="k">switch</span> <span class="p">(</span><span class="nb">Read-Host</span> <span class="s1">&#39;请选择&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">0</span> <span class="p">{</span> <span class="n">Exit</span> <span class="n">0</span> <span class="p">}</span>
-        <span class="n">1</span> <span class="p">{</span> 
-            <span class="k">try</span> <span class="p">{</span>
-                <span class="n">ToCenter</span> <span class="p">(</span><span class="no">[int]</span><span class="p">(</span><span class="nb">Read-Host</span> <span class="s1">&#39;请输入圆角大小（0-10）&#39;</span><span class="p">))</span>
-            <span class="p">}</span>
-            <span class="k">catch</span> <span class="p">{</span>
-                <span class="n">ToCenter</span> <span class="n">0</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="n">2</span> <span class="p">{</span> <span class="n">ToDefault</span> <span class="p">}</span>
-        <span class="k">Default</span> <span class="p">{</span> <span class="n">Menu</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="nv">$true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Menu</span>
-    <span class="s1">&#39;----------------------------&#39;</span>
-    <span class="s1">&#39;请按任意键继续...&#39;</span>
-    <span class="no">[void][System.Console]</span><span class="p">::</span><span class="n">ReadKey</span><span class="p">(</span><span class="nv">$true</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div><blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">set-ExecutionPolicy RemoteSigned
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后执行如下脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$BASE_PATH</span> <span class="p">=</span> <span class="s1">&#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$RADIUS_PATH</span> <span class="p">=</span> <span class="s2">&#34;$BASE_PATH\Flighting\Override&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="n">CustimizedNewItemProperty</span><span class="p">(</span><span class="nv">$Path</span><span class="p">,</span> <span class="nv">$Name</span><span class="p">,</span> <span class="nv">$Value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$null</span> <span class="p">=</span> <span class="nb">New-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$Path</span> <span class="n">-Name</span> <span class="nv">$Name</span> <span class="n">-PropertyType</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="nv">$Value</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="n">ToCenter</span><span class="p">(</span><span class="nv">$Radius</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$null</span> <span class="p">=</span> <span class="n">ToDefault</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$null</span> <span class="p">=</span> <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">String</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$BASE_PATH</span> <span class="n">ImmersiveSearch</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$RADIUS_PATH</span> <span class="n">ImmersiveSearchFull</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustimizedNewItemProperty</span> <span class="nv">$RADIUS_PATH</span> <span class="n">CenterScreenRoundedCornerRadius</span> <span class="nv">$Radius</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;设置成功&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="n">ToDefault</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$null</span> <span class="p">=</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="nv">$RADIUS_PATH</span> <span class="n">-Recurse</span> <span class="n">-Force</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-ne</span> <span class="p">(</span><span class="nb">Get-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$BASE_PATH</span> <span class="p">|</span> <span class="nb">Select-String</span> <span class="n">-Pattern</span> <span class="s2">&#34;ImmersiveSearch&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$null</span> <span class="p">=</span> <span class="nb">Remove-ItemProperty</span> <span class="n">-Path</span> <span class="nv">$BASE_PATH</span> <span class="n">-Name</span> <span class="n">ImmersiveSearch</span> <span class="n">-Force</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;恢复完成&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="n">Menu</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Clear-Host</span>
+</span></span><span class="line"><span class="cl">    <span class="sh">@&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sh">----------------------------
+</span></span></span><span class="line"><span class="cl"><span class="sh">  Windows 10 1903 and Later
+</span></span></span><span class="line"><span class="cl"><span class="sh">       Search 居中脚本
+</span></span></span><span class="line"><span class="cl"><span class="sh">            V0.01 2019.10.02
+</span></span></span><span class="line"><span class="cl"><span class="sh">                @AUTHOR LOGI
+</span></span></span><span class="line"><span class="cl"><span class="sh">----------------------------
+</span></span></span><span class="line"><span class="cl"><span class="sh">0. 退出
+</span></span></span><span class="line"><span class="cl"><span class="sh">1. 居中
+</span></span></span><span class="line"><span class="cl"><span class="sh">2. 恢复
+</span></span></span><span class="line"><span class="cl"><span class="sh">----------------------------
+</span></span></span><span class="line"><span class="cl"><span class="sh">&#34;@</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="p">(</span><span class="nb">Read-Host</span> <span class="s1">&#39;请选择&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">0</span> <span class="p">{</span> <span class="n">Exit</span> <span class="n">0</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">1</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ToCenter</span> <span class="p">(</span><span class="no">[int]</span><span class="p">(</span><span class="nb">Read-Host</span> <span class="s1">&#39;请输入圆角大小（0-10）&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">catch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ToCenter</span> <span class="n">0</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">2</span> <span class="p">{</span> <span class="n">ToDefault</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Default</span> <span class="p">{</span> <span class="n">Menu</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="nv">$true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Menu</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;----------------------------&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;请按任意键继续...&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="no">[void][System.Console]</span><span class="p">::</span><span class="n">ReadKey</span><span class="p">(</span><span class="nv">$true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>原文链接： <a class="link" href="https://logi.ml/script/center-win10-search-ui.html"  target="_blank" rel="noopener"
     >https://logi.ml/script/center-win10-search-ui.html</a></p>
 </blockquote>
@@ -371,17 +503,20 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/42/">
         
@@ -390,7 +525,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
                 <img src="/archives/42/title.bc790643d2285de04d505b9396c1bcb9_hu8b78c802ef23d72a1f175f8afba741c2_9707_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 使 macOS 的光标像 windows 一样移动"
                         data-key="42" 
                         data-hash="md5-vHkGQ9IoXeBNUFuTlsG8uQ==">
                 
@@ -402,8 +538,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="">
     <a href="/archives/38/">
         
@@ -414,8 +550,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/32/">
         
@@ -424,7 +560,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
                 <img src="/archives/32/1.c437ebda5a99dd77e9d235f02e4ccf8e_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 给Linux的根目录扩容"
                         data-key="32" 
                         data-hash="md5-xDfr2lqZ3Xfp0jXwLkzPjg==">
                 
@@ -436,8 +573,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="">
     <a href="/archives/29/">
         
@@ -448,8 +585,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/28/">
         
@@ -458,7 +595,8 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
                 <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题"
                         data-key="28" 
                         data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
                 
@@ -470,14 +608,13 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -536,12 +673,10 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -607,11 +742,11 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -627,7 +762,7 @@ $BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

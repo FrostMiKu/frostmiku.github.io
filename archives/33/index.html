@@ -1,86 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单
-需求分析 首先是硬性需求：
- 不可重复 单射  看到这两点需求，我第一反应就是 Hash，但是Hash需要处理冲突，并不是一个很好的解决方案。另外出于美学之类的考虑，我们还有一些别的需求，毕竟谁也不想面对面分享邀请码的时候拿出来一串 18ce3ca04a725cc6b57d5ec0ae0ccd66 这样的乱码吧
-非硬性需求：
- 定长 不易被推测出规律 效率高 支持并发 可溯源  仔细思考了一下 Hash 的可行性后我决定放弃这种方案&amp;hellip;
-方案分析 群里的菊苣给出了洗牌算法的方案，这是一个预生成的方案 这里就预生成方案统一分析
-预生成 讲真，不考虑别的因素，预生成方案确实不错，洗牌算法也非常的棒
-这种方案的思想是根据随机生成算法，预先生成一批邀请码，然后将这些邀请码缓存，当用户请求时将其分配给用户，当邀请码分配完时，再生成一批，如此循环。
-弊端  每次重新生成时都要检查是否重复 而且多数情况下都为否 邀请码本身需要持久化存储 用户和邀请码的关系需要记录  对于唯一性我啪的一下就想到了 UUID 和 MD5，很快啊 MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 UUID
-UUID 引用一下Wikipedia的说法
- 通用唯一识别码（英语：Universally Unique Identifier，缩写：UUID）是用于计算机体系中以识别信息数目的一个128位标识符，根据标准方法生成，不依赖中央机构的注册和分配，UUID具有唯一性，这与其他大多数编号方案不同。重复UUID码概率接近零，可以忽略不计。
- 这下唯一性是真的强，但是分享一串128位标识符的画面确实也很美&amp;hellip;
-没啥好想法的我上网搜了一下，又得到了两种方案，一种类似于Base64，这种没啥好说的，接下来主要说一下另一种方案
-密码学方案 这种方案本质上是一个实现了由 用户ID空间 到 邀请码空间 的双射，通过用户ID确定了邀请码的唯一性，同时又可通过反函数来对邀请码溯源，既不需要保存邀请码，又不需要保存关系，针不戳
-我们先来写个简单函数实现双射
-func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const CodeLength = 6 const Base = 16 const Salt = 233 pid := id &#43; Salt // 为了避免用户 ID的直接泄漏，我们可以先加点盐 	var b [CodeLength] uint b[0] = pid for i := 0; i &amp;lt; CodeLength-1; i&#43;&#43; { b[i &#43; 1] = b[i] / Base b[i] = b[i]% Base } fmt.'><title>浅谈邀请码的生成</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单 需求分析 首先是硬性需求： 不可重复 单射 看到这两点需求，我第一反应'><title>浅谈邀请码的生成</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/33/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='浅谈邀请码的生成'>
-<meta property='og:description' content='今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单
-需求分析 首先是硬性需求：
- 不可重复 单射  看到这两点需求，我第一反应就是 Hash，但是Hash需要处理冲突，并不是一个很好的解决方案。另外出于美学之类的考虑，我们还有一些别的需求，毕竟谁也不想面对面分享邀请码的时候拿出来一串 18ce3ca04a725cc6b57d5ec0ae0ccd66 这样的乱码吧
-非硬性需求：
- 定长 不易被推测出规律 效率高 支持并发 可溯源  仔细思考了一下 Hash 的可行性后我决定放弃这种方案&amp;hellip;
-方案分析 群里的菊苣给出了洗牌算法的方案，这是一个预生成的方案 这里就预生成方案统一分析
-预生成 讲真，不考虑别的因素，预生成方案确实不错，洗牌算法也非常的棒
-这种方案的思想是根据随机生成算法，预先生成一批邀请码，然后将这些邀请码缓存，当用户请求时将其分配给用户，当邀请码分配完时，再生成一批，如此循环。
-弊端  每次重新生成时都要检查是否重复 而且多数情况下都为否 邀请码本身需要持久化存储 用户和邀请码的关系需要记录  对于唯一性我啪的一下就想到了 UUID 和 MD5，很快啊 MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 UUID
-UUID 引用一下Wikipedia的说法
- 通用唯一识别码（英语：Universally Unique Identifier，缩写：UUID）是用于计算机体系中以识别信息数目的一个128位标识符，根据标准方法生成，不依赖中央机构的注册和分配，UUID具有唯一性，这与其他大多数编号方案不同。重复UUID码概率接近零，可以忽略不计。
- 这下唯一性是真的强，但是分享一串128位标识符的画面确实也很美&amp;hellip;
-没啥好想法的我上网搜了一下，又得到了两种方案，一种类似于Base64，这种没啥好说的，接下来主要说一下另一种方案
-密码学方案 这种方案本质上是一个实现了由 用户ID空间 到 邀请码空间 的双射，通过用户ID确定了邀请码的唯一性，同时又可通过反函数来对邀请码溯源，既不需要保存邀请码，又不需要保存关系，针不戳
-我们先来写个简单函数实现双射
-func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const CodeLength = 6 const Base = 16 const Salt = 233 pid := id &#43; Salt // 为了避免用户 ID的直接泄漏，我们可以先加点盐 	var b [CodeLength] uint b[0] = pid for i := 0; i &amp;lt; CodeLength-1; i&#43;&#43; { b[i &#43; 1] = b[i] / Base b[i] = b[i]% Base } fmt.'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='浅谈邀请码的生成'>
+<meta property='og:description' content='今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单 需求分析 首先是硬性需求： 不可重复 单射 看到这两点需求，我第一反应'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/33/'>
 <meta property='og:site_name' content='StarWhisper'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Go' /><meta property='article:tag' content='密码学' /><meta property='article:published_time' content='2021-02-09T01:53:00&#43;08:00'/><meta property='article:modified_time' content='2021-02-09T01:53:00&#43;08:00'/><meta property='og:image' content='https://blog.frostmiku.com/archives/33/matt-le-SJSpo9hQf7s-unsplash.jpg' />
 <meta name="twitter:site" content="@iceMiKu">
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="浅谈邀请码的生成">
-<meta name="twitter:description" content="今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单
-需求分析 首先是硬性需求：
- 不可重复 单射  看到这两点需求，我第一反应就是 Hash，但是Hash需要处理冲突，并不是一个很好的解决方案。另外出于美学之类的考虑，我们还有一些别的需求，毕竟谁也不想面对面分享邀请码的时候拿出来一串 18ce3ca04a725cc6b57d5ec0ae0ccd66 这样的乱码吧
-非硬性需求：
- 定长 不易被推测出规律 效率高 支持并发 可溯源  仔细思考了一下 Hash 的可行性后我决定放弃这种方案&amp;hellip;
-方案分析 群里的菊苣给出了洗牌算法的方案，这是一个预生成的方案 这里就预生成方案统一分析
-预生成 讲真，不考虑别的因素，预生成方案确实不错，洗牌算法也非常的棒
-这种方案的思想是根据随机生成算法，预先生成一批邀请码，然后将这些邀请码缓存，当用户请求时将其分配给用户，当邀请码分配完时，再生成一批，如此循环。
-弊端  每次重新生成时都要检查是否重复 而且多数情况下都为否 邀请码本身需要持久化存储 用户和邀请码的关系需要记录  对于唯一性我啪的一下就想到了 UUID 和 MD5，很快啊 MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 UUID
-UUID 引用一下Wikipedia的说法
- 通用唯一识别码（英语：Universally Unique Identifier，缩写：UUID）是用于计算机体系中以识别信息数目的一个128位标识符，根据标准方法生成，不依赖中央机构的注册和分配，UUID具有唯一性，这与其他大多数编号方案不同。重复UUID码概率接近零，可以忽略不计。
- 这下唯一性是真的强，但是分享一串128位标识符的画面确实也很美&amp;hellip;
-没啥好想法的我上网搜了一下，又得到了两种方案，一种类似于Base64，这种没啥好说的，接下来主要说一下另一种方案
-密码学方案 这种方案本质上是一个实现了由 用户ID空间 到 邀请码空间 的双射，通过用户ID确定了邀请码的唯一性，同时又可通过反函数来对邀请码溯源，既不需要保存邀请码，又不需要保存关系，针不戳
-我们先来写个简单函数实现双射
-func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const CodeLength = 6 const Base = 16 const Salt = 233 pid := id &#43; Salt // 为了避免用户 ID的直接泄漏，我们可以先加点盐 	var b [CodeLength] uint b[0] = pid for i := 0; i &amp;lt; CodeLength-1; i&#43;&#43; { b[i &#43; 1] = b[i] / Base b[i] = b[i]% Base } fmt."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单 需求分析 首先是硬性需求： 不可重复 单射 看到这两点需求，我第一反应"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://blog.frostmiku.com/archives/33/matt-le-SJSpo9hQf7s-unsplash.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page has-toc
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -103,25 +42,232 @@ func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const Code
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="https://blog.frostmiku.com" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
 </svg>
 
 
 
-                <span>Back</span>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
             </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
         </div>
-    
+    </ol>
+</aside>
 <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
@@ -149,12 +295,34 @@ func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const Code
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/33/">浅谈邀请码的生成</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/33/">浅谈邀请码的生成</a>
+        </h2>
+    
+        
+    </div>
 
+    
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 09, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -162,11 +330,21 @@ func test(id uint) { const Chars = &amp;#34;0123456789ABCDEF&amp;#34; const Code
 
 
 
-        <time class="article-time--published">Feb 09, 2021</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <p>今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单</p>
 <h2 id="需求分析">需求分析</h2>
 <p>首先是硬性需求：</p>
@@ -210,274 +388,571 @@ MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 U
 <h3 id="密码学方案">密码学方案</h3>
 <p>这种方案本质上是一个实现了由 用户ID空间 到 邀请码空间 的双射，通过用户ID确定了邀请码的唯一性，同时又可通过反函数来对邀请码溯源，既不需要保存邀请码，又不需要保存关系，针不戳</p>
 <p>我们先来写个简单函数实现双射</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
-	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
-	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
-	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
-
-	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 为了避免用户 ID的直接泄漏，我们可以先加点盐
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt;  %c %c %c %c %c %c\n&#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">,</span>
-	<span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-<span class="p">}</span>
-</code></pre></div><p>这个函数本质上和进制转换函数没什么区别，我们跑一下看看效果</p>
-<pre tabindex="0"><code>➜  test go run test.go
-ID: 0   ---&gt;  0 0 0 0 E 9
-ID: 1   ---&gt;  0 0 0 0 E A
-ID: 2   ---&gt;  0 0 0 0 E B
-ID: 3   ---&gt;  0 0 0 0 E C
-ID: 4   ---&gt;  0 0 0 0 E D
-ID: 75  ---&gt;  0 0 0 1 3 4
-ID: 76  ---&gt;  0 0 0 1 3 5
-ID: 77  ---&gt;  0 0 0 1 3 6
-ID: 78  ---&gt;  0 0 0 1 3 7
-ID: 79  ---&gt;  0 0 0 1 3 8
-</code></pre><p>啊这&hellip;这完全在预料之中，<del>换下Chars里字母的顺序也能当个凯撒密码用用</del>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 为了避免用户 ID的直接泄漏，我们可以先加点盐
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt;  %c %c %c %c %c %c\n&#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个函数本质上和进制转换函数没什么区别，我们跑一下看看效果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">➜  test go run test.go
+</span></span><span class="line"><span class="cl">ID: 0   ---&gt;  0 0 0 0 E 9
+</span></span><span class="line"><span class="cl">ID: 1   ---&gt;  0 0 0 0 E A
+</span></span><span class="line"><span class="cl">ID: 2   ---&gt;  0 0 0 0 E B
+</span></span><span class="line"><span class="cl">ID: 3   ---&gt;  0 0 0 0 E C
+</span></span><span class="line"><span class="cl">ID: 4   ---&gt;  0 0 0 0 E D
+</span></span><span class="line"><span class="cl">ID: 75  ---&gt;  0 0 0 1 3 4
+</span></span><span class="line"><span class="cl">ID: 76  ---&gt;  0 0 0 1 3 5
+</span></span><span class="line"><span class="cl">ID: 77  ---&gt;  0 0 0 1 3 6
+</span></span><span class="line"><span class="cl">ID: 78  ---&gt;  0 0 0 1 3 7
+</span></span><span class="line"><span class="cl">ID: 79  ---&gt;  0 0 0 1 3 8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>啊这&hellip;这完全在预料之中，<del>换下Chars里字母的顺序也能当个凯撒密码用用</del>
 好吧不就是看起来太规律了么，我们来把这个结果用密码学方法扩散和混淆一下</p>
 <h4 id="扩散和混淆">扩散和混淆</h4>
 <p>在密码学当中，混淆（confusion）与扩散（diffusion）是设计密码学算法的两种主要方法。这样的定义最早出现在克劳德·香农1945年的论文《密码学的数学理论》当中。</p>
 <p>在克劳德·香农的定义之中，混淆主要是用来使密文和对称式加密方法中密钥的关系变得尽可能的复杂；而扩散则主要是用来使用明文和密文关的关系变得尽可能的复杂，明文中任何一点小更动都会使得密文有很大的差异。 混乱用于掩盖明文与密文之间的关系。这可以挫败通过研究密文以获取冗余度和统计模式的企图。做到这一点最容易的方法是“代替”。 扩散通过将明文冗余度分散到密文中使之分散开来。即将单个明文或密钥位的影响尽可能扩大到更多的密文中去。产生扩散最简单的方法是换位（置换）。</p>
 <p>改进后的算法如下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
-	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
-	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
-	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
-	<span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
-
-	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 放大
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt;  %c %c %c %c %c %c\n&#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">,</span>
-		<span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-<span class="p">}</span>
-</code></pre></div><p>这里我们给用户ID放大的时候乘了个和 Base 互质的数 Prime，这是基于循环群的性质：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 放大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt;  %c %c %c %c %c %c\n&#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们给用户ID放大的时候乘了个和 Base 互质的数 Prime，这是基于循环群的性质：
 若 m 和 p 互质，则 ( id * m ) % p 的结果遍历[0, p) 的所有整数。这保证了放大后结果的分布和原数据的分布同样均匀。
 让我们来跑一下试试：</p>
-<pre tabindex="0"><code>➜  test go run test.go
-ID: 0   ---&gt;  0 4 B 2 7 9
-ID: 1   ---&gt;  0 0 0 0 F 0
-ID: 2   ---&gt;  0 C 5 E 6 7
-ID: 3   ---&gt;  0 8 A C D E
-ID: 4   ---&gt;  0 4 F B 5 5
-ID: 75  ---&gt;  0 8 2 E 5 6
-ID: 76  ---&gt;  0 4 7 C C D
-ID: 77  ---&gt;  0 0 C B 4 4
-ID: 78  ---&gt;  0 C 1 9 B B
-ID: 79  ---&gt;  0 8 6 7 3 2
-
-</code></pre><p>啊这&hellip;怎么开头全是0啊&hellip;算了，正好拿它做校验位，顺便再给结果洗个牌
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">➜  test go run test.go
+</span></span><span class="line"><span class="cl">ID: 0   ---&gt;  0 4 B 2 7 9
+</span></span><span class="line"><span class="cl">ID: 1   ---&gt;  0 0 0 0 F 0
+</span></span><span class="line"><span class="cl">ID: 2   ---&gt;  0 C 5 E 6 7
+</span></span><span class="line"><span class="cl">ID: 3   ---&gt;  0 8 A C D E
+</span></span><span class="line"><span class="cl">ID: 4   ---&gt;  0 4 F B 5 5
+</span></span><span class="line"><span class="cl">ID: 75  ---&gt;  0 8 2 E 5 6
+</span></span><span class="line"><span class="cl">ID: 76  ---&gt;  0 4 7 C C D
+</span></span><span class="line"><span class="cl">ID: 77  ---&gt;  0 0 C B 4 4
+</span></span><span class="line"><span class="cl">ID: 78  ---&gt;  0 C 1 9 B B
+</span></span><span class="line"><span class="cl">ID: 79  ---&gt;  0 8 6 7 3 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>啊这&hellip;怎么开头全是0啊&hellip;算了，正好拿它做校验位，顺便再给结果洗个牌
 最终代码如下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
-	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
-	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
-	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
-	<span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
-	<span class="kd">const</span> <span class="nx">Prime2</span> <span class="p">=</span> <span class="mi">5</span>
-
-	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 放大
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 校验位
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-	<span class="p">}</span>
-	<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt; &#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">)</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34; %c&#34;</span><span class="p">,</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]])</span> <span class="c1">// 洗牌
-</span><span class="c1"></span>	<span class="p">}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div><p>这里用了一个和 CodeLength 互质的数 Prime2 对生成结果进行了洗牌，原因和之前的 Prime 一样
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">Prime2</span> <span class="p">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">// 放大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 校验位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;ID: %-2d  ---&gt; &#34;</span><span class="p">,</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34; %c&#34;</span><span class="p">,</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]])</span> <span class="c1">// 洗牌
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里用了一个和 CodeLength 互质的数 Prime2 对生成结果进行了洗牌，原因和之前的 Prime 一样
 跑一下看看效果</p>
-<pre tabindex="0"><code>➜  test go run test.go
-ID: 0   ---&gt;  7 2 B 4 3 9
-ID: 1   ---&gt;  F 0 0 0 3 0
-ID: 2   ---&gt;  6 E 5 C 2 7
-ID: 3   ---&gt;  D C A 8 3 E
-ID: 4   ---&gt;  5 B F 4 4 5
-ID: 75  ---&gt;  5 E 2 8 5 6
-ID: 76  ---&gt;  C C 7 4 0 D
-ID: 77  ---&gt;  4 B C 0 1 4
-ID: 78  ---&gt;  B 9 1 C 2 B
-ID: 79  ---&gt;  3 7 6 8 2 2
-</code></pre><p>ohhhhhhhhh
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">➜  test go run test.go
+</span></span><span class="line"><span class="cl">ID: 0   ---&gt;  7 2 B 4 3 9
+</span></span><span class="line"><span class="cl">ID: 1   ---&gt;  F 0 0 0 3 0
+</span></span><span class="line"><span class="cl">ID: 2   ---&gt;  6 E 5 C 2 7
+</span></span><span class="line"><span class="cl">ID: 3   ---&gt;  D C A 8 3 E
+</span></span><span class="line"><span class="cl">ID: 4   ---&gt;  5 B F 4 4 5
+</span></span><span class="line"><span class="cl">ID: 75  ---&gt;  5 E 2 8 5 6
+</span></span><span class="line"><span class="cl">ID: 76  ---&gt;  C C 7 4 0 D
+</span></span><span class="line"><span class="cl">ID: 77  ---&gt;  4 B C 0 1 4
+</span></span><span class="line"><span class="cl">ID: 78  ---&gt;  B 9 1 C 2 B
+</span></span><span class="line"><span class="cl">ID: 79  ---&gt;  3 7 6 8 2 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ohhhhhhhhh
 效果相当不错！</p>
 <h4 id="解码">解码</h4>
 <p>具体解码流程就是上面的最终函数倒过来写，可能反函数不太好理解，在纸上推一下就好了</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test2</span><span class="p">(</span><span class="nx">code</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span><span class="p">{</span>
-	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">CodeLength</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-	<span class="p">}</span>
-	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-
-	<span class="c1">// 反洗牌
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 转换回 Chars 下标
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">j</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">Chars</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">code</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span>
-		<span class="k">if</span> <span class="nx">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-			<span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// 非法字符检查
-</span><span class="c1"></span>		<span class="p">}</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 校验
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">expect</span> <span class="kt">uint</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">expect</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-	<span class="p">}</span>
-	<span class="nx">expect</span> <span class="p">=</span> <span class="nx">expect</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
-	<span class="k">if</span> <span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">expect</span><span class="p">{</span>
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 反函数
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Base</span><span class="p">))</span> <span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">0</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
-		<span class="nx">res</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-		<span class="nx">res</span> <span class="o">*=</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 反放大
-</span><span class="c1"></span>	<span class="nx">res</span> <span class="p">=</span> <span class="p">((</span><span class="nx">res</span> <span class="o">+</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nx">Salt</span><span class="p">)</span> <span class="o">/</span> <span class="nx">Prime</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span>
-	<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div><p>需要注意的是我们之前是从b[5]&hellip;b[0]反着print的
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test2</span><span class="p">(</span><span class="nx">code</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">CodeLength</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反洗牌
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 转换回 Chars 下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">j</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">Chars</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">code</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// 非法字符检查
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 校验
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">expect</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">expect</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">expect</span> <span class="p">=</span> <span class="nx">expect</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">expect</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Base</span><span class="p">))</span> <span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span> <span class="o">*=</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反放大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">res</span> <span class="p">=</span> <span class="p">((</span><span class="nx">res</span> <span class="o">+</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nx">Salt</span><span class="p">)</span> <span class="o">/</span> <span class="nx">Prime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是我们之前是从b[5]&hellip;b[0]反着print的
 所以解码的时候记得倒一下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nf">test</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span> <span class="c1">// CC740D
-</span><span class="c1"></span><span class="nf">test2</span><span class="p">(</span><span class="s">&#34;D047CC&#34;</span><span class="p">)</span> <span class="c1">// 因为我们之前是反着print的
-</span></code></pre></div><p>最终输出如下</p>
-<pre tabindex="0"><code>➜  test go run test.go
-ID: 76  ---&gt;  C C 7 4 0 D
-76
-</code></pre><p>稍微分析一下，6位16进制邀请码，1位校验，可用范围为0x00000到0xFFFFF，减去扩大和加盐带来的损耗，大概能生成14万个邀请码，对于我来说是够用了，如果你觉得少的话可以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nf">test</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span> <span class="c1">// CC740D
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">test2</span><span class="p">(</span><span class="s">&#34;D047CC&#34;</span><span class="p">)</span> <span class="c1">// 因为我们之前是反着print的
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终输出如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">➜  test go run test.go
+</span></span><span class="line"><span class="cl">ID: 76  ---&gt;  C C 7 4 0 D
+</span></span><span class="line"><span class="cl">76
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>稍微分析一下，6位16进制邀请码，1位校验，可用范围为0x00000到0xFFFFF，减去扩大和加盐带来的损耗，大概能生成14万个邀请码，对于我来说是够用了，如果你觉得少的话可以</p>
 <ul>
 <li>扩大Base，比如用32进制或者64进制~~（其实我本人用的10进制，只有数字多好看啊 小声bb）~~</li>
 <li>增加邀请码位数，8位不也挺好的么？</li>
 </ul>
 <h2 id="最终代码">最终代码</h2>
 <p>思路验证完毕，让我们把函数的输出补上，并把第一个函数的输出给倒回来，顺便润润色</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-	<span class="s">&#34;fmt&#34;</span>
-	<span class="s">&#34;strings&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
-<span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
-<span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
-<span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
-<span class="kd">const</span> <span class="nx">Prime2</span> <span class="p">=</span> <span class="mi">5</span>
-
-<span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">Chars</span><span class="p">))</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">str</span> <span class="o">:=</span> <span class="nf">genCode</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span>
-	<span class="nf">decode</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
-<span class="p">}</span>
-
-
-<span class="kd">func</span> <span class="nf">genCode</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">string</span>
-
-	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">//扩大
-</span><span class="c1"></span>	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 校验位
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-	<span class="p">}</span>
-	<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
-
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">res</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span><span class="o">%</span><span class="nx">CodeLength</span><span class="p">]])</span> <span class="c1">// 洗牌
-</span><span class="c1"></span>	<span class="p">}</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
-
-	<span class="k">return</span> <span class="nx">res</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">code</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span><span class="p">{</span>
-	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">CodeLength</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-	<span class="p">}</span>
-	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
-
-	<span class="c1">// 反洗牌
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 转换回 Chars 下标
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">j</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">Chars</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">code</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span>
-		<span class="k">if</span> <span class="nx">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-			<span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// 非法字符检查
-</span><span class="c1"></span>		<span class="p">}</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 校验
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">expect</span> <span class="kt">uint</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">expect</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-	<span class="p">}</span>
-	<span class="nx">expect</span> <span class="p">=</span> <span class="nx">expect</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
-	<span class="k">if</span> <span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">expect</span><span class="p">{</span>
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 反函数
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
-		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Base</span><span class="p">))</span> <span class="o">%</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">0</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
-		<span class="nx">res</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-		<span class="nx">res</span> <span class="o">*=</span> <span class="nx">Base</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 反放大
-</span><span class="c1"></span>	<span class="nx">res</span> <span class="p">=</span> <span class="p">((</span><span class="nx">res</span> <span class="o">+</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nx">Salt</span><span class="p">)</span> <span class="o">/</span> <span class="nx">Prime</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span>
-	<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="reference">Reference</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">Chars</span> <span class="p">=</span> <span class="s">&#34;0123456789ABCDEF&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">CodeLength</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">Salt</span> <span class="p">=</span> <span class="mi">233</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">Prime</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">Prime2</span> <span class="p">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">Base</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">Chars</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">str</span> <span class="o">:=</span> <span class="nf">genCode</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">decode</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">genCode</span><span class="p">(</span><span class="nx">id</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">pid</span> <span class="o">:=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">+</span> <span class="nx">Salt</span> <span class="c1">//扩大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pid</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 校验位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">Chars</span><span class="p">[</span><span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span><span class="o">%</span><span class="nx">CodeLength</span><span class="p">]])</span> <span class="c1">// 洗牌
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">res</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">code</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">CodeLength</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">b</span> <span class="p">[</span><span class="nx">CodeLength</span><span class="p">]</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反洗牌
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[(</span><span class="nx">i</span><span class="o">*</span><span class="nx">Prime2</span><span class="p">)</span> <span class="o">%</span> <span class="nx">CodeLength</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 转换回 Chars 下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">j</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">Chars</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">code</span><span class="p">[</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// 非法字符检查
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 校验
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">expect</span> <span class="kt">uint</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">expect</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">expect</span> <span class="p">=</span> <span class="nx">expect</span> <span class="o">*</span> <span class="nx">Prime</span> <span class="o">%</span> <span class="nx">CodeLength</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">expect</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Base</span><span class="p">))</span> <span class="o">%</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">res</span> <span class="kt">uint</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">CodeLength</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span> <span class="o">*=</span> <span class="nx">Base</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 反放大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">res</span> <span class="p">=</span> <span class="p">((</span><span class="nx">res</span> <span class="o">+</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nx">Salt</span><span class="p">)</span> <span class="o">/</span> <span class="nx">Prime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reference">Reference</h2>
 <p><a class="link" href="https://my.oschina.net/bravozu/blog/1827254"  target="_blank" rel="noopener"
     >https://my.oschina.net/bravozu/blog/1827254</a> <del>这老哥代码有问题（小声bb</del>
 <a class="link" href="https://zh.wikipedia.org/wiki/P"  target="_blank" rel="noopener"
@@ -517,17 +992,20 @@ ID: 76  ---&gt;  C C 7 4 0 D
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="">
     <a href="/archives/39/">
         
@@ -538,8 +1016,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/36/">
         
@@ -548,7 +1026,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
                 <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 基于肢体运动的睡眠状态检测原理"
                         data-key="36" 
                         data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
                 
@@ -560,8 +1039,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/35/">
         
@@ -570,7 +1049,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
                 <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 仿手写文本生成"
                         data-key="35" 
                         data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
                 
@@ -582,8 +1062,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/34/">
         
@@ -592,7 +1072,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
                 <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 大革命，一种扑克卡牌游戏"
                         data-key="34" 
                         data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
                 
@@ -604,8 +1085,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/28/">
         
@@ -614,7 +1095,8 @@ ID: 76  ---&gt;  C C 7 4 0 D
                 <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题"
                         data-key="28" 
                         data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
                 
@@ -626,14 +1108,13 @@ ID: 76  ---&gt;  C C 7 4 0 D
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -692,12 +1173,10 @@ ID: 76  ---&gt;  C C 7 4 0 D
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -763,11 +1242,11 @@ ID: 76  ---&gt;  C C 7 4 0 D
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -778,11 +1257,13 @@ ID: 76  ---&gt;  C C 7 4 0 D
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -792,11 +1273,11 @@ ID: 76  ---&gt;  C C 7 4 0 D
 
 
 
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
   <ol>
     <li><a href="#需求分析">需求分析</a></li>
     <li><a href="#方案分析">方案分析</a>
@@ -822,15 +1303,18 @@ ID: 76  ---&gt;  C C 7 4 0 D
     <li><a href="#reference">Reference</a></li>
   </ol>
 </nav>
-                </div>
-            </section>
-        </aside>
-    
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

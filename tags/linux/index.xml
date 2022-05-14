@@ -1,69 +1,329 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/linux/</link>
-    <description>Recent content in Linux on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Feb 2021 18:10:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>给Linux的根目录扩容</title>
-      <link>https://blog.frostmiku.com/archives/32/</link>
-      <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/32/</guid>
-      <description>今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; 于是有了如下对话
- 对话 
-于是开始扩容&amp;hellip;
-这篇文章写的很详细了：传送门
-不过俺是ext4所以最后一步要改一下
-把 xfs_growfs /dev/sda3 改成 resize2fs /dev/sda3 就行了
-虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
-      <link>https://blog.frostmiku.com/archives/14/</link>
-      <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/14/</guid>
-      <description>前言 之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 @KAAAsS写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（
-所以我就跑过来写一篇Gnome的同名文章，嘿嘿。
-欢迎邮件联系 i@frostmiku.com
-注意 本文作如下约定：
- 如无特别说明，本文的**&amp;ldquo;安装&amp;rdquo;**是指使用pacman包管理器命令或其图形化前端在**已添加archlinuxcn源**情况下进行的软件包安装**或**AUR构建。
-如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。
- 配置 软件源与镜像 减少重复造轮子，请移步这里：
- https://blog.kaaass.net/archives/1205#toc-4
- 或者，你只是想快速完成这些步骤而不想详细了解的话：
-#切换中国源sudo pacman-mirrors -c China#添加 [archlinuxcn]sudo gedit /etc/pacman.conf# 然后在弹出来的 gedit 最下方追加如下内容[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.ustc.edu.cn/archlinuxcn/$arch#更新软件源pacman -Syy &amp;amp;&amp;amp; sudo pacman -S archlinuxcn-keyring#安装 oh my zshsh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;# 重启reboot没有权限访问串口 不同于Debian系的dialout，arch系的串口属于用户组uucp 所以只需要将自己添加到uucp组即可。
-sudo usermod -a -G uucp username开启 GSConnect gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽</description>
-    </item>
-    
-    <item>
-      <title>安装用于 CTF 的 Manjaro</title>
-      <link>https://blog.frostmiku.com/archives/4/</link>
-      <pubDate>Wed, 06 Nov 2019 15:30:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/4/</guid>
-      <description>对计算机科学幻灭之后（update:我觉得我又彳亍了），我决定去学信息安全。
-于是有了在虚拟机里安装一个Linux的需求&amp;hellip;
-在此记录一下我初次的环境建立过程，方便未来可能需要的环境重建（倒不如直接写成脚本..
-发行版选择 Linux 发行版选择的是 Manjaro Xfce，为什么选择这个发行版呢？
-（VMware Workstation Player 个人使用免费
-首先，为什么是Manjaro？ 因为，大名鼎鼎的 Kali Linux 不提供 iso 下载了，官网只有一个种子文件，而且 tuna ustc 的镜像里也没有┑(￣Д ￣)┍
-（再说，里面那么多的工具，都有啥？干啥用？怎么用？我都不清楚啊 TAT
-Arch Linux 软件源我吹爆，为了能够快速建立就选 Manjaro 喽~
-Ubuntu 也不是不能选&amp;hellip;就是感觉有点&amp;hellip;丑&amp;hellip;
-其次，为什么是 Xfce？ 毕竟是装在虚拟机里嘛~
-既然有宿主了，界面也就不那么重要了。
-Xfce 内存占用小，跑得快，默认配置美观&amp;hellip;
-安装后要敲的指令 #卸载 Open VMware Toolssudo pacman -R open-vm-tools然后注销，登陆到 root 用户。
-因为要用的工具大多数都需要 root，Kali Linux也是这么搞得。
-安装 VMware Tools
-#切换中国源pacman-mirrors -c China#安装 Vimpacman -S vim#添加 [archlinuxcn]vim /etc/pacman.conf[archlinuxcn]SigLevel = Optional TrustedOnlyServer = https://mirrors.</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Linux on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/linux/</link>
+        <description>Recent content in Linux on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Mon, 01 Feb 2021 18:10:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>给Linux的根目录扩容</title>
+        <link>https://blog.frostmiku.com/archives/32/</link>
+        <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/32/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/32/1.jpg" alt="Featured image of post 给Linux的根目录扩容" /&gt;&lt;p&gt;今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; &lt;br&gt;
+于是有了如下对话&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/32/1.jpg&#34;
+	width=&#34;415&#34;
+	height=&#34;1188&#34;
+	srcset=&#34;https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;对话&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;34&#34;
+		data-flex-basis=&#34;83px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;于是开始扩容&amp;hellip;&lt;br&gt;
+这篇文章写的很详细了：&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/9db2df60fd0a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;传送门&lt;/a&gt;&lt;br&gt;
+不过俺是ext4所以最后一步要改一下&lt;/p&gt;
+&lt;p&gt;把 &lt;code&gt;xfs_growfs /dev/sda3&lt;/code&gt; 改成 &lt;code&gt;resize2fs /dev/sda3&lt;/code&gt; 就行了&lt;/p&gt;
+&lt;p&gt;虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
+        <link>https://blog.frostmiku.com/archives/14/</link>
+        <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/14/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/14/gnome.jpg" alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 &lt;a class=&#34;link&#34; href=&#34;https://blog.kaaass.net/archives/1205&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;@KAAAsS&lt;/a&gt;写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（&lt;/p&gt;
+&lt;p&gt;所以我就跑过来写一篇Gnome的同名文章，嘿嘿。&lt;/p&gt;
+&lt;p&gt;欢迎邮件联系 &lt;a class=&#34;link&#34; href=&#34;mailto:i@frostmiku.com&#34; &gt;i@frostmiku.com&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&#34;注意&#34;&gt;注意&lt;/h6&gt;
+&lt;p&gt;本文作如下约定：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如无特别说明，本文的**&amp;ldquo;安装&amp;rdquo;&lt;strong&gt;是指使用pacman包管理器命令或其图形化前端在&lt;/strong&gt;已添加archlinuxcn源&lt;strong&gt;情况下进行的软件包安装&lt;/strong&gt;或**AUR构建。&lt;/p&gt;
+&lt;p&gt;如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;h3 id=&#34;软件源与镜像&#34;&gt;软件源与镜像&lt;/h3&gt;
+&lt;p&gt;减少重复造轮子，请移步这里：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.kaaass.net/archives/1205#toc-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.kaaass.net/archives/1205#toc-4&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;或者，你只是想快速完成这些步骤而不想详细了解的话：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#切换中国源
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman-mirrors -c China
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#添加 [archlinuxcn]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo gedit /etc/pacman.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 然后在弹出来的 gedit 最下方追加如下内容
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[archlinuxcn]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SigLevel = Optional TrustedOnly
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#更新软件源
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -Syy &amp;amp;&amp;amp; sudo pacman -S archlinuxcn-keyring
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#安装 oh my zsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 重启
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;没有权限访问串口&#34;&gt;没有权限访问串口&lt;/h3&gt;
+&lt;p&gt;不同于Debian系的dialout，arch系的串口属于用户组uucp
+所以只需要将自己添加到uucp组即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo usermod -a -G uucp username
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;开启-gsconnect&#34;&gt;开启 GSConnect&lt;/h3&gt;
+&lt;p&gt;gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽&lt;/p&gt;
+&lt;p&gt;在 优化》插件 里手动启动即可。&lt;/p&gt;
+&lt;h2 id=&#34;软件&#34;&gt;软件&lt;/h2&gt;
+&lt;h3 id=&#34;python2&#34;&gt;Python2&lt;/h3&gt;
+&lt;p&gt;Manjaro自带了Python 2.7但并没有附带pip，需要我们手动安装&lt;/p&gt;
+&lt;p&gt;安装python2-pip&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -S python2-pip 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装后在终端输入pip2即可使用&lt;/p&gt;
+&lt;h3 id=&#34;字体&#34;&gt;字体&lt;/h3&gt;
+&lt;p&gt;字体比较推荐等宽的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/be5invis/Sarasa-Gothic&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;更纱黑体&lt;/a&gt; ，安装 Sarasa Gothic 然后在优化里设置即可。&lt;/p&gt;
+&lt;h3 id=&#34;terminal&#34;&gt;Terminal&lt;/h3&gt;
+&lt;h4 id=&#34;背景透明&#34;&gt;背景透明&lt;/h4&gt;
+&lt;p&gt;gnome默认的Terminal并不支持背景透明&lt;/p&gt;
+&lt;p&gt;AUR中构建 &lt;code&gt;gnome-terminal-transparency&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后在 设置》颜色 中将会出现透明度设置项&lt;/p&gt;
+&lt;h4 id=&#34;oh-my-zsh&#34;&gt;oh-my-zsh&lt;/h4&gt;
+&lt;p&gt;把oh-my-zsh归类到这里似乎有点奇怪&amp;hellip;&lt;/p&gt;
+&lt;p&gt;这是我的&lt;a class=&#34;link&#34; href=&#34;https://github.com/FrostMiKu/MyLinuxRC/blob/master/.zshrc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zshrc&lt;/a&gt;仅供参考。&lt;/p&gt;
+&lt;p&gt;ps：如果你要使用的话，需要另外安装ranger&lt;/p&gt;
+&lt;h3 id=&#34;nautilus-文件管理器&#34;&gt;Nautilus 文件管理器&lt;/h3&gt;
+&lt;h4 id=&#34;显示地址栏&#34;&gt;显示地址栏&lt;/h4&gt;
+&lt;p&gt;可以使用快捷键 &lt;code&gt;ctrl + L&lt;/code&gt;也可以直接输入以**/**或 &lt;strong&gt;~&lt;/strong&gt; 开头的地址。&lt;/p&gt;
+&lt;p&gt;如果希望文件管理器默认显示地址栏，则打开dconf编辑器（可以直接在软件中心安装）
+定位到&lt;code&gt;org-&amp;gt;gnome-&amp;gt;nautilus-&amp;gt;preferences&lt;/code&gt;然后选择&lt;code&gt;always-use-location-entry&lt;/code&gt;这一项即可。&lt;/p&gt;
+&lt;h3 id=&#34;某知名electron科学软件&#34;&gt;某知名Electron科学软件&lt;/h3&gt;
+&lt;h4 id=&#34;托盘不显示图标&#34;&gt;托盘不显示图标&lt;/h4&gt;
+&lt;p&gt;这是electron的锅。&lt;/p&gt;
+&lt;p&gt;安装 libappindicator-gtk3 解决&lt;/p&gt;
+&lt;h4 id=&#34;切换代理设置不生效&#34;&gt;切换代理设置不生效&lt;/h4&gt;
+&lt;p&gt;这个问题很少发生在gnome下，该软件使用gsettings进行设置，请检查gsettings是否存在问题。&lt;/p&gt;
+&lt;h3 id=&#34;搜狗拼音&#34;&gt;搜狗拼音&lt;/h3&gt;
+&lt;p&gt;不要安装fcitx，会报错的。&lt;br&gt;
+安装fcitx-lilydjwg-git&lt;br&gt;
+然后搜索sogou进行安装即可。&lt;/p&gt;
+&lt;h3 id=&#34;qq&#34;&gt;QQ&lt;/h3&gt;
+&lt;p&gt;最近腾讯更新了QQ for Linux，虽然用起来有种自己穿越回2009年的感觉。但基本功能倒是够用了。&lt;/p&gt;
+&lt;p&gt;安装 qq-Linux 即可，它应该是在archlinuxcn仓库里。&lt;/p&gt;
+&lt;h2 id=&#34;美化&#34;&gt;美化&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/14/settings.png&#34;
+	width=&#34;1035&#34;
+	height=&#34;700&#34;
+	srcset=&#34;https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;setting&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;主题图标与字体&#34;&gt;主题、图标与字体&lt;/h3&gt;
+&lt;p&gt;本文最上面的图片里以包括这些信息，防止看不清楚再列出：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WM Theme: Mojave-light-alt&lt;br&gt;
+GTK Theme: Mojave-light-alt [GTK2/3]&lt;br&gt;
+Icon Theme: McMojave-circle&lt;br&gt;
+Font: Sarasa Gothic K 11&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;动态壁纸&#34;&gt;动态壁纸&lt;/h3&gt;
+&lt;p&gt;安装 dynamic-wallpaper-catalina-gnome-timed-git&lt;/p&gt;
+&lt;p&gt;然后在桌面右键，选择更换壁纸。&lt;/p&gt;
+&lt;h3 id=&#34;dash-to-dock&#34;&gt;Dash to dock&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-Dock Settings-&lt;/p&gt;
+&lt;p&gt;-Run as, in terminal! one by one&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Show Apps Button at Left&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Use Custom Dock Indicator&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DEFAULT
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-customize-running-dots false&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Disable Custom Dock Shrink Mode&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Change Dock Transparency mode&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode DEFAULT&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Disable Extend height!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Change Dock Pozition&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Command:
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM&lt;/p&gt;
+&lt;p&gt;-OK!-&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;-NOTE-: 
+&lt;em&gt;if you have problem use this Restore to Default all settings.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;dconf reset -f /org/gnome/shell/extensions/dash-to-dock/&lt;/p&gt;
+&lt;hr&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.kaaass.net/archives/1205&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.kaaass.net/archives/1205&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>安装用于 CTF 的 Manjaro</title>
+        <link>https://blog.frostmiku.com/archives/4/</link>
+        <pubDate>Wed, 06 Nov 2019 15:30:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/4/</guid>
+        <description>&lt;p&gt;&lt;del&gt;对计算机科学幻灭之后&lt;/del&gt;（update:我觉得我又彳亍了），我决定去学信息安全。&lt;/p&gt;
+&lt;p&gt;于是有了在虚拟机里安装一个Linux的需求&amp;hellip;&lt;/p&gt;
+&lt;p&gt;在此记录一下我初次的环境建立过程，方便未来可能需要的环境重建（倒不如直接写成脚本..&lt;/p&gt;
+&lt;h2 id=&#34;发行版选择&#34;&gt;发行版选择&lt;/h2&gt;
+&lt;p&gt;Linux 发行版选择的是 Manjaro Xfce，为什么选择这个发行版呢？&lt;/p&gt;
+&lt;p&gt;（VMware Workstation Player 个人使用免费&lt;/p&gt;
+&lt;h3 id=&#34;首先为什么是manjaro&#34;&gt;首先，为什么是Manjaro？&lt;/h3&gt;
+&lt;p&gt;因为，大名鼎鼎的 Kali Linux 不提供 iso 下载了，官网只有一个种子文件，而且 tuna ustc 的镜像里也没有┑(￣Д ￣)┍&lt;/p&gt;
+&lt;p&gt;（再说，里面那么多的工具，都有啥？干啥用？怎么用？我都不清楚啊 TAT&lt;/p&gt;
+&lt;p&gt;Arch Linux 软件源我吹爆，为了能够快速建立就选 Manjaro 喽~&lt;/p&gt;
+&lt;p&gt;Ubuntu 也不是不能选&amp;hellip;就是感觉有点&amp;hellip;丑&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;其次为什么是-xfce&#34;&gt;其次，为什么是 Xfce？&lt;/h3&gt;
+&lt;p&gt;毕竟是装在虚拟机里嘛~&lt;/p&gt;
+&lt;p&gt;既然有宿主了，界面也就不那么重要了。&lt;/p&gt;
+&lt;p&gt;Xfce 内存占用小，跑得快，默认配置美观&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;安装后要敲的指令&#34;&gt;安装后要敲的指令&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#卸载 Open VMware Tools
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -R open-vm-tools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后注销，登陆到 root 用户。&lt;/p&gt;
+&lt;p&gt;因为要用的工具大多数都需要 root，Kali Linux也是这么搞得。&lt;/p&gt;
+&lt;p&gt;安装  VMware Tools&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#切换中国源
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman-mirrors -c China
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#安装 Vim
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -S vim
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#添加 [archlinuxcn]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /etc/pacman.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[archlinuxcn]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SigLevel = Optional TrustedOnly
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#更新软件源
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -Syy &amp;amp;&amp;amp; sudo pacman -S archlinuxcn-keyring
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#安装 oh my zsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#开机自动登录到 root
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /etc/lightdm/lightdm.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#修改下面这一行
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;autologin-user=root
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#把 root 添加到 autologin 组中
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# groupadd autologin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpasswd -a root autologin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#重启
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;环境搭建&#34;&gt;环境搭建&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;docker&lt;/li&gt;
+&lt;li&gt;netcat&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='这篇文章是由我毕设改出来的，或许可以启发你怎么写废话'><title>基于肢体运动的睡眠状态检测原理</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/36/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='基于肢体运动的睡眠状态检测原理'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='基于肢体运动的睡眠状态检测原理'>
 <meta property='og:description' content='这篇文章是由我毕设改出来的，或许可以启发你怎么写废话'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/36/'>
 <meta property='og:site_name' content='StarWhisper'>
@@ -14,28 +14,12 @@
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="基于肢体运动的睡眠状态检测原理">
 <meta name="twitter:description" content="这篇文章是由我毕设改出来的，或许可以启发你怎么写废话"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://blog.frostmiku.com/archives/36/3.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page has-toc
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -58,25 +42,232 @@
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="https://blog.frostmiku.com" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
 </svg>
 
 
 
-                <span>Back</span>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
             </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
         </div>
-    
+    </ol>
+</aside>
 <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
@@ -104,16 +295,38 @@
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/36/">基于肢体运动的睡眠状态检测原理</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/36/">基于肢体运动的睡眠状态检测原理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            这篇文章是由我毕设改出来的，或许可以启发你怎么写废话
+        </h3>
+        
+    </div>
 
     
-    <h3 class="article-subtitle">
-        这篇文章是由我毕设改出来的，或许可以启发你怎么写废话
-    </h3>
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 30, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -121,11 +334,21 @@
 
 
 
-        <time class="article-time--published">Jun 30, 2021</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <h2 id="背景">背景</h2>
 <p>  睡眠，作为人类每天都要进行的一项活动，它占据了人类整个生命周期的三分之一左右，其质量的高低对人类身心健康有着巨大的影响。</p>
 <p>  良好的睡眠质量有助于身体成长、提高大脑记忆能力、增强自身免疫力，同时有利于集中注意力，保证各方面均衡发展，是健康的基本保证。然而，现如今的年轻人或是因为繁重的学习生活压力，或是因为精彩缤纷的互联网世界，熬夜成瘾，久久无法入眠。</p>
@@ -135,18 +358,20 @@
 <p>  近年来，随着物质生活水平的不断提高，人们的健康意识逐渐增强，对人生三分之一都在进行的大事——“睡眠”自然也是十分关注。</p>
 <p>  随着对睡眠的医学研究全面深入，和传感器技术的飞速发展，为人们优化自己的睡眠质量提供了新的可能。</p>
 <p>  睡眠质量的高低与人类健康息息相关，较差的睡眠质量通常会导致许多疾病的发病率升高，严重情况下，熬夜者很可能会有猝死的风险。通常我们可以依据睡眠者起床时的精神面貌来评判睡眠质量的高低，而睡眠者被唤醒的时机是影响起床时精神面貌的关键因素之一。</p>
-<p><figure style="flex-grow: 192; flex-basis: 461px">
-		<a href="/archives/36/1.png" data-size="728x379"><img src="/archives/36/1.png"
-				srcset="/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_480x0_resize_box_3.png 480w, /archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_1024x0_resize_box_3.png 1024w"
-				width="728"
-				height="379"
-				loading="lazy"
-				alt="图 1 睡眠样本">
-		</a>
-		
-		<figcaption>图 1 睡眠样本</figcaption>
-		
-	</figure></p>
+<p><img src="/archives/36/1.png"
+	width="728"
+	height="379"
+	srcset="/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_480x0_resize_box_3.png 480w, /archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="图 1 睡眠样本"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="461px"
+	
+></p>
 <p>  如图1所示，医学界通常认为睡眠过程是一个由快速动眼期(REM)和非快速动眼期(NREM)两大时序状态组成的循环过程，其中，非快速动眼期阶段又可以细化为以下四个睡眠子阶段：第一、二阶段统称为浅睡眠过程(Light Sleep)，第三、四阶段统称为深睡眠过程(Deep Sleep)<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。当睡眠者在深睡眠过程中被外界因素唤醒时，将会产生梦中惊醒的效果，睡眠者的精神面貌也必不会有多好。然而，当睡眠者在浅度睡眠时受外界因素被唤醒时，则会表现出自然睡醒一样的效果<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。</p>
 <h2 id="睡眠周期及睡眠状态检测原理">睡眠周期及睡眠状态检测原理</h2>
 <h3 id="睡眠周期">睡眠周期</h3>
@@ -154,18 +379,20 @@
 <p>  入睡期是睡眠的开始，昏昏欲睡的感觉就属于这一阶段。浅睡期开始正式睡眠。熟睡期和沉睡期是沉睡阶段，在该阶段人不容易被叫醒。当睡眠者由浅睡期或快速动眼期逐步进入沉睡期时，睡眠者的呼吸频率和心跳速度均会减慢且变得有节奏，其血压也会降低。与此同时，脑电波开始变慢并且会呈现出大量高幅值的波段<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>。</p>
 <p>  以上四个阶段睡眠共要经过约60到90分钟。而且均不会出现眼球快速跳动现象，故统称为非快速动眼睡眠。</p>
 <p>  最后一个时期被称为快速动眼期。顾名思义，此时的睡眠者会出现动眼现象，此时的睡眠者通常会有翻身的动作，并且容易惊醒。科学研究表明，快速动眼期是大脑内部对记忆的学习和技巧的快速整合阶段。这一阶段的睡眠质量直接决定了睡眠者的记忆和理解效率，是非常重要的睡眠阶段<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>。所以保证足够的睡眠时间是非常重要的。</p>
-<p><figure style="flex-grow: 201; flex-basis: 482px">
-		<a href="/archives/36/2.jpg" data-size="324x161"><img src="/archives/36/2.jpg"
-				srcset="/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_480x0_resize_q75_box.jpg 480w, /archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_1024x0_resize_q75_box.jpg 1024w"
-				width="324"
-				height="161"
-				loading="lazy"
-				alt="图 2 睡眠过程状态迁移图">
-		</a>
-		
-		<figcaption>图 2 睡眠过程状态迁移图</figcaption>
-		
-	</figure></p>
+<p><img src="/archives/36/2.jpg"
+	width="324"
+	height="161"
+	srcset="/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_480x0_resize_q75_box.jpg 480w, /archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="图 2 睡眠过程状态迁移图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="482px"
+	
+></p>
 <p>  睡眠周期是由睡眠刚启动的昏昏欲睡逐渐变沉，经由非快速动眼期（慢波睡眠期）和快速动眼期（异相睡眠期），这几个睡眠阶段之间的往复循环。又称为短昼夜睡眠周期，睡梦周期或快速动眼—非快速动眼(REM-NREM)周期，以示区别于睡眠和清醒间的昼夜交替。如图1所示人类的睡眠周期约70至110分钟（90±20分钟）<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>。医学上又可以将睡眠细粒度地分为如图2所示的五个阶段：</p>
 <ul>
 <li>第一阶段(S1)也是非快速动眼期第一阶段，是睡眠的最初状态，也是睡眠者由清醒逐渐进入到浅睡眠状态的过程。睡眠者在该阶段通常会出现突然地肌肉颤动，容易受到外部环境的干扰。</li>
@@ -180,66 +407,70 @@
 <p>  在一次正常的睡眠过程中，睡眠者通常会由浅睡眠阶段变换至深睡眠阶段，接着并不直接进入快速动眼期，而是从深度睡眠逆向回到浅度睡眠，之后才进入快速动眼期。快速动眼期结束后，接着再进入S1阶段，如此周而复始。睡眠过程中的状态变换在时间上呈现出周期性规律，不同睡眠状态之间的切换也具有一定的依赖性与时序性。一次完整的睡眠状态周期大约会持续90分钟，并且一晚上大约循环4到6次。</p>
 <h2 id="实现">实现</h2>
 <p>  这部分我就不放出来了，基本就是拿到加速度传感器三轴的值然后归一化，然后进行识别，马尔科夫链或是条件随机场都是很好的方法，当然我更推荐后者，因为前者认为所有显式状态是彼此独立的，在建模中并不考虑他们之间的依赖关系。考虑到睡眠过程中各个睡眠相关事件的相互依赖性，相比于隐式马尔科夫链，条件随机场能够描述更多特征，从而达到更好地预测效果。</p>
-<p><figure style="flex-grow: 205; flex-basis: 492px">
-		<a href="/archives/36/4.jpg" data-size="1659x808"><img src="/archives/36/4.jpg"
-				srcset="/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_480x0_resize_q75_box.jpg 480w, /archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_1024x0_resize_q75_box.jpg 1024w"
-				width="1659"
-				height="808"
-				loading="lazy"
-				alt="数据处理">
-		</a>
-		
-		<figcaption>数据处理</figcaption>
-		
-	</figure></p>
+<p><img src="/archives/36/4.jpg"
+	width="1659"
+	height="808"
+	srcset="/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_480x0_resize_q75_box.jpg 480w, /archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="数据处理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
 <p>而我为了混个毕业就直接有限状态机解决问题了。<del>差不多得了</del></p>
-<p><figure style="flex-grow: 189; flex-basis: 454px">
-		<a href="/archives/36/3.jpg" data-size="1605x848"><img src="/archives/36/3.jpg"
-				srcset="/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_480x0_resize_q75_box.jpg 480w, /archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_1024x0_resize_q75_box.jpg 1024w"
-				width="1605"
-				height="848"
-				loading="lazy"
-				alt="总体架构">
-		</a>
-		
-		<figcaption>总体架构</figcaption>
-		
-	</figure></p>
+<p><img src="/archives/36/3.jpg"
+	width="1605"
+	height="848"
+	srcset="/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_480x0_resize_q75_box.jpg 480w, /archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="总体架构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
 <h2 id="reference">Reference</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>郑伟,赵静霞. 117例大学生睡眠状态调查[A].河南省精神病学学术年会资料汇编[C]. 河南:河南省护理学会, 2006:2-3.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>Sleep-deprived driving. Technical report[EB/OL], 2005. <a class="link" href="https://en.wikipedia.org/wiki/Sleep-deprived_driving#cite_note-CNN-5"  target="_blank" rel="noopener"
     >https://en.wikipedia.org/wiki/Sleep-deprived_driving#cite_note-CNN-5</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>Hillman D R, Murphy A S, Antic R, et al. The economic cost of sleep disorders[J]. Sleep, 2006, 29(3):299-305.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>Längkvist M, Karlsson L, Loutfi A. Sleep stage classification using unsupervised feature learning[J]. Advances in Artificial Neural Systems, 2012, 32(5):5-7.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
+<li id="fn:5">
 <p>Trinder J, Kleiman J, Carrington M, et al. Autonomic activity during human sleep as a function of time and sleep stage[J]. Journal of sleep research, 2001, 10(4): 253-264.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6" role="doc-endnote">
+<li id="fn:6">
 <p>Weixi Gu, Longfei Shangguan, Zheng Yang, et al.Sleep Hunter: Towards Fine Grained Sleep Stage Tracking with Smartphones[J]. IEEE Transactions on Mobile Computing, 2016, 20(15):1514-1527&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:7" role="doc-endnote">
+<li id="fn:7">
 <p>Ancoli-Israel S, Cole R, Alessi C, et al. The role of actigraphy in the study of sleep and circadian rhythms[J]. Sleep, 2003, 26(3): 342-392.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:8" role="doc-endnote">
-<p>维基. 睡眠周期[EB/OL], <a class="link" href="https://zh.wikipedia.org/wiki/%E7%9D%A1%E7%9C%A0%E9%80%B1%E6%9C%9F,"  target="_blank" rel="noopener"
-    >https://zh.wikipedia.org/wiki/%E7%9D%A1%E7%9C%A0%E9%80%B1%E6%9C%9F,</a> 2021-04-05&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:8">
+<p>维基. 睡眠周期[EB/OL], <a class="link" href="https://zh.wikipedia.org/wiki/%E7%9D%A1%E7%9C%A0%E9%80%B1%E6%9C%9F"  target="_blank" rel="noopener"
+    >https://zh.wikipedia.org/wiki/%E7%9D%A1%E7%9C%A0%E9%80%B1%E6%9C%9F</a>, 2021-04-05&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:9" role="doc-endnote">
+<li id="fn:9">
 <p>顾维玺. 基于移动感知技术的睡眠状态追踪研究[D]. 北京: 清华大学,2015.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
 </section>
 
@@ -267,17 +498,20 @@
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/35/">
         
@@ -286,7 +520,8 @@
                 <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 仿手写文本生成"
                         data-key="35" 
                         data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
                 
@@ -298,8 +533,8 @@
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/34/">
         
@@ -308,7 +543,8 @@
                 <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 大革命，一种扑克卡牌游戏"
                         data-key="34" 
                         data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
                 
@@ -320,8 +556,8 @@
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/33/">
         
@@ -330,7 +566,8 @@
                 <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 浅谈邀请码的生成"
                         data-key="33" 
                         data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
                 
@@ -342,8 +579,8 @@
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/28/">
         
@@ -352,7 +589,8 @@
                 <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题"
                         data-key="28" 
                         data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
                 
@@ -364,8 +602,8 @@
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/20/">
         
@@ -374,7 +612,8 @@
                 <img src="/archives/20/_hud7e36f7e20e71be184458283bdae4646_55974_23a5d351d2fc2374f952239b6e9c423a.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 编译原理学习笔记：文法与语言"
                         data-key="20" 
                         data-hash="md5-xRTZFpFxc6SKQuARS0aZYQ==">
                 
@@ -386,14 +625,13 @@
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -452,12 +690,10 @@
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -523,11 +759,11 @@
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -538,11 +774,13 @@
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -552,11 +790,11 @@
 
 
 
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
   <ol>
     <li><a href="#背景">背景</a></li>
     <li><a href="#睡眠周期及睡眠状态检测原理">睡眠周期及睡眠状态检测原理</a>
@@ -569,15 +807,18 @@
     <li><a href="#reference">Reference</a></li>
   </ol>
 </nav>
-                </div>
-            </section>
-        </aside>
-    
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

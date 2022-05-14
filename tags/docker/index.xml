@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Docker on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/docker/</link>
-    <description>Recent content in Docker on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Jul 2020 23:14:16 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Docker 笔记</title>
-      <link>https://blog.frostmiku.com/archives/29/</link>
-      <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/29/</guid>
-      <description>仅记录，待日后完善
- Docker内部没法解析域名 启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了
-开机自启 启动参数加上 &amp;ndash;restart=always
-进入容器内部 docker exec -it name /bin/bash</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Docker on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/docker/</link>
+        <description>Recent content in Docker on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 19 Jul 2020 23:14:16 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker 笔记</title>
+        <link>https://blog.frostmiku.com/archives/29/</link>
+        <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/29/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;仅记录，待日后完善&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;docker内部没法解析域名&#34;&gt;Docker内部没法解析域名&lt;/h2&gt;
+&lt;p&gt;启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了&lt;/p&gt;
+&lt;h2 id=&#34;开机自启&#34;&gt;开机自启&lt;/h2&gt;
+&lt;p&gt;启动参数加上 &amp;ndash;restart=always&lt;/p&gt;
+&lt;h2 id=&#34;进入容器内部&#34;&gt;进入容器内部&lt;/h2&gt;
+&lt;p&gt;docker exec -it name /bin/bash&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

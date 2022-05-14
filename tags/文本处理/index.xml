@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>文本处理 on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</link>
-    <description>Recent content in 文本处理 on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sun, 07 Oct 2018 14:04:32 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>COSPLAY 与 文本分类</title>
-      <link>https://blog.frostmiku.com/archives/41/</link>
-      <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/41/</guid>
-      <description>“幸福的家庭都是相似的，不幸的家庭各有各的不幸” &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》
- 一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。
-一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。
-而如果经常出现 “李白、杜甫、王维、江泽林则徐” 那它应该是一篇诗歌方面的文章。
-所以，我们可以使用一个 数组 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。
-那么，怎么计算呢.jpg
-看我cosplay
-首先，我们知道：
-$$ \cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| } $$
-我们将这个储存词频的 数组 看成一个 n 维向量 ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。
-当两向量垂直时
-$$ \cos A=0 $$
-两文本毫不相干。
-当两向量重合时
-$$ \cos A=1 $$
-两文本完全相同。
-基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;coser！ 余弦相似性分类器。</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>文本处理 on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</link>
+        <description>Recent content in 文本处理 on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 07 Oct 2018 14:04:32 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>COSPLAY 与 文本分类</title>
+        <link>https://blog.frostmiku.com/archives/41/</link>
+        <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/41/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;“幸福的家庭都是相似的，不幸的家庭各有各的不幸”  &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。&lt;/p&gt;
+&lt;p&gt;一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。&lt;/p&gt;
+&lt;p&gt;而如果经常出现 “李白、杜甫、王维、&lt;del&gt;江泽&lt;/del&gt;林则徐” 那它应该是一篇诗歌方面的文章。&lt;/p&gt;
+&lt;p&gt;所以，我们可以使用一个 &lt;strong&gt;数组&lt;/strong&gt; 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。&lt;/p&gt;
+&lt;p&gt;那么，怎么计算呢.jpg&lt;/p&gt;
+&lt;p&gt;看我cosplay&lt;/p&gt;
+&lt;p&gt;首先，我们知道：&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| }
+$$&lt;/p&gt;
+&lt;p&gt;我们将这个储存词频的 &lt;strong&gt;数组&lt;/strong&gt; 看成一个 &lt;strong&gt;n 维向量&lt;/strong&gt; ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。&lt;/p&gt;
+&lt;p&gt;当两向量垂直时&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=0
+$$&lt;/p&gt;
+&lt;p&gt;两文本毫不相干。&lt;/p&gt;
+&lt;p&gt;当两向量重合时&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=1
+$$&lt;/p&gt;
+&lt;p&gt;两文本完全相同。&lt;/p&gt;
+&lt;p&gt;基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;&lt;del&gt;coser！&lt;/del&gt; 余弦相似性分类器。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

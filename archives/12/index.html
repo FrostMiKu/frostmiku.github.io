@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='好耶！又蓝了~'><title>Windows 蓝屏分析简明教程</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/12/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Windows 蓝屏分析简明教程'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='Windows 蓝屏分析简明教程'>
 <meta property='og:description' content='好耶！又蓝了~'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/12/'>
 <meta property='og:site_name' content='StarWhisper'>
@@ -14,28 +14,12 @@
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="Windows 蓝屏分析简明教程">
 <meta name="twitter:description" content="好耶！又蓝了~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://blog.frostmiku.com/archives/12/windows.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page 
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -58,22 +42,18 @@
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        on-phone--column extended
-    
-">
-    
-        <aside class="sidebar left-sidebar sticky">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
     </button>
 
-    <header class="site-info">
+    <header>
         
+            
             <figure class="site-avatar">
+                <a href="/">
                 
                     
                     
@@ -83,23 +63,67 @@
                             height="254" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
-
+                </a>
                 
                     <span class="emoji">🤡</span>
                 
             </figure>
+            
         
-        <h1 class="site-name"><a href="https://blog.frostmiku.com">StarWhisper</a></h1>
-        <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
-    </header>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-    <ol class="menu" id="main-menu">
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
         
         
         
 
         <li >
-            <a href='/'>
+            <a href='/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -118,7 +142,9 @@
         
 
         <li >
-            <a href='/about/'>
+            <a href='/about/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -136,7 +162,9 @@
         
 
         <li >
-            <a href='/archives/'>
+            <a href='/archives/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -155,7 +183,9 @@
         
 
         <li >
-            <a href='/friends/'>
+            <a href='/friends/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -173,7 +203,9 @@
         
 
         <li >
-            <a href='/index.xml'>
+            <a href='/index.xml' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -192,7 +224,9 @@
         
 
         <li >
-            <a href='/search/'>
+            <a href='/search/' >
+                
+                
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -208,9 +242,11 @@
         </li>
         
 
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -218,7 +254,7 @@
 
 
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -226,13 +262,12 @@
 
 
 
-                <span>暗色模式</span>
-            </li>
-        
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
     </ol>
 </aside>
-
-    
 <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
@@ -260,16 +295,38 @@
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/12/">Windows 蓝屏分析简明教程</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/12/">Windows 蓝屏分析简明教程</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            好耶！又蓝了~
+        </h3>
+        
+    </div>
 
     
-    <h3 class="article-subtitle">
-        好耶！又蓝了~
-    </h3>
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 17, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -277,11 +334,21 @@
 
 
 
-        <time class="article-time--published">Nov 17, 2019</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <h2 id="前言--工具准备">前言 &amp; 工具准备</h2>
 <p>今天室友的电脑蓝屏了&hellip; <del>虽然以前就经常发生</del>
 所以我们来康康是怎么回事！</p>
@@ -298,169 +365,340 @@
 <li>当出现 <code>Use !analyze -v to get detailed debugging information</code> 时,在下面输入框：<code>!analyze –v</code> 或直接点击 <code>!analyze –v</code></li>
 </ol>
 <p>此时会出现类似如下的信息：</p>
-<pre tabindex="0"><code>*******************************************************************************
-*                                                                             *
-*                        Bugcheck Analysis                                    *
-*                                                                             *
-*******************************************************************************
-
-PAGE_FAULT_IN_NONPAGED_AREA (50)
-Invalid system memory was referenced.  This cannot be protected by try-except.
-Typically the address is just plain bad or it is pointing at freed memory.
-Arguments:
-Arg1: ffff8289b2e75b90, memory referenced.
-Arg2: 0000000000000011, value 0 = read operation, 1 = write operation.
-Arg3: ffff8289b2e75b90, If non-zero, the instruction address which referenced the bad memory
-	address.
-Arg4: 0000000000000002, (reserved)
-
-Debugging Details:
-------------------
-
-
-Could not read faulting driver name
-
-KEY_VALUES_STRING: 1
-
-    Key  : Analysis.CPU.Sec
-    Value: 2
-
-    Key  : Analysis.DebugAnalysisProvider.CPP
-    Value: Create: 8007007e on ELUXWORKSTATION
-
-    Key  : Analysis.DebugData
-    Value: CreateObject
-
-    Key  : Analysis.DebugModel
-    Value: CreateObject
-
-    Key  : Analysis.Elapsed.Sec
-    Value: 2
-
-    Key  : Analysis.Memory.CommitPeak.Mb
-    Value: 90
-
-    Key  : Analysis.System
-    Value: CreateObject
-
-
-DUMP_FILE_ATTRIBUTES: 0x8
-  Kernel Generated Triage Dump
-
-BUGCHECK_CODE:  50
-
-BUGCHECK_P1: ffff8289b2e75b90
-
-BUGCHECK_P2: 11
-
-BUGCHECK_P3: ffff8289b2e75b90
-
-BUGCHECK_P4: 2
-
-WRITE_ADDRESS: fffff8057fd733b8: Unable to get MiVisibleState
-Unable to get NonPagedPoolStart
-Unable to get NonPagedPoolEnd
-Unable to get PagedPoolStart
-Unable to get PagedPoolEnd
-fffff8057fc2a3c8: Unable to get Flags value from nt!KdVersionBlock
-fffff8057fc2a3c8: Unable to get Flags value from nt!KdVersionBlock
-unable to get nt!MmSpecialPagesInUse
- ffff8289b2e75b90 
-
-MM_INTERNAL_CODE:  2
-
-BLACKBOXBSD: 1 (!blackboxbsd)
-
-
-BLACKBOXNTFS: 1 (!blackboxntfs)
-
-
-BLACKBOXWINLOGON: 1
-
-CUSTOMER_CRASH_COUNT:  1
-
-PROCESS_NAME:  LEDKeeper.exe
-
-TRAP_FRAME:  ffffd48056b48300 -- (.trap 0xffffd48056b48300)
-NOTE: The trap frame does not contain all registers.
-Some register values may be zeroed or incorrect.
-rax=00000000c000000d rbx=0000000000000000 rcx=0000000080000000
-rdx=000000000000004e rsi=0000000000000000 rdi=0000000000000000
-rip=ffff8289b2e75b90 rsp=ffffd48056b48498 rbp=fffff8057fea711b
- r8=0000000000000000  r9=ffffd48056b48438 r10=0000000000000011
-r11=0000000000000011 r12=0000000000000000 r13=0000000000000000
-r14=0000000000000000 r15=0000000000000000
-iopl=0         nv up ei ng nz ac po nc
-ffff8289`b2e75b90 fe              ???
-Resetting default scope
-
-STACK_TEXT:  
-ffffd480`56b48058 fffff805`7f9e35d6 : 00000000`00000050 ffff8289`b2e75b90 00000000`00000011 ffffd480`56b48300 : nt!KeBugCheckEx
-ffffd480`56b48060 fffff805`7f872eef : ffffa404`f90f6c50 00000000`00000011 00000000`00000000 ffff8289`b2e75b90 : nt!MiSystemFault+0x1d6866
-ffffd480`56b48160 fffff805`7f9cf520 : 00000000`00000001 fffff805`7fe1feb3 00000000`000000cb 00000000`00000001 : nt!MmAccessFault+0x34f
-ffffd480`56b48300 ffff8289`b2e75b90 : fffff805`7fdebe01 00000000`00000000 ffff8289`00000000 ffff8289`00000800 : nt!KiPageFault+0x360
-ffffd480`56b48498 fffff805`7fdebe01 : 00000000`00000000 ffff8289`00000000 ffff8289`00000800 fffff805`7ff89b00 : 0xffff8289`b2e75b90
-ffffd480`56b484a0 00000000`00000000 : 00000000`00000000 ffff8289`00000000 00000000`00000000 00000000`00000000 : nt!ObpIncrementHandleCountEx+0x271
-
-
-SYMBOL_NAME:  nt!MiSystemFault+1d6866
-
-MODULE_NAME: nt
-
-IMAGE_VERSION:  10.0.18362.476
-
-STACK_COMMAND:  .thread ; .cxr ; kb
-
-IMAGE_NAME:  memory_corruption
-
-BUCKET_ID_FUNC_OFFSET:  1d6866
-
-FAILURE_BUCKET_ID:  AV_INVALID_nt!MiSystemFault
-
-OSPLATFORM_TYPE:  x64
-
-OSNAME:  Windows 10
-
-FAILURE_ID_HASH:  {8a33c6b1-a9f1-4efe-025b-a861cc33d6e2}
-
-Followup:     MachineOwner
----------
-
-</code></pre><p>通常情况下，我们只需要关注</p>
-<pre tabindex="0"><code>PROCESS_NAME:  XXXXXXX
-</code></pre><p>这一行即可大致确定引起系统蓝屏的原因。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*******************************************************************************
+</span></span><span class="line"><span class="cl">*                                                                             *
+</span></span><span class="line"><span class="cl">*                        Bugcheck Analysis                                    *
+</span></span><span class="line"><span class="cl">*                                                                             *
+</span></span><span class="line"><span class="cl">*******************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PAGE_FAULT_IN_NONPAGED_AREA (50)
+</span></span><span class="line"><span class="cl">Invalid system memory was referenced.  This cannot be protected by try-except.
+</span></span><span class="line"><span class="cl">Typically the address is just plain bad or it is pointing at freed memory.
+</span></span><span class="line"><span class="cl">Arguments:
+</span></span><span class="line"><span class="cl">Arg1: ffff8289b2e75b90, memory referenced.
+</span></span><span class="line"><span class="cl">Arg2: 0000000000000011, value 0 = read operation, 1 = write operation.
+</span></span><span class="line"><span class="cl">Arg3: ffff8289b2e75b90, If non-zero, the instruction address which referenced the bad memory
+</span></span><span class="line"><span class="cl">	address.
+</span></span><span class="line"><span class="cl">Arg4: 0000000000000002, (reserved)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debugging Details:
+</span></span><span class="line"><span class="cl">------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Could not read faulting driver name
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">KEY_VALUES_STRING: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.CPU.Sec
+</span></span><span class="line"><span class="cl">    Value: 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.DebugAnalysisProvider.CPP
+</span></span><span class="line"><span class="cl">    Value: Create: 8007007e on ELUXWORKSTATION
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.DebugData
+</span></span><span class="line"><span class="cl">    Value: CreateObject
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.DebugModel
+</span></span><span class="line"><span class="cl">    Value: CreateObject
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.Elapsed.Sec
+</span></span><span class="line"><span class="cl">    Value: 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.Memory.CommitPeak.Mb
+</span></span><span class="line"><span class="cl">    Value: 90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Key  : Analysis.System
+</span></span><span class="line"><span class="cl">    Value: CreateObject
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DUMP_FILE_ATTRIBUTES: 0x8
+</span></span><span class="line"><span class="cl">  Kernel Generated Triage Dump
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUGCHECK_CODE:  50
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUGCHECK_P1: ffff8289b2e75b90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUGCHECK_P2: 11
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUGCHECK_P3: ffff8289b2e75b90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUGCHECK_P4: 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WRITE_ADDRESS: fffff8057fd733b8: Unable to get MiVisibleState
+</span></span><span class="line"><span class="cl">Unable to get NonPagedPoolStart
+</span></span><span class="line"><span class="cl">Unable to get NonPagedPoolEnd
+</span></span><span class="line"><span class="cl">Unable to get PagedPoolStart
+</span></span><span class="line"><span class="cl">Unable to get PagedPoolEnd
+</span></span><span class="line"><span class="cl">fffff8057fc2a3c8: Unable to get Flags value from nt!KdVersionBlock
+</span></span><span class="line"><span class="cl">fffff8057fc2a3c8: Unable to get Flags value from nt!KdVersionBlock
+</span></span><span class="line"><span class="cl">unable to get nt!MmSpecialPagesInUse
+</span></span><span class="line"><span class="cl"> ffff8289b2e75b90 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MM_INTERNAL_CODE:  2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BLACKBOXBSD: 1 (!blackboxbsd)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BLACKBOXNTFS: 1 (!blackboxntfs)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BLACKBOXWINLOGON: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">CUSTOMER_CRASH_COUNT:  1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PROCESS_NAME:  LEDKeeper.exe
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TRAP_FRAME:  ffffd48056b48300 -- (.trap 0xffffd48056b48300)
+</span></span><span class="line"><span class="cl">NOTE: The trap frame does not contain all registers.
+</span></span><span class="line"><span class="cl">Some register values may be zeroed or incorrect.
+</span></span><span class="line"><span class="cl">rax=00000000c000000d rbx=0000000000000000 rcx=0000000080000000
+</span></span><span class="line"><span class="cl">rdx=000000000000004e rsi=0000000000000000 rdi=0000000000000000
+</span></span><span class="line"><span class="cl">rip=ffff8289b2e75b90 rsp=ffffd48056b48498 rbp=fffff8057fea711b
+</span></span><span class="line"><span class="cl"> r8=0000000000000000  r9=ffffd48056b48438 r10=0000000000000011
+</span></span><span class="line"><span class="cl">r11=0000000000000011 r12=0000000000000000 r13=0000000000000000
+</span></span><span class="line"><span class="cl">r14=0000000000000000 r15=0000000000000000
+</span></span><span class="line"><span class="cl">iopl=0         nv up ei ng nz ac po nc
+</span></span><span class="line"><span class="cl">ffff8289`b2e75b90 fe              ???
+</span></span><span class="line"><span class="cl">Resetting default scope
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">STACK_TEXT:  
+</span></span><span class="line"><span class="cl">ffffd480`56b48058 fffff805`7f9e35d6 : 00000000`00000050 ffff8289`b2e75b90 00000000`00000011 ffffd480`56b48300 : nt!KeBugCheckEx
+</span></span><span class="line"><span class="cl">ffffd480`56b48060 fffff805`7f872eef : ffffa404`f90f6c50 00000000`00000011 00000000`00000000 ffff8289`b2e75b90 : nt!MiSystemFault+0x1d6866
+</span></span><span class="line"><span class="cl">ffffd480`56b48160 fffff805`7f9cf520 : 00000000`00000001 fffff805`7fe1feb3 00000000`000000cb 00000000`00000001 : nt!MmAccessFault+0x34f
+</span></span><span class="line"><span class="cl">ffffd480`56b48300 ffff8289`b2e75b90 : fffff805`7fdebe01 00000000`00000000 ffff8289`00000000 ffff8289`00000800 : nt!KiPageFault+0x360
+</span></span><span class="line"><span class="cl">ffffd480`56b48498 fffff805`7fdebe01 : 00000000`00000000 ffff8289`00000000 ffff8289`00000800 fffff805`7ff89b00 : 0xffff8289`b2e75b90
+</span></span><span class="line"><span class="cl">ffffd480`56b484a0 00000000`00000000 : 00000000`00000000 ffff8289`00000000 00000000`00000000 00000000`00000000 : nt!ObpIncrementHandleCountEx+0x271
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SYMBOL_NAME:  nt!MiSystemFault+1d6866
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MODULE_NAME: nt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IMAGE_VERSION:  10.0.18362.476
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">STACK_COMMAND:  .thread ; .cxr ; kb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IMAGE_NAME:  memory_corruption
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUCKET_ID_FUNC_OFFSET:  1d6866
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FAILURE_BUCKET_ID:  AV_INVALID_nt!MiSystemFault
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">OSPLATFORM_TYPE:  x64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">OSNAME:  Windows 10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FAILURE_ID_HASH:  {8a33c6b1-a9f1-4efe-025b-a861cc33d6e2}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Followup:     MachineOwner
+</span></span><span class="line"><span class="cl">---------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通常情况下，我们只需要关注</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PROCESS_NAME:  XXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一行即可大致确定引起系统蓝屏的原因。
 比如本次分析中蓝屏是由 <strong>LEDKeeper.exe</strong> 所引起。
 通过搜索我们可以得知它属于 <strong>MSI MysticLight</strong>。
 这是一个微星主板的灯光控制软件，没啥子用。直接卸载！
 到这里，基本上已经分析结束了。<strong>要么解决问题，要么果断放弃。</strong></p>
 <p>更详细的信息可以输入 <code>!process</code> 来查看:</p>
-<pre tabindex="0"><code>5: kd&gt; !process
-PROCESS ffff8289b44c4080
-    SessionId: none  Cid: 1d10    Peb: 00734000  ParentCid: 0578
-    DirBase: 130af8000  ObjectTable: ffffa404def9bc00  HandleCount: &lt;Data Not Accessible&gt;
-    Image: LEDKeeper.exe
-    VadRoot ffff8289b79cbb70 Vads 325 Clone 0 Private 5560. Modified 5514. Locked 485.
-    DeviceMap ffffa404da1d3190
-    Token                             ffffa404df09a770
-    ReadMemory error: Cannot get nt!KeMaximumIncrement value.
-fffff78000000000: Unable to get shared data
-    ElapsedTime                       00:00:00.000
-    UserTime                          00:00:00.000
-    KernelTime                        00:00:00.000
-    QuotaPoolUsage[PagedPool]         610016
-    QuotaPoolUsage[NonPagedPool]      47632
-    Working Set Sizes (now,min,max)  (5089, 50, 345) (20356KB, 200KB, 1380KB)
-    PeakWorkingSetSize                15214
-    VirtualSize                       429 Mb
-    PeakVirtualSize                   460 Mb
-    PageFaultCount                    33009
-    MemoryPriority                    BACKGROUND
-    BasePriority                      6
-    CommitCharge                      12664
-    Job                               ffff8289b304f060
-
-        *** Error in reading nt!_ETHREAD @ ffff8289b4473080
-</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">5: kd&gt; !process
+</span></span><span class="line"><span class="cl">PROCESS ffff8289b44c4080
+</span></span><span class="line"><span class="cl">    SessionId: none  Cid: 1d10    Peb: 00734000  ParentCid: 0578
+</span></span><span class="line"><span class="cl">    DirBase: 130af8000  ObjectTable: ffffa404def9bc00  HandleCount: &lt;Data Not Accessible&gt;
+</span></span><span class="line"><span class="cl">    Image: LEDKeeper.exe
+</span></span><span class="line"><span class="cl">    VadRoot ffff8289b79cbb70 Vads 325 Clone 0 Private 5560. Modified 5514. Locked 485.
+</span></span><span class="line"><span class="cl">    DeviceMap ffffa404da1d3190
+</span></span><span class="line"><span class="cl">    Token                             ffffa404df09a770
+</span></span><span class="line"><span class="cl">    ReadMemory error: Cannot get nt!KeMaximumIncrement value.
+</span></span><span class="line"><span class="cl">fffff78000000000: Unable to get shared data
+</span></span><span class="line"><span class="cl">    ElapsedTime                       00:00:00.000
+</span></span><span class="line"><span class="cl">    UserTime                          00:00:00.000
+</span></span><span class="line"><span class="cl">    KernelTime                        00:00:00.000
+</span></span><span class="line"><span class="cl">    QuotaPoolUsage[PagedPool]         610016
+</span></span><span class="line"><span class="cl">    QuotaPoolUsage[NonPagedPool]      47632
+</span></span><span class="line"><span class="cl">    Working Set Sizes (now,min,max)  (5089, 50, 345) (20356KB, 200KB, 1380KB)
+</span></span><span class="line"><span class="cl">    PeakWorkingSetSize                15214
+</span></span><span class="line"><span class="cl">    VirtualSize                       429 Mb
+</span></span><span class="line"><span class="cl">    PeakVirtualSize                   460 Mb
+</span></span><span class="line"><span class="cl">    PageFaultCount                    33009
+</span></span><span class="line"><span class="cl">    MemoryPriority                    BACKGROUND
+</span></span><span class="line"><span class="cl">    BasePriority                      6
+</span></span><span class="line"><span class="cl">    CommitCharge                      12664
+</span></span><span class="line"><span class="cl">    Job                               ffff8289b304f060
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        *** Error in reading nt!_ETHREAD @ ffff8289b4473080
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -489,17 +727,20 @@ fffff78000000000: Unable to get shared data
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/28/">
         
@@ -508,7 +749,8 @@ fffff78000000000: Unable to get shared data
                 <img src="/archives/28/bigsur.fe3a06fb4c083872772aa8c30a0fad85_hu1882b8a1356b3be9e2c65bea0519cb32_1306396_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题"
                         data-key="28" 
                         data-hash="md5-/joG&#43;0wIOHJ3KqjDCg&#43;thQ==">
                 
@@ -520,8 +762,8 @@ fffff78000000000: Unable to get shared data
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/36/">
         
@@ -530,7 +772,8 @@ fffff78000000000: Unable to get shared data
                 <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 基于肢体运动的睡眠状态检测原理"
                         data-key="36" 
                         data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
                 
@@ -542,8 +785,8 @@ fffff78000000000: Unable to get shared data
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/35/">
         
@@ -552,7 +795,8 @@ fffff78000000000: Unable to get shared data
                 <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 仿手写文本生成"
                         data-key="35" 
                         data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
                 
@@ -564,8 +808,8 @@ fffff78000000000: Unable to get shared data
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/34/">
         
@@ -574,7 +818,8 @@ fffff78000000000: Unable to get shared data
                 <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 大革命，一种扑克卡牌游戏"
                         data-key="34" 
                         data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
                 
@@ -586,8 +831,8 @@ fffff78000000000: Unable to get shared data
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/33/">
         
@@ -596,7 +841,8 @@ fffff78000000000: Unable to get shared data
                 <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 浅谈邀请码的生成"
                         data-key="33" 
                         data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
                 
@@ -608,14 +854,13 @@ fffff78000000000: Unable to get shared data
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -674,12 +919,10 @@ fffff78000000000: Unable to get shared data
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -745,11 +988,11 @@ fffff78000000000: Unable to get shared data
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -765,7 +1008,7 @@ fffff78000000000: Unable to get shared data
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

@@ -1,36 +1,175 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>IoT on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/iot/</link>
-    <description>Recent content in IoT on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Nov 2019 15:38:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/iot/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>QuickMCU 帮助文档</title>
-      <link>https://blog.frostmiku.com/archives/6/</link>
-      <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/6/</guid>
-      <description>本文已严重过时！！！
-这里是 QuickMCU 的非正式文档。
-波特率 115200。
-内部 repl shell VT100（使用 PuTTY 连接就行。
-函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。
-对应缺失的参数默认会使用 0 或 undefined 代替。
-启动流程  自检 打印板子基本信息 执行内部 JavaScript 代码 挂载 spiffs 文件系统并打印用量信息 执行 /c/boot.js 文件中的 JavaScript 代码（如果存在 启动 repl （read-eval-print loop）  Global setTimeout(func,timeout,arg) 和写web时的用法一样。
-setInterval(func,timeout,arg) 和写web时的用法一样。
-print(str) 打印输出str，参数可以为任何类型（会被自动转换为字符串）
- 无返回值
-  所有module都是全局中的一个object。 如无特殊说明，module 在全局中的名称皆为： 下文中二级标题的全小写字母。
- OS 提供系统接口
-Function sleepMs(ms) 使 JavaScript runtime 暂停指定时间，如无必要不建议使用。
- ms: 整数，sleep的时间，毫秒单位
-无返回值
- getTickCountMs() 返回开机到现在所经历的时间，毫秒单位。
- 返回整数</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>IoT on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/iot/</link>
+        <description>Recent content in IoT on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 06 Nov 2019 15:38:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/iot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>QuickMCU 帮助文档</title>
+        <link>https://blog.frostmiku.com/archives/6/</link>
+        <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/6/</guid>
+        <description>&lt;p&gt;&lt;strong&gt;本文已严重过时！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里是 QuickMCU 的非正式文档。&lt;/p&gt;
+&lt;p&gt;波特率 115200。&lt;/p&gt;
+&lt;p&gt;内部 repl shell VT100（使用 PuTTY 连接就行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;函数内部会对参数类型进行自动转换，多数情况下可以良好的运行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对应缺失的参数默认会使用 0 或 undefined 代替。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;启动流程&#34;&gt;启动流程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;自检&lt;/li&gt;
+&lt;li&gt;打印板子基本信息&lt;/li&gt;
+&lt;li&gt;执行内部 JavaScript 代码&lt;/li&gt;
+&lt;li&gt;挂载 spiffs 文件系统并打印用量信息&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;/c/boot.js&lt;/code&gt; 文件中的 JavaScript 代码（如果存在&lt;/li&gt;
+&lt;li&gt;启动 repl （read-eval-print loop）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;global&#34;&gt;Global&lt;/h2&gt;
+&lt;h3 id=&#34;settimeoutfunctimeoutarg&#34;&gt;setTimeout(func,timeout,arg)&lt;/h3&gt;
+&lt;p&gt;和写web时的用法一样。&lt;/p&gt;
+&lt;h3 id=&#34;setintervalfunctimeoutarg&#34;&gt;setInterval(func,timeout,arg)&lt;/h3&gt;
+&lt;p&gt;和写web时的用法一样。&lt;/p&gt;
+&lt;h3 id=&#34;printstr&#34;&gt;print(str)&lt;/h3&gt;
+&lt;p&gt;打印输出str，参数可以为任何类型（会被自动转换为字符串）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;无返回值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;所有module都是全局中的一个object。&lt;/em&gt;
+&lt;em&gt;如无特殊说明，module 在全局中的名称皆为：&lt;/em&gt;
+&lt;em&gt;下文中&lt;strong&gt;二级标题&lt;/strong&gt;的全小写字母。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
+&lt;p&gt;提供系统接口&lt;/p&gt;
+&lt;h3 id=&#34;function&#34;&gt;Function&lt;/h3&gt;
+&lt;h4 id=&#34;sleepmsms&#34;&gt;sleepMs(ms)&lt;/h4&gt;
+&lt;p&gt;使 JavaScript runtime 暂停指定时间，如无必要不建议使用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ms: 整数，sleep的时间，毫秒单位&lt;/p&gt;
+&lt;p&gt;无返回值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;gettickcountms&#34;&gt;getTickCountMs()&lt;/h4&gt;
+&lt;p&gt;返回开机到现在所经历的时间，毫秒单位。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回整数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;getfreemem&#34;&gt;getFreeMem()&lt;/h4&gt;
+&lt;p&gt;返回剩余内存。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回整数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;p&gt;提供对文件系统的访问。&lt;/p&gt;
+&lt;p&gt;QuickMCU 使用 spiffs 作为文件系统。&lt;/p&gt;
+&lt;p&gt;文件前缀为 &lt;code&gt;/c/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;板子在启动时会自动执行 &lt;code&gt;/c/boot.js&lt;/code&gt; 文件内的 JavaScript 代码。&lt;/p&gt;
+&lt;h3 id=&#34;function-1&#34;&gt;Function&lt;/h3&gt;
+&lt;h4 id=&#34;openfilenamemode&#34;&gt;open(filename,mode)&lt;/h4&gt;
+&lt;p&gt;打开一个文件，用于对文件进行操作。&lt;/p&gt;
+&lt;p&gt;当文件对象失去所有引用后会自动调用 close 方法关闭文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;filename: 字符串，文件完整路径名。&lt;/p&gt;
+&lt;p&gt;mode: 字符串，POSIX标准的文件操作模式 e.g. w r w+ a&amp;hellip;&lt;/p&gt;
+&lt;p&gt;返回 File Object&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;removefilename&#34;&gt;remove(filename)&lt;/h4&gt;
+&lt;p&gt;删除指定文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;filename: 字符串，文件完整路径名&lt;/p&gt;
+&lt;p&gt;返回错误码，0 为删除成功&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;existsfilename&#34;&gt;exists(filename)&lt;/h4&gt;
+&lt;p&gt;检测指定文件是否存在。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;filename: 字符串，文件完整路径名&lt;/p&gt;
+&lt;p&gt;返回布尔值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;const&#34;&gt;CONST&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;EOF&lt;/th&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EOF&lt;/td&gt;
+&lt;td&gt;文件结尾标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SEEK_SET&lt;/td&gt;
+&lt;td&gt;文件开头位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SEEK_CUR&lt;/td&gt;
+&lt;td&gt;文件当前位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SEEK_END&lt;/td&gt;
+&lt;td&gt;文件结尾位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;file-object&#34;&gt;File Object&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;fp:pointer,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;filename:&amp;#39;str&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;mode:&amp;#39;str&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;close&#34;&gt;close()&lt;/h4&gt;
+&lt;p&gt;关闭文件对象。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回错误码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;readsize&#34;&gt;read(size)&lt;/h4&gt;
+&lt;p&gt;从文件读取，size参数可选，不填默认读取整个文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;size: 整数，从当前位置向后读取 size 个字符&lt;/p&gt;
+&lt;p&gt;返回字符串&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;readline&#34;&gt;readLine()&lt;/h4&gt;
+&lt;p&gt;从文件当前位置读取一整行，超过1024个字符将会截断。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回字符串&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;readlines&#34;&gt;readLines()&lt;/h4&gt;
+&lt;p&gt;像 readLine() 但会读取整个文件，以字符串数组形式返回，每个元素都是一行文本。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回数组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;writestr&#34;&gt;write(str)&lt;/h4&gt;
+&lt;p&gt;将 str 写入文件中，object必须为可写的模式打开。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;被写入的文本会优先存入内部 buf ，只有在调用 close 或 flush 时才会写入文件&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;str: 字符串，待写入文本&lt;/p&gt;
+&lt;p&gt;返回错误码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;seekoffsetbase&#34;&gt;seek(offset,base)&lt;/h4&gt;
+&lt;p&gt;设置当前文件位置为 base+offset, 省略所有参数&lt;code&gt;seek()&lt;/code&gt;可以快速的将当前文件位置设置为文件头部。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;offset: 整数，相对位置&lt;/p&gt;
+&lt;p&gt;base: 常数，文件位置，参看 CONST&lt;/p&gt;
+&lt;p&gt;返回错误码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;tell&#34;&gt;tell()&lt;/h4&gt;
+&lt;p&gt;返回当前文件位置。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回整数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;flush&#34;&gt;flush()&lt;/h4&gt;
+&lt;p&gt;强制立刻将缓冲区的内容写入文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回错误码&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='为啥会有人搞这么奇怪的东西...'><title>使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/17/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser'>
 <meta property='og:description' content='为啥会有人搞这么奇怪的东西...'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/17/'>
 <meta property='og:site_name' content='StarWhisper'>
@@ -14,28 +14,12 @@
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser">
 <meta name="twitter:description" content="为啥会有人搞这么奇怪的东西..."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://blog.frostmiku.com/archives/17/fsm.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page has-toc
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -58,25 +42,232 @@
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="https://blog.frostmiku.com" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
 </svg>
 
 
 
-                <span>Back</span>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
             </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
         </div>
-    
+    </ol>
+</aside>
 <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
@@ -104,16 +295,38 @@
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/17/">使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/17/">使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            为啥会有人搞这么奇怪的东西...
+        </h3>
+        
+    </div>
 
     
-    <h3 class="article-subtitle">
-        为啥会有人搞这么奇怪的东西...
-    </h3>
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 17, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -121,164 +334,330 @@
 
 
 
-        <time class="article-time--published">Feb 17, 2020</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <h2 id="目标">目标</h2>
-<pre tabindex="0"><code>HTTP/1.1 200 OK
-Server: nginx
-Date: Sun, 05 Jan 2020 17:39:08 GMT
-Content-Type: text/html; charset=UTF-8
-Connection: close
-Vary: Accept-Encoding
-X-Powered-By: PHP/5.6.10
-Content-Length: 6
-
-123Abc
-</code></pre><p>&ndash;&gt; parse &ndash;&gt;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;reqline&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP/1.1 200 OK&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&#34;server&#34;</span><span class="p">:</span> <span class="s2">&#34;nginx&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="s2">&#34;Sun, 05 Jan 2020 17:39:08 GMT&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;content-type&#34;</span><span class="p">:</span> <span class="s2">&#34;text/html; charset=UTF-8&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="s2">&#34;close&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;vary&#34;</span><span class="p">:</span> <span class="s2">&#34;Accept-Encoding&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;x-powered-by&#34;</span><span class="p">:</span> <span class="s2">&#34;PHP/5.6.10&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;content-length&#34;</span><span class="p">:</span> <span class="s2">&#34;6&#34;</span><span class="p">,</span>
-     <span class="p">}</span>
-    <span class="s2">&#34;body&#34;</span><span class="p">:</span> <span class="s2">&#34;123Abc&#34;</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="状态机">状态机</h2>
-<p><figure style="flex-grow: 129; flex-basis: 310px">
-		<a href="/archives/17/fsm.jpg" data-size="2500x1932"><img src="/archives/17/fsm.jpg"
-				srcset="/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_480x0_resize_q75_box.jpg 480w, /archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_1024x0_resize_q75_box.jpg 1024w"
-				width="2500"
-				height="1932"
-				loading="lazy"
-				alt="http parser fsm">
-		</a>
-		
-		<figcaption>http parser fsm</figcaption>
-		
-	</figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HTTP/1.1 200 OK
+</span></span><span class="line"><span class="cl">Server: nginx
+</span></span><span class="line"><span class="cl">Date: Sun, 05 Jan 2020 17:39:08 GMT
+</span></span><span class="line"><span class="cl">Content-Type: text/html; charset=UTF-8
+</span></span><span class="line"><span class="cl">Connection: close
+</span></span><span class="line"><span class="cl">Vary: Accept-Encoding
+</span></span><span class="line"><span class="cl">X-Powered-By: PHP/5.6.10
+</span></span><span class="line"><span class="cl">Content-Length: 6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">123Abc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>&ndash;&gt; parse &ndash;&gt;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;reqline&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP/1.1 200 OK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&#34;server&#34;</span><span class="p">:</span> <span class="s2">&#34;nginx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="s2">&#34;Sun, 05 Jan 2020 17:39:08 GMT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;content-type&#34;</span><span class="p">:</span> <span class="s2">&#34;text/html; charset=UTF-8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="s2">&#34;close&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;vary&#34;</span><span class="p">:</span> <span class="s2">&#34;Accept-Encoding&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;x-powered-by&#34;</span><span class="p">:</span> <span class="s2">&#34;PHP/5.6.10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;content-length&#34;</span><span class="p">:</span> <span class="s2">&#34;6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;body&#34;</span><span class="p">:</span> <span class="s2">&#34;123Abc&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="状态机">状态机</h2>
+<p><img src="/archives/17/fsm.jpg"
+	width="2500"
+	height="1932"
+	srcset="/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_480x0_resize_q75_box.jpg 480w, /archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="http parser fsm"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="310px"
+	
+></p>
 <h2 id="代码实现">代码实现</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">httpParser</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-
-    <span class="kd">function</span> <span class="nx">Stream</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">Stream</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasNext</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pos</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">Stream</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">str</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">pos</span><span class="o">++</span><span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="kr">const</span> <span class="nx">STATE</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">BEGIN</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nx">LINE_ALMOST_DONE</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">LINE_DONE</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">KEY_DONE</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="nx">HEADER_ALMOST_DONE</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nx">HEADER_DONE</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nx">END</span> <span class="o">:</span> <span class="mi">6</span>
-    <span class="p">};</span>
-
-    <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="p">;</span>
-
-    <span class="kd">function</span> <span class="nx">updateState</span><span class="p">(</span><span class="nx">st</span><span class="p">){</span>
-        <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">st</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">currentState</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nx">httpParser</span><span class="p">.</span><span class="nx">parse</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="p">);</span>
-        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
-        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
-        <span class="kd">var</span> <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">stream</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nx">stream</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-            <span class="k">switch</span> <span class="p">(</span><span class="nx">currentState</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="o">:</span>
-                    <span class="c1">// they might be just sending \n instead of \r\n so this would be
-</span><span class="c1"></span>                    <span class="c1">// the second \n to denote the end of headers
-</span><span class="c1"></span>                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="p">);</span>
-                        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;reqline&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
-                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="o">:</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_DONE</span><span class="p">);</span>
-                    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_DONE</span><span class="o">:</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">KEY_DONE</span><span class="p">);</span>
-                        <span class="nx">lastword</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
-                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_ALMOST_DONE</span><span class="p">);</span>
-                        <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">KEY_DONE</span><span class="o">:</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="p">);</span>
-                        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">][</span><span class="nx">lastword</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
-                        <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">word</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_ALMOST_DONE</span><span class="o">:</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_DONE</span><span class="p">);</span>
-                    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="c1">//Need to optimize
-</span><span class="c1"></span>                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_DONE</span><span class="o">:</span>
-                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="nx">stream</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">()){</span>
-                        <span class="nx">word</span> <span class="o">+=</span> <span class="nx">stream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-                    <span class="p">}</span>
-                    <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;body&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
-                    <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">default</span><span class="o">:</span>
-                    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="p">})();</span>
-</code></pre></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">httpParser</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">Stream</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Stream</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasNext</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pos</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Stream</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">str</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">pos</span><span class="o">++</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">STATE</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">BEGIN</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">LINE_ALMOST_DONE</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">LINE_DONE</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">KEY_DONE</span> <span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">HEADER_ALMOST_DONE</span> <span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">HEADER_DONE</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">END</span> <span class="o">:</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">updateState</span><span class="p">(</span><span class="nx">st</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">st</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">currentState</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">httpParser</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">httpParser</span><span class="p">.</span><span class="nx">parse</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">stream</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="nx">stream</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">switch</span> <span class="p">(</span><span class="nx">currentState</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">BEGIN</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">// they might be just sending \n instead of \r\n so this would be
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="c1">// the second \n to denote the end of headers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;reqline&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_DONE</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">KEY_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">lastword</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_ALMOST_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">KEY_DONE</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\r&#39;</span> <span class="o">||</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">LINE_ALMOST_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">][</span><span class="nx">lastword</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">lastword</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">word</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_ALMOST_DONE</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">==</span> <span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">updateState</span><span class="p">(</span><span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_DONE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//Need to optimize
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">case</span> <span class="nx">STATE</span><span class="p">.</span><span class="nx">HEADER_DONE</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">word</span> <span class="o">+=</span> <span class="nx">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">while</span> <span class="p">(</span><span class="nx">stream</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">()){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">word</span> <span class="o">+=</span> <span class="nx">stream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">result</span><span class="p">[</span><span class="s2">&#34;body&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">word</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">})();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -305,17 +684,20 @@ Content-Length: 6
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="">
     <a href="/archives/13/">
         
@@ -326,8 +708,8 @@ Content-Length: 6
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/36/">
         
@@ -336,7 +718,8 @@ Content-Length: 6
                 <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 基于肢体运动的睡眠状态检测原理"
                         data-key="36" 
                         data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
                 
@@ -348,8 +731,8 @@ Content-Length: 6
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/35/">
         
@@ -358,7 +741,8 @@ Content-Length: 6
                 <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 仿手写文本生成"
                         data-key="35" 
                         data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
                 
@@ -370,8 +754,8 @@ Content-Length: 6
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/34/">
         
@@ -380,7 +764,8 @@ Content-Length: 6
                 <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 大革命，一种扑克卡牌游戏"
                         data-key="34" 
                         data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
                 
@@ -392,8 +777,8 @@ Content-Length: 6
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/33/">
         
@@ -402,7 +787,8 @@ Content-Length: 6
                 <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 浅谈邀请码的生成"
                         data-key="33" 
                         data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
                 
@@ -414,14 +800,13 @@ Content-Length: 6
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -480,12 +865,10 @@ Content-Length: 6
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -551,11 +934,11 @@ Content-Length: 6
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -566,11 +949,13 @@ Content-Length: 6
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -580,26 +965,29 @@ Content-Length: 6
 
 
 
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
   <ol>
     <li><a href="#目标">目标</a></li>
     <li><a href="#状态机">状态机</a></li>
     <li><a href="#代码实现">代码实现</a></li>
   </ol>
 </nav>
-                </div>
-            </section>
-        </aside>
-    
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

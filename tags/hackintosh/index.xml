@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hackintosh on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/hackintosh/</link>
-    <description>Recent content in Hackintosh on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2020 23:18:41 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/hackintosh/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
-      <link>https://blog.frostmiku.com/archives/28/</link>
-      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/28/</guid>
-      <description>主板是 msi z370 a pro，草草记录，待日后完善
- 开机崩溃重启 启动参数加 -v 看看情况。
-如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
-开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
-睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
-但睡眠还是必要的。
-睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
-PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
-有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
-博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Hackintosh on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/hackintosh/</link>
+        <description>Recent content in Hackintosh on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Thu, 16 Jul 2020 23:18:41 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/hackintosh/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+        <link>https://blog.frostmiku.com/archives/28/</link>
+        <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/28/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/28/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
+&lt;p&gt;主板是 msi z370 a pro，草草记录，待日后完善&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;开机崩溃重启&#34;&gt;开机崩溃重启&lt;/h2&gt;
+&lt;p&gt;启动参数加 -v 看看情况。&lt;/p&gt;
+&lt;p&gt;如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB&lt;/p&gt;
+&lt;h2 id=&#34;开机两阶段苹果logo大小不一样&#34;&gt;开机两阶段苹果logo大小不一样&lt;/h2&gt;
+&lt;p&gt;UIScale 调一下 1 或者 2&lt;/p&gt;
+&lt;h2 id=&#34;睡眠&#34;&gt;睡眠&lt;/h2&gt;
+&lt;p&gt;休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命&lt;/p&gt;
+&lt;p&gt;但睡眠还是必要的。&lt;/p&gt;
+&lt;h3 id=&#34;睡眠秒醒唤醒后崩溃重启&#34;&gt;睡眠秒醒，唤醒后崩溃重启&lt;/h3&gt;
+&lt;p&gt;使用hackintool进行usb定制，把常用设备内建。&lt;/p&gt;
+&lt;p&gt;PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。&lt;/p&gt;
+&lt;h2 id=&#34;有线音频输出声音小&#34;&gt;有线音频输出声音小&lt;/h2&gt;
+&lt;p&gt;换个layout-id试试，我这块板子用的“1”&lt;/p&gt;
+&lt;h2 id=&#34;博通无线网卡开机时网速慢必须手动关掉重开wifi--睡眠唤醒后没网网速慢&#34;&gt;博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢&lt;/h2&gt;
+&lt;p&gt;使用 AirportBrcmFixup.kext 修复&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

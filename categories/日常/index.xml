@@ -1,95 +1,241 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>日常 on StarWhisper</title>
-    <link>https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/</link>
-    <description>Recent content in 日常 on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 Jan 2021 21:37:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>FrostCraft 游玩指南</title>
-      <link>https://blog.frostmiku.com/archives/30/</link>
-      <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/30/</guid>
-      <description>Q&amp;amp;A Q：游戏启动崩溃 A：看下是不是用的32位Java，给的内存太大了
-Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip; A：那你调大啊 囧rz&amp;hellip; 推荐Java 8 x64 给 2048MB
-Q：服务器进不去，提示无效会话让我重启游戏或启动器&amp;hellip; A：看最上面，使用启动器外置登录刚注册的账号
-Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&amp;hellip; A：Java版本太老了，更新一下吧！（推荐下载OpenJ9
- 常用指令 /spawn ----回到空境/sethome ----设置家/home ----回家/back ----返回上次传送的地点/recharge ----获取飞行能量/near ----搜索附近玩家/res ----设置领地/res set ----站在领地里输入，设置权限/suicide ----自杀/pay &amp;lt;钱&amp;gt; &amp;lt;玩家&amp;gt; ----转账/ping ----获取延迟/prewards ----领取奖励/time ----查看当前世界时间/stats ----查看自己的统计数据/art ----画画功能/shop find &amp;lt;物品名称&amp;gt; - 寻找附近有没有交易该物品的商店/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员/shop staff clear - 清空此商店的所有商店助手/shop staff list - 查看此商店的商店助手成员列表 设定 离线90天自动清除数据！ 请不要在除了主世界以外的地方建家（服务器不保证其数据安全） 服务器为开放世界，但这并不意味着你可以去骚扰别人 注意财产安全，有钱买地，没钱上牌子锁 服务器死亡掉落</description>
-    </item>
-    
-    <item>
-      <title>买了些代工厂零食</title>
-      <link>https://blog.frostmiku.com/archives/26/</link>
-      <pubDate>Tue, 16 Jun 2020 11:25:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/26/</guid>
-      <description>趁着618屯一波零食吃，众所周知松鼠/铺子/草家的零食基本都是代工厂贴牌生产的，品牌溢价高，直接去工厂自营店买能省不少钱。
-我觉得三家零食没啥区别，甚至代工厂还有相同的，就不做区分直接放链接了
-以下零食还在骑马来的路上，我还没吃过，到了以后再做测评！
-猪肉脯
-就是很普通的猪肉脯&amp;hellip;
-牛板筋
-我爸觉得味道不错，可我觉得不怎么好吃
-蔓越莓曲奇
-梅干多少有点硬！
-麻薯
-好吃，买少了 :(
-肉松饼/手撕面包
-肉松饼不行，手撕面包好吃
-麻辣牛肉
-好吃！有点贵啊&amp;hellip;
-鱼豆腐
-口感不错，最先吃完的就是这个！
-酸辣粉
-经典酸辣粉吃起来不错，普通的那个酸辣粉料有点少&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>搭建了一个个人知识库！</title>
-      <link>https://blog.frostmiku.com/archives/25/</link>
-      <pubDate>Fri, 17 Apr 2020 18:13:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/25/</guid>
-      <description>好久不见，最近发现了一个叫做 tiddly wiki 的项目。
-用了一下太香了！以后笔记主要就更新在自己知识库了，blog就随便写点别的。
-言语难以形容，欢迎大家前往体验：传送门
- 你可以在页面上体验到包括编辑在内的全部功能，并可通过保存操作来得到修改后的副本
- </description>
-    </item>
-    
-    <item>
-      <title>关于一次对于微波炉蒸米饭的尝试</title>
-      <link>https://blog.frostmiku.com/archives/22/</link>
-      <pubDate>Tue, 03 Mar 2020 14:20:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/22/</guid>
-      <description>今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;
-由于窝过于清贫（指买不起电饭锅）遂尝试使用微波炉蒸大米。网上简单搜索后没有得到理想的结果，便决定将过程记载于此。
- 根据以往经验，微波炉加热食物会导致食物水分流失变干，所以尝试在碗上扣个盘子来保持水分。
-按照蒸米饭的经验加水。微波高火8分钟后闻到米香，拿出来吃了一口发现是生的&amp;hellip;
-发现是没水了，于是补水后调中高火4分钟。发现水还是少了，但最上面一层熟了，证明微波炉蒸饭可行。
-补水后中火3分钟，米饭熟了但很硬，水也没用完，猜想是因为加热速度过快导致大米无法及时吸水，应尝试减小火力增大时长。
-略微补水后，调中小火5分钟。然后米饭就&amp;hellip;熟了！
- 总结以上过程，设计实验 大米与水 1:3 中低火30分钟 或 中火20分钟，有待后续验证
-ps:炒蛋忘放盐了 QAQ</description>
-    </item>
-    
-    <item>
-      <title>更早之前的文章</title>
-      <link>https://blog.frostmiku.com/archives/1/</link>
-      <pubDate>Sat, 08 Mar 2014 14:00:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/1/</guid>
-      <description>404 Page Not Found 这里什么都没有。 旧时代的文章随着一次次的事故烟消云散了&amp;hellip;
-虽然我有备份
-备份中最早的文章为
-【Minecraft】MOD开发教程 1.配置工作环境！
-不，比这个更早，但是一篇灌水的东西（
-2014.03.08 CST</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>日常 on StarWhisper</title>
+        <link>https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/</link>
+        <description>Recent content in 日常 on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 03 Jan 2021 21:37:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>FrostCraft 游玩指南</title>
+        <link>https://blog.frostmiku.com/archives/30/</link>
+        <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/30/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/30/minecraft.jpg" alt="Featured image of post FrostCraft 游玩指南" /&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
+&lt;p&gt;Q：游戏启动崩溃
+A：看下是不是用的32位Java，给的内存太大了&lt;/p&gt;
+&lt;p&gt;Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip;
+A：那你调大啊 囧rz&amp;hellip; 推荐Java 8 x64 给 2048MB&lt;/p&gt;
+&lt;p&gt;Q：服务器进不去，提示无效会话让我重启游戏或启动器&amp;hellip;
+A：看最上面，使用启动器外置登录刚注册的账号&lt;/p&gt;
+&lt;p&gt;Q：是使用FrostCraft账号登录的，但还是提示让我重启游戏或启动器&amp;hellip;
+A：Java版本太老了，更新一下吧！（推荐下载OpenJ9&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;常用指令&#34;&gt;常用指令&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/spawn          ----回到空境
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/sethome        ----设置家
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/home           ----回家
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/back           ----返回上次传送的地点
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/recharge       ----获取飞行能量
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/near           ----搜索附近玩家
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/res            ----设置领地
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/res set        ----站在领地里输入，设置权限
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/suicide        ----自杀
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/pay &amp;lt;钱&amp;gt; &amp;lt;玩家&amp;gt;           ----转账
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/ping           ----获取延迟
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/prewards       ----领取奖励
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/time           ----查看当前世界时间
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/stats          ----查看自己的统计数据
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/art            ----画画功能
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop find &amp;lt;物品名称&amp;gt;  - 寻找附近有没有交易该物品的商店
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff clear      - 清空此商店的所有商店助手
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff list       - 查看此商店的商店助手成员列表
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;设定&#34;&gt;设定&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;离线90天自动清除数据！&lt;/strong&gt;
+&lt;strong&gt;请不要在除了主世界以外的地方建家（服务器不保证其数据安全）&lt;/strong&gt;
+&lt;strong&gt;服务器为开放世界，但这并不意味着你可以去骚扰别人&lt;/strong&gt;
+&lt;strong&gt;注意财产安全，有钱买地，没钱上牌子锁&lt;/strong&gt;
+&lt;strong&gt;服务器死亡掉落&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不死图腾放在背包里必要时会自动使用，它甚至可以避免掉入虚空&lt;/p&gt;
+&lt;p&gt;冰块是游戏代币，注意，它和游戏内的 Ice 不是同一种东西！&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;游戏世界内无法进行传送（但可以home和back，back仅可用在主世界）&lt;/del&gt;
+所以我们修改了载具特性
+矿车在轨道上跑不会减速，这意味着你可以兴建轨道交通
+右键点击轨道将会自动生成一辆矿车，自动生成的矿车将在下车时移除
+船，只能在水上跑
+以上载具在撞击实体时会对实体产生巨大伤害，所以卧轨成为可能
+离开载具时会自动讲载具放入背包
+鞘翅可以弹射起步！
+可以消耗飞行能量起飞！&lt;/p&gt;
+&lt;p&gt;1经验换1飞行能量
+每飞一格消耗1飞行能量
+飞在天上不动每秒消耗0.5飞行能量
+玩家从高处摔下来时扣除飞行能量抵消伤害
+只在玩家从3格以上高度摔下时会触发抵消
+例如，玩家从 10 格高的地方摔下, 那么 (10-3) * 2 = 14 飞行能量将被扣除&lt;/p&gt;
+&lt;p&gt;游戏世界时间为原版的10倍，即200分钟一天
+在线玩家超过50%睡觉时可加速夜晚进度
+进入睡眠的玩家越多，夜晚加速越快&lt;/p&gt;
+&lt;p&gt;刷怪笼不可获得，精准采集也不行&lt;/p&gt;
+&lt;p&gt;每日可领100冰块
+在线1小时获得20冰块，系统自动发放，AFK不算入时长
+300秒不动，自动进入挂机状态
+挂机免疫伤害&lt;/p&gt;
+&lt;p&gt;战斗模式持续15秒 ，击杀其他玩家1%几率掉落他的头
+可被抢夺附魔加成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Lv1: 5.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Lv2: 15.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;​Lv3: 30.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;例如玩家原本掉头几率为 1% ，若被附魔了抢夺3的武器（增幅 30%）杀死，则掉头几率变为1.3%&lt;/p&gt;
+&lt;p&gt;潜行右击牌子可以编辑&lt;/p&gt;
+&lt;p&gt;木棍保护区，线查看保护区，有粒子特效可视化区域大小
+土地最大64x64 最多3个 每个最多2子领地
+领地不可传送，不可阻止别人移动（但你可以修建围墙）
+领地按面积计算，你只要买了，不管是地上的，地下的，还是天上的，都是你的
+地价 1方块3冰块，删除自己的领地时，1方块返还2冰块&lt;/p&gt;
+&lt;h2 id=&#34;更新日志&#34;&gt;更新日志&lt;/h2&gt;
+&lt;h3 id=&#34;2021114&#34;&gt;2021.1.14&lt;/h3&gt;
+&lt;p&gt;现在你可以使用箱子开商店了，在地上放置一个箱子然后拿着你想出售的物品左键点击箱子就能出售了
+输入/shop 获取更多信息
+开设每个店铺需要10冰块的开设费，并且在每次修改商店价格时收取1冰块
+每人最多开设10个店铺
+交易将产生0.05的交易税
+当然，你也可以给你的商店添加多位店员来辅助管理商店&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop find &amp;lt;物品名称&amp;gt;  - 寻找附近有没有交易该物品的商店
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff add &amp;lt;玩家&amp;gt; - 添加指定玩家为此商店的商店助手成员
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff del &amp;lt;玩家&amp;gt; - 移除指定玩家为此商店的商店助手成员
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff clear      - 清空此商店的所有商店助手
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/shop staff list       - 查看此商店的商店助手成员列表
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;2021113&#34;&gt;2021.1.13&lt;/h3&gt;
+&lt;p&gt;现在可以在MC里画画并向别人展示你的画作了，当然，是像素风的。
+成为画家的第一步，输入/art&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>买了些代工厂零食</title>
+        <link>https://blog.frostmiku.com/archives/26/</link>
+        <pubDate>Tue, 16 Jun 2020 11:25:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/26/</guid>
+        <description>&lt;p&gt;趁着618屯一波零食吃，众所周知松鼠/铺子/草家的零食基本都是代工厂贴牌生产的，品牌溢价高，直接去工厂自营店买能省不少钱。&lt;/p&gt;
+&lt;p&gt;我觉得三家零食没啥区别，甚至代工厂还有相同的，就不做区分直接放链接了&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;以下零食还在骑马来的路上，我还没吃过，到了以后再做测评！&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?spm=a1z09.8149145.0.0.23465add7jFuPR&amp;amp;id=616071362894&amp;amp;sku_properties=122216451:41312&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;猪肉脯&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;就是很普通的猪肉脯&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?_u=g2o6vkema3c6&amp;amp;id=612996716469&amp;amp;skuId=4556018167162&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;牛板筋&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我爸觉得味道不错，可我觉得不怎么好吃&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?_u=g2o6vkem2aa1&amp;amp;id=521931132006&amp;amp;skuId=4309049199052&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;蔓越莓曲奇&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;梅干多少有点硬！&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?_u=g2o6vkem6a9d&amp;amp;id=43030514667&amp;amp;skuId=3105907456818&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;麻薯&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;好吃，买少了 :(&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?_u=g2o6vkem222e&amp;amp;id=552247612791&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;肉松饼/手撕面包&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;肉松饼不行，手撕面包好吃&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?id=528436947197&amp;amp;spm=a1z09.2.0.0.79022e8dWOOPHx&amp;amp;_u=g2o6vkemb367&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;麻辣牛肉&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;好吃！有点贵啊&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?id=529345550685&amp;amp;spm=a1z09.2.0.0.79022e8dWOOPHx&amp;amp;_u=g2o6vkem5da7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;鱼豆腐&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;口感不错，最先吃完的就是这个！&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://detail.tmall.com/item.htm?id=596904889698&amp;amp;spm=a1z09.2.0.0.418e2e8dTawVA9&amp;amp;_u=g2o6vkem7f05&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;酸辣粉&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;经典酸辣粉吃起来不错，普通的那个酸辣粉料有点少&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>搭建了一个个人知识库！</title>
+        <link>https://blog.frostmiku.com/archives/25/</link>
+        <pubDate>Fri, 17 Apr 2020 18:13:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/25/</guid>
+        <description>&lt;p&gt;好久不见，最近发现了一个叫做 tiddly wiki 的项目。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;用了一下太香了！以后笔记主要就更新在自己知识库了，blog就随便写点别的。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;言语难以形容，欢迎大家前往体验：&lt;a class=&#34;link&#34; href=&#34;https://pages.frostmiku.com/wiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;你可以在页面上体验到包括编辑在内的全部功能，并可通过保存操作来得到修改后的副本&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>关于一次对于微波炉蒸米饭的尝试</title>
+        <link>https://blog.frostmiku.com/archives/22/</link>
+        <pubDate>Tue, 03 Mar 2020 14:20:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/22/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/22/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 关于一次对于微波炉蒸米饭的尝试" /&gt;&lt;p&gt;今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;&lt;/p&gt;
+&lt;p&gt;由于窝过于清贫（指买不起电饭锅）遂尝试使用微波炉蒸大米。网上简单搜索后没有得到理想的结果，便决定将过程记载于此。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;根据以往经验，微波炉加热食物会导致食物水分流失变干，所以尝试在碗上扣个盘子来保持水分。&lt;/p&gt;
+&lt;p&gt;按照蒸米饭的经验加水。微波高火8分钟后闻到米香，拿出来吃了一口发现是生的&amp;hellip;&lt;/p&gt;
+&lt;p&gt;发现是没水了，于是补水后调中高火4分钟。发现水还是少了，但最上面一层熟了，证明微波炉蒸饭可行。&lt;/p&gt;
+&lt;p&gt;补水后中火3分钟，米饭熟了但很硬，水也没用完，猜想是因为加热速度过快导致大米无法及时吸水，应尝试减小火力增大时长。&lt;/p&gt;
+&lt;p&gt;略微补水后，调中小火5分钟。然后米饭就&amp;hellip;熟了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;总结以上过程，设计实验 大米与水 1:3 中低火30分钟 或 中火20分钟，有待后续验证&lt;/p&gt;
+&lt;p&gt;ps:炒蛋忘放盐了 QAQ&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>更早之前的文章</title>
+        <link>https://blog.frostmiku.com/archives/1/</link>
+        <pubDate>Sat, 08 Mar 2014 14:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/1/</guid>
+        <description>&lt;h1 id=&#34;404-page-not-found&#34;&gt;404 Page Not Found&lt;/h1&gt;
+&lt;p&gt;这里什么都没有。 
+旧时代的文章随着一次次的事故烟消云散了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;虽然我有备份&lt;/del&gt;&lt;br&gt;
+备份中最早的文章为&lt;br&gt;
+&lt;code&gt;【Minecraft】MOD开发教程 1.配置工作环境！&lt;/code&gt;&lt;br&gt;
+不，比这个更早，但是一篇灌水的东西（&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2014.03.08 CST&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

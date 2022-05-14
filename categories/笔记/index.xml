@@ -1,239 +1,1003 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>笔记 on StarWhisper</title>
-    <link>https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 笔记 on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>使 macOS 的光标像 windows 一样移动</title>
-      <link>https://blog.frostmiku.com/archives/42/</link>
-      <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/42/</guid>
-      <description>如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。
-这是因为 mac OS 上的光标加速特性导致的，简单来说就是：
-如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。 如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。
-这个设计的初衷是为了让人们更容易地实现对光标的精密操作，使鼠标更易于上手。
-但非定长移动的光标，在降低了上手难度的同时，也降低了鼠标操作的上限，由于光标移动距离存在不确定性，难以完成一些专业操作，特别是在游戏领域（例如 FPS 中的甩狙操作）中鼠标的手感稀烂。
-如果你有 串流、游戏 需求或是 Windows 老用户，可以考虑关闭光标加速功能，来解决这个问题。
-不过 mac OS 没有为这项设置提供 UI 界面，需要使用命令行进行设定。
-defaults write .GlobalPreferences com.apple.mouse.scaling -1 上面这条指令可以完全关闭光标加速功能，你也可以将 -1 修改为其他值来自行调节光标加速效果。
-需要注意的是当你通过第三方驱动更改了鼠标的 DPI 数值以后，加速度的数值会自动重置。需要再次使用指令进行设置。</description>
-    </item>
-    
-    <item>
-      <title>玄学BUG（一）</title>
-      <link>https://blog.frostmiku.com/archives/38/</link>
-      <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/38/</guid>
-      <description>前言 计划开一个不定期更新的栏目来分享一下我一段时间内遇到的玄学 BUG
-在本栏目里我会写明导致 BUG 的原因与解决办法，或是提出猜想。如果你在哪条连猜想都没看到，那说明我直接放弃了（
-先开一期试试水&amp;hellip;
-中文域名重定向过多 前不久朋友找我做个官网，用的 wordpress
-域名是中文域名，网址大概长这个样子： www.中文域名.com
-用这么怪的域名是因为他的拼音域名被抢注了
-wordpress 后台绑定域名后一切正常（坑就坑在这里，导致我一开始完全没去想是域名的问题），然而当我把任意page设置为首页后，网站进不去，报重定向过多。
-猜测是因为中文域名本质上是被 Punycode 编码的 www.xn-xxxxxxxxxx(一堆乱码).com
-wordpress 魔幻的将其与后台绑定的未经转码的 www.中文域名.com 进行了 == 运算，发现不一致，就重定向，然后&amp;hellip;就循环了,囧rz&amp;hellip;
-我最后给中文域名301到英文域名上凑合着用了（
-主题在 Chrome 和 Safari 上表现不一致 前几天换上的 HUGO stack 主题，结果在 Safari 上显示有 BUG
-如果你现在使用的是低于 14.1 版本的 Safari 浏览本 Blog 应该明白我指是的什么
-这是因为 Safari 在 14.1 之后的版本上才支持CSS属性 column-gap 在 flex 布局中使用
-详细讨论见 此 Issue
-HUGO 不显示刚写好的文章 这是因为 HUGO 使用的是 UTC 时间，以本地时间写好的文章对于 HUGO 来说是来自未来的 （
-解决办法两个：
-1.在 config 里加上</description>
-    </item>
-    
-    <item>
-      <title>给Linux的根目录扩容</title>
-      <link>https://blog.frostmiku.com/archives/32/</link>
-      <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/32/</guid>
-      <description>今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; 于是有了如下对话
- 对话 
-于是开始扩容&amp;hellip;
-这篇文章写的很详细了：传送门
-不过俺是ext4所以最后一步要改一下
-把 xfs_growfs /dev/sda3 改成 resize2fs /dev/sda3 就行了
-虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Docker 笔记</title>
-      <link>https://blog.frostmiku.com/archives/29/</link>
-      <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/29/</guid>
-      <description>仅记录，待日后完善
- Docker内部没法解析域名 启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了
-开机自启 启动参数加上 &amp;ndash;restart=always
-进入容器内部 docker exec -it name /bin/bash</description>
-    </item>
-    
-    <item>
-      <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
-      <link>https://blog.frostmiku.com/archives/28/</link>
-      <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/28/</guid>
-      <description>主板是 msi z370 a pro，草草记录，待日后完善
- 开机崩溃重启 启动参数加 -v 看看情况。
-如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB
-开机两阶段苹果logo大小不一样 UIScale 调一下 1 或者 2
-睡眠 休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命
-但睡眠还是必要的。
-睡眠秒醒，唤醒后崩溃重启 使用hackintool进行usb定制，把常用设备内建。
-PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。
-有线音频输出声音小 换个layout-id试试，我这块板子用的“1”
-博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢 使用 AirportBrcmFixup.kext 修复</description>
-    </item>
-    
-    <item>
-      <title>WebSocket协议为什么要求掩码处理</title>
-      <link>https://blog.frostmiku.com/archives/27/</link>
-      <pubDate>Wed, 01 Jul 2020 20:52:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/27/</guid>
-      <description>今天实现 WebSocket Client 的时候发现协议要求 Client mask payload
-出于偷懒的目的，我打算把 Masking-key 直接写死，但仔细一想既然 Masking-key 需要放进 Frame 里，说明它应该是动态的，但为什么要这样设计呢？
-RFC 6455 5.3 节有这么一句话：
- The unpredictability of the masking key is essential to prevent authors of malicious applications from selecting the bytes that appear on the wire.
- 果然是为了安全
-RFC 6455 还好心的在 10.3. Attacks On Infrastructure (Masking) 详细解释了攻击的实现 : )</description>
-    </item>
-    
-    <item>
-      <title>编译原理学习笔记：文法与语言</title>
-      <link>https://blog.frostmiku.com/archives/20/</link>
-      <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/20/</guid>
-      <description>前言 本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;
-基本概念  字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$ 符号： $∑$中的元素称为符号。 符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。 长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$ 连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。 对于任意字符串$β$，有$βε＝εβ＝β$ 乘积：设A和B是符号串集，则用AB表示它们的乘积：  $$ AB＝{xy|x∈A,y∈B } $$
-显然${ε}A=A{ε}=A$
- 空集：不含任何元素的集合φ，对任何字符串集A有：  $$ φA＝Aφ＝A $$
- 方幂：设A是字符串集，则A的方幂定义为：  $$ A^0 ={ε}; A^1 ＝A; A^n ＝A^{n-1} A $$
-特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$
- 闭包/正闭包/星闭包：设A是符号集， 用$A^+$表示A的正闭包:  $$ A^+=A^1∪A^2∪\dots∪A^n∪\dots $$
-用$A^*$表示A的星闭包:
-$$ A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+ $$
-两者统称为A的闭包。
-举个例子1： 设$A = {a,b}$ 则：
-$$ \begin{aligned} &amp;amp;A^0 ＝ {ε}\cr &amp;amp;A^1 = {a,b}\cr &amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr &amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr &amp;amp;\dots\cr \end{aligned} $$</description>
-    </item>
-    
-    <item>
-      <title>Windows 10 1903 and Later 搜索中心居中脚本</title>
-      <link>https://blog.frostmiku.com/archives/11/</link>
-      <pubDate>Mon, 11 Nov 2019 23:15:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/11/</guid>
-      <description>网上冲浪时看到的一个有意思的 powershell 脚本。 在这里记录一下
-首先更改策略允许执行powershell脚本
-set-ExecutionPolicy RemoteSigned然后执行如下脚本：
-$BASE_PATH = &amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39; $RADIUS_PATH = &amp;#34;$BASE_PATH\Flighting\Override&amp;#34; function CustimizedNewItemProperty($Path, $Name, $Value) { $null = New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value } function ToCenter($Radius) { $null = ToDefault $null = New-Item -ItemType String -Path $RADIUS_PATH CustimizedNewItemProperty $BASE_PATH ImmersiveSearch 1 CustimizedNewItemProperty $RADIUS_PATH ImmersiveSearchFull 1 CustimizedNewItemProperty $RADIUS_PATH CenterScreenRoundedCornerRadius $Radius &amp;#39;设置成功&amp;#39; } function ToDefault { if (Test-Path -Path $RADIUS_PATH) { $null = Remove-Item -Path $RADIUS_PATH -Recurse -Force } if ($null -ne (Get-ItemProperty -Path $BASE_PATH | Select-String -Pattern &amp;#34;ImmersiveSearch&amp;#34;)) { $null = Remove-ItemProperty -Path $BASE_PATH -Name ImmersiveSearch -Force } &amp;#39;恢复完成&amp;#39; } function Menu { Clear-Host @&amp;#34; ---------------------------- Windows 10 1903 and Later Search 居中脚本 V0.</description>
-    </item>
-    
-    <item>
-      <title>理解 JavaScript 的 Proto 和 Prototype</title>
-      <link>https://blog.frostmiku.com/archives/5/</link>
-      <pubDate>Wed, 06 Nov 2019 15:36:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/5/</guid>
-      <description>__proto__ 是 object 的一个属性，prototype 是 function 的一个属性。
-__proto__ 指向它的构造函数的 prototype, prototype指向一个constructor为该 function 的 object.
-所以 __proto__ 也有自己的 __proto__ ，也就是原型链。
-原型链 当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。
-实例化对象过程 进行 new Foo() 操作会进行以下过程：
- 首先会初始化一个空 {} 然后将 {} 的 __proto__ 指向 Foo 的 prototype 接着执行 Base.call({}) 将 this 作用域交予 {}  </description>
-    </item>
-    
-    <item>
-      <title>你好！HUGO</title>
-      <link>https://blog.frostmiku.com/archives/3/</link>
-      <pubDate>Tue, 05 Nov 2019 18:39:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/3/</guid>
-      <description>前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip;
-Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。
-无需安装任何环境，开袋即食。
-附上一个发布脚本：
-hugo cd ./public git add . git commit -m &amp;#34;updated&amp;#34; git push pause 数学符号测试： $$ \frac{\theta}{\lambda} $$
-插入一个不明觉厉的实时气象地球：</description>
-    </item>
-    
-    <item>
-      <title>COSPLAY 与 文本分类</title>
-      <link>https://blog.frostmiku.com/archives/41/</link>
-      <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/41/</guid>
-      <description>“幸福的家庭都是相似的，不幸的家庭各有各的不幸” &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》
- 一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。
-一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。
-而如果经常出现 “李白、杜甫、王维、江泽林则徐” 那它应该是一篇诗歌方面的文章。
-所以，我们可以使用一个 数组 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。
-那么，怎么计算呢.jpg
-看我cosplay
-首先，我们知道：
-$$ \cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| } $$
-我们将这个储存词频的 数组 看成一个 n 维向量 ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。
-当两向量垂直时
-$$ \cos A=0 $$
-两文本毫不相干。
-当两向量重合时
-$$ \cos A=1 $$
-两文本完全相同。
-基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;coser！ 余弦相似性分类器。</description>
-    </item>
-    
-    <item>
-      <title>一个ACM蒟蒻的掉坑手册</title>
-      <link>https://blog.frostmiku.com/archives/40/</link>
-      <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/40/</guid>
-      <description>如何控制每两个数之间有空格，而最后一个数之后没有空格？解决方法之一是：第一个数之前不加空格，而其后每个数之前加空格。而通过一个标识变量可以判断出是否是第一个数。 初做多实例测试，要注意变量赋初值的位置。 流可以加速，方法是关闭和stdio的同步，即调用  ios::sync_with_stdio(false);  未指定输入量的输入框架  while(scanf(&amp;#34;%d&amp;#34;,&amp;amp;a)!=EOF){} //或 while(cin&amp;gt;&amp;gt;a){}  能写成函数尽量写成函数，解耦、复用、易于定位错误，不要把 main() 写的又臭又长，出错了改都不好改。 memset函数可以初始化数组。这条命令这在你已经修改了数组之后又想将它重置为全0特别有用（然鹅它是操作字节，也就初始为0/-1比较有用）。  #include &amp;lt;cstring&amp;gt;int arr[100]={0}; memset(arr,0, sizeof(arr));  CPP int&amp;amp;string互相转换  #include &amp;lt;iostream&amp;gt;#include &amp;lt;sstream&amp;gt; using namespace std; int main(){ int x=10000,y; stringstream ss; string s; ss&amp;lt;&amp;lt;x; s=ss.str(); cout&amp;lt;&amp;lt;s.length()&amp;lt;&amp;lt;endl; ss&amp;gt;&amp;gt;y; cout&amp;lt;&amp;lt;y/2&amp;lt;&amp;lt;endl; }  使用C语言sscanf()函数将string/char转换成int（或其他类型）  #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main() { string a=&amp;#34;123456789&amp;#34;; int x; sscanf(a.c_str(),&amp;#34;%d&amp;#34;,&amp;amp;x); cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl; return 0; }  重定向：  freopen(&amp;#34;test.in&amp;#34;, &amp;#34;r&amp;#34;, stdin); freopen(&amp;#34;test.</description>
-    </item>
-    
-    <item>
-      <title>LibVLC研究笔记</title>
-      <link>https://blog.frostmiku.com/archives/370/</link>
-      <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/370/</guid>
-      <description>什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
-什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+    <channel>
+        <title>笔记 on StarWhisper</title>
+        <link>https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/</link>
+        <description>Recent content in 笔记 on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 13 Oct 2021 11:12:26 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>使 macOS 的光标像 windows 一样移动</title>
+        <link>https://blog.frostmiku.com/archives/42/</link>
+        <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/42/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/42/title.jpg" alt="Featured image of post 使 macOS 的光标像 windows 一样移动" /&gt;&lt;p&gt;如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。&lt;/p&gt;
+&lt;p&gt;这是因为 mac OS 上的光标加速特性导致的，简单来说就是：&lt;/p&gt;
+&lt;p&gt;如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。
+如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。&lt;/p&gt;
+&lt;p&gt;这个设计的初衷是为了让人们更容易地实现对光标的精密操作，使鼠标更易于上手。&lt;/p&gt;
+&lt;p&gt;但非定长移动的光标，在降低了上手难度的同时，也降低了鼠标操作的上限，由于光标移动距离存在不确定性，难以完成一些专业操作，特别是在游戏领域（例如 FPS 中的甩狙操作）中鼠标的手感稀烂。&lt;/p&gt;
+&lt;p&gt;如果你有 串流、游戏 需求或是 Windows 老用户，可以考虑关闭光标加速功能，来解决这个问题。&lt;/p&gt;
+&lt;p&gt;不过 mac OS 没有为这项设置提供 UI 界面，需要使用命令行进行设定。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;defaults write .GlobalPreferences com.apple.mouse.scaling -1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;上面&lt;/strong&gt;这条指令可以完全关闭光标加速功能，你也可以将 &lt;code&gt;-1&lt;/code&gt; 修改为其他值来自行调节光标加速效果。&lt;/p&gt;
+&lt;p&gt;需要注意的是当你通过第三方驱动更改了鼠标的 DPI 数值以后，加速度的数值会自动重置。需要再次使用指令进行设置。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>玄学BUG（一）</title>
+        <link>https://blog.frostmiku.com/archives/38/</link>
+        <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/38/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;计划开一个不定期更新的栏目来分享一下我一段时间内遇到的玄学 BUG&lt;br&gt;
+在本栏目里我会写明导致 BUG 的原因与解决办法，或是提出猜想。如果你在哪条连猜想都没看到，那说明我直接放弃了（&lt;br&gt;
+先开一期试试水&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;中文域名重定向过多&#34;&gt;中文域名重定向过多&lt;/h2&gt;
+&lt;p&gt;前不久朋友找我做个官网，用的 wordpress&lt;br&gt;
+域名是中文域名，网址大概长这个样子： www.中文域名.com&lt;br&gt;
+&lt;del&gt;用这么怪的域名是因为他的拼音域名被抢注了&lt;/del&gt;&lt;br&gt;
+wordpress 后台绑定域名后一切正常（坑就坑在这里，导致我一开始完全没去想是域名的问题），然而当我把&lt;strong&gt;任意page&lt;/strong&gt;设置为首页后，网站进不去，报重定向过多。&lt;/p&gt;
+&lt;p&gt;猜测是因为中文域名本质上是被 Punycode 编码的 www.xn-xxxxxxxxxx(一堆乱码).com&lt;br&gt;
+wordpress 魔幻的将其与后台绑定的未经转码的 www.中文域名.com 进行了 &lt;code&gt;==&lt;/code&gt; 运算，发现不一致，就重定向，然后&amp;hellip;就循环了,囧rz&amp;hellip;&lt;br&gt;
+我最后给中文域名301到英文域名上凑合着用了（&lt;/p&gt;
+&lt;h2 id=&#34;主题在-chrome-和-safari-上表现不一致&#34;&gt;主题在 Chrome 和 Safari 上表现不一致&lt;/h2&gt;
+&lt;p&gt;前几天换上的 HUGO stack 主题，结果在 Safari 上显示有 BUG&lt;br&gt;
+如果你现在使用的是低于 14.1 版本的 Safari 浏览本 Blog 应该明白我指是的什么&lt;/p&gt;
+&lt;p&gt;这是因为 Safari 在 14.1 之后的版本上才支持CSS属性 &lt;code&gt;column-gap&lt;/code&gt; 在 &lt;code&gt;flex&lt;/code&gt; 布局中使用&lt;br&gt;
+详细讨论见 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack/issues/249&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;此 Issue&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;hugo-不显示刚写好的文章&#34;&gt;HUGO 不显示刚写好的文章&lt;/h2&gt;
+&lt;p&gt;这是因为 HUGO 使用的是 UTC 时间，以本地时间写好的文章对于 HUGO 来说是来自未来的 （&lt;/p&gt;
+&lt;p&gt;解决办法两个：&lt;br&gt;
+1.在 config 里加上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;buildfuture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;编译未来的文件&lt;/p&gt;
+&lt;p&gt;2.在日期中加上时区&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2021-07-07T20:57:44+08:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;这条题目不知叫啥好&#34;&gt;这条题目不知叫啥好&lt;/h2&gt;
+&lt;p&gt;写 TypeScript 的时候用到了 Web Serial API&lt;br&gt;
+这个 API 只有 Chrome 支持，所以 TypeScript 不认，在引入 &lt;code&gt;.d.ts&lt;/code&gt; 之前我手贱点了快速修复，导致 &lt;code&gt;serial&lt;/code&gt; 类型变成了 Any&lt;br&gt;
+引入 &lt;code&gt;.d.ts&lt;/code&gt; 文件后也变不回来了，囧（&lt;/p&gt;
+&lt;p&gt;最终发现 &lt;code&gt;serial&lt;/code&gt; 的类型是被声明在了&lt;br&gt;
+&lt;code&gt;C:\Users\username\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\node_modules\typescript\lib\lib.dom.d.ts&lt;/code&gt;&lt;br&gt;
+中&lt;/p&gt;
+&lt;h2 id=&#34;qbittorrent-web-ui-账号密码不正确&#34;&gt;qBittorrent Web UI 账号密码不正确&lt;/h2&gt;
+&lt;p&gt;首先，账号和密码是在 &lt;code&gt;~/.config/qBittorrent/qBittorrent.conf&lt;/code&gt; 里的&lt;br&gt;
+然后我试了一个小时，确定我密码没问题，可就是进不去&lt;br&gt;
+最后我无意间在网上看到了&lt;br&gt;
+&lt;img src=&#34;https://blog.frostmiku.com/archives/38/qBittorrentBUG.jpg&#34;
+	width=&#34;1154&#34;
+	height=&#34;819&#34;
+	srcset=&#34;https://blog.frostmiku.com/archives/38/qBittorrentBUG_hu65de2c5e01a29d7506507d6f2bc66bc3_63751_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/38/qBittorrentBUG_hu65de2c5e01a29d7506507d6f2bc66bc3_63751_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;我不懂，但我大受震撼&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;338px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;未知&#34;&gt;未知&lt;/h2&gt;
+&lt;p&gt;这里本来要记录一条非常玄学的 BUG ，但是我现在怎么都想不起来是什么，某种意义上这十分的玄学&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>给Linux的根目录扩容</title>
+        <link>https://blog.frostmiku.com/archives/32/</link>
+        <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/32/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/32/1.jpg" alt="Featured image of post 给Linux的根目录扩容" /&gt;&lt;p&gt;今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; &lt;br&gt;
+于是有了如下对话&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/32/1.jpg&#34;
+	width=&#34;415&#34;
+	height=&#34;1188&#34;
+	srcset=&#34;https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;对话&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;34&#34;
+		data-flex-basis=&#34;83px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;于是开始扩容&amp;hellip;&lt;br&gt;
+这篇文章写的很详细了：&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/9db2df60fd0a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;传送门&lt;/a&gt;&lt;br&gt;
+不过俺是ext4所以最后一步要改一下&lt;/p&gt;
+&lt;p&gt;把 &lt;code&gt;xfs_growfs /dev/sda3&lt;/code&gt; 改成 &lt;code&gt;resize2fs /dev/sda3&lt;/code&gt; 就行了&lt;/p&gt;
+&lt;p&gt;虽说不要生产垃圾文章，但这样直接贴个链接总感觉写了个寂寞&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Docker 笔记</title>
+        <link>https://blog.frostmiku.com/archives/29/</link>
+        <pubDate>Sun, 19 Jul 2020 23:14:16 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/29/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;仅记录，待日后完善&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;docker内部没法解析域名&#34;&gt;Docker内部没法解析域名&lt;/h2&gt;
+&lt;p&gt;启动参数加上 &amp;ndash;network=host （不过这样容器就用host的port了&lt;/p&gt;
+&lt;h2 id=&#34;开机自启&#34;&gt;开机自启&lt;/h2&gt;
+&lt;p&gt;启动参数加上 &amp;ndash;restart=always&lt;/p&gt;
+&lt;h2 id=&#34;进入容器内部&#34;&gt;进入容器内部&lt;/h2&gt;
+&lt;p&gt;docker exec -it name /bin/bash&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>OpenCore打造一个完美的 Hackintosh 遇到的问题</title>
+        <link>https://blog.frostmiku.com/archives/28/</link>
+        <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/28/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/28/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
+&lt;p&gt;主板是 msi z370 a pro，草草记录，待日后完善&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;开机崩溃重启&#34;&gt;开机崩溃重启&lt;/h2&gt;
+&lt;p&gt;启动参数加 -v 看看情况。&lt;/p&gt;
+&lt;p&gt;如果是内存panic但又怎么都解决不了，考虑一下核显显存，BIOS设置 64 MB&lt;/p&gt;
+&lt;h2 id=&#34;开机两阶段苹果logo大小不一样&#34;&gt;开机两阶段苹果logo大小不一样&lt;/h2&gt;
+&lt;p&gt;UIScale 调一下 1 或者 2&lt;/p&gt;
+&lt;h2 id=&#34;睡眠&#34;&gt;睡眠&lt;/h2&gt;
+&lt;p&gt;休眠不建议开，对于台式机来说不存在节电续航的需求，并且休眠还会产生内存向硬盘的大量数据读写，影响硬盘寿命&lt;/p&gt;
+&lt;p&gt;但睡眠还是必要的。&lt;/p&gt;
+&lt;h3 id=&#34;睡眠秒醒唤醒后崩溃重启&#34;&gt;睡眠秒醒，唤醒后崩溃重启&lt;/h3&gt;
+&lt;p&gt;使用hackintool进行usb定制，把常用设备内建。&lt;/p&gt;
+&lt;p&gt;PowerTimeoutKernelPanic: 10.15系统中存在一些设备自身的电源管理无法让系统进入睡眠而超时，导致内核奔溃，如果有这个问题请选择YES。&lt;/p&gt;
+&lt;h2 id=&#34;有线音频输出声音小&#34;&gt;有线音频输出声音小&lt;/h2&gt;
+&lt;p&gt;换个layout-id试试，我这块板子用的“1”&lt;/p&gt;
+&lt;h2 id=&#34;博通无线网卡开机时网速慢必须手动关掉重开wifi--睡眠唤醒后没网网速慢&#34;&gt;博通无线网卡开机时网速慢，必须手动关掉重开wifi / 睡眠唤醒后没网、网速慢&lt;/h2&gt;
+&lt;p&gt;使用 AirportBrcmFixup.kext 修复&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>WebSocket协议为什么要求掩码处理</title>
+        <link>https://blog.frostmiku.com/archives/27/</link>
+        <pubDate>Wed, 01 Jul 2020 20:52:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/27/</guid>
+        <description>&lt;p&gt;今天实现 WebSocket Client 的时候发现协议要求 Client mask payload&lt;/p&gt;
+&lt;p&gt;出于偷懒的目的，我打算把 Masking-key 直接写死，但仔细一想既然 Masking-key 需要放进 Frame 里，说明它应该是动态的，但为什么要这样设计呢？&lt;/p&gt;
+&lt;p&gt;RFC 6455 5.3 节有这么一句话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The unpredictability of the masking key is essential to prevent authors of malicious applications from selecting the bytes that appear on the wire.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;del&gt;果然是为了安全&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;RFC 6455 还好心的在 &lt;a class=&#34;link&#34; href=&#34;https://tools.ietf.org/html/rfc6455#section-10.3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;10.3.  Attacks On Infrastructure (Masking)&lt;/a&gt; 详细解释了攻击的实现 : )&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>编译原理学习笔记：文法与语言</title>
+        <link>https://blog.frostmiku.com/archives/20/</link>
+        <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/20/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/20/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 编译原理学习笔记：文法与语言" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$&lt;/li&gt;
+&lt;li&gt;符号： $∑$中的元素称为符号。&lt;/li&gt;
+&lt;li&gt;符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。&lt;/li&gt;
+&lt;li&gt;长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$&lt;/li&gt;
+&lt;li&gt;连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。
+对于任意字符串$β$，有$βε＝εβ＝β$&lt;/li&gt;
+&lt;li&gt;乘积：设A和B是符号串集，则用AB表示它们的乘积：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+AB＝{xy|x∈A,y∈B }
+$$&lt;/p&gt;
+&lt;p&gt;显然${ε}A=A{ε}=A$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空集：不含任何元素的集合φ，对任何字符串集A有：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+φA＝Aφ＝A
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方幂：设A是字符串集，则A的方幂定义为：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+A^0 ={ε};
+A^1 ＝A;
+A^n ＝A^{n-1} A
+$$&lt;/p&gt;
+&lt;p&gt;特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;闭包/正闭包/星闭包：设A是符号集，
+用$A^+$表示A的正闭包:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+A^+=A^1∪A^2∪\dots∪A^n∪\dots
+$$&lt;/p&gt;
+&lt;p&gt;用$A^*$表示A的星闭包:&lt;/p&gt;
+&lt;p&gt;$$
+A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+
+$$&lt;/p&gt;
+&lt;p&gt;两者统称为A的闭包。&lt;/p&gt;
+&lt;p&gt;举个例子&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;：
+设$A = {a,b}$ 则：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;A^0 ＝ {ε}\cr
+&amp;amp;A^1 = {a,b}\cr
+&amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr
+&amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr
+&amp;amp;\dots\cr
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;符号和符号串&#34;&gt;符号和符号串&lt;/h3&gt;
+&lt;p&gt;任何程序设计语言都是某一基本符号集上的字符序列，其中的字符用来构造单词，单词构造更大的语法单位，表达式、语句等复合对象。其中，&lt;strong&gt;单词是最小的语义单位&lt;/strong&gt;,它不包含任何子结构，因此每个单词是简单的字符序列。&lt;/p&gt;
+&lt;h2 id=&#34;语言&#34;&gt;语言&lt;/h2&gt;
+&lt;p&gt;程序设计语言是一个&lt;strong&gt;记号系统&lt;/strong&gt;，同自然语言一样，完整的定义应包括&lt;strong&gt;语法&lt;/strong&gt;和&lt;strong&gt;语义&lt;/strong&gt;两个方面。&lt;/p&gt;
+&lt;p&gt;语言的语法是指&lt;strong&gt;一组规则&lt;/strong&gt;，用它可以形成和产生一个合适的程序。语法规定了特定符号序列的合法性，而与符号的含义没有关系。任何程序设计语言都是某一基本符号集上的字符序列。&lt;/p&gt;
+&lt;p&gt;对于语义的分析与处理到目前为止仍然没有公认的形式系统用于自动构造正确的编译程序。&lt;/p&gt;
+&lt;h3 id=&#34;形式语言&#34;&gt;形式语言&lt;/h3&gt;
+&lt;p&gt;形式语言（英语：Formal language）是用精确的数学或机器可处理的公式定义的语言。在形式语言理论中，形式语言是一个字母表上的某些有限长字符串的&lt;strong&gt;集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;每个形式语言都是某个字母表上按某种规则构成的所有符号的集合，反之，任何一个字母表上符号串的集合均可定义为一个形式语言，不涉及考虑语义问题。&lt;/p&gt;
+&lt;h4 id=&#34;语言间的运算&#34;&gt;语言间的运算&lt;/h4&gt;
+&lt;p&gt;因为形式语言在本质上是由数学定义的的集合，所以语言间的运算就是$Σ^*$幂集上的运算。与普通的集合数学运算无异。&lt;/p&gt;
+&lt;h3 id=&#34;语言的表示方法&#34;&gt;语言的表示方法&lt;/h3&gt;
+&lt;p&gt;从形式语言的角度看，一个语言也就是字符串集。如果字符串集是有穷的，可以用枚举的办法表示出来。
+例如，设有字母表 $A={a,b,c}$，则&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;L_1 = {a,b,c}\cr
+&amp;amp;L_2 = {a,aa,ab,ac}\cr
+&amp;amp;L_3 = {c,cc}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;均表示字母表A上的一个形式语言。&lt;/p&gt;
+&lt;p&gt;当集合无穷时，&lt;del&gt;我们可以使用无限猴子定理&lt;/del&gt;枚举的办法就不行了，需要寻找合适的有穷表示方法——&lt;strong&gt;文法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;除形式文法外，语言也可使用正则表达式或某些自动机表示，在本章暂不讨论。&lt;/p&gt;
+&lt;h2 id=&#34;文法&#34;&gt;文法&lt;/h2&gt;
+&lt;p&gt;在形式语言理论中，文法（为了避免歧义，常称作“形式文法”）是形式语言中字符串的一套产生式规则。这些规则描述了如何用语言的字母表生成符合语法的有效的字符串。文法不描述字符串的含义，也不描述在任何上下文中可以用它们做什么——只描述它们的形式。
+形式文法是从一个“开始符号”出发的一套重写字符串的规则。因此，文法通常被认为是语言生成器。&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;ps: 形式语言理论是应用数学的一个分支，是研究形式文法和语言的学科。&lt;/p&gt;
+&lt;h3 id=&#34;规则&#34;&gt;规则&lt;/h3&gt;
+&lt;p&gt;我们以汉语句子的文法为例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;句子 → 主语·谓语
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;主语 → 代词∣名词
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;代词 → 我∣你∣他
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;名词 → 司机∣农民∣学生∣汽车∣锄头
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;谓语 → 动词·直接宾语
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;动词 → 学习∣拿起∣开
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;直接宾语 → 代词∣名词
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其上的每一条被称为&lt;strong&gt;产生式&lt;/strong&gt;或&lt;strong&gt;语法规则&lt;/strong&gt;，符号“→”也可以写成“∷=”，表示“被定义为”。&lt;/p&gt;
+&lt;p&gt;符号“·”和“∣”是集合运算符号，“·”表示“连接”，该符号往往被省略，“∣”表示“或”，该符号两边的符号串称候选串。&lt;/p&gt;
+&lt;p&gt;由上面的规则可以&lt;strong&gt;产生或推导出句子&lt;/strong&gt;，引进符号“=&amp;gt;”表示推导，比如句子“农民拿起锄头”的推导过程为：句子=&amp;gt;主语·谓语=&amp;gt;名词·谓语=&amp;gt;农民·谓语=&amp;gt;农民·动词·直接宾语=&amp;gt;农民·拿起·直接宾语=&amp;gt;农民·拿起·名词=&amp;gt;农民拿起锄头&lt;/p&gt;
+&lt;h2 id=&#34;形式定义&#34;&gt;形式定义&lt;/h2&gt;
+&lt;p&gt;接下来我们以数学为工具，利用符号和公式，精确地定义文法和语言。&lt;/p&gt;
+&lt;h3 id=&#34;文法的形式定义&#34;&gt;文法的形式定义&lt;/h3&gt;
+&lt;p&gt;文法是规则的&lt;strong&gt;非空&lt;/strong&gt;有穷集合。其形式定义为四元组$G[S]=(V_N,V_T,P,S)$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$V_N$是规则中非终结符号的集合。&lt;/li&gt;
+&lt;li&gt;$V_T$是规则中终结符号的集合，显然文法在这里结束。&lt;/li&gt;
+&lt;li&gt;P是文法规则的合集。&lt;/li&gt;
+&lt;li&gt;S是一个非终结符号，显然文法从这里开始。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;语言的形式定义&#34;&gt;语言的形式定义&lt;/h3&gt;
+&lt;p&gt;当一个文法已知时，我们可以确定出该文法所定义的语言，但在此之前我们需要先弄明白什么是句子，这里我们需要引入推导的概念。&lt;/p&gt;
+&lt;h4 id=&#34;推导&#34;&gt;推导&lt;/h4&gt;
+&lt;p&gt;如果存在一个直接推导序列&lt;/p&gt;
+&lt;p&gt;$$
+a_0 \Rightarrow a_1 \Rightarrow a_2 \Rightarrow \dots \Rightarrow a_n
+$$&lt;/p&gt;
+&lt;p&gt;则称这个序列是$a_0$到$a_n$的长度为n的推导，记为$a_0\stackrel{+}{\Rightarrow}a_n$。&lt;/p&gt;
+&lt;p&gt;表示从$a_0$出发，经过1到n步可以推导出$a_n$。&lt;/p&gt;
+&lt;h4 id=&#34;广义推导&#34;&gt;广义推导&lt;/h4&gt;
+&lt;p&gt;广义推导的符号为$\stackrel{*}{\Rightarrow}$&lt;/p&gt;
+&lt;p&gt;$a_0 \stackrel{*}{\Rightarrow} a_n$表示从$a_0$出发，经过0到n步可以推导出$a_n$。&lt;/p&gt;
+&lt;h4 id=&#34;句型与句子&#34;&gt;句型与句子&lt;/h4&gt;
+&lt;p&gt;对于文法 $G[S]$，如果&lt;/p&gt;
+&lt;p&gt;$$
+S \stackrel{*}{\Rightarrow} x
+$$&lt;/p&gt;
+&lt;p&gt;称符号串x为文法 $G[S]$ 的句型。&lt;/p&gt;
+&lt;p&gt;$$
+S \stackrel{*}{\Rightarrow}x, x∈V_T^*
+$$&lt;/p&gt;
+&lt;p&gt;则称符号串x是文法$G[S]$的句子。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;有了以上概念后，我们可以给出语言的形式定义：&lt;/p&gt;
+&lt;p&gt;文法 $G[S]$ 产生的所有句子的集合称为文法G所定义的语言，记为$L(G[S])$&lt;/p&gt;
+&lt;p&gt;$$
+L(G[S])={x|S\stackrel{+}{\Rightarrow}x,x∈V_T^*}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;编译原理 刘铭、徐兰芳等｜电子工业出版社&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;维基百科 &lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/%e5%bd%a2%e5%bc%8f%e6%96%87%e6%b3%95&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;形式文法&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>Windows 10 1903 and Later 搜索中心居中脚本</title>
+        <link>https://blog.frostmiku.com/archives/11/</link>
+        <pubDate>Mon, 11 Nov 2019 23:15:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/11/</guid>
+        <description>&lt;p&gt;&lt;del&gt;网上冲浪时&lt;/del&gt;看到的一个有意思的 powershell 脚本。
+在这里记录一下&lt;/p&gt;
+&lt;p&gt;首先更改策略允许执行powershell脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set-ExecutionPolicy RemoteSigned
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后执行如下脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$BASE_PATH&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;HKCU:\Software\Microsoft\Windows\CurrentVersion\Search&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$BASE_PATH\Flighting\Override&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CustimizedNewItemProperty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;New-ItemProperty&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Path&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-PropertyType&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DWord&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Value&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Value&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ToCenter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Radius&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ToDefault&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;New-Item&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-ItemType&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;CustimizedNewItemProperty&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$BASE_PATH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ImmersiveSearch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;CustimizedNewItemProperty&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ImmersiveSearchFull&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;CustimizedNewItemProperty&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CenterScreenRoundedCornerRadius&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Radius&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;设置成功&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ToDefault&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Test-Path&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Remove-Item&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$RADIUS_PATH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Recurse&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Force&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-ne&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-ItemProperty&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$BASE_PATH&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Select-String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Pattern&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ImmersiveSearch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Remove-ItemProperty&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$BASE_PATH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ImmersiveSearch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Force&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;恢复完成&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Menu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Clear-Host&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;sh&#34;&gt;@&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;----------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;  Windows 10 1903 and Later
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;       Search 居中脚本
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;            V0.01 2019.10.02
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;                @AUTHOR LOGI
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;----------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;0. 退出
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;1. 居中
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;2. 恢复
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;----------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sh&#34;&gt;&amp;#34;@&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Read-Host&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;请选择&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Exit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;ToCenter&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[int]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Read-Host&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;请输入圆角大小（0-10）&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;ToCenter&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ToDefault&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;Default&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Menu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;Menu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;----------------------------&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;请按任意键继续...&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[void][System.Console]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReadKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;原文链接： &lt;a class=&#34;link&#34; href=&#34;https://logi.ml/script/center-win10-search-ui.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://logi.ml/script/center-win10-search-ui.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>理解 JavaScript 的 Proto 和 Prototype</title>
+        <link>https://blog.frostmiku.com/archives/5/</link>
+        <pubDate>Wed, 06 Nov 2019 15:36:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/5/</guid>
+        <description>&lt;p&gt;__proto__ 是 object 的一个属性，prototype 是 function 的一个属性。&lt;/p&gt;
+&lt;p&gt;__proto__ 指向它的构造函数的 prototype, prototype指向一个constructor为该 function 的 object.&lt;/p&gt;
+&lt;p&gt;所以 __proto__ 也有自己的 __proto__ ，也就是原型链。&lt;/p&gt;
+&lt;h2 id=&#34;原型链&#34;&gt;原型链&lt;/h2&gt;
+&lt;p&gt;当请求一个对象的属性时，首先会在对象内部寻找，如果不存在，则会到 __proto__ 中查找，如果不存在，就会查找 __proto__ 的 __proto__ ，直到 null 为止。&lt;/p&gt;
+&lt;h2 id=&#34;实例化对象过程&#34;&gt;实例化对象过程&lt;/h2&gt;
+&lt;p&gt;进行 new Foo() 操作会进行以下过程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先会初始化一个空 {}&lt;/li&gt;
+&lt;li&gt;然后将 {} 的 __proto__ 指向 Foo 的 prototype&lt;/li&gt;
+&lt;li&gt;接着执行 Base.call({}) 将 this 作用域交予 {}&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>你好！HUGO</title>
+        <link>https://blog.frostmiku.com/archives/3/</link>
+        <pubDate>Tue, 05 Nov 2019 18:39:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/3/</guid>
+        <description>&lt;p&gt;前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。&lt;/p&gt;
+&lt;p&gt;无需安装任何环境，开袋即食。&lt;/p&gt;
+&lt;p&gt;附上一个发布脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ./public
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;updated&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pause
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;数学符号测试：
+$$
+\frac{\theta}{\lambda}
+$$&lt;/p&gt;
+&lt;p&gt;插入一个不明觉厉的实时气象地球：&lt;/p&gt;
+&lt;iframe src=&#34;https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-250.03,1.27,325&#34; width=&#34;100%&#34; height=&#34;650px;&#34; scrolling=&#34;no&#34; style=&#34;border:0px;&#34;&gt;&lt;/iframe&gt;</description>
+        </item>
+        <item>
+        <title>COSPLAY 与 文本分类</title>
+        <link>https://blog.frostmiku.com/archives/41/</link>
+        <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/41/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;“幸福的家庭都是相似的，不幸的家庭各有各的不幸”  &amp;mdash; 托尔斯泰 《安娜·卡列尼娜》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一个显然的事实，计算机只能做计算，数值计算，它无法理解文本的内涵，但却可以计算文本用词的相似度。&lt;/p&gt;
+&lt;p&gt;一篇文章里如果反复出现 “贸易逆差、汇率、贬值” 等词汇，那它大概率就是一篇金融方面的文章。&lt;/p&gt;
+&lt;p&gt;而如果经常出现 “李白、杜甫、王维、&lt;del&gt;江泽&lt;/del&gt;林则徐” 那它应该是一篇诗歌方面的文章。&lt;/p&gt;
+&lt;p&gt;所以，我们可以使用一个 &lt;strong&gt;数组&lt;/strong&gt; 来储存这些关键词出现的频率，这样一篇文章就被转换成了数字，计算机就能算一算这篇文章是在讲什么了。&lt;/p&gt;
+&lt;p&gt;那么，怎么计算呢.jpg&lt;/p&gt;
+&lt;p&gt;看我cosplay&lt;/p&gt;
+&lt;p&gt;首先，我们知道：&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=\dfrac {\langle a,b\rangle }{\left| a\right| \cdot \left| b\right| }
+$$&lt;/p&gt;
+&lt;p&gt;我们将这个储存词频的 &lt;strong&gt;数组&lt;/strong&gt; 看成一个 &lt;strong&gt;n 维向量&lt;/strong&gt; ，那么任意两篇文章的主题相关性就可以用向量间的余弦角来表示。&lt;/p&gt;
+&lt;p&gt;当两向量垂直时&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=0
+$$&lt;/p&gt;
+&lt;p&gt;两文本毫不相干。&lt;/p&gt;
+&lt;p&gt;当两向量重合时&lt;/p&gt;
+&lt;p&gt;$$
+\cos A=1
+$$&lt;/p&gt;
+&lt;p&gt;两文本完全相同。&lt;/p&gt;
+&lt;p&gt;基于这个原理我们可以设计出一个很简单的文本分类器，我们可以称呼它为&amp;hellip;&lt;del&gt;coser！&lt;/del&gt; 余弦相似性分类器。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>一个ACM蒟蒻的掉坑手册</title>
+        <link>https://blog.frostmiku.com/archives/40/</link>
+        <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/40/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;如何控制每两个数之间有空格，而最后一个数之后没有空格？解决方法之一是：第一个数之前不加空格，而其后每个数之前加空格。而通过一个标识变量可以判断出是否是第一个数。&lt;/li&gt;
+&lt;li&gt;初做多实例测试，要注意变量赋初值的位置。&lt;/li&gt;
+&lt;li&gt;流可以加速，方法是关闭和stdio的同步，即调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ios&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sync_with_stdio&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;未指定输入量的输入框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scanf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EOF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){}&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;//或 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;能写成函数尽量写成函数，解耦、复用、易于定位错误，不要把 main() 写的又臭又长，出错了改都不好改。&lt;/li&gt;
+&lt;li&gt;memset函数可以初始化数组。这条命令这在你已经修改了数组之后又想将它重置为全0特别有用（然鹅它是操作字节，也就初始为0/-1比较有用）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;memset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;CPP int&amp;amp;string互相转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;sstream&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;stringstream&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;使用C语言sscanf()函数将string/char转换成int（或其他类型）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;sscanf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;重定向：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;freopen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test.in&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stdin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;freopen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test.out&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;//不能用在C++里。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;main函数可以递归 调用自身：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt;&lt;span class=&#34;cpf&#34;&gt;&amp;lt;cstdio&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scanf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%lf&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EOF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%.5f&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;long double类型使用%Lf占位.&lt;/li&gt;
+&lt;li&gt;一次读取一行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)){}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;这个语句的执行过程是这样的：先调用getline()函数，getline()将istream cin中的内容读取一行（你输入的是hello
+world)，保存进string
+s中，而getline()的返回值就是cin。也就是说，这个循环的判定条件是while(cin)，cin是怎么转化为bool类型进行条件判断的呢？这个判定实际上隐式调用了
+!cin.fail()，而fail()这个成员函数被定义在ios_base类里面（这是istream的基类basic_ios的基类）。那么调用fail()返回的是什么？是cin的状态。cin的状态是由4个标志位指示的（关于stream的标志的内容实际上就可以在C++
+Primer中找到），分别是badbit（表示流已经崩溃），failbit（表示IO操作失败），eofbit，goodbit。当badbit或者failbit被置位时，fail()会返回true，!fail()结果为false。当遇到文件末端时，eofbit和failbit都会被置位，因此只有碰到Ctrl+Z（Windows下输入即等同文件末端eof），while()条件不再满足，退出。
+链接：https://www.zhihu.com/question/27859723/answer/38385260&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;字符串所有字母转换为大写&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;toupper&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;反转string&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;reverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>LibVLC研究笔记</title>
+        <link>https://blog.frostmiku.com/archives/370/</link>
+        <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/370/</guid>
+        <description>&lt;h2 id=&#34;什么是vlc&#34;&gt;什么是VLC&lt;/h2&gt;
+&lt;p&gt;VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。&lt;/p&gt;
+&lt;h2 id=&#34;什么是libvlc&#34;&gt;什么是LibVLC&lt;/h2&gt;
+&lt;p&gt;&lt;span id=&#34;result_box&#34; class=&#34;short_text&#34; lang=&#34;zh-CN&#34;&gt;&lt;span class=&#34;&#34;&gt;LibVLC&lt;/span&gt;&lt;span class=&#34;&#34;&gt;是&lt;/span&gt;&lt;span class=&#34;&#34;&gt;VLC媒体播放器&lt;/span&gt;的外部&lt;span class=&#34;&#34;&gt;编程接口。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;libvlc&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;如何获取vlc的sdk&#34;&gt;如何获取VLC的SDK&lt;/h2&gt;
+&lt;p&gt;VLC开发所需的库文件可以有3种获取方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1. 自行编译&lt;/p&gt;
+&lt;p&gt;2. 直接从安装目录里面拷贝出来&lt;/p&gt;
+&lt;p&gt;3.从官方FTP服务器上下载（见相关链接5）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;开发vlc所需的文件的位置&#34;&gt; 开发VLC所需的文件的位置&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。&lt;/p&gt;
+&lt;p&gt;2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）&lt;/p&gt;
+&lt;p&gt;3. 头文件：安装目录/sdk/include
+[v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;1.自行在vs中设置include和lib的路径（如上）
+2.复制libvlc.dll, &lt;wbr /&gt;libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录
+3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo&lt;/h2&gt;
+&lt;p&gt;基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的&lt;/p&gt;
+&lt;p&gt;官方WIKI：&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+#include 
+ #include 
+ #include &amp;lt;vlc/vlc.h&amp;gt;
 
-如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
- 1. 自行编译
-2. 直接从安装目录里面拷贝出来
-3.从官方FTP服务器上下载（见相关链接5）
- 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
-2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
-3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
- 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT
-Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
-官方WIKI：
-#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;</description>
-    </item>
-    
-    <item>
-      <title>Minecraft的地形生成算法相关</title>
-      <link>https://blog.frostmiku.com/archives/2/</link>
-      <pubDate>Fri, 25 Dec 2015 09:12:09 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/2/</guid>
-      <description>Terrain generation, Part 1
-I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!
-One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.</description>
-    </item>
-    
-  </channel>
+ int main(int argc, char* argv[])
+ {
+     libvlc_instance_t * inst;
+     libvlc_media_player_t *mp;
+     libvlc_media_t *m;
+
+     /* Load the VLC engine */
+     inst = libvlc_new (0, NULL);
+
+     /* Create a new item */
+     m = libvlc_media_new_location (inst, &#34;http://mycool.movie.com/test.mov&#34;);
+     //m = libvlc_media_new_path (inst, &#34;/path/to/test.mov&#34;);
+
+     /* Create a media player playing environement */
+     mp = libvlc_media_player_new_from_media (m);
+
+     /* No need to keep the media now */
+     libvlc_media_release (m);
+
+ #if 0
+     /* This is a non working code that show how to hooks into a window,
+      * if we have a window around */
+      libvlc_media_player_set_xwindow (mp, xid);
+     /* or on windows */
+      libvlc_media_player_set_hwnd (mp, hwnd);
+     /* or on mac os */
+      libvlc_media_player_set_nsobject (mp, view);
+  #endif
+
+     /* play the media_player */
+     libvlc_media_player_play (mp);
+
+     sleep (10); /* Let it play a bit */
+
+     /* Stop playing */
+     libvlc_media_player_stop (mp);
+
+     /* Free the media_player */
+     libvlc_media_player_release (mp);
+
+     libvlc_release (inst);
+
+     return 0;
+ }
+&lt;/pre&gt;
+&lt;p&gt;来自百度的精简版，只留下了主要代码（出处不详，望告知）&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;#include 
+#include 
+
+#include &#34;vlc/vlc.h&#34;
+#pragma comment(lib, &#34;libvlc.lib&#34;)
+#pragma comment(lib, &#34;libvlccore.lib&#34;)
+
+int main(int argc, char* argv[])
+{
+    libvlc_instance_t * inst;
+    libvlc_media_player_t *mp;
+    libvlc_media_t *m;
+
+    inst = libvlc_new (0, NULL);        /* Load the VLC engine */   
+    m = libvlc_media_new_path (inst, &#34;D:\\music\\amani.wma&#34;);  // 必须为英文路径  
+    mp = libvlc_media_player_new_from_media (m);    /* Create a media player playing environement */    
+    libvlc_media_release (m);           /* No need to keep the media now */
+
+    // 播放文件
+    libvlc_media_player_play (mp);      /* play the media_player */   
+    Sleep (100 * 1000);                 /* Let it play a bit */
+
+    libvlc_media_player_stop (mp);      /* Stop playing */   
+    libvlc_media_player_release (mp);   /* Free the media_player */
+    libvlc_release (inst);
+    return 0;
+}
+&lt;/pre&gt;
+&lt;h2 id=&#34;libvlc_media_new_path和libvlc_media_new_location的区别&#34;&gt;libvlc_media_new_path()和libvlc_media_new_location()的区别&lt;/h2&gt;
+&lt;p&gt;libvlc_media_new_path()用于打开文件，而libvlc_media_new_location()用于打开协议&lt;/p&gt;
+&lt;p&gt;传递给libvlc_media_new_path()的参数就是文件路径（相对路径或绝对路径）&lt;/p&gt;
+&lt;p&gt;传递给libvlc_media_new_location()的参数就是协议地址（如“udp://”“http://”）&lt;/p&gt;
+&lt;p&gt;需要注意的是libvlc_media_new_location()也可以打开文件，但是必须在文件路径前面加上“file:///”，举个栗子&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;libvlc_media_new_location (inst, &#34;file:///E:\\test.avi&#34;);  
+&lt;/pre&gt;
+&lt;p&gt;VLC还支持很多特有的协议，比如“screen://”协议可以进行屏幕录制，具体可参考官方WIKI&lt;/p&gt;
+&lt;h2 id=&#34;疑难杂症&#34;&gt;疑难杂症&lt;/h2&gt;
+&lt;h3 id=&#34;中文乱码&#34;&gt;中文乱码&lt;/h3&gt;
+&lt;p&gt;VLC使用的是UTF-8，因此将unicode转码为UTF-8即可解决&lt;/p&gt;
+&lt;h3 id=&#34;在release下抛错&#34;&gt;在Release下抛错&lt;/h3&gt;
+&lt;p&gt;请勿使用官方的lib，自己手动生成lib（相关链接2）&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.videolan.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.videolan.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.videolan.org/GenerateLibFromDll/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.videolan.org/GenerateLibFromDll/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://download.videolan.org/pub/videolan/vlc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://download.videolan.org/pub/videolan/vlc/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;ftp://ftp.videolan.org/pub/videolan/&#34; &gt;ftp://ftp.videolan.org/pub/videolan/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Minecraft的地形生成算法相关</title>
+        <link>https://blog.frostmiku.com/archives/2/</link>
+        <pubDate>Fri, 25 Dec 2015 09:12:09 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/2/</guid>
+        <description>&lt;p&gt;&lt;span style=&#34;text-decoration: underline;&#34;&gt;&lt;span style=&#34;color: #ff0000; text-decoration: underline;&#34;&gt;Terrain generation, Part 1&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been promising to write a technical post on Minecraft for a while, but never really got around to doing so. I’m on a tiny airplane now, though, with nowhere to run, so here we go!&lt;/p&gt;
+&lt;p&gt;One of the most complex parts of Minecraft is the terrain generation. When I changed the game over from being just single zones of a map to an infinite map, the terrain generation got a whole lot more complicated, as terrain needs to get generated on the fly as the player explores, and it has to be the same no matter what direction the player approaches it from.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: #ff6600;&#34;&gt;1) How infinite is it?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;First of all, let me clarify some things about the “infinite” maps: They’re not infinite, but there’s no hard limit either. It’ll just get buggier and buggier the further out you are. Terrain is generated, saved and loaded, and (kind of) rendered in chunks of 16&lt;em&gt;16&lt;/em&gt;128 blocks. These chunks have an offset value that is a 32 bit integer roughly in the range negative two billion to positive two billion. If you go outside that range (about 25% of the distance from where you are now to the sun), loading and saving chunks will start overwriting old chunks. At a 16/th of that distance, things that use integers for block positions, such as using items and pathfinding, will start overflowing and acting weird.&lt;/p&gt;
+&lt;p&gt;Those are the two “hard” limits.&lt;/p&gt;
+&lt;p&gt;Most other things, like the terrain generation seeds and entity locations use 64 bit doubles for locations, and they do much subtler things. For example, at extreme distances, the player may move slower than near the center of the world, due to rounding errors (the position has a huge mantissa, the movement delta has a tiny, so it gets cut off faster). The terrain generator can also start generating weird structures, such as huge blocks of solid material, but I haven’t seen this lately nor examined exactly what behavior causes it to happen. One major problem at long distances is that the physics starts bugging out, so the player can randomly fall into ground blocks or get stuck while walking along a wall.&lt;/p&gt;
+&lt;p&gt;Many of these problems can be solved by changing the math into a local model centered around the player so the numbers all have vaguely the same magnitude. For rendering, Minecraft already uses local coordinates within the block and offset the block position relative to the player to give the impression of the player moving. This is mostly due to OpengGL using 32 bit floats for positions, but also because the rounding errors are extremely visible when displayed on a screen.
+We’re probably not going to fix these bugs until it becomes common for players to experience them while playing legitimately. My gut feeling is that nobody ever has so far, and nobody will. Walking that far will take a very long time. Besides, the bugs add mystery and charisma to the Far Lands.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: #ff6600;&#34;&gt;2) Isn’t that terrain shape pretty awesome?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In the very earliest version of Minecraft, I used a 2D Perlin noise heightmap to set the shape of the world. Or, rather, I used quite a few of them. One for overall elevation, one for terrain roughness, and one for local detail. For each column of blocks, the height was (elevation + (roughness&lt;em&gt;detail))&lt;em&gt;64+64. Both elevation and roughness were smooth, large scale noises, and detail was a more intricate one. This method had the great advantage of being very fast as there’s just 16&lt;/em&gt;16&lt;/em&gt;(noiseNum) samples per chunk to generate, but the disadvantage of being rather dull. Specifically, there’s no way for this method to generate any overhangs.&lt;/p&gt;
+&lt;p&gt;So I switched the system over into a similar system based off 3D Perlin noise. Instead of sampling the “ground height”, I treated the noise value as the “density”, where anything lower than 0 would be air, and anything higher than or equal to 0 would be ground. To make sure the bottom layer is solid and the top isn’t, I just add the height (offset by the water level) to the sampled result.
+Unfortunately, I immediately ran into both performance issues and playability issues. Performance issues because of the huge amount of sampling needed to be done, and playability issues because there were no flat areas or smooth hills. The solution to both problems turned out to be just sampling at a lower resolution (scaled 8x along the horizontals, 4x along the vertical) and doing a linear interpolation. Suddenly, the game had flat areas, smooth hills, and also most single floating blocks were gone.&lt;/p&gt;
+&lt;p&gt;The exact formula I use is a bit involved (and secret!), but it evolved slowly over time as I worked on the game. It still uses the 2D elevation and noisyness maps, though.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

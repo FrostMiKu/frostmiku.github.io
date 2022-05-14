@@ -1,31 +1,189 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>编译原理 on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
-    <description>Recent content in 编译原理 on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 21 Feb 2020 23:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>编译原理学习笔记：文法与语言</title>
-      <link>https://blog.frostmiku.com/archives/20/</link>
-      <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/20/</guid>
-      <description>前言 本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;
-基本概念  字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$ 符号： $∑$中的元素称为符号。 符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。 长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$ 连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。 对于任意字符串$β$，有$βε＝εβ＝β$ 乘积：设A和B是符号串集，则用AB表示它们的乘积：  $$ AB＝{xy|x∈A,y∈B } $$
-显然${ε}A=A{ε}=A$
- 空集：不含任何元素的集合φ，对任何字符串集A有：  $$ φA＝Aφ＝A $$
- 方幂：设A是字符串集，则A的方幂定义为：  $$ A^0 ={ε}; A^1 ＝A; A^n ＝A^{n-1} A $$
-特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$
- 闭包/正闭包/星闭包：设A是符号集， 用$A^+$表示A的正闭包:  $$ A^+=A^1∪A^2∪\dots∪A^n∪\dots $$
-用$A^*$表示A的星闭包:
-$$ A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+ $$
-两者统称为A的闭包。
-举个例子1： 设$A = {a,b}$ 则：
-$$ \begin{aligned} &amp;amp;A^0 ＝ {ε}\cr &amp;amp;A^1 = {a,b}\cr &amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr &amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr &amp;amp;\dots\cr \end{aligned} $$</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>编译原理 on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+        <description>Recent content in 编译原理 on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 21 Feb 2020 23:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>编译原理学习笔记：文法与语言</title>
+        <link>https://blog.frostmiku.com/archives/20/</link>
+        <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/20/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/archives/20/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 编译原理学习笔记：文法与语言" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;字母表：非空有限集，一般用$∑$表示，如$∑＝{a,b,c}$&lt;/li&gt;
+&lt;li&gt;符号： $∑$中的元素称为符号。&lt;/li&gt;
+&lt;li&gt;符号串：符号的有穷序列称符号串，也可称为字，用ε表示空字符串。&lt;/li&gt;
+&lt;li&gt;长度：符号串中包括的符号的个数，如$|ab|＝2,|ε|＝0$&lt;/li&gt;
+&lt;li&gt;连接：设x和y是字符串，则称$x·y$是其连接，符号‘·’一般可省略。
+对于任意字符串$β$，有$βε＝εβ＝β$&lt;/li&gt;
+&lt;li&gt;乘积：设A和B是符号串集，则用AB表示它们的乘积：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+AB＝{xy|x∈A,y∈B }
+$$&lt;/p&gt;
+&lt;p&gt;显然${ε}A=A{ε}=A$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空集：不含任何元素的集合φ，对任何字符串集A有：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+φA＝Aφ＝A
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方幂：设A是字符串集，则A的方幂定义为：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+A^0 ={ε};
+A^1 ＝A;
+A^n ＝A^{n-1} A
+$$&lt;/p&gt;
+&lt;p&gt;特别地，若x是$∑$中的字符，则x的n次自身连接即$x^n$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;闭包/正闭包/星闭包：设A是符号集，
+用$A^+$表示A的正闭包:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+A^+=A^1∪A^2∪\dots∪A^n∪\dots
+$$&lt;/p&gt;
+&lt;p&gt;用$A^*$表示A的星闭包:&lt;/p&gt;
+&lt;p&gt;$$
+A^*＝A^0∪A^1∪A^2∪\dots∪A^n∪\dots={ε}∪A^+
+$$&lt;/p&gt;
+&lt;p&gt;两者统称为A的闭包。&lt;/p&gt;
+&lt;p&gt;举个例子&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;：
+设$A = {a,b}$ 则：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;A^0 ＝ {ε}\cr
+&amp;amp;A^1 = {a,b}\cr
+&amp;amp;A^2 = AA = {aa,ab,ba,bb}\cr
+&amp;amp;A^3 = AAA = {aaa,aab,aba,abb,baa,bab,bba,bbb}\cr
+&amp;amp;\dots\cr
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;符号和符号串&#34;&gt;符号和符号串&lt;/h3&gt;
+&lt;p&gt;任何程序设计语言都是某一基本符号集上的字符序列，其中的字符用来构造单词，单词构造更大的语法单位，表达式、语句等复合对象。其中，&lt;strong&gt;单词是最小的语义单位&lt;/strong&gt;,它不包含任何子结构，因此每个单词是简单的字符序列。&lt;/p&gt;
+&lt;h2 id=&#34;语言&#34;&gt;语言&lt;/h2&gt;
+&lt;p&gt;程序设计语言是一个&lt;strong&gt;记号系统&lt;/strong&gt;，同自然语言一样，完整的定义应包括&lt;strong&gt;语法&lt;/strong&gt;和&lt;strong&gt;语义&lt;/strong&gt;两个方面。&lt;/p&gt;
+&lt;p&gt;语言的语法是指&lt;strong&gt;一组规则&lt;/strong&gt;，用它可以形成和产生一个合适的程序。语法规定了特定符号序列的合法性，而与符号的含义没有关系。任何程序设计语言都是某一基本符号集上的字符序列。&lt;/p&gt;
+&lt;p&gt;对于语义的分析与处理到目前为止仍然没有公认的形式系统用于自动构造正确的编译程序。&lt;/p&gt;
+&lt;h3 id=&#34;形式语言&#34;&gt;形式语言&lt;/h3&gt;
+&lt;p&gt;形式语言（英语：Formal language）是用精确的数学或机器可处理的公式定义的语言。在形式语言理论中，形式语言是一个字母表上的某些有限长字符串的&lt;strong&gt;集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;每个形式语言都是某个字母表上按某种规则构成的所有符号的集合，反之，任何一个字母表上符号串的集合均可定义为一个形式语言，不涉及考虑语义问题。&lt;/p&gt;
+&lt;h4 id=&#34;语言间的运算&#34;&gt;语言间的运算&lt;/h4&gt;
+&lt;p&gt;因为形式语言在本质上是由数学定义的的集合，所以语言间的运算就是$Σ^*$幂集上的运算。与普通的集合数学运算无异。&lt;/p&gt;
+&lt;h3 id=&#34;语言的表示方法&#34;&gt;语言的表示方法&lt;/h3&gt;
+&lt;p&gt;从形式语言的角度看，一个语言也就是字符串集。如果字符串集是有穷的，可以用枚举的办法表示出来。
+例如，设有字母表 $A={a,b,c}$，则&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;L_1 = {a,b,c}\cr
+&amp;amp;L_2 = {a,aa,ab,ac}\cr
+&amp;amp;L_3 = {c,cc}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;均表示字母表A上的一个形式语言。&lt;/p&gt;
+&lt;p&gt;当集合无穷时，&lt;del&gt;我们可以使用无限猴子定理&lt;/del&gt;枚举的办法就不行了，需要寻找合适的有穷表示方法——&lt;strong&gt;文法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;除形式文法外，语言也可使用正则表达式或某些自动机表示，在本章暂不讨论。&lt;/p&gt;
+&lt;h2 id=&#34;文法&#34;&gt;文法&lt;/h2&gt;
+&lt;p&gt;在形式语言理论中，文法（为了避免歧义，常称作“形式文法”）是形式语言中字符串的一套产生式规则。这些规则描述了如何用语言的字母表生成符合语法的有效的字符串。文法不描述字符串的含义，也不描述在任何上下文中可以用它们做什么——只描述它们的形式。
+形式文法是从一个“开始符号”出发的一套重写字符串的规则。因此，文法通常被认为是语言生成器。&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;ps: 形式语言理论是应用数学的一个分支，是研究形式文法和语言的学科。&lt;/p&gt;
+&lt;h3 id=&#34;规则&#34;&gt;规则&lt;/h3&gt;
+&lt;p&gt;我们以汉语句子的文法为例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;句子 → 主语·谓语
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;主语 → 代词∣名词
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;代词 → 我∣你∣他
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;名词 → 司机∣农民∣学生∣汽车∣锄头
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;谓语 → 动词·直接宾语
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;动词 → 学习∣拿起∣开
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;直接宾语 → 代词∣名词
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其上的每一条被称为&lt;strong&gt;产生式&lt;/strong&gt;或&lt;strong&gt;语法规则&lt;/strong&gt;，符号“→”也可以写成“∷=”，表示“被定义为”。&lt;/p&gt;
+&lt;p&gt;符号“·”和“∣”是集合运算符号，“·”表示“连接”，该符号往往被省略，“∣”表示“或”，该符号两边的符号串称候选串。&lt;/p&gt;
+&lt;p&gt;由上面的规则可以&lt;strong&gt;产生或推导出句子&lt;/strong&gt;，引进符号“=&amp;gt;”表示推导，比如句子“农民拿起锄头”的推导过程为：句子=&amp;gt;主语·谓语=&amp;gt;名词·谓语=&amp;gt;农民·谓语=&amp;gt;农民·动词·直接宾语=&amp;gt;农民·拿起·直接宾语=&amp;gt;农民·拿起·名词=&amp;gt;农民拿起锄头&lt;/p&gt;
+&lt;h2 id=&#34;形式定义&#34;&gt;形式定义&lt;/h2&gt;
+&lt;p&gt;接下来我们以数学为工具，利用符号和公式，精确地定义文法和语言。&lt;/p&gt;
+&lt;h3 id=&#34;文法的形式定义&#34;&gt;文法的形式定义&lt;/h3&gt;
+&lt;p&gt;文法是规则的&lt;strong&gt;非空&lt;/strong&gt;有穷集合。其形式定义为四元组$G[S]=(V_N,V_T,P,S)$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$V_N$是规则中非终结符号的集合。&lt;/li&gt;
+&lt;li&gt;$V_T$是规则中终结符号的集合，显然文法在这里结束。&lt;/li&gt;
+&lt;li&gt;P是文法规则的合集。&lt;/li&gt;
+&lt;li&gt;S是一个非终结符号，显然文法从这里开始。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;语言的形式定义&#34;&gt;语言的形式定义&lt;/h3&gt;
+&lt;p&gt;当一个文法已知时，我们可以确定出该文法所定义的语言，但在此之前我们需要先弄明白什么是句子，这里我们需要引入推导的概念。&lt;/p&gt;
+&lt;h4 id=&#34;推导&#34;&gt;推导&lt;/h4&gt;
+&lt;p&gt;如果存在一个直接推导序列&lt;/p&gt;
+&lt;p&gt;$$
+a_0 \Rightarrow a_1 \Rightarrow a_2 \Rightarrow \dots \Rightarrow a_n
+$$&lt;/p&gt;
+&lt;p&gt;则称这个序列是$a_0$到$a_n$的长度为n的推导，记为$a_0\stackrel{+}{\Rightarrow}a_n$。&lt;/p&gt;
+&lt;p&gt;表示从$a_0$出发，经过1到n步可以推导出$a_n$。&lt;/p&gt;
+&lt;h4 id=&#34;广义推导&#34;&gt;广义推导&lt;/h4&gt;
+&lt;p&gt;广义推导的符号为$\stackrel{*}{\Rightarrow}$&lt;/p&gt;
+&lt;p&gt;$a_0 \stackrel{*}{\Rightarrow} a_n$表示从$a_0$出发，经过0到n步可以推导出$a_n$。&lt;/p&gt;
+&lt;h4 id=&#34;句型与句子&#34;&gt;句型与句子&lt;/h4&gt;
+&lt;p&gt;对于文法 $G[S]$，如果&lt;/p&gt;
+&lt;p&gt;$$
+S \stackrel{*}{\Rightarrow} x
+$$&lt;/p&gt;
+&lt;p&gt;称符号串x为文法 $G[S]$ 的句型。&lt;/p&gt;
+&lt;p&gt;$$
+S \stackrel{*}{\Rightarrow}x, x∈V_T^*
+$$&lt;/p&gt;
+&lt;p&gt;则称符号串x是文法$G[S]$的句子。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;有了以上概念后，我们可以给出语言的形式定义：&lt;/p&gt;
+&lt;p&gt;文法 $G[S]$ 产生的所有句子的集合称为文法G所定义的语言，记为$L(G[S])$&lt;/p&gt;
+&lt;p&gt;$$
+L(G[S])={x|S\stackrel{+}{\Rightarrow}x,x∈V_T^*}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;编译原理 刘铭、徐兰芳等｜电子工业出版社&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;维基百科 &lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/%e5%bd%a2%e5%bc%8f%e6%96%87%e6%b3%95&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;形式文法&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

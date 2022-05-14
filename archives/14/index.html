@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='美化一时爽，一直美化一直爽'><title>Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</title>
 
 <link rel='canonical' href='https://blog.frostmiku.com/archives/14/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Arch Linux (Manjaro) 配置、美化与常用软件安装指南（'>
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='Arch Linux (Manjaro) 配置、美化与常用软件安装指南（'>
 <meta property='og:description' content='美化一时爽，一直美化一直爽'>
 <meta property='og:url' content='https://blog.frostmiku.com/archives/14/'>
 <meta property='og:site_name' content='StarWhisper'>
@@ -14,28 +14,12 @@
     <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="Arch Linux (Manjaro) 配置、美化与常用软件安装指南（">
 <meta name="twitter:description" content="美化一时爽，一直美化一直爽"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://blog.frostmiku.com/archives/14/gnome.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
-<style>
-    :root {
-        --article-font-family: "Noto Serif SC", var(--base-font-family);
-    }
-</style>
+    <link rel="shortcut icon" href="favicon.ico" />
 
-<script>
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
     </head>
     <body class="
-    article-page has-toc
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -58,25 +42,232 @@
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="https://blog.frostmiku.com" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
 </svg>
 
 
 
-                <span>Back</span>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
             </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
         </div>
-    
+    </ol>
+</aside>
 <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
@@ -104,16 +295,38 @@
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/archives/14/">Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</a>
-    </h2>
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/14/">Arch Linux (Manjaro) 配置、美化与常用软件安装指南（</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            美化一时爽，一直美化一直爽
+        </h3>
+        
+    </div>
 
     
-    <h3 class="article-subtitle">
-        美化一时爽，一直美化一直爽
-    </h3>
     <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 30, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -121,11 +334,21 @@
 
 
 
-        <time class="article-time--published">Nov 30, 2019</time>
-    </footer></div>
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
 </header>
 
     <section class="article-content">
+    
+    
     <h2 id="前言">前言</h2>
 <p>之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 <a class="link" href="https://blog.kaaass.net/archives/1205"  target="_blank" rel="noopener"
     >@KAAAsS</a>写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（</p>
@@ -134,7 +357,7 @@
 <h6 id="注意">注意</h6>
 <p>本文作如下约定：</p>
 <blockquote>
-<p>如无特别说明，本文的**&ldquo;安装&rdquo;**是指使用pacman包管理器命令或其图形化前端在**已添加archlinuxcn源**情况下进行的软件包安装**或**AUR构建。</p>
+<p>如无特别说明，本文的**&ldquo;安装&rdquo;<strong>是指使用pacman包管理器命令或其图形化前端在</strong>已添加archlinuxcn源<strong>情况下进行的软件包安装</strong>或**AUR构建。</p>
 <p>如无特别说明，本文的**“编辑”**指的是使用任何图形或非图形化文本编辑器对目标文件的编辑。Gnome环境下可以使用 sudo gedit path 来打开文件进行编辑。</p>
 </blockquote>
 <h2 id="配置">配置</h2>
@@ -145,34 +368,69 @@
     >https://blog.kaaass.net/archives/1205#toc-4</a></p>
 </blockquote>
 <p>或者，你只是想快速完成这些步骤而不想详细了解的话：</p>
-<pre tabindex="0"><code>#切换中国源
-sudo pacman-mirrors -c China
-#添加 [archlinuxcn]
-sudo gedit /etc/pacman.conf
-# 然后在弹出来的 gedit 最下方追加如下内容
-[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-
-#更新软件源
-pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
-#安装 oh my zsh
-sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
-# 重启
-reboot
-</code></pre><h3 id="没有权限访问串口">没有权限访问串口</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#切换中国源
+</span></span><span class="line"><span class="cl">sudo pacman-mirrors -c China
+</span></span><span class="line"><span class="cl">#添加 [archlinuxcn]
+</span></span><span class="line"><span class="cl">sudo gedit /etc/pacman.conf
+</span></span><span class="line"><span class="cl"># 然后在弹出来的 gedit 最下方追加如下内容
+</span></span><span class="line"><span class="cl">[archlinuxcn]
+</span></span><span class="line"><span class="cl">SigLevel = Optional TrustedOnly
+</span></span><span class="line"><span class="cl">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#更新软件源
+</span></span><span class="line"><span class="cl">pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
+</span></span><span class="line"><span class="cl">#安装 oh my zsh
+</span></span><span class="line"><span class="cl">sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;
+</span></span><span class="line"><span class="cl"># 重启
+</span></span><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="没有权限访问串口">没有权限访问串口</h3>
 <p>不同于Debian系的dialout，arch系的串口属于用户组uucp
 所以只需要将自己添加到uucp组即可。</p>
-<pre tabindex="0"><code>sudo usermod -a -G uucp username
-</code></pre><h3 id="开启-gsconnect">开启 GSConnect</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo usermod -a -G uucp username
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="开启-gsconnect">开启 GSConnect</h3>
 <p>gsconnect是kdeconnect的gnome实现，也就比kde的好用那么一点吧（滑稽</p>
 <p>在 优化》插件 里手动启动即可。</p>
 <h2 id="软件">软件</h2>
 <h3 id="python2">Python2</h3>
 <p>Manjaro自带了Python 2.7但并没有附带pip，需要我们手动安装</p>
 <p>安装python2-pip</p>
-<pre tabindex="0"><code>sudo pacman -S python2-pip 
-</code></pre><p>安装后在终端输入pip2即可使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo pacman -S python2-pip 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装后在终端输入pip2即可使用</p>
 <h3 id="字体">字体</h3>
 <p>字体比较推荐等宽的 <a class="link" href="https://github.com/be5invis/Sarasa-Gothic"  target="_blank" rel="noopener"
     >更纱黑体</a> ，安装 Sarasa Gothic 然后在优化里设置即可。</p>
@@ -188,7 +446,7 @@ reboot
 <p>ps：如果你要使用的话，需要另外安装ranger</p>
 <h3 id="nautilus-文件管理器">Nautilus 文件管理器</h3>
 <h4 id="显示地址栏">显示地址栏</h4>
-<p>可以使用快捷键 <code>ctrl + L</code>也可以直接输入以**/**或 **~** 开头的地址。</p>
+<p>可以使用快捷键 <code>ctrl + L</code>也可以直接输入以**/**或 <strong>~</strong> 开头的地址。</p>
 <p>如果希望文件管理器默认显示地址栏，则打开dconf编辑器（可以直接在软件中心安装）
 定位到<code>org-&gt;gnome-&gt;nautilus-&gt;preferences</code>然后选择<code>always-use-location-entry</code>这一项即可。</p>
 <h3 id="某知名electron科学软件">某知名Electron科学软件</h3>
@@ -205,18 +463,20 @@ reboot
 <p>最近腾讯更新了QQ for Linux，虽然用起来有种自己穿越回2009年的感觉。但基本功能倒是够用了。</p>
 <p>安装 qq-Linux 即可，它应该是在archlinuxcn仓库里。</p>
 <h2 id="美化">美化</h2>
-<p><figure style="flex-grow: 147; flex-basis: 354px">
-		<a href="/archives/14/settings.png" data-size="1035x700"><img src="/archives/14/settings.png"
-				srcset="/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, /archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w"
-				width="1035"
-				height="700"
-				loading="lazy"
-				alt="setting">
-		</a>
-		
-		<figcaption>setting</figcaption>
-		
-	</figure></p>
+<p><img src="/archives/14/settings.png"
+	width="1035"
+	height="700"
+	srcset="/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, /archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="setting"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="354px"
+	
+></p>
 <h3 id="主题图标与字体">主题、图标与字体</h3>
 <p>本文最上面的图片里以包括这些信息，防止看不清楚再列出：</p>
 <blockquote>
@@ -296,17 +556,20 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
     </section>
     </footer>
 
+
     
 </article>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">相关文章</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="">
     <a href="/archives/4/">
         
@@ -317,8 +580,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/36/">
         
@@ -327,7 +590,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
                 <img src="/archives/36/3.db9678b38accfdebd5aecc5a766b9a27_hu5f6040234dc4fded8a5d093800e3042d_106071_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 基于肢体运动的睡眠状态检测原理"
                         data-key="36" 
                         data-hash="md5-25Z4s4rM/evVrsxadmuaJw==">
                 
@@ -339,8 +603,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/35/">
         
@@ -349,7 +613,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
                 <img src="/archives/35/after.945f6b0283370c0e5d12f832f1319bc9_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 仿手写文本生成"
                         data-key="35" 
                         data-hash="md5-lF9rAoM3DA5dEvgy8TGbyQ==">
                 
@@ -361,8 +626,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/34/">
         
@@ -371,7 +636,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
                 <img src="/archives/34/Game51.1823dcf7e012d3ec5ff280557f07dd9f_hu35b2e34c1174dbc23109259dd40822e7_105087_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 大革命，一种扑克卡牌游戏"
                         data-key="34" 
                         data-hash="md5-GCPc9&#43;AS0&#43;xf8oBVfwfdnw==">
                 
@@ -383,8 +649,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         </div>
     </a>
 </article>
+            
                 
-                    
 <article class="has-image">
     <a href="/archives/33/">
         
@@ -393,7 +659,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
                 <img src="/archives/33/_hu958d513eeefe5556a31d065479ecc5ac_14205_7bffa90d1e66ca9b8184fda08a99dc7e.jpg" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post 浅谈邀请码的生成"
                         data-key="33" 
                         data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
                 
@@ -405,14 +672,13 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         </div>
     </a>
 </article>
-                
-            </div>
+            
         </div>
-    
+    </div>
 </aside>
 
      
-     
+    
         
     <script src="https://utteranc.es/client.js" 
         repo="FrostMiKu/frostmiku.github.io"
@@ -471,12 +737,10 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
         
             FrostMiKu <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-        <br />
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -542,11 +806,11 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -557,11 +821,13 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -571,11 +837,11 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
 
 
 
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
   <ol>
     <li><a href="#前言">前言</a>
       <ol>
@@ -628,15 +894,18 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM</p>
     <li><a href="#reference">Reference</a></li>
   </ol>
 </nav>
-                </div>
-            </section>
-        </aside>
-    
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>

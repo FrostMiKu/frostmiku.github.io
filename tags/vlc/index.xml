@@ -1,33 +1,160 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>VLC on StarWhisper</title>
-    <link>https://blog.frostmiku.com/tags/vlc/</link>
-    <description>Recent content in VLC on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 May 2016 23:00:34 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/vlc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>LibVLC研究笔记</title>
-      <link>https://blog.frostmiku.com/archives/370/</link>
-      <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/370/</guid>
-      <description>什么是VLC VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。
-什么是LibVLC LibVLC是VLC媒体播放器的外部编程接口。
+    <channel>
+        <title>VLC on StarWhisper</title>
+        <link>https://blog.frostmiku.com/tags/vlc/</link>
+        <description>Recent content in VLC on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 04 May 2016 23:00:34 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/vlc/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>LibVLC研究笔记</title>
+        <link>https://blog.frostmiku.com/archives/370/</link>
+        <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/370/</guid>
+        <description>&lt;h2 id=&#34;什么是vlc&#34;&gt;什么是VLC&lt;/h2&gt;
+&lt;p&gt;VLC多媒体播放器（最初命名为VideoLAN客户端）是VideoLAN计划的多媒体播放器。它支持众多音频与视频解码器及文件格式，并支持DVD影音光盘，VCD影音光盘及各类流式协议。它也能作为unicast或 multicast的流式服务器在IPv4或 IPv6的高速网络连接下使用。它融合了FFmpeg计划的解码器与libdvdcss程序库使其有播放多媒体文件及加密DVD影碟的功能。&lt;/p&gt;
+&lt;h2 id=&#34;什么是libvlc&#34;&gt;什么是LibVLC&lt;/h2&gt;
+&lt;p&gt;&lt;span id=&#34;result_box&#34; class=&#34;short_text&#34; lang=&#34;zh-CN&#34;&gt;&lt;span class=&#34;&#34;&gt;LibVLC&lt;/span&gt;&lt;span class=&#34;&#34;&gt;是&lt;/span&gt;&lt;span class=&#34;&#34;&gt;VLC媒体播放器&lt;/span&gt;的外部&lt;span class=&#34;&#34;&gt;编程接口。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;http://frostmiku.fcteam.net/wp-content/uploads/2016/05/2016050414265530.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;libvlc&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;如何获取vlc的sdk&#34;&gt;如何获取VLC的SDK&lt;/h2&gt;
+&lt;p&gt;VLC开发所需的库文件可以有3种获取方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1. 自行编译&lt;/p&gt;
+&lt;p&gt;2. 直接从安装目录里面拷贝出来&lt;/p&gt;
+&lt;p&gt;3.从官方FTP服务器上下载（见相关链接5）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;开发vlc所需的文件的位置&#34;&gt; 开发VLC所需的文件的位置&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。&lt;/p&gt;
+&lt;p&gt;2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）&lt;/p&gt;
+&lt;p&gt;3. 头文件：安装目录/sdk/include
+[v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;1.自行在vs中设置include和lib的路径（如上）
+2.复制libvlc.dll, &lt;wbr /&gt;libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录
+3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo&lt;/h2&gt;
+&lt;p&gt;基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的&lt;/p&gt;
+&lt;p&gt;官方WIKI：&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+#include 
+ #include 
+ #include &amp;lt;vlc/vlc.h&amp;gt;
 
-如何获取VLC的SDK VLC开发所需的库文件可以有3种获取方法：
- 1. 自行编译
-2. 直接从安装目录里面拷贝出来
-3.从官方FTP服务器上下载（见相关链接5）
- 开发VLC所需的文件的位置  1. 动态链接库*.dll：安装目录下的libvlc.dll，libvlccore.dll以及plugins目录下的所有文件。
-2. 静态链接库*.lib：安装目录/sdk/lib（2.1.0以后移除）（如没有libvlc.lib与libvlccore.lib请参考相关链接2从dll生成）
-3. 头文件：安装目录/sdk/include [v_error]使用官方的，而非自己手动生成lib（相关链接2）将在Release下抛错[/v_error]
- 配置 1.自行在vs中设置include和lib的路径（如上） 2.复制libvlc.dll, libvlccore.dll,plugins目录到工程debug目录,如果是release需要复制到release目录 3.如想发布供他人使用请静态编译：工程属性， C/C++ ， 运行时库选择/MT
-Demo 基于libvlc的播放器Dome网上一搜一大把，这里给出两个有代表性的
-官方WIKI：
-#include #include #include &amp;lt;vlc/vlc.h&amp;gt; int main(int argc, char* argv[]) { libvlc_instance_t * inst; libvlc_media_player_t *mp; libvlc_media_t *m; /* Load the VLC engine */ inst = libvlc_new (0, NULL); /* Create a new item */ m = libvlc_media_new_location (inst, &#34;</description>
-    </item>
-    
-  </channel>
+ int main(int argc, char* argv[])
+ {
+     libvlc_instance_t * inst;
+     libvlc_media_player_t *mp;
+     libvlc_media_t *m;
+
+     /* Load the VLC engine */
+     inst = libvlc_new (0, NULL);
+
+     /* Create a new item */
+     m = libvlc_media_new_location (inst, &#34;http://mycool.movie.com/test.mov&#34;);
+     //m = libvlc_media_new_path (inst, &#34;/path/to/test.mov&#34;);
+
+     /* Create a media player playing environement */
+     mp = libvlc_media_player_new_from_media (m);
+
+     /* No need to keep the media now */
+     libvlc_media_release (m);
+
+ #if 0
+     /* This is a non working code that show how to hooks into a window,
+      * if we have a window around */
+      libvlc_media_player_set_xwindow (mp, xid);
+     /* or on windows */
+      libvlc_media_player_set_hwnd (mp, hwnd);
+     /* or on mac os */
+      libvlc_media_player_set_nsobject (mp, view);
+  #endif
+
+     /* play the media_player */
+     libvlc_media_player_play (mp);
+
+     sleep (10); /* Let it play a bit */
+
+     /* Stop playing */
+     libvlc_media_player_stop (mp);
+
+     /* Free the media_player */
+     libvlc_media_player_release (mp);
+
+     libvlc_release (inst);
+
+     return 0;
+ }
+&lt;/pre&gt;
+&lt;p&gt;来自百度的精简版，只留下了主要代码（出处不详，望告知）&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;#include 
+#include 
+
+#include &#34;vlc/vlc.h&#34;
+#pragma comment(lib, &#34;libvlc.lib&#34;)
+#pragma comment(lib, &#34;libvlccore.lib&#34;)
+
+int main(int argc, char* argv[])
+{
+    libvlc_instance_t * inst;
+    libvlc_media_player_t *mp;
+    libvlc_media_t *m;
+
+    inst = libvlc_new (0, NULL);        /* Load the VLC engine */   
+    m = libvlc_media_new_path (inst, &#34;D:\\music\\amani.wma&#34;);  // 必须为英文路径  
+    mp = libvlc_media_player_new_from_media (m);    /* Create a media player playing environement */    
+    libvlc_media_release (m);           /* No need to keep the media now */
+
+    // 播放文件
+    libvlc_media_player_play (mp);      /* play the media_player */   
+    Sleep (100 * 1000);                 /* Let it play a bit */
+
+    libvlc_media_player_stop (mp);      /* Stop playing */   
+    libvlc_media_player_release (mp);   /* Free the media_player */
+    libvlc_release (inst);
+    return 0;
+}
+&lt;/pre&gt;
+&lt;h2 id=&#34;libvlc_media_new_path和libvlc_media_new_location的区别&#34;&gt;libvlc_media_new_path()和libvlc_media_new_location()的区别&lt;/h2&gt;
+&lt;p&gt;libvlc_media_new_path()用于打开文件，而libvlc_media_new_location()用于打开协议&lt;/p&gt;
+&lt;p&gt;传递给libvlc_media_new_path()的参数就是文件路径（相对路径或绝对路径）&lt;/p&gt;
+&lt;p&gt;传递给libvlc_media_new_location()的参数就是协议地址（如“udp://”“http://”）&lt;/p&gt;
+&lt;p&gt;需要注意的是libvlc_media_new_location()也可以打开文件，但是必须在文件路径前面加上“file:///”，举个栗子&lt;/p&gt;
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;libvlc_media_new_location (inst, &#34;file:///E:\\test.avi&#34;);  
+&lt;/pre&gt;
+&lt;p&gt;VLC还支持很多特有的协议，比如“screen://”协议可以进行屏幕录制，具体可参考官方WIKI&lt;/p&gt;
+&lt;h2 id=&#34;疑难杂症&#34;&gt;疑难杂症&lt;/h2&gt;
+&lt;h3 id=&#34;中文乱码&#34;&gt;中文乱码&lt;/h3&gt;
+&lt;p&gt;VLC使用的是UTF-8，因此将unicode转码为UTF-8即可解决&lt;/p&gt;
+&lt;h3 id=&#34;在release下抛错&#34;&gt;在Release下抛错&lt;/h3&gt;
+&lt;p&gt;请勿使用官方的lib，自己手动生成lib（相关链接2）&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.videolan.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.videolan.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.videolan.org/GenerateLibFromDll/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.videolan.org/GenerateLibFromDll/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://download.videolan.org/pub/videolan/vlc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://download.videolan.org/pub/videolan/vlc/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;ftp://ftp.videolan.org/pub/videolan/&#34; &gt;ftp://ftp.videolan.org/pub/videolan/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,65 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pages on StarWhisper</title>
-    <link>https://blog.frostmiku.com/page/</link>
-    <description>Recent content in Pages on StarWhisper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 07 Nov 2019 16:53:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/page/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>友链</title>
-      <link>https://blog.frostmiku.com/friends/</link>
-      <pubDate>Thu, 07 Nov 2019 16:53:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/friends/</guid>
-      <description>欢迎申请友链
-满足以下三点，在本页面留言即可：
- 内容积极向上 网站大体美观 申请前已主动添加本站   超能小紫
-KAAAsS
-当风过时
-果果喵
-冯小贤
-HanJK
-PAPAPA</description>
-    </item>
-    
-    <item>
-      <title>归档</title>
-      <link>https://blog.frostmiku.com/archives/</link>
-      <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/archives/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>https://blog.frostmiku.com/about/</link>
-      <pubDate>Tue, 05 Nov 2019 17:34:00 +0800</pubDate>
-      
-      <guid>https://blog.frostmiku.com/about/</guid>
-      <description>嗨！你好，我是 Lethon（乙醚/忘川），一名 高中生 大学生 硕士研究生,常用 ID @FrostMiKu，如果你在网上看到这个 ID 那很有可能就是我啦！
- 这里是我的个人博客，你可以在这里看到一些我的好活、学习笔记，还有一些在我个人生活中值得纪念的事情。
- 你所看到的这个博客始于2015年的某一天，具体的日子连我都不记得了，起初博客使用 Wordpress 驱动，在经历了 HEXO, HUGO, Typecho 后最终又于昨日回到了 HUGO. 而早期的文章也随着一次次的搬迁毁灭于一场数据库事故之中。
- 本博客不定期更新 Twitter：@iceMiKu E-Mail：i#frostmiku.com   以下内容恢复自 2017-10-23 00:12:33 CST
-我怎么会写出这么二的东西
-About: 页面施工中&amp;hellip;
-这里是五线城市一百本大学的一名假 JK。
-Info: 师从何处？ 五线城市一百本大学
-姿势水平？ CS 系 embedded software 方向本科在读
-是否图样？ 非常图样
-跑的多块？ 13 km/h</description>
-    </item>
-    
-    <item>
-      <title>Search</title>
-      <link>https://blog.frostmiku.com/search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.frostmiku.com/search/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Pages on StarWhisper</title>
+        <link>https://blog.frostmiku.com/page/</link>
+        <description>Recent content in Pages on StarWhisper</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Thu, 07 Nov 2019 16:53:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>友链</title>
+        <link>https://blog.frostmiku.com/friends/</link>
+        <pubDate>Thu, 07 Nov 2019 16:53:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/friends/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;欢迎申请友链&lt;br&gt;
+满足以下三点，在本页面留言即可：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内容积极向上&lt;/li&gt;
+&lt;li&gt;网站大体美观&lt;/li&gt;
+&lt;li&gt;申请前已主动添加本站&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.mokeyjay.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;超能小紫&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.kaaass.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;KAAAsS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.windworkshop.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;当风过时&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://moe.xin/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;果果喵&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.flxxyz.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;冯小贤&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://reedthink.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HanJK&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://hanbaoaaa.xyz/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PAPAPA&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>归档</title>
+        <link>https://blog.frostmiku.com/archives/</link>
+        <pubDate>Wed, 06 Nov 2019 15:38:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>关于</title>
+        <link>https://blog.frostmiku.com/about/</link>
+        <pubDate>Tue, 05 Nov 2019 17:34:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/about/</guid>
+        <description>&lt;p&gt;  嗨！你好，我是 &lt;code&gt;Lethon（乙醚/忘川）&lt;/code&gt;，一名 &lt;del&gt;高中生&lt;/del&gt; &lt;del&gt;大学生&lt;/del&gt; 硕士研究生,常用 ID &lt;code&gt;@FrostMiKu&lt;/code&gt;，如果你在网上看到这个 ID 那很有可能就是我啦！&lt;/p&gt;
+&lt;p&gt;  这里是我的个人博客，你可以在这里看到一些我的&lt;em&gt;好活&lt;/em&gt;、学习笔记，还有一些在我个人生活中值得纪念的事情。&lt;/p&gt;
+&lt;p&gt;  你所看到的这个博客始于2015年的某一天，具体的日子连我都不记得了，起初博客使用 Wordpress 驱动，在经历了 HEXO, HUGO, Typecho 后最终又于昨日回到了 HUGO. 而早期的文章也随着一次次的搬迁毁灭于一场数据库事故之中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本博客不定期更新&lt;/li&gt;
+&lt;li&gt;Twitter：&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/iceMIKU&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;@iceMiKu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;E-Mail：i#frostmiku.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;以下内容恢复自 &lt;code&gt;2017-10-23 00:12:33 CST&lt;/code&gt;&lt;br&gt;
+&lt;del&gt;我怎么会写出这么二的东西&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;about&#34;&gt;About:&lt;/h2&gt;
+&lt;p&gt;页面施工中&amp;hellip;&lt;/p&gt;
+&lt;p&gt;这里是五线城市一百本大学的一名假 JK。&lt;/p&gt;
+&lt;h2 id=&#34;info&#34;&gt;Info:&lt;/h2&gt;
+&lt;h5 id=&#34;师从何处&#34;&gt;师从何处？&lt;/h5&gt;
+&lt;p&gt;五线城市一百本大学&lt;/p&gt;
+&lt;h5 id=&#34;姿势水平&#34;&gt;姿势水平？&lt;/h5&gt;
+&lt;p&gt;CS 系 embedded software 方向本科在读&lt;/p&gt;
+&lt;h5 id=&#34;是否图样&#34;&gt;是否图样？&lt;/h5&gt;
+&lt;p&gt;非常图样&lt;/p&gt;
+&lt;h5 id=&#34;跑的多块&#34;&gt;跑的多块？&lt;/h5&gt;
+&lt;p&gt;13 km/h&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://blog.frostmiku.com/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.frostmiku.com/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>
