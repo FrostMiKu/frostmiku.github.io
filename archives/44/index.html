@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='翻译和总结的综述，更新中...'><title>语音合成技术的发展</title>
+
+<link rel='canonical' href='https://blog.frostmiku.com/archives/44/'>
+
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='语音合成技术的发展'>
+<meta property='og:description' content='翻译和总结的综述，更新中...'>
+<meta property='og:url' content='https://blog.frostmiku.com/archives/44/'>
+<meta property='og:site_name' content='StarWhisper'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='语音合成' /><meta property='article:published_time' content='2022-05-21T17:00:00&#43;08:00'/><meta property='article:modified_time' content='2022-05-21T17:00:00&#43;08:00'/><meta property='og:image' content='https://blog.frostmiku.com/archives/44/image-20220521162944624.png' />
+<meta name="twitter:site" content="@iceMiKu">
+    <meta name="twitter:creator" content="@iceMiKu"><meta name="twitter:title" content="语音合成技术的发展">
+<meta name="twitter:description" content="翻译和总结的综述，更新中..."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.frostmiku.com/archives/44/image-20220521162944624.png' />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb4cf7c6dfd74976b01240ca1952b6cf_46859_300x0_resize_box_3.png" width="300"
+                            height="254" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">StarWhisper</a></h1>
+            <h2 class="site-description">In Pursuit of Absolute Simplicity.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/FrostMiKu'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/iceMiKu'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/friends/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/archives/44/">
+                <img src="/archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_800x0_resize_box_3.png"
+                        srcset="/archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_800x0_resize_box_3.png 800w, /archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="82" 
+                        loading="lazy"
+                        alt="Featured image of post 语音合成技术的发展" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/archives/44/">语音合成技术的发展</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            翻译和总结的综述，更新中...
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 21, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>文本到言语（TTS），也称为语音合成，长期以来一直是人工智能，自然语言和语音处理领域中的一个研究方向。开发TTS系统需要有关语言和人类语音生产的知识，涉及多个学科，包括语言学，声学，数字信号处理和机器学习。</p>
+<h2 id="历史">历史</h2>
+<p>人类对语音合成最早的尝试可以追溯到12世纪，18世界中叶匈牙利科学家沃尔夫冈·冯·肯佩伦（Wolfgang von Kempelen）构建了一台使用一系列波纹管，弹簧，风笛和共振盒的说话机器，以产生一些简单的单词和简短的句子。</p>
+<p>第一个基于计算机的第一个语音合成系统出现在20世纪下半叶。早期基于计算机的语音合成方法包括关节模拟合成，共振峰合成和拼接合成。之后随着统计机器学习的发展。基于统计参数的语音合成（SPSS）方法被提出，它可以预测诸如频谱，基频和音素时长之类的参数。到了2010年左右，基于神经网络的合成方法被提出，因其较好的合成语音质量，逐渐成为语音合成领域的主流方法。</p>
+<h2 id="关节模拟合成">关节模拟合成</h2>
+<p>关节模拟合成是一个很自然的想法，其主要思想就是模拟人类器官进行发声，诸如嘴唇、舌头、共鸣腔和声带振动。理想情况下，关节模拟合成可能是合成语音的最有效方法，因为人类就是这样发声的。</p>
+<p>然而在工程实践中，这种方法存在诸多困难，例如，我们很难收集到足够多的数据对发声器官进行建模。因此该种方法的可行性较低。</p>
+<h2 id="共振峰合成">共振峰合成</h2>
+<p>共振峰合成，是对关节模拟合成模型的一种简化，它是一种source-filter模型，其基本思想是讲声带的震动看作语音信号的信号源，讲嘴唇、舌头等一系列共鸣腔体看作是滤波器模型，即所谓语音就是声带振动产生的波形通过一系列的滤波器后得到的时序信号。这些滤波器通常是由专业的语言学家设置制定的，系统由多个具有不同参数的加性声学模型组合发出声音。</p>
+<p>但这样的合成系统合成出来的语音具有比较强烈的机械感，另外就是滤波器的设置需要大量的专业知识，难以设置。</p>
+<h2 id="拼接合成">拼接合成</h2>
+<p>拼接合成是指将录制的真实人类语音拆解成基本发音单元（例如音节、声韵母或音素）并储存在数据库中。在合成时，系统通过给定的文本输入在数据库中查找所需发音单元的记录并将其拼接在一起生成语音。一般而言，拼接合成的TTS生成的音频具有接近原始配音演员级别的高可理解性和正宗音色。</p>
+<p>然而，使用这种方法的系统需要大量的数据以涵盖口语发音中的所有组合。另一个缺点是，这种系统合成出来的语音不太自然，几乎没有任何的情感起伏。</p>
+<h2 id="统计参数合成">统计参数合成</h2>
+<p>为了解决拼接合成的缺点，统计参数合成被提出。其基本思想是，相比于直接拼接合成语音波形，我们可以先生成产生语音所必须的声学参数，然后通过一些算法从这些声学参数中恢复出语音波形。</p>
+<p>SPS通常由三个组件组成：文本分析模块，参数预测模块（声学模型）和声码器 Analysis/Synthesis模块（Vocoder）。</p>
+<p><img src="/archives/44/image-20220521162944624.png"
+	width="1318"
+	height="135"
+	srcset="/archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_480x0_resize_box_3.png 480w, /archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20220521162944624"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="976"
+		data-flex-basis="2343px"
+	
+></p>
+<p>文本分析模块作为语音合成系统的前端，起到对系统输入文本进行预处理的作用，例如，将 <em>“现在16：13了”</em> 这句话转换为 <em>“现在十六点十三分了”</em> 。并对文本进行分词、语义、韵律特征提取等工作。</p>
+<p>声学模型经过配对的语言特征和声学特征训练，其中声学特征包括F0(基频)，频谱或倒谱等。声码器负责将声学模型生成的的声学特征还原成波形。</p>
+<p>SPSS对比上面几种TTS系统有如下好处：</p>
+<ol>
+<li>声音听上去更自然</li>
+<li>更灵活，通过修改参数可以控制合成的语音。</li>
+<li>更低的数据开销（相较于拼接合成）</li>
+</ol>
+<p>但其生成的音频音质不是很好，另外依旧具有机械感，很容易被人类分辨出这段音频是合成的。</p>
+<p>2010年之后，随着深度神经网络的发展，一些高级的网络结构被应用于参数预测模块之中用以替代传统的统计模型。</p>
+<h3 id="spss声学模型">SPSS声学模型</h3>
+<p>基于HMM的SPSS的一个主要缺点是，合成语音的质量还不够好，主要有以下两个原因：</p>
+<ol>
+<li>声学模型的准确性不好，预测的声学特征是过度平滑的，缺乏细节。</li>
+<li>声码技术还不够好。</li>
+</ol>
+<p>第一个原因主要是由于HMM缺乏建模能力，因此提出了基于DNN的SPSS，改善了合成质量。</p>
+<p><del>为了更好地模拟语音话语中的长期跨越上下文效果</del>利用基于LSTM的循环神经网络，以更好地模拟上下文依赖性</p>
+<p>随着深度学习的发展，许多高级神经网络结构被用来预测声学特征，比如CBHG GAN啥的。</p>
+<p>Wang等。 [375]探索一种更端到端的方式，该方式利用了基于注意力的循环序列transducer模型直接从音素序列生成声学特征，可以避免在以前的基于神经网络的声学模型中所需的逐帧对齐。</p>
+<h2 id="神经语音合成">神经语音合成</h2>
+<p>随着深度学习的发展，基于神经网络的TTS被提出，它采用神经网络作为语音合成的模型骨干。 SPSS中采用了一些早期的神经模型来代替HMM进行声学建模。</p>
+<p>后来，提议 WaveNet 直接从语言特征产生波形，这可以被视为第一个现代神经TTS模型。诸如DeepVoice 1/2 之类的其他模型仍然遵循统计参数合成中的三个组件，仅仅只是使用相应的基于神经网络的模型来升级了部分组件。</p>
+<p>此外，一些端到端模型被提出（例如Tacotron 1/2 ，Deep Voice 3和FastSpeech 1/2），以简化文本分析，并直接采用文本分析模块字符/音素序列作为输入，并用梅尔谱简化声学特征。后来，开发了完全端到端的TTS系统，以直接从文本中生成波形，例如 ClariNet，FastSpeech 2s 和 Eats。与以前基于拼接合成和统计参数合成的TTS系统相比，基于神经网络的语音合成的优势包括在清晰度和自然性方面具有很高的质量，并且对人类预处理和特征构建的需求较少。</p>
+<h3 id="端到端tts中的声学模型">端到端TTS中的声学模型</h3>
+<p>与SPSS相比，基于神经网络的端到端TTS中的声学模型具有以下优点：</p>
+<ol>
+<li>传统的声学模型需要在语言和声学特征之间进行对齐，而Seq2Seq的神经模型则通过注意力机制隐式地学习对齐方式或预测共同出现时间，更端到端，需要较少的预处理。</li>
+<li>受益于神经网络强大的建模能力，语义特征被简化为了仅仅只需要字符或音素序列的输入即可，同时声学特征的输出则由原本低维的倒谱上升到了更高维的线性语谱图。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/">语音合成</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/archives/43/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">小米路由器运行zerotier</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/archives/42/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/42/title.bc790643d2285de04d505b9396c1bcb9_hu8b78c802ef23d72a1f175f8afba741c2_9707_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使 macOS 的光标像 windows 一样移动"
+                        data-key="42" 
+                        data-hash="md5-vHkGQ9IoXeBNUFuTlsG8uQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使 macOS 的光标像 windows 一样移动</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/archives/38/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">玄学BUG（一）</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/archives/32/">
+        
+        
+            <div class="article-image">
+                <img src="/archives/32/1.c437ebda5a99dd77e9d235f02e4ccf8e_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 给Linux的根目录扩容"
+                        data-key="32" 
+                        data-hash="md5-xDfr2lqZ3Xfp0jXwLkzPjg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">给Linux的根目录扩容</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/archives/29/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 笔记</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="FrostMiKu/frostmiku.github.io"
+        issue-term="title"
+        
+        label="Comment"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2014 - 
+        
+        2022 StarWhisper
+    </section>
+    
+    <section class="powerby">
+        
+            FrostMiKu <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#历史">历史</a></li>
+    <li><a href="#关节模拟合成">关节模拟合成</a></li>
+    <li><a href="#共振峰合成">共振峰合成</a></li>
+    <li><a href="#拼接合成">拼接合成</a></li>
+    <li><a href="#统计参数合成">统计参数合成</a>
+      <ol>
+        <li><a href="#spss声学模型">SPSS声学模型</a></li>
+      </ol>
+    </li>
+    <li><a href="#神经语音合成">神经语音合成</a>
+      <ol>
+        <li><a href="#端到端tts中的声学模型">端到端TTS中的声学模型</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
