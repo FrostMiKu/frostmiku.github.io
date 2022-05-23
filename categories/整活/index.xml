@@ -145,11 +145,11 @@
         <description>&lt;img src="https://blog.frostmiku.com/archives/35/after.jpg" alt="Featured image of post 仿手写文本生成" /&gt;&lt;p&gt;事情的起因是这样的&amp;hellip;&lt;br&gt;
 当年正是疫情最为严峻的时候，学校决定网上开学（&lt;del&gt;云上课&lt;/del&gt;）&lt;br&gt;
 那么开学了，就得写作业 &lt;del&gt;淦&lt;/del&gt;&lt;br&gt;
-其中有一门毛中特，&lt;del&gt;老师比较有想法&lt;/del&gt;，作业不收电子版，要求手写拍照提交&lt;br&gt;
-那我作为一个键盘侠，面对这么抗拒时代洪流的做法当然是不同意的呀！&lt;/p&gt;
+其中有一门****特，&lt;del&gt;老师比较有想法&lt;/del&gt;，作业不收电子版，要求手写拍照提交&lt;br&gt;
+几千字那得写到啥时候&amp;hellip;&lt;/p&gt;
 &lt;p&gt;于是我上网搜索了一番，搜出来了&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/20308770/answer/241699602&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这么个玩意&lt;/a&gt;&lt;br&gt;
-&lt;del&gt;淦，今天写文章时才发现他也是为了对付毛概&lt;/del&gt;&lt;br&gt;
+&lt;del&gt;淦，今天写文章时才发现他也是为了对付****&lt;/del&gt;&lt;br&gt;
 有一说一，如果不用交给老师的话效果还真不错&lt;br&gt;
 但拿来交作业的话，老师找两个一样的字一对比，直接喜提零分回家了（&lt;/p&gt;
 &lt;p&gt;于是我在想，能不能给每个字加入随机扰动&lt;br&gt;
@@ -201,7 +201,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;先生成一张高分辨率的图，然后再手动缩小&lt;br&gt;
-然后使用 &lt;strong&gt;QQ 截图&lt;/strong&gt;！如果效果还不好的话，就压缩一下，把图片弄糊&lt;br&gt;
+然后使用 &lt;strong&gt;QQ 截图&lt;/strong&gt;！如果效果还不好的话，就压缩一下，给图片加个模糊&amp;hellip;&lt;br&gt;
 &lt;del&gt;或者换个不会放大图片的老师&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;也不知道这玩意拿来打印效果怎么样（&lt;/p&gt;
 &lt;p&gt;项目已在 GitHub 上开源：&lt;a class=&#34;link&#34; href=&#34;https://github.com/FrostMiKu/FakeHandwriting&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
