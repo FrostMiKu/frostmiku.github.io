@@ -5,6 +5,12 @@
     <loc>https://blog.frostmiku.com/categories/</loc>
     <lastmod>2022-05-21T17:00:00+08:00</lastmod>
   </url><url>
+    <loc>https://blog.frostmiku.com/categories/</loc>
+    <lastmod>2022-05-21T17:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.frostmiku.com/tags/paper/</loc>
+    <lastmod>2022-05-21T17:00:00+08:00</lastmod>
+  </url><url>
     <loc>https://blog.frostmiku.com/post/</loc>
     <lastmod>2022-05-21T17:00:00+08:00</lastmod>
   </url><url>
@@ -46,9 +52,6 @@
   </url><url>
     <loc>https://blog.frostmiku.com/archives/38/</loc>
     <lastmod>2021-07-16T15:36:08+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.frostmiku.com/tags/paper/</loc>
-    <lastmod>2021-06-30T15:22:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.frostmiku.com/archives/36/</loc>
     <lastmod>2021-06-30T15:22:00+08:00</lastmod>
@@ -185,11 +188,8 @@
     <loc>https://blog.frostmiku.com/archives/41/</loc>
     <lastmod>2018-10-07T14:04:32+08:00</lastmod>
   </url><url>
-    <loc>https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</loc>
+    <loc>https://blog.frostmiku.com/tags/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6/</loc>
     <lastmod>2018-10-07T14:04:32+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.frostmiku.com/tags/acm/</loc>
-    <lastmod>2017-10-08T14:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.frostmiku.com/tags/%E7%AB%9E%E8%B5%9B/</loc>
     <lastmod>2017-10-08T14:00:00+08:00</lastmod>
@@ -198,9 +198,6 @@
     <lastmod>2017-10-08T14:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.frostmiku.com/archives/370/</loc>
-    <lastmod>2016-05-04T23:00:34+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.frostmiku.com/tags/vlc/</loc>
     <lastmod>2016-05-04T23:00:34+08:00</lastmod>
   </url><url>
     <loc>https://blog.frostmiku.com/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</loc>
@@ -216,5 +213,11 @@
     <lastmod>2021-07-12T15:17:22+08:00</lastmod>
   </url><url>
     <loc>https://blog.frostmiku.com/search/</loc>
+  </url><url>
+    <loc>https://blog.frostmiku.com/categories/notes/</loc>
+  </url><url>
+    <loc>https://blog.frostmiku.com/categories/diary/</loc>
+  </url><url>
+    <loc>https://blog.frostmiku.com/categories/work/</loc>
   </url>
 </urlset>

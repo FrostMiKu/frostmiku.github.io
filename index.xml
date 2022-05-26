@@ -12,7 +12,7 @@
         <pubDate>Sat, 21 May 2022 17:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/44/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/resource/image-20220521162944624.png" alt="Featured image of post 语音合成技术的发展" /&gt;&lt;p&gt;文本到言语（TTS），也称为语音合成，长期以来一直是人工智能，自然语言和语音处理领域中的一个研究方向。开发TTS系统需要有关语言和人类语音生产的知识，涉及多个学科，包括语言学，声学，数字信号处理和机器学习。&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/image-20220521162944624.png" alt="Featured image of post 语音合成技术的发展" /&gt;&lt;p&gt;文本到言语（TTS），也称为语音合成，长期以来一直是人工智能，自然语言和语音处理领域中的一个研究方向。开发TTS系统需要有关语言和人类语音生产的知识，涉及多个学科，包括语言学，声学，数字信号处理和机器学习。&lt;/p&gt;
 &lt;h2 id=&#34;历史&#34;&gt;历史&lt;/h2&gt;
 &lt;p&gt;人类对语音合成最早的尝试可以追溯到12世纪，18世界中叶匈牙利科学家沃尔夫冈·冯·肯佩伦（Wolfgang von Kempelen）构建了一台使用一系列波纹管，弹簧，风笛和共振盒的说话机器，以产生一些简单的单词和简短的句子。&lt;/p&gt;
 &lt;p&gt;第一个基于计算机的语音合成系统出现在20世纪下半叶。早期基于计算机的语音合成方法包括关节模拟合成，共振峰合成和拼接合成。之后随着统计机器学习的发展。基于统计参数的语音合成（SPSS）方法被提出，它可以预测诸如频谱，基频和音素时长之类的参数。到了2010年左右，基于神经网络的合成方法被提出，因其较好的合成语音质量，逐渐成为语音合成领域的主流方法。&lt;/p&gt;
@@ -3729,6 +3729,30 @@ Unfortunately, I immediately ran into both performance issues and playability is
         
         <guid>https://blog.frostmiku.com/search/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>笔记</title>
+        <link>https://blog.frostmiku.com/categories/notes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.frostmiku.com/categories/notes/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/res/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post 笔记" /&gt;</description>
+        </item>
+        <item>
+        <title>日常</title>
+        <link>https://blog.frostmiku.com/categories/diary/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.frostmiku.com/categories/diary/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/res/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post 日常" /&gt;</description>
+        </item>
+        <item>
+        <title>整活</title>
+        <link>https://blog.frostmiku.com/categories/work/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.frostmiku.com/categories/work/</guid>
+        <description>&lt;img src="https://blog.frostmiku.com/res/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 整活" /&gt;</description>
         </item>
         
     </channel>

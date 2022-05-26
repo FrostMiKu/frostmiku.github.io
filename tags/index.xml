@@ -7,6 +7,14 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sat, 21 May 2022 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Paper</title>
+        <link>https://blog.frostmiku.com/tags/paper/</link>
+        <pubDate>Sat, 21 May 2022 17:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/tags/paper/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>语音</title>
         <link>https://blog.frostmiku.com/tags/%E8%AF%AD%E9%9F%B3/</link>
         <pubDate>Sat, 21 May 2022 17:00:00 +0800</pubDate>
@@ -44,14 +52,6 @@
         <pubDate>Wed, 07 Jul 2021 20:57:44 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/tags/debug/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Paper</title>
-        <link>https://blog.frostmiku.com/tags/paper/</link>
-        <pubDate>Wed, 30 Jun 2021 15:22:00 +0800</pubDate>
-        
-        <guid>https://blog.frostmiku.com/tags/paper/</guid>
         <description></description>
         </item>
         <item>
@@ -183,19 +183,11 @@
         <description></description>
         </item>
         <item>
-        <title>文本处理</title>
-        <link>https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</link>
+        <title>余弦相似度</title>
+        <link>https://blog.frostmiku.com/tags/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6/</link>
         <pubDate>Sun, 07 Oct 2018 14:04:32 +0800</pubDate>
         
-        <guid>https://blog.frostmiku.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>ACM</title>
-        <link>https://blog.frostmiku.com/tags/acm/</link>
-        <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
-        
-        <guid>https://blog.frostmiku.com/tags/acm/</guid>
+        <guid>https://blog.frostmiku.com/tags/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6/</guid>
         <description></description>
         </item>
         <item>
@@ -204,14 +196,6 @@
         <pubDate>Sun, 08 Oct 2017 14:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/tags/%E7%AB%9E%E8%B5%9B/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>VLC</title>
-        <link>https://blog.frostmiku.com/tags/vlc/</link>
-        <pubDate>Wed, 04 May 2016 23:00:34 +0800</pubDate>
-        
-        <guid>https://blog.frostmiku.com/tags/vlc/</guid>
         <description></description>
         </item>
         <item>
