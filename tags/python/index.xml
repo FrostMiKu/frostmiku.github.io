@@ -12,7 +12,7 @@
         <pubDate>Tue, 29 Jun 2021 21:52:28 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/35/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/35/after.jpg" alt="Featured image of post 仿手写文本生成" /&gt;&lt;p&gt;事情的起因是这样的&amp;hellip;&lt;br&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/35-after.jpg" alt="Featured image of post 仿手写文本生成" /&gt;&lt;p&gt;事情的起因是这样的&amp;hellip;&lt;br&gt;
 当年正是疫情最为严峻的时候，学校决定网上开学（&lt;del&gt;云上课&lt;/del&gt;）&lt;br&gt;
 那么开学了，就得写作业 &lt;del&gt;淦&lt;/del&gt;&lt;br&gt;
 其中有一门***课，&lt;del&gt;老师比较有想法&lt;/del&gt;，作业不收电子版，要求手写拍照提交&lt;br&gt;
@@ -26,48 +26,36 @@
 结果还真让我找到了一个叫 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Gsllchb/Handright/blob/master/docs/tutorial.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;handright&lt;/a&gt; 的 Python 包&lt;br&gt;
 接下来就是无聊的调参过程了，最终效果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C.jpg&#34;
-	width=&#34;176&#34;
-	height=&#34;102&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C_huedaf81cb7fb6bc60d3915303690c6dfd_3596_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C_huedaf81cb7fb6bc60d3915303690c6dfd_3596_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/35-%e6%95%88%e6%9e%9c.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;效果&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;172&#34;
-		data-flex-basis=&#34;414px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;p&gt;因为生成的是位图，所以一放大就会发现锯齿&lt;br&gt;
 按理说应该搞个抗锯齿的，然而马上就要收作业了&lt;br&gt;
 我选择用 HiDPI 的方法应付一下得了（&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/35/before.jpg&#34;
-	width=&#34;757&#34;
-	height=&#34;1071&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/before_hu63dff8c9202fdee1b0c8db1c0b96e0d2_74622_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/before_hu63dff8c9202fdee1b0c8db1c0b96e0d2_74622_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/35-before.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Before&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;70&#34;
-		data-flex-basis=&#34;169px&#34;
+&gt; &lt;img src=&#34;https://blog.frostmiku.com/res/35-after.jpg&#34;
 	
-&gt; &lt;img src=&#34;https://blog.frostmiku.com/archives/35/after.jpg&#34;
-	width=&#34;757&#34;
-	height=&#34;1069&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/after_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/after_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_1024x0_resize_q75_box.jpg 1024w&#34;
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;After&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;70&#34;
-		data-flex-basis=&#34;169px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;先生成一张高分辨率的图，然后再手动缩小&lt;br&gt;

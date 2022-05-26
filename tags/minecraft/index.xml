@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>MineCraft on StarWhisper</title>
+        <title>Minecraft on StarWhisper</title>
         <link>https://blog.frostmiku.com/tags/minecraft/</link>
-        <description>Recent content in MineCraft on StarWhisper</description>
+        <description>Recent content in Minecraft on StarWhisper</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sun, 03 Jan 2021 21:37:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/tags/minecraft/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,7 @@
         <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/30/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/30/minecraft.jpg" alt="Featured image of post FrostCraft 游玩指南" /&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/minecraft.jpg" alt="Featured image of post FrostCraft 游玩指南" /&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
 &lt;p&gt;Q：游戏启动崩溃
 A：看下是不是用的32位Java，给的内存太大了&lt;/p&gt;
 &lt;p&gt;Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip;

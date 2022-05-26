@@ -12,20 +12,16 @@
         <pubDate>Mon, 01 Feb 2021 18:10:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/32/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/32/1.jpg" alt="Featured image of post 给Linux的根目录扩容" /&gt;&lt;p&gt;今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; &lt;br&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/32-1.jpg" alt="Featured image of post 给Linux的根目录扩容" /&gt;&lt;p&gt;今天服务商的母鸡被淦废了，售后给我开了台新机子，我闲的无聊装了个Ubuntu，迁移数据到一半提示可用空间不足，我一看根目录就5GB&amp;hellip; &lt;br&gt;
 于是有了如下对话&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/32/1.jpg&#34;
-	width=&#34;415&#34;
-	height=&#34;1188&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/32/1_hu8f027bb60d8c1e73edbd71d61f8f690d_103583_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/32-1.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;对话&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;34&#34;
-		data-flex-basis=&#34;83px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;于是开始扩容&amp;hellip;&lt;br&gt;
@@ -42,7 +38,7 @@
         <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/14/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/14/gnome.jpg" alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/gnome.jpg" alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 &lt;a class=&#34;link&#34; href=&#34;https://blog.kaaass.net/archives/1205&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@KAAAsS&lt;/a&gt;写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（&lt;/p&gt;
 &lt;p&gt;所以我就跑过来写一篇Gnome的同名文章，嘿嘿。&lt;/p&gt;
@@ -156,18 +152,14 @@
 &lt;p&gt;最近腾讯更新了QQ for Linux，虽然用起来有种自己穿越回2009年的感觉。但基本功能倒是够用了。&lt;/p&gt;
 &lt;p&gt;安装 qq-Linux 即可，它应该是在archlinuxcn仓库里。&lt;/p&gt;
 &lt;h2 id=&#34;美化&#34;&gt;美化&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/14/settings.png&#34;
-	width=&#34;1035&#34;
-	height=&#34;700&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/settings.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;setting&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;147&#34;
-		data-flex-basis=&#34;354px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;主题图标与字体&#34;&gt;主题、图标与字体&lt;/h3&gt;
@@ -212,7 +204,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false&lt;/p&
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM&lt;/p&gt;
 &lt;p&gt;-OK!-&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;-NOTE-: 
+&lt;p&gt;-NOTE-:
 &lt;em&gt;if you have problem use this Restore to Default all settings.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;dconf reset -f /org/gnome/shell/extensions/dash-to-dock/&lt;/p&gt;
 &lt;hr&gt;

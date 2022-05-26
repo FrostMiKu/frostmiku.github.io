@@ -12,7 +12,7 @@
         <pubDate>Tue, 09 Feb 2021 01:53:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/33/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/33/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post 浅谈邀请码的生成" /&gt;&lt;p&gt;今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post 浅谈邀请码的生成" /&gt;&lt;p&gt;今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单&lt;/p&gt;
 &lt;h2 id=&#34;需求分析&#34;&gt;需求分析&lt;/h2&gt;
 &lt;p&gt;首先是硬性需求：&lt;/p&gt;
 &lt;ul&gt;

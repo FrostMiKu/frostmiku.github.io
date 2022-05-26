@@ -12,7 +12,7 @@
         <pubDate>Wed, 13 Oct 2021 11:12:26 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/42/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/42/title.jpg" alt="Featured image of post 使 macOS 的光标像 windows 一样移动" /&gt;&lt;p&gt;如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/mouse.jpg" alt="Featured image of post 使 macOS 的光标像 windows 一样移动" /&gt;&lt;p&gt;如果你同时在使用 Windows 和 mac OS，你可能会发现，mac OS 上的鼠标用起来有点怪异。&lt;/p&gt;
 &lt;p&gt;这是因为 mac OS 上的光标加速特性导致的，简单来说就是：&lt;/p&gt;
 &lt;p&gt;如果鼠标移动的慢，那么用户可能是想进行精密的指针操作，指针慢一点。
 如果鼠标移动的快，那么用户可能是想快速转移光标位置，指针就快一点。&lt;/p&gt;
@@ -38,7 +38,7 @@
         <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/28/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/28/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
 &lt;p&gt;主板是 msi z370 a pro，草草记录，待日后完善&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;开机崩溃重启&#34;&gt;开机崩溃重启&lt;/h2&gt;

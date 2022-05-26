@@ -6,13 +6,37 @@
         <description>Recent content in 整活 on StarWhisper</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 30 Jun 2021 15:22:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E6%95%B4%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 May 2022 17:00:00 +0800</lastBuildDate><atom:link href="https://blog.frostmiku.com/categories/%E6%95%B4%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>小米路由器运行zerotier</title>
+        <link>https://blog.frostmiku.com/archives/43/</link>
+        <pubDate>Sun, 15 May 2022 17:00:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/43/</guid>
+        <description>&lt;p&gt;本来想从 opkg 换源开始写的。&lt;/p&gt;
+&lt;p&gt;结果发现原来有 mixbox（小米工具箱）这种神器&amp;hellip;&lt;/p&gt;
+&lt;p&gt;网上搜一下照着装就行了，唯一需要注意的就是，得手动配置 iptables &amp;hellip;&lt;/p&gt;
+&lt;p&gt;添加以下内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iptables -I FORWARD -i zt5u4x5eal -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iptables -I FORWARD -o zt5u4x5eal -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iptables -t nat -I POSTROUTING -o zt5u4x5eal -j MASQUERADE
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>基于肢体运动的睡眠状态检测原理</title>
         <link>https://blog.frostmiku.com/archives/36/</link>
         <pubDate>Wed, 30 Jun 2021 15:22:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/36/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/36/3.jpg" alt="Featured image of post 基于肢体运动的睡眠状态检测原理" /&gt;&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/36-3.jpg" alt="Featured image of post 基于肢体运动的睡眠状态检测原理" /&gt;&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;  睡眠，作为人类每天都要进行的一项活动，它占据了人类整个生命周期的三分之一左右，其质量的高低对人类身心健康有着巨大的影响。&lt;/p&gt;
 &lt;p&gt;  良好的睡眠质量有助于身体成长、提高大脑记忆能力、增强自身免疫力，同时有利于集中注意力，保证各方面均衡发展，是健康的基本保证。然而，现如今的年轻人或是因为繁重的学习生活压力，或是因为精彩缤纷的互联网世界，熬夜成瘾，久久无法入眠。&lt;/p&gt;
 &lt;p&gt;  来自洛阳市精神卫生中心的调查显示大部分学生能够认识到睡眠质量与学习、工作的直接关联，也非常重视自身的睡眠质量，但是却没有为改善自己的睡眠质量做出过努力&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
@@ -21,18 +45,14 @@
 &lt;p&gt;  近年来，随着物质生活水平的不断提高，人们的健康意识逐渐增强，对人生三分之一都在进行的大事——“睡眠”自然也是十分关注。&lt;/p&gt;
 &lt;p&gt;  随着对睡眠的医学研究全面深入，和传感器技术的飞速发展，为人们优化自己的睡眠质量提供了新的可能。&lt;/p&gt;
 &lt;p&gt;  睡眠质量的高低与人类健康息息相关，较差的睡眠质量通常会导致许多疾病的发病率升高，严重情况下，熬夜者很可能会有猝死的风险。通常我们可以依据睡眠者起床时的精神面貌来评判睡眠质量的高低，而睡眠者被唤醒的时机是影响起床时精神面貌的关键因素之一。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/1.png&#34;
-	width=&#34;728&#34;
-	height=&#34;379&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-1.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;图 1 睡眠样本&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;192&#34;
-		data-flex-basis=&#34;461px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;  如图1所示，医学界通常认为睡眠过程是一个由快速动眼期(REM)和非快速动眼期(NREM)两大时序状态组成的循环过程，其中，非快速动眼期阶段又可以细化为以下四个睡眠子阶段：第一、二阶段统称为浅睡眠过程(Light Sleep)，第三、四阶段统称为深睡眠过程(Deep Sleep)&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。当睡眠者在深睡眠过程中被外界因素唤醒时，将会产生梦中惊醒的效果，睡眠者的精神面貌也必不会有多好。然而，当睡眠者在浅度睡眠时受外界因素被唤醒时，则会表现出自然睡醒一样的效果&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
@@ -42,18 +62,14 @@
 &lt;p&gt;  入睡期是睡眠的开始，昏昏欲睡的感觉就属于这一阶段。浅睡期开始正式睡眠。熟睡期和沉睡期是沉睡阶段，在该阶段人不容易被叫醒。当睡眠者由浅睡期或快速动眼期逐步进入沉睡期时，睡眠者的呼吸频率和心跳速度均会减慢且变得有节奏，其血压也会降低。与此同时，脑电波开始变慢并且会呈现出大量高幅值的波段&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;p&gt;  以上四个阶段睡眠共要经过约60到90分钟。而且均不会出现眼球快速跳动现象，故统称为非快速动眼睡眠。&lt;/p&gt;
 &lt;p&gt;  最后一个时期被称为快速动眼期。顾名思义，此时的睡眠者会出现动眼现象，此时的睡眠者通常会有翻身的动作，并且容易惊醒。科学研究表明，快速动眼期是大脑内部对记忆的学习和技巧的快速整合阶段。这一阶段的睡眠质量直接决定了睡眠者的记忆和理解效率，是非常重要的睡眠阶段&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。所以保证足够的睡眠时间是非常重要的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/2.jpg&#34;
-	width=&#34;324&#34;
-	height=&#34;161&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-2.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;图 2 睡眠过程状态迁移图&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;201&#34;
-		data-flex-basis=&#34;482px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;  睡眠周期是由睡眠刚启动的昏昏欲睡逐渐变沉，经由非快速动眼期（慢波睡眠期）和快速动眼期（异相睡眠期），这几个睡眠阶段之间的往复循环。又称为短昼夜睡眠周期，睡梦周期或快速动眼—非快速动眼(REM-NREM)周期，以示区别于睡眠和清醒间的昼夜交替。如图1所示人类的睡眠周期约70至110分钟（90±20分钟）&lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;。医学上又可以将睡眠细粒度地分为如图2所示的五个阶段：&lt;/p&gt;
@@ -70,33 +86,25 @@
 &lt;p&gt;  在一次正常的睡眠过程中，睡眠者通常会由浅睡眠阶段变换至深睡眠阶段，接着并不直接进入快速动眼期，而是从深度睡眠逆向回到浅度睡眠，之后才进入快速动眼期。快速动眼期结束后，接着再进入S1阶段，如此周而复始。睡眠过程中的状态变换在时间上呈现出周期性规律，不同睡眠状态之间的切换也具有一定的依赖性与时序性。一次完整的睡眠状态周期大约会持续90分钟，并且一晚上大约循环4到6次。&lt;/p&gt;
 &lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
 &lt;p&gt;  这部分我就不放出来了，基本就是拿到加速度传感器三轴的值然后归一化，然后进行识别，马尔科夫链或是条件随机场都是很好的方法，当然我更推荐后者，因为前者认为所有显式状态是彼此独立的，在建模中并不考虑他们之间的依赖关系。考虑到睡眠过程中各个睡眠相关事件的相互依赖性，相比于隐式马尔科夫链，条件随机场能够描述更多特征，从而达到更好地预测效果。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/4.jpg&#34;
-	width=&#34;1659&#34;
-	height=&#34;808&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-4.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;数据处理&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;205&#34;
-		data-flex-basis=&#34;492px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;p&gt;而我为了混个毕业就直接有限状态机解决问题了。&lt;del&gt;差不多得了&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/3.jpg&#34;
-	width=&#34;1605&#34;
-	height=&#34;848&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-3.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;总体架构&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;189&#34;
-		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
@@ -142,7 +150,7 @@
         <pubDate>Tue, 29 Jun 2021 21:52:28 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/35/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/35/after.jpg" alt="Featured image of post 仿手写文本生成" /&gt;&lt;p&gt;事情的起因是这样的&amp;hellip;&lt;br&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/35-after.jpg" alt="Featured image of post 仿手写文本生成" /&gt;&lt;p&gt;事情的起因是这样的&amp;hellip;&lt;br&gt;
 当年正是疫情最为严峻的时候，学校决定网上开学（&lt;del&gt;云上课&lt;/del&gt;）&lt;br&gt;
 那么开学了，就得写作业 &lt;del&gt;淦&lt;/del&gt;&lt;br&gt;
 其中有一门***课，&lt;del&gt;老师比较有想法&lt;/del&gt;，作业不收电子版，要求手写拍照提交&lt;br&gt;
@@ -156,48 +164,36 @@
 结果还真让我找到了一个叫 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Gsllchb/Handright/blob/master/docs/tutorial.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;handright&lt;/a&gt; 的 Python 包&lt;br&gt;
 接下来就是无聊的调参过程了，最终效果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C.jpg&#34;
-	width=&#34;176&#34;
-	height=&#34;102&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C_huedaf81cb7fb6bc60d3915303690c6dfd_3596_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/%E6%95%88%E6%9E%9C_huedaf81cb7fb6bc60d3915303690c6dfd_3596_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/35-%e6%95%88%e6%9e%9c.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;效果&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;172&#34;
-		data-flex-basis=&#34;414px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;p&gt;因为生成的是位图，所以一放大就会发现锯齿&lt;br&gt;
 按理说应该搞个抗锯齿的，然而马上就要收作业了&lt;br&gt;
 我选择用 HiDPI 的方法应付一下得了（&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/35/before.jpg&#34;
-	width=&#34;757&#34;
-	height=&#34;1071&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/before_hu63dff8c9202fdee1b0c8db1c0b96e0d2_74622_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/before_hu63dff8c9202fdee1b0c8db1c0b96e0d2_74622_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/35-before.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Before&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;70&#34;
-		data-flex-basis=&#34;169px&#34;
+&gt; &lt;img src=&#34;https://blog.frostmiku.com/res/35-after.jpg&#34;
 	
-&gt; &lt;img src=&#34;https://blog.frostmiku.com/archives/35/after.jpg&#34;
-	width=&#34;757&#34;
-	height=&#34;1069&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/35/after_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/35/after_hu23b7e7c62fd8951b5b31d4f97802b41e_155221_1024x0_resize_q75_box.jpg 1024w&#34;
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;After&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;70&#34;
-		data-flex-basis=&#34;169px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;先生成一张高分辨率的图，然后再手动缩小&lt;br&gt;
@@ -215,7 +211,7 @@
         <pubDate>Fri, 09 Apr 2021 17:55:35 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/34/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/34/Game51.jpg" alt="Featured image of post 大革命，一种扑克卡牌游戏" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/Game51.jpg" alt="Featured image of post 大革命，一种扑克卡牌游戏" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;最近接触了一种名叫“大富豪”(译名之一)的传统日式扑克牌游戏，国内好像知者甚少，故在此分享。&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 &lt;p&gt;“大富豪”是一种类似我国斗地主规则的扑克游戏，游戏擅长以大逆转来炒热氛围。&lt;/p&gt;
@@ -295,7 +291,7 @@
         <pubDate>Tue, 09 Feb 2021 01:53:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/33/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/33/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post 浅谈邀请码的生成" /&gt;&lt;p&gt;今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post 浅谈邀请码的生成" /&gt;&lt;p&gt;今天自己写项目玩，想要实现一个类似邀请码的机制，没想到小小邀请码还真没那么简单&lt;/p&gt;
 &lt;h2 id=&#34;需求分析&#34;&gt;需求分析&lt;/h2&gt;
 &lt;p&gt;首先是硬性需求：&lt;/p&gt;
 &lt;ul&gt;
@@ -921,7 +917,7 @@ MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 U
         <pubDate>Thu, 16 Jul 2020 23:18:41 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/28/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/28/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/bigsur.png" alt="Featured image of post OpenCore打造一个完美的 Hackintosh 遇到的问题" /&gt;&lt;blockquote&gt;
 &lt;p&gt;主板是 msi z370 a pro，草草记录，待日后完善&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;开机崩溃重启&#34;&gt;开机崩溃重启&lt;/h2&gt;
@@ -947,7 +943,7 @@ MD5作为一种 Hash 在一开始就被我放弃了，接下来我们看一下 U
         <pubDate>Fri, 21 Feb 2020 23:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/20/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/20/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 编译原理学习笔记：文法与语言" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 编译原理学习笔记：文法与语言" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;本学期开了编译原理课，嗯写作本文的原因就这么简单&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
 &lt;ul&gt;
@@ -1095,7 +1091,7 @@ S \stackrel{*}{\Rightarrow} x
 $$&lt;/p&gt;
 &lt;p&gt;称符号串x为文法 $G[S]$ 的句型。&lt;/p&gt;
 &lt;p&gt;$$
-S \stackrel{*}{\Rightarrow}x, x∈V_T^*
+S \stackrel{&lt;em&gt;}{\Rightarrow}x, x∈V_T^&lt;/em&gt;
 $$&lt;/p&gt;
 &lt;p&gt;则称符号串x是文法$G[S]$的句子。&lt;/p&gt;
 &lt;hr&gt;
@@ -1125,7 +1121,7 @@ $$&lt;/p&gt;
         <pubDate>Mon, 17 Feb 2020 16:20:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/17/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/17/fsm.jpg" alt="Featured image of post 使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser" /&gt;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/fsm.jpg" alt="Featured image of post 使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser" /&gt;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1186,18 +1182,14 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;状态机&#34;&gt;状态机&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/17/fsm.jpg&#34;
-	width=&#34;2500&#34;
-	height=&#34;1932&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/fsm.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;http parser fsm&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;129&#34;
-		data-flex-basis=&#34;310px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码实现&#34;&gt;代码实现&lt;/h2&gt;
@@ -1441,7 +1433,7 @@ $$&lt;/p&gt;
         <pubDate>Sat, 30 Nov 2019 19:06:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/14/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/14/gnome.jpg" alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/gnome.jpg" alt="Featured image of post Arch Linux (Manjaro) 配置、美化与常用软件安装指南（" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;之前就一直有在用Manjaro，主要是自己懒得安装Arch Linux，最近看 &lt;a class=&#34;link&#34; href=&#34;https://blog.kaaass.net/archives/1205&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@KAAAsS&lt;/a&gt;写了一篇KDE桌面环境的Manjaro配置，没忍住就装了一个，结果KDE和我还是不太兼容（&lt;/p&gt;
 &lt;p&gt;所以我就跑过来写一篇Gnome的同名文章，嘿嘿。&lt;/p&gt;
@@ -1555,18 +1547,14 @@ $$&lt;/p&gt;
 &lt;p&gt;最近腾讯更新了QQ for Linux，虽然用起来有种自己穿越回2009年的感觉。但基本功能倒是够用了。&lt;/p&gt;
 &lt;p&gt;安装 qq-Linux 即可，它应该是在archlinuxcn仓库里。&lt;/p&gt;
 &lt;h2 id=&#34;美化&#34;&gt;美化&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/14/settings.png&#34;
-	width=&#34;1035&#34;
-	height=&#34;700&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/14/settings_hue7565f078aa8a87a82bdd9c8b212eb3b_72441_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/settings.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;setting&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;147&#34;
-		data-flex-basis=&#34;354px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;主题图标与字体&#34;&gt;主题、图标与字体&lt;/h3&gt;
@@ -1611,7 +1599,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false&lt;/p&
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM&lt;/p&gt;
 &lt;p&gt;-OK!-&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;-NOTE-: 
+&lt;p&gt;-NOTE-:
 &lt;em&gt;if you have problem use this Restore to Default all settings.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;dconf reset -f /org/gnome/shell/extensions/dash-to-dock/&lt;/p&gt;
 &lt;hr&gt;
@@ -1717,7 +1705,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM&lt;/p
         <pubDate>Sun, 17 Nov 2019 16:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/12/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/12/windows.jpg" alt="Featured image of post Windows 蓝屏分析简明教程" /&gt;&lt;h2 id=&#34;前言--工具准备&#34;&gt;前言 &amp;amp; 工具准备&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/windowscrash.jpg" alt="Featured image of post Windows 蓝屏分析简明教程" /&gt;&lt;h2 id=&#34;前言--工具准备&#34;&gt;前言 &amp;amp; 工具准备&lt;/h2&gt;
 &lt;p&gt;今天室友的电脑蓝屏了&amp;hellip; &lt;del&gt;虽然以前就经常发生&lt;/del&gt;
 所以我们来康康是怎么回事！&lt;/p&gt;
 &lt;h3 id=&#34;工欲善其事必先利其器&#34;&gt;工欲善其事，必先利其器&lt;/h3&gt;
@@ -2074,7 +2062,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM&lt;/p
         <pubDate>Thu, 07 Nov 2019 23:13:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/10/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/10/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Whisper 样式一览" /&gt;&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Whisper 样式一览" /&gt;&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
 &lt;p&gt;你不应当考虑在文本中使用一级标题，这是一种错误的做法。
 另外，这段话是普通文本。&lt;/p&gt;
 &lt;h2 id=&#34;二级标题&#34;&gt;二级标题&lt;/h2&gt;
@@ -2131,58 +2119,42 @@ $$&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/10/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
-	width=&#34;667&#34;
-	height=&#34;1000&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/10/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/10/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Florian Klauer on Unsplash&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;66&#34;
-		data-flex-basis=&#34;160px&#34;
+&gt;  &lt;img src=&#34;https://blog.frostmiku.com/res/luca-bravo-alS7ewQ41M8-unsplash.jpg&#34;
 	
-&gt;  &lt;img src=&#34;https://blog.frostmiku.com/archives/10/luca-bravo-alS7ewQ41M8-unsplash.jpg&#34;
-	width=&#34;1000&#34;
-	height=&#34;667&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/10/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/10/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w&#34;
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Luca Bravo on Unsplash&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;149&#34;
-		data-flex-basis=&#34;359px&#34;
-	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/10/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
-	width=&#34;1000&#34;
-	height=&#34;750&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/10/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/10/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Helena Hertz on Unsplash&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;133&#34;
-		data-flex-basis=&#34;320px&#34;
+&gt;  &lt;img src=&#34;https://blog.frostmiku.com/res/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
 	
-&gt;  &lt;img src=&#34;https://blog.frostmiku.com/archives/10/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
-	width=&#34;667&#34;
-	height=&#34;1000&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/10/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/10/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w&#34;
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Hudai Gayiran on Unsplash&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;66&#34;
-		data-flex-basis=&#34;160px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ol&gt;

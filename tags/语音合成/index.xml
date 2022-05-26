@@ -12,7 +12,7 @@
         <pubDate>Sat, 21 May 2022 17:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/44/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/44/image-20220521162944624.png" alt="Featured image of post 语音合成技术的发展" /&gt;&lt;p&gt;文本到言语（TTS），也称为语音合成，长期以来一直是人工智能，自然语言和语音处理领域中的一个研究方向。开发TTS系统需要有关语言和人类语音生产的知识，涉及多个学科，包括语言学，声学，数字信号处理和机器学习。&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/resource/image-20220521162944624.png" alt="Featured image of post 语音合成技术的发展" /&gt;&lt;p&gt;文本到言语（TTS），也称为语音合成，长期以来一直是人工智能，自然语言和语音处理领域中的一个研究方向。开发TTS系统需要有关语言和人类语音生产的知识，涉及多个学科，包括语言学，声学，数字信号处理和机器学习。&lt;/p&gt;
 &lt;h2 id=&#34;历史&#34;&gt;历史&lt;/h2&gt;
 &lt;p&gt;人类对语音合成最早的尝试可以追溯到12世纪，18世界中叶匈牙利科学家沃尔夫冈·冯·肯佩伦（Wolfgang von Kempelen）构建了一台使用一系列波纹管，弹簧，风笛和共振盒的说话机器，以产生一些简单的单词和简短的句子。&lt;/p&gt;
 &lt;p&gt;第一个基于计算机的语音合成系统出现在20世纪下半叶。早期基于计算机的语音合成方法包括关节模拟合成，共振峰合成和拼接合成。之后随着统计机器学习的发展。基于统计参数的语音合成（SPSS）方法被提出，它可以预测诸如频谱，基频和音素时长之类的参数。到了2010年左右，基于神经网络的合成方法被提出，因其较好的合成语音质量，逐渐成为语音合成领域的主流方法。&lt;/p&gt;
@@ -28,18 +28,12 @@
 &lt;h2 id=&#34;统计参数合成&#34;&gt;统计参数合成&lt;/h2&gt;
 &lt;p&gt;为了解决拼接合成的缺点，统计参数合成被提出。其基本思想是，相比于直接拼接合成语音波形，我们可以先生成产生语音所必须的声学参数，然后通过一些算法从这些声学参数中恢复出语音波形。&lt;/p&gt;
 &lt;p&gt;SPSS通常由三个组件组成：文本分析模块，参数预测模块（声学模型）和声码器 Analysis/Synthesis模块（Vocoder）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/44/image-20220521162944624.png&#34;
-	width=&#34;1318&#34;
-	height=&#34;135&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/44/image-20220521162944624_hu59ada377d3f5e426bbd014fdbefd6d79_21108_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/image-20220521162944624.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20220521162944624&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;976&#34;
-		data-flex-basis=&#34;2343px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;文本分析模块作为语音合成系统的前端，起到对系统输入文本进行预处理的作用，例如，将 &lt;em&gt;“现在16：13了”&lt;/em&gt; 这句话转换为 &lt;em&gt;“现在十六点十三分了”&lt;/em&gt; 。并对文本进行分词、语义、韵律特征提取等工作。&lt;/p&gt;

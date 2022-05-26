@@ -12,7 +12,7 @@
         <pubDate>Mon, 17 Feb 2020 16:20:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/17/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/17/fsm.jpg" alt="Featured image of post 使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser" /&gt;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/fsm.jpg" alt="Featured image of post 使用 JavaScript 实现一个基于 FSM 的 http 请求头 parser" /&gt;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -73,18 +73,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;状态机&#34;&gt;状态机&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/17/fsm.jpg&#34;
-	width=&#34;2500&#34;
-	height=&#34;1932&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/17/fsm_hu978e07731c4925ec022eae0a092b1149_264193_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/fsm.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;http parser fsm&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;129&#34;
-		data-flex-basis=&#34;310px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码实现&#34;&gt;代码实现&lt;/h2&gt;

@@ -12,7 +12,7 @@
         <pubDate>Wed, 30 Jun 2021 15:22:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/36/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/36/3.jpg" alt="Featured image of post 基于肢体运动的睡眠状态检测原理" /&gt;&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/36-3.jpg" alt="Featured image of post 基于肢体运动的睡眠状态检测原理" /&gt;&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;  睡眠，作为人类每天都要进行的一项活动，它占据了人类整个生命周期的三分之一左右，其质量的高低对人类身心健康有着巨大的影响。&lt;/p&gt;
 &lt;p&gt;  良好的睡眠质量有助于身体成长、提高大脑记忆能力、增强自身免疫力，同时有利于集中注意力，保证各方面均衡发展，是健康的基本保证。然而，现如今的年轻人或是因为繁重的学习生活压力，或是因为精彩缤纷的互联网世界，熬夜成瘾，久久无法入眠。&lt;/p&gt;
 &lt;p&gt;  来自洛阳市精神卫生中心的调查显示大部分学生能够认识到睡眠质量与学习、工作的直接关联，也非常重视自身的睡眠质量，但是却没有为改善自己的睡眠质量做出过努力&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
@@ -21,18 +21,14 @@
 &lt;p&gt;  近年来，随着物质生活水平的不断提高，人们的健康意识逐渐增强，对人生三分之一都在进行的大事——“睡眠”自然也是十分关注。&lt;/p&gt;
 &lt;p&gt;  随着对睡眠的医学研究全面深入，和传感器技术的飞速发展，为人们优化自己的睡眠质量提供了新的可能。&lt;/p&gt;
 &lt;p&gt;  睡眠质量的高低与人类健康息息相关，较差的睡眠质量通常会导致许多疾病的发病率升高，严重情况下，熬夜者很可能会有猝死的风险。通常我们可以依据睡眠者起床时的精神面貌来评判睡眠质量的高低，而睡眠者被唤醒的时机是影响起床时精神面貌的关键因素之一。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/1.png&#34;
-	width=&#34;728&#34;
-	height=&#34;379&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_480x0_resize_box_3.png 480w, https://blog.frostmiku.com/archives/36/1_hu8a7a4e96fac6f0db296b54f74841bcba_27179_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-1.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;图 1 睡眠样本&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;192&#34;
-		data-flex-basis=&#34;461px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;  如图1所示，医学界通常认为睡眠过程是一个由快速动眼期(REM)和非快速动眼期(NREM)两大时序状态组成的循环过程，其中，非快速动眼期阶段又可以细化为以下四个睡眠子阶段：第一、二阶段统称为浅睡眠过程(Light Sleep)，第三、四阶段统称为深睡眠过程(Deep Sleep)&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。当睡眠者在深睡眠过程中被外界因素唤醒时，将会产生梦中惊醒的效果，睡眠者的精神面貌也必不会有多好。然而，当睡眠者在浅度睡眠时受外界因素被唤醒时，则会表现出自然睡醒一样的效果&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
@@ -42,18 +38,14 @@
 &lt;p&gt;  入睡期是睡眠的开始，昏昏欲睡的感觉就属于这一阶段。浅睡期开始正式睡眠。熟睡期和沉睡期是沉睡阶段，在该阶段人不容易被叫醒。当睡眠者由浅睡期或快速动眼期逐步进入沉睡期时，睡眠者的呼吸频率和心跳速度均会减慢且变得有节奏，其血压也会降低。与此同时，脑电波开始变慢并且会呈现出大量高幅值的波段&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;p&gt;  以上四个阶段睡眠共要经过约60到90分钟。而且均不会出现眼球快速跳动现象，故统称为非快速动眼睡眠。&lt;/p&gt;
 &lt;p&gt;  最后一个时期被称为快速动眼期。顾名思义，此时的睡眠者会出现动眼现象，此时的睡眠者通常会有翻身的动作，并且容易惊醒。科学研究表明，快速动眼期是大脑内部对记忆的学习和技巧的快速整合阶段。这一阶段的睡眠质量直接决定了睡眠者的记忆和理解效率，是非常重要的睡眠阶段&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。所以保证足够的睡眠时间是非常重要的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/2.jpg&#34;
-	width=&#34;324&#34;
-	height=&#34;161&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/2_hu1e7f476a967c2bff218d6463f4f91e9b_14181_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-2.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;图 2 睡眠过程状态迁移图&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;201&#34;
-		data-flex-basis=&#34;482px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;  睡眠周期是由睡眠刚启动的昏昏欲睡逐渐变沉，经由非快速动眼期（慢波睡眠期）和快速动眼期（异相睡眠期），这几个睡眠阶段之间的往复循环。又称为短昼夜睡眠周期，睡梦周期或快速动眼—非快速动眼(REM-NREM)周期，以示区别于睡眠和清醒间的昼夜交替。如图1所示人类的睡眠周期约70至110分钟（90±20分钟）&lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;。医学上又可以将睡眠细粒度地分为如图2所示的五个阶段：&lt;/p&gt;
@@ -70,33 +62,25 @@
 &lt;p&gt;  在一次正常的睡眠过程中，睡眠者通常会由浅睡眠阶段变换至深睡眠阶段，接着并不直接进入快速动眼期，而是从深度睡眠逆向回到浅度睡眠，之后才进入快速动眼期。快速动眼期结束后，接着再进入S1阶段，如此周而复始。睡眠过程中的状态变换在时间上呈现出周期性规律，不同睡眠状态之间的切换也具有一定的依赖性与时序性。一次完整的睡眠状态周期大约会持续90分钟，并且一晚上大约循环4到6次。&lt;/p&gt;
 &lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
 &lt;p&gt;  这部分我就不放出来了，基本就是拿到加速度传感器三轴的值然后归一化，然后进行识别，马尔科夫链或是条件随机场都是很好的方法，当然我更推荐后者，因为前者认为所有显式状态是彼此独立的，在建模中并不考虑他们之间的依赖关系。考虑到睡眠过程中各个睡眠相关事件的相互依赖性，相比于隐式马尔科夫链，条件随机场能够描述更多特征，从而达到更好地预测效果。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/4.jpg&#34;
-	width=&#34;1659&#34;
-	height=&#34;808&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/4_huc862200047d2791ebe78021e5f3bf473_68674_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-4.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;数据处理&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;205&#34;
-		data-flex-basis=&#34;492px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;p&gt;而我为了混个毕业就直接有限状态机解决问题了。&lt;del&gt;差不多得了&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/archives/36/3.jpg&#34;
-	width=&#34;1605&#34;
-	height=&#34;848&#34;
-	srcset=&#34;https://blog.frostmiku.com/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_480x0_resize_q75_box.jpg 480w, https://blog.frostmiku.com/archives/36/3_hu5f6040234dc4fded8a5d093800e3042d_106071_1024x0_resize_q75_box.jpg 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.frostmiku.com/res/36-3.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;总体架构&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;189&#34;
-		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;

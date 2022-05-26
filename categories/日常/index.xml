@@ -12,7 +12,7 @@
         <pubDate>Sun, 03 Jan 2021 21:37:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/30/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/30/minecraft.jpg" alt="Featured image of post FrostCraft 游玩指南" /&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/minecraft.jpg" alt="Featured image of post FrostCraft 游玩指南" /&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
 &lt;p&gt;Q：游戏启动崩溃
 A：看下是不是用的32位Java，给的内存太大了&lt;/p&gt;
 &lt;p&gt;Q：换了64位Java/调小内存后进入服务器显示内存太小&amp;hellip;
@@ -207,7 +207,7 @@ A：Java版本太老了，更新一下吧！（推荐下载OpenJ9&lt;/p&gt;
         <pubDate>Tue, 03 Mar 2020 14:20:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/22/</guid>
-        <description>&lt;img src="https://blog.frostmiku.com/archives/22/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 关于一次对于微波炉蒸米饭的尝试" /&gt;&lt;p&gt;今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;&lt;/p&gt;
+        <description>&lt;img src="https://blog.frostmiku.com/res/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 关于一次对于微波炉蒸米饭的尝试" /&gt;&lt;p&gt;今天中午出门觅食，发现楼下一份西红柿鸡蛋饭要14元，于是被吓回了家&amp;hellip;Orz&amp;hellip;&lt;/p&gt;
 &lt;p&gt;由于窝过于清贫（指买不起电饭锅）遂尝试使用微波炉蒸大米。网上简单搜索后没有得到理想的结果，便决定将过程记载于此。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;根据以往经验，微波炉加热食物会导致食物水分流失变干，所以尝试在碗上扣个盘子来保持水分。&lt;/p&gt;
@@ -221,13 +221,48 @@ A：Java版本太老了，更新一下吧！（推荐下载OpenJ9&lt;/p&gt;
 </description>
         </item>
         <item>
+        <title>你好！HUGO</title>
+        <link>https://blog.frostmiku.com/archives/3/</link>
+        <pubDate>Tue, 05 Nov 2019 18:39:00 +0800</pubDate>
+        
+        <guid>https://blog.frostmiku.com/archives/3/</guid>
+        <description>&lt;p&gt;前不久把自己的VPS释放掉了，换回静态Blog了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Hugo挺好用的，由Golang开发，官方提供预编译的二进制文件。&lt;/p&gt;
+&lt;p&gt;无需安装任何环境，开袋即食。&lt;/p&gt;
+&lt;p&gt;附上一个发布脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ./public
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;updated&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pause
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;数学符号测试：
+$$
+\frac{\theta}{\lambda}
+$$&lt;/p&gt;
+&lt;p&gt;插入一个不明觉厉的实时气象地球：&lt;/p&gt;
+&lt;iframe src=&#34;https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-250.03,1.27,325&#34; width=&#34;100%&#34; height=&#34;650px;&#34; scrolling=&#34;no&#34; style=&#34;border:0px;&#34;&gt;&lt;/iframe&gt;</description>
+        </item>
+        <item>
         <title>更早之前的文章</title>
         <link>https://blog.frostmiku.com/archives/1/</link>
         <pubDate>Sat, 08 Mar 2014 14:00:00 +0800</pubDate>
         
         <guid>https://blog.frostmiku.com/archives/1/</guid>
         <description>&lt;h1 id=&#34;404-page-not-found&#34;&gt;404 Page Not Found&lt;/h1&gt;
-&lt;p&gt;这里什么都没有。 
+&lt;p&gt;这里什么都没有。
 旧时代的文章随着一次次的事故烟消云散了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;虽然我有备份&lt;/del&gt;&lt;br&gt;
 备份中最早的文章为&lt;br&gt;
